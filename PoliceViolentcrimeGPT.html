@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>경찰청 범죄 발생 장소별 통계 · 시각화 EDA 최종보고서</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#111826;
+      --panel2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#60a5fa;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 42px rgba(0,0,0,.38);
+      --radius: 18px;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, "Helvetica Neue", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      line-height:1.65;
+      background:
+        radial-gradient(1100px 600px at 12% 0%, rgba(96,165,250,.20), transparent 55%),
+        radial-gradient(900px 650px at 88% 18%, rgba(34,211,238,.12), transparent 55%),
+        radial-gradient(1000px 700px at 30% 92%, rgba(167,139,250,.10), transparent 55%),
+        var(--bg);
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Sticky header */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,20,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{max-width:1180px; margin:0 auto; padding:0 18px}
+    .topbar .wrap{padding:14px 18px}
+    .brand{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand h1{margin:0; font-size:14px; font-weight:800; letter-spacing:.2px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{
+      font-size:12px; color:var(--muted);
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    /* Hero */
+    .hero{
+      margin:18px auto 0;
+      padding:22px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+    }
+    .hero h2{margin:0 0 10px; font-size:28px; line-height:1.25}
+    .hero p{margin:0; color:var(--muted)}
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-size:13px;
+    }
+    .btn:hover{background: rgba(255,255,255,.07); text-decoration:none}
+
+    /* Layout */
+    .grid{display:grid; grid-template-columns: 320px 1fr; gap:16px; margin:16px 0 70px}
+    @media (max-width: 980px){.grid{grid-template-columns:1fr}}
+
+    /* Cards */
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(17,24,38,.66);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{padding:14px 16px; border-bottom:1px solid var(--border)}
+    .card .hd .title{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
+    .card .bd{padding:16px}
+
+    /* TOC */
+    .toc{position:sticky; top:78px; height: fit-content}
+    @media (max-width: 980px){.toc{position:relative; top:auto}}
+    .toc ul{list-style:none; margin:0; padding:0}
+    .toc li{margin:8px 0}
+    .toc a{color:var(--text)}
+    .toc a small{color:var(--muted)}
+
+    section{scroll-margin-top:90px}
+    section h3{margin:0 0 10px; font-size:18px}
+    section h4{margin:18px 0 8px; font-size:15px; color:#dbeafe}
+
+    /* Callout */
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border-left:3px solid var(--accent);
+      background: rgba(96,165,250,.10);
+      border-radius: 12px;
+    }
+    .callout strong{color:#dbeafe}
+    .mono{font-family:var(--mono)}
+    .muted{color:var(--muted)}
+
+    /* Tables */
+    table{width:100%; border-collapse:collapse; margin-top:10px}
+    th,td{border:1px solid var(--border); padding:10px; vertical-align:middle}
+    th{background:rgba(255,255,255,.05); font-size:12px; text-align:left}
+    td{font-size:13px}
+    td.num{text-align:right; font-variant-numeric: tabular-nums}
+
+    /* Figures */
+    .figure{
+      margin-top:12px;
+      border:1px solid var(--border);
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(0,0,0,.18);
+    }
+    .figure img{display:block; width:100%; height:auto}
+    .figure figcaption{padding:10px 12px; font-size:12px; color:var(--muted); border-top:1px solid var(--border)}
+
+    .two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 980px){.two{grid-template-columns:1fr}}
+
+    footer{margin-top:16px; color:var(--muted); font-size:12px}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <h1>경찰청 범죄 발생 장소별 통계 · 시각화 EDA 최종보고서</h1>
+        <div class="meta">
+          <span class="pill">데이터: 38행 × 64열</span>
+          <span class="pill">수치형 62 · 결측치 없음</span>
+          <span class="pill">시각화 7종</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="top">
+      <h2>시각화 기반 탐색적 데이터 분석(EDA) — 웹페이지 버전</h2>
+      <p>
+        본 페이지는 <span class="mono">경찰청_범죄 발생 장소별 통계_20241231.csv</span> 집계 데이터를 기반으로,
+        일변량/다변량 시각화 결과(그림 1~7)와 핵심 순위 표를 한 페이지로 제공한다.
+      </p>
+      <div class="btnrow">
+        <a class="btn" href="sandbox:/mnt/data/경찰청_범죄_장소별_시각화_EDA_최종보고서.pdf">PDF 최종보고서 열기</a>
+        <a class="btn" href="#figures">시각화(그림 1~7)로 이동</a>
+        <a class="btn" href="#rankings">상위 순위 표로 이동</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <aside class="card toc">
+        <div class="hd"><div class="title">목차</div></div>
+        <div class="bd">
+          <ul>
+            <li><a href="#purpose">1. 목적 <small>(분석 목표)</small></a></li>
+            <li><a href="#data">2. 데이터/전처리 <small>(구조·가정)</small></a></li>
+            <li><a href="#rankings">3. 핵심 순위 <small>(TOP 장소·범죄)</small></a></li>
+            <li><a href="#figures">4. 시각화 <small>(그림 1~7)</small></a></li>
+            <li><a href="#facts">5. 관찰 요약 <small>(팩트)</small></a></li>
+            <li><a href="#limits">6. 한계/주의 <small>(데이터 범위)</small></a></li>
+            <li><a href="#next">7. 후속 분석 <small>(옵션)</small></a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div>
+        <section id="purpose" class="card">
+          <div class="hd"><div class="title">1. 목적</div></div>
+          <div class="bd">
+            <ul>
+              <li>범죄 발생의 <b>장소별 분포 특성(일변량)</b>을 시각화로 확인</li>
+              <li>장소 변수 간 <b>관계(다변량 구조)</b>를 상관관계 및 장소군 단위로 확인</li>
+            </ul>
+            <div class="callout"><strong>정리 원칙</strong>: 관찰 가능한 사실 중심으로 기술하며, 상관관계는 인과를 의미하지 않음.</div>
+          </div>
+        </section>
+
+        <section id="data" class="card" style="margin-top:16px">
+          <div class="hd"><div class="title">2. 데이터 및 전처리</div></div>
+          <div class="bd">
+            <h4>2.1 데이터 구조</h4>
+            <ul>
+              <li>범주형: <span class="mono">범죄대분류</span>, <span class="mono">범죄중분류</span></li>
+              <li>수치형: 장소별 발생 건수 <b>62개</b></li>
+              <li>결측치: 없음</li>
+            </ul>
+            <h4>2.2 전처리(시각화용)</h4>
+            <ul>
+              <li>수치형 컬럼: 숫자형 변환</li>
+              <li>시각화/집계 편의를 위해 결측은 0 처리(집계 통계 특성)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="rankings" class="card" style="margin-top:16px">
+          <div class="hd"><div class="title">3. 핵심 순위 요약</div></div>
+          <div class="bd">
+            <div class="two">
+              <div>
+                <h4>3.1 총 발생 건수 상위 12개 장소(전체 범죄유형 합계)</h4>
+                <table aria-label="상위 12개 장소">
+                  <thead>
+                    <tr><th style="width:70px">순위</th><th>장소</th><th style="width:180px">총 발생 건수</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>기타</td><td class="num">519,336</td></tr>
+                    <tr><td>2</td><td>일반도로</td><td class="num">255,894</td></tr>
+                    <tr><td>3</td><td>미상</td><td class="num">127,804</td></tr>
+                    <tr><td>4</td><td>아파트</td><td class="num">120,716</td></tr>
+                    <tr><td>5</td><td>통행로_보도_골목길</td><td class="num">75,257</td></tr>
+                    <tr><td>6</td><td>단독주택_다가구_다중</td><td class="num">49,257</td></tr>
+                    <tr><td>7</td><td>다세대_연립</td><td class="num">44,718</td></tr>
+                    <tr><td>8</td><td>기타상점</td><td class="num">39,452</td></tr>
+                    <tr><td>9</td><td>음식점</td><td class="num">34,817</td></tr>
+                    <tr><td>10</td><td>오피스텔_원룸</td><td class="num">23,526</td></tr>
+                    <tr><td>11</td><td>야외_산야</td><td class="num">22,199</td></tr>
+                    <tr><td>12</td><td>주점</td><td class="num">20,293</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <h4>3.2 총 발생 건수 상위 10개 범죄중분류(전체 장소 합계)</h4>
+                <table aria-label="상위 10개 범죄중분류">
+                  <thead>
+                    <tr><th style="width:70px">순위</th><th>범죄중분류</th><th style="width:180px">총 발생 건수</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>사기</td><td class="num">421,421</td></tr>
+                    <tr><td>2</td><td>기타범죄</td><td class="num">252,598</td></tr>
+                    <tr><td>3</td><td>교통범죄</td><td class="num">231,210</td></tr>
+                    <tr><td>4</td><td>절도범죄</td><td class="num">183,534</td></tr>
+                    <tr><td>5</td><td>폭행</td><td class="num">115,254</td></tr>
+                    <tr><td>6</td><td>특별경제범죄</td><td class="num">103,870</td></tr>
+                    <tr><td>7</td><td>횡령</td><td class="num">63,601</td></tr>
+                    <tr><td>8</td><td>손괴</td><td class="num">47,788</td></tr>
+                    <tr><td>9</td><td>협박</td><td class="num">24,190</td></tr>
+                    <tr><td>10</td><td>상해</td><td class="num">19,578</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="figures" class="card" style="margin-top:16px">
+          <div class="hd"><div class="title">4. 시각화(그림 1~7)</div></div>
+          <div class="bd">
+            <h4>그림 1. 장소 변수 간 상관관계 히트맵(피어슨)</h4>
+            <div class="figure"><figure>
+              <img src="sandbox:/mnt/data/final_fig1_corr_heatmap.png" alt="장소 변수 간 상관관계 히트맵" />
+              <figcaption>그림 1. 장소 변수 간 상관관계 히트맵 (Pearson)</figcaption>
+            </figure></div>
+
+            <h4>그림 2. 장소군 합산 산점도 행렬(대각선=분포)</h4>
+            <div class="figure"><figure>
+              <img src="sandbox:/mnt/data/final_fig2_group_scatter_matrix.png" alt="장소군 합산 산점도 행렬" />
+              <figcaption>그림 2. 장소군(주거/도로·통행/상업/교통/교육) 합산 산점도 행렬</figcaption>
+            </figure></div>
+
+            <h4>그림 3. 총 발생 건수 상위 12개 장소</h4>
+            <div class="figure"><figure>
+              <img src="sandbox:/mnt/data/final_fig3_top12_places.png" alt="총 발생 건수 상위 12개 장소" />
+              <figcaption>그림 3. 총 발생 건수 상위 12개 장소 (전체 범죄유형 합계)</figcaption>
+            </figure></div>
+
+            <h4>그림 4. 총 발생 건수 상위 10개 범죄중분류</h4>
+            <div class="figure"><figure>
+              <img src="sandbox:/mnt/data/final_fig4_top10_crime_subcategory.png" alt="총 발생 건수 상위 10개 범죄중분류" />
+              <figcaption>그림 4. 총 발생 건수 상위 10개 범죄중분류 (전체 장소 합계)</figcaption>
+            </figure></div>
+
+            <h4>그림 5. 상위 10개 범죄중분류 × 상위 12개 장소 (log1p)</h4>
+            <div class="figure"><figure>
+              <img src="sandbox:/mnt/data/final_fig5_topcrime_topplace_heatmap.png" alt="상위 범죄×상위 장소 히트맵" />
+              <figcaption>그림 5. 상위 범죄중분류 × 상위 장소 매트릭스 (log1p 스케일)</figcaption>
+            </figure></div>
+
+            <h4>그림 6. 범죄대분류별 장소군 구성비(정규화)</h4>
+            <div class="figure"><figure>
+              <img src="sandbox:/mnt/data/final_fig6_majorcategory_placegroup_share.png" alt="범죄대분류별 장소군 구성비" />
+              <figcaption>그림 6. 범죄대분류별 장소군 구성비 (범주 내 합계 대비)</figcaption>
+            </figure></div>
+
+            <h4>그림 7. 장소별 총 발생 건수 분포(롱테일, 로그)</h4>
+            <div class="figure"><figure>
+              <img src="sandbox:/mnt/data/final_fig7_place_totals_longtail.png" alt="장소별 총합 롱테일" />
+              <figcaption>그림 7. 장소별 총 발생 건수 분포 (로그 스케일)</figcaption>
+            </figure></div>
+          </div>
+        </section>
+
+        <section id="facts" class="card" style="margin-top:16px">
+          <div class="hd"><div class="title">5. 관찰 요약(팩트)</div></div>
+          <div class="bd">
+            <ul>
+              <li>장소별 총합 분포는 상위 소수 장소가 큰 비중을 차지하는 형태(롱테일)로 관찰됨(그림 7).</li>
+              <li>상관관계 히트맵에서 일부 장소군 내부(주거시설/상업시설/도로·통행)의 양(+)의 상관관계 구간이 넓게 관찰됨(그림 1).</li>
+              <li>장소군 산점도 행렬에서 여러 장소군 쌍이 양의 방향성을 갖는 점 분포를 보이며, 교육시설은 낮은 구간에 밀집된 분포가 관찰됨(그림 2).</li>
+              <li>상위 범죄중분류×상위 장소 매트릭스에서 범죄유형별로 특정 장소에 상대적으로 큰 값이 집중된 패턴이 관찰됨(그림 5).</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="limits" class="card" style="margin-top:16px">
+          <div class="hd"><div class="title">6. 한계 및 주의사항</div></div>
+          <div class="bd">
+            <ul>
+              <li>본 데이터는 집계 통계이며 사건 단위 원자료 수준의 시간·지역·인구·노출량(유동인구 등) 보정이 포함되어 있지 않음.</li>
+              <li><span class="mono">기타</span>, <span class="mono">미상</span> 범주가 포함되어 있어 활용 시 별도 분리/정의가 필요할 수 있음.</li>
+              <li>상관관계는 동시 변화를 요약하며 인과를 의미하지 않음.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="next" class="card" style="margin-top:16px">
+          <div class="hd"><div class="title">7. 후속 분석 제안(옵션)</div></div>
+          <div class="bd">
+            <ul>
+              <li>범죄대분류/중분류별 표준화(비율) 후 장소군 비교</li>
+              <li>차원축소(PCA) 또는 군집분석으로 범죄유형 패턴 요약</li>
+              <li><span class="mono">기타/미상</span> 제외 또는 재분류 후 재시각화</li>
+            </ul>
+            <footer>
+              이 HTML은 로컬/샌드박스 경로로 이미지가 연결돼 있다. 
+              실제 배포 시에는 <span class="mono">img src</span>를 서버 경로(예: <span class="mono">/assets/...</span>)로 바꾸면 된다.
+            </footer>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
