@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024년 경찰청 범죄 발생 장소별 통계 분석 보고서</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2332;
+            --secondary: #2c4875;
+            --accent: #e63946;
+            --light-accent: #f1faee;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --background: #ffffff;
+            --card-bg: #f8f9fa;
+            --border: #dee2e6;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --danger: #ef476f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.03)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header .meta {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--background);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, var(--accent) 0%, #c1121f 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(230, 57, 70, 0.3);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .executive-summary h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .executive-summary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .executive-summary li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid white;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Section */
+        .section {
+            background: var(--background);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin: 2rem 0 1rem;
+            font-weight: 700;
+        }
+
+        .section h4 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .stat-card h4 {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+        }
+
+        .data-table th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .data-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            background: white;
+        }
+
+        .data-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--light-accent);
+            transform: scale(1.01);
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Rank Badge */
+        .rank-badge {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .rank-badge.gold {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: var(--primary);
+        }
+
+        .rank-badge.silver {
+            background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+            color: var(--primary);
+        }
+
+        .rank-badge.bronze {
+            background: linear-gradient(135deg, #cd7f32 0%, #e8a87c 100%);
+            color: white;
+        }
+
+        /* Key Findings */
+        .findings {
+            background: var(--light-accent);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--success);
+        }
+
+        .findings h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .findings ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .findings li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .findings li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .chart-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Policy Recommendations */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .policy-card h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .policy-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .policy-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .policy-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 4px solid var(--background);
+        }
+
+        .timeline-item h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                gap: 1rem;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 30px;
+            background: linear-gradient(90deg, var(--success) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: width 1s ease-out;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.2rem;
+        }
+
+        .badge.high {
+            background: #ffe0e0;
+            color: var(--danger);
+        }
+
+        .badge.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge.low {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>2024년 경찰청 범죄 발생 장소별<br>통계 분석 보고서</h1>
+        <p class="subtitle">Crime Location Analysis Report</p>
+        <p class="meta">분석 기준일: 2024년 12월 31일 | 총 분석 건수: 1,583,108건</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#summary">요약</a>
+            <a href="#overview">분석 개요</a>
+            <a href="#univariate">일변량 분석</a>
+            <a href="#multivariate">다변량 분석</a>
+            <a href="#detailed">심층 분석</a>
+            <a href="#findings">발견사항</a>
+            <a href="#policy">정책 제언</a>
+            <a href="#visualization">시각화</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Executive Summary -->
+        <section id="summary" class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p style="margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8;">
+                본 보고서는 2024년 경찰청 범죄 발생 장소별 통계 데이터(총 1,583,108건)를 분석한 결과를 담고 있습니다.
+            </p>
+            <ul>
+                <li><strong>지능범죄(사기, 횡령)</strong>가 전체의 31.9%로 가장 높은 비중을 차지하며, 이는 디지털 환경 변화와 밀접한 관련</li>
+                <li><strong>교통 관련 장소</strong>(일반도로, 통행로)에서 전체의 21.96%가 발생하여 교통 안전 대책 강화 필요</li>
+                <li><strong>주거 시설</strong>에서 15.05%, <strong>상업 시설</strong>에서 5.21%의 범죄가 발생하며 장소별 특화된 대응 전략 필요</li>
+                <li><strong>강력범죄</strong>는 숙박업소(9.7%)와 주거지(아파트 9.1%)에 집중되어 있어 해당 장소에 대한 집중 관리 필요</li>
+                <li>범죄 발생 장소의 다양성이 높아(평균 45개 장소) <strong>포괄적인 안전망 구축</strong>이 요구됨</li>
+            </ul>
+        </section>
+
+        <!-- Section 1: 분석 개요 -->
+        <section id="overview" class="section">
+            <h2>1. 분석 개요</h2>
+            
+            <h3>1.1 분석 목적</h3>
+            <p>본 보고서는 2024년 경찰청 범죄 발생 장소별 통계 데이터를 체계적으로 분석하여 범죄 발생 패턴과 장소별 특성을 파악하는 것을 목적으로 합니다.</p>
+            
+            <div class="findings">
+                <h4>주요 목표</h4>
+                <ul>
+                    <li>범죄 유형별 발생 현황 및 분포 특성 파악</li>
+                    <li>발생 장소별 범죄 패턴 분석 및 취약 지역 식별</li>
+                    <li>범죄 유형과 발생 장소 간의 상관관계 규명</li>
+                    <li>범죄 예방 정책 수립을 위한 실증적 근거 제공</li>
+                    <li>치안 자원 배치 최적화를 위한 전략적 인사이트 도출</li>
+                </ul>
+            </div>
+
+            <h3>1.2 데이터 개요</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>총 범죄 건수</h4>
+                    <div class="value">1,583,108</div>
+                    <div class="label">건</div>
+                </div>
+                <div class="stat-card">
+                    <h4>범죄 유형</h4>
+                    <div class="value">38</div>
+                    <div class="label">개 중분류</div>
+                </div>
+                <div class="stat-card">
+                    <h4>발생 장소</h4>
+                    <div class="value">62</div>
+                    <div class="label">개 세부 장소</div>
+                </div>
+                <div class="stat-card">
+                    <h4>범죄 대분류</h4>
+                    <div class="value">15</div>
+                    <div class="label">개 카테고리</div>
+                </div>
+            </div>
+
+            <h3>1.3 분석 방법론</h3>
+            <p>본 분석은 탐색적 데이터 분석(EDA) 기법을 활용하여 일변량 분석과 다변량 분석을 병행하였습니다.</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>분석 단계</th>
+                        <th>분석 기법</th>
+                        <th>주요 목적</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>일변량 분석</strong></td>
+                        <td>기술통계, 히스토그램, 박스플롯</td>
+                        <td>개별 변수의 분포 및 특성 파악</td>
+                    </tr>
+                    <tr>
+                        <td><strong>다변량 분석</strong></td>
+                        <td>상관분석, 교차분석, 히트맵</td>
+                        <td>변수 간 관계 및 패턴 규명</td>
+                    </tr>
+                    <tr>
+                        <td><strong>차원 축소</strong></td>
+                        <td>PCA, 계층적 클러스터링</td>
+                        <td>복잡한 데이터 구조의 시각화</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 2: 일변량 분석 -->
+        <section id="univariate" class="section">
+            <h2>2. 일변량 분석 결과</h2>
+            
+            <h3>2.1 범죄 유형별 현황</h3>
+            <p>2024년 전체 범죄 발생 건수는 1,583,108건으로 집계되었으며, 범죄 대분류별 분포 분석 결과는 다음과 같습니다.</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">순위</th>
+                        <th>범죄 대분류</th>
+                        <th>발생 건수 (비율)</th>
+                        <th style="width: 200px;">비중</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge gold">1</span></td>
+                        <td>지능범죄</td>
+                        <td>505,208건 (31.9%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 31.9%;">31.9%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge silver">2</span></td>
+                        <td>기타범죄</td>
+                        <td>252,598건 (16.0%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 16.0%;">16.0%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge bronze">3</span></td>
+                        <td>교통범죄</td>
+                        <td>231,210건 (14.6%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 14.6%;">14.6%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">4</span></td>
+                        <td>폭력범죄</td>
+                        <td>219,798건 (13.9%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 13.9%;">13.9%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">5</span></td>
+                        <td>절도범죄</td>
+                        <td>183,534건 (11.6%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 11.6%;">11.6%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">6</span></td>
+                        <td>특별경제범죄</td>
+                        <td>103,870건 (6.6%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 6.6%;">6.6%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">7</span></td>
+                        <td>풍속범죄</td>
+                        <td>27,602건 (1.7%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 1.7%;">1.7%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">8</span></td>
+                        <td>강력범죄</td>
+                        <td>23,443건 (1.5%)</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 1.5%;">1.5%</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="findings">
+                <h4>주요 발견사항</h4>
+                <ul>
+                    <li>지능범죄(사기, 횡령 등)가 전체의 31.9%로 가장 높은 비중을 차지하며, 이는 디지털화와 온라인 거래 증가에 따른 결과로 분석</li>
+                    <li>기타범죄와 교통범죄를 합하면 30.6%로 일상생활 밀접 범죄가 높은 비중</li>
+                    <li>폭력범죄(13.9%)와 절도범죄(11.6%)를 합하면 25.5%로 전통적 범죄 유형이 여전히 상당한 비중</li>
+                    <li>강력범죄는 1.5%로 상대적으로 낮은 비중이나 사회적 파급력이 큰 만큼 집중 관리 필요</li>
+                </ul>
+            </div>
+
+            <h3>2.2 발생 장소별 현황</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">순위</th>
+                        <th>발생 장소</th>
+                        <th>발생 건수 (비율)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge gold">1</span></td>
+                        <td>기타</td>
+                        <td>519,336건 (32.8%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge silver">2</span></td>
+                        <td>일반도로</td>
+                        <td>255,894건 (16.2%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge bronze">3</span></td>
+                        <td>미상</td>
+                        <td>127,804건 (8.1%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">4</span></td>
+                        <td>아파트</td>
+                        <td>120,716건 (7.6%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">5</span></td>
+                        <td>통행로/보도/골목길</td>
+                        <td>75,257건 (4.8%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">6</span></td>
+                        <td>단독주택/다가구/다중</td>
+                        <td>49,257건 (3.1%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">7</span></td>
+                        <td>다세대/연립</td>
+                        <td>44,718건 (2.8%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">8</span></td>
+                        <td>기타상점</td>
+                        <td>39,452건 (2.5%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">9</span></td>
+                        <td>음식점</td>
+                        <td>34,817건 (2.2%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">10</span></td>
+                        <td>오피스텔/원룸</td>
+                        <td>23,526건 (1.5%)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="findings">
+                <h4>주요 발견사항</h4>
+                <ul>
+                    <li>'기타' 장소가 32.8%로 가장 높아 범죄 발생 장소의 다양성과 분류 체계 개선 필요성을 시사</li>
+                    <li>일반도로가 16.2%로 2위를 차지하여 도로 및 교통 관련 범죄 예방 대책이 시급</li>
+                    <li>주거 시설(아파트 7.6%, 단독주택 3.1%, 다세대 2.8%)을 합하면 13.5%로 주거지 안전 강화 필요</li>
+                    <li>상업 시설(상점 2.5%, 음식점 2.2%)에서도 4.7%의 범죄 발생</li>
+                    <li>'미상'이 8.1%로 높아 범죄 발생 장소 파악의 정확성 제고 필요</li>
+                </ul>
+            </div>
+
+            <h3>2.3 주요 통계 지표</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>장소별 평균 범죄</h4>
+                    <div class="value">25,534</div>
+                    <div class="label">건 (중앙값: 5,178건)</div>
+                </div>
+                <div class="stat-card">
+                    <h4>표준편차</h4>
+                    <div class="value">74,929</div>
+                    <div class="label">장소 간 편차 매우 큼</div>
+                </div>
+                <div class="stat-card">
+                    <h4>평균 발생 장소 수</h4>
+                    <div class="value">45.13</div>
+                    <div class="label">개 / 범죄 유형당</div>
+                </div>
+                <div class="stat-card">
+                    <h4>최대 발생 장소</h4>
+                    <div class="value">62</div>
+                    <div class="label">개 (절도, 폭행, 사기)</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>통계적 특징</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0;">✓ 장소별 범죄 발생 건수의 표준편차가 매우 커서(74,929건) 장소 간 편차가 극심함</li>
+                    <li style="padding: 0.5rem 0;">✓ 평균(25,534건)과 중앙값(5,178건)의 차이가 크게 나타나 일부 장소에 범죄가 집중</li>
+                    <li style="padding: 0.5rem 0;">✓ 범죄 유형은 평균 45개 장소에서 발생하여 대부분의 범죄가 다양한 장소에서 발생</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: 다변량 분석 -->
+        <section id="multivariate" class="section">
+            <h2>3. 다변량 분석 결과</h2>
+            
+            <h3>3.1 장소 유형별 범죄 패턴</h3>
+            <p>장소를 주거, 상업, 교통, 공공 등 유형별로 분류하여 범죄 패턴을 분석한 결과는 다음과 같습니다.</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>장소 유형</th>
+                        <th>발생 건수</th>
+                        <th>비율</th>
+                        <th>주요 범죄</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>교통 관련</strong> <span class="badge high">매우 높음</span></td>
+                        <td>347,663건</td>
+                        <td>21.96%</td>
+                        <td>교통범죄, 기타범죄, 폭행</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주거 시설</strong> <span class="badge medium">높음</span></td>
+                        <td>238,217건</td>
+                        <td>15.05%</td>
+                        <td>사기, 기타범죄, 폭행</td>
+                    </tr>
+                    <tr>
+                        <td><strong>상업 시설</strong> <span class="badge medium">높음</span></td>
+                        <td>82,419건</td>
+                        <td>5.21%</td>
+                        <td>절도, 사기, 기타범죄</td>
+                    </tr>
+                    <tr>
+                        <td><strong>기타/미상</strong></td>
+                        <td>647,140건</td>
+                        <td>40.87%</td>
+                        <td>지능범죄, 기타범죄</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="findings">
+                <h4>주요 발견사항</h4>
+                <ul>
+                    <li>교통 관련 장소가 21.96%로 가장 높아 교통 안전 및 범죄 예방 대책이 최우선 과제</li>
+                    <li>주거 시설에서는 사기와 폭행이 주로 발생하여 주거지 안전 강화 필요</li>
+                    <li>상업 시설에서는 절도범죄가 압도적으로 많아(43,151건) 도난 방지 시스템 강화 필요</li>
+                    <li>'기타/미상'이 40.87%로 매우 높아 장소 분류 체계의 정교화 필요</li>
+                </ul>
+            </div>
+
+            <h3>3.2 범죄 유형 간 상관관계</h3>
+            <p>주요 범죄 유형 간 발생 패턴의 유사성을 분석한 결과, 다음과 같은 상관관계가 확인되었습니다.</p>
+            
+            <div class="findings">
+                <h4>상관관계 분석 결과</h4>
+                <ul>
+                    <li>폭력범죄(폭행, 상해, 협박)는 일반도로와 아파트에서 유사한 발생 패턴을 보임</li>
+                    <li>지능범죄(사기, 횡령)는 '기타'와 '미상' 장소에서 높은 상관관계</li>
+                    <li>절도범죄는 상업 시설과 교통 시설에서 높은 상관관계를 나타냄</li>
+                    <li>강력범죄는 숙박업소와 주거지에서 집중 발생하는 독특한 패턴</li>
+                </ul>
+            </div>
+
+            <h3>3.3 주성분 분석(PCA)</h3>
+            <p>62개 발생 장소 데이터를 주성분 분석(PCA)으로 차원 축소한 결과는 다음과 같습니다.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>제1 주성분 (PC1)</h4>
+                    <div class="value">59.82%</div>
+                    <div class="label">설명 분산</div>
+                </div>
+                <div class="stat-card">
+                    <h4>제2 주성분 (PC2)</h4>
+                    <div class="value">13.88%</div>
+                    <div class="label">설명 분산</div>
+                </div>
+                <div class="stat-card">
+                    <h4>PC1 + PC2 합계</h4>
+                    <div class="value">73.69%</div>
+                    <div class="label">총 설명력</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>PCA 분석 결과</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0;">✓ 제1, 제2 주성분만으로 전체 분산의 73.69%를 설명하여 차원 축소가 효과적</li>
+                    <li style="padding: 0.5rem 0;">✓ 범죄 유형이 장소 패턴에 따라 명확하게 구분되는 경향 확인</li>
+                    <li style="padding: 0.5rem 0;">✓ 대분류별로 유사한 장소 선호도를 보여 범죄 예방 전략 수립에 활용 가능</li>
+                </ul>
+            </div>
+
+            <h3>3.4 장소 다양성 분석</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>다양성 수준</th>
+                        <th>범죄 유형</th>
+                        <th>발생 장소 수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge high">최고</span></td>
+                        <td>절도범죄, 폭행, 사기</td>
+                        <td>62개 (전체)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge high">높음</span></td>
+                        <td>기타범죄, 횡령</td>
+                        <td>62개 (전체)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge medium">중간</span></td>
+                        <td>강제추행, 손괴</td>
+                        <td>50-60개</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge low">낮음</span></td>
+                        <td>살인, 안보범죄</td>
+                        <td>18-24개</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge low">최저</span></td>
+                        <td>유가증권인지</td>
+                        <td>18개</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="findings">
+                <h4>주요 발견사항</h4>
+                <ul>
+                    <li>절도, 폭행, 사기 등 일상적 범죄는 62개 전체 장소에서 발생하여 포괄적 대응 필요</li>
+                    <li>살인, 안보범죄 등 특수 범죄는 특정 장소에 집중되어 집중적 관리 가능</li>
+                    <li>장소 다양성이 높은 범죄일수록 예방이 어려워 CCTV 등 광범위한 인프라 필요</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 4: 심층 분석 -->
+        <section id="detailed" class="section">
+            <h2>4. 범죄 대분류별 심층 분석</h2>
+            
+            <h3>4.1 강력범죄 (23,443건, 1.5%)</h3>
+            <p>강력범죄는 전체 범죄의 1.5%로
+                 비중은 낮지만 사회적 파급력이 크므로 세밀한 분석이 필요합니다.</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>범죄 유형</th>
+                        <th>주요 발생 장소 1위</th>
+                        <th>주요 발생 장소 2위</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>살인기수</strong></td>
+                        <td>아파트 (67건)</td>
+                        <td>다세대/연립 (44건)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>살인미수등</strong></td>
+                        <td>아파트 (95건)</td>
+                        <td>기타 (91건)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>강도</strong></td>
+                        <td>기타 (83건)</td>
+                        <td>통행로/보도 (45건)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>강간</strong></td>
+                        <td>숙박업소 (1,445건)</td>
+                        <td>아파트 (712건)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>강제추행</strong></td>
+                        <td>통행로/보도 (1,133건)</td>
+                        <td>주점 (1,159건)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="findings">
+                <h4>주요 시사점</h4>
+                <ul>
+                    <li>성범죄(강간, 유사강간)는 숙박업소에서 압도적으로 많이 발생(63.6%)하여 집중 관리 필요</li>
+                    <li>살인은 주거지(아파트, 다세대)에서 주로 발생하여 가정폭력 예방 및 조기 개입 중요</li>
+                    <li>강제추행은 통행로, 주점 등 공공장소와 유흥시설에서 발생하여 순찰 강화 필요</li>
+                    <li>강도는 통행로와 편의점에서 발생하여 야간 치안 강화 및 방범시설 확충 필요</li>
+                </ul>
+            </div>
+
+            <h3>4.2 폭력범죄 (219,798건, 13.9%)</h3>
+            <p>폭력범죄는 일상생활 공간에서 광범위하게 발생하는 특징을 보입니다.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>주거지 발생</h4>
+                    <div class="value">20.6%</div>
+                    <div class="label">아파트 + 다세대</div>
+                </div>
+                <div class="stat-card">
+                    <h4>길거리 발생</h4>
+                    <div class="value">20.3%</div>
+                    <div class="label">통행로 + 일반도로</div>
+                </div>
+                <div class="stat-card">
+                    <h4>음주 관련</h4>
+                    <div class="value">10.5%</div>
+                    <div class="label">음식점 + 주점</div>
+                </div>
+            </div>
+
+            <h3>4.3 지능범죄 (505,208건, 31.9%)</h3>
+            <p>지능범죄는 전체 범죄의 1/3을 차지하며, 특정 장소 파악이 어려운 특징이 있습니다.</p>
+            
+            <div class="highlight-box">
+                <h3>지능범죄 주요 특징</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0;">📊 '기타'와 '미상'을 합치면 69.2%로 발생 장소 특정이 어려운 온라인 사기 등이 많음</li>
+                    <li style="padding: 0.5rem 0;">💰 사기가 421,421건(83.4%)으로 압도적이며, 대부분 비대면으로 발생</li>
+                    <li style="padding: 0.5rem 0;">💼 횡령(63,601건)도 상당수 발생하며 주로 직장이나 금융기관 관련</li>
+                    <li style="padding: 0.5rem 0;">🔐 디지털 범죄 대응 체계 강화 및 온라인 사기 예방 교육 확대 필요</li>
+                </ul>
+            </div>
+
+            <h3>4.4 절도범죄 (183,534건, 11.6%)</h3>
+            <p>절도범죄는 다양한 장소에서 발생하며 재산범죄 중 가장 높은 비중을 차지합니다.</p>
+            
+            <div class="findings">
+                <h4>주요 시사점</h4>
+                <ul>
+                    <li>상업 시설(상점, 무인상점, 슈퍼마켓 등)에서 43,151건(23.5%) 발생하여 방범 시스템 강화 필요</li>
+                    <li>통행로와 일반도로에서 22,764건(12.4%) 발생하여 길거리 절도 심각</li>
+                    <li>아파트를 포함한 주거 시설에서도 27,973건(15.2%) 발생</li>
+                    <li>무인상점 절도가 5.9%로 높아 무인점포 보안 시스템 개선 시급</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5: 주요 발견사항 -->
+        <section id="findings" class="section">
+            <h2>5. 주요 발견사항 및 시사점</h2>
+            
+            <h3>5.1 전체 범죄 패턴</h3>
+            
+            <div class="highlight-box">
+                <h3>범죄 유형의 변화</h3>
+                <p style="margin-top: 1rem;">전통적인 강력범죄나 절도범죄보다 지능범죄(31.9%)와 교통범죄(14.6%)가 더 높은 비중을 차지하는 것은 사회 환경의 변화를 반영합니다. 특히 지능범죄의 대부분을 차지하는 사기(26.6%)는 디지털화와 비대면 거래의 증가에 따른 결과로 분석됩니다.</p>
+            </div>
+
+            <h3>5.2 장소별 취약성</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>장소 유형</th>
+                        <th>주요 범죄</th>
+                        <th>취약성</th>
+                        <th>대응 전략</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>교통 시설</strong></td>
+                        <td>교통범죄, 폭행, 절도</td>
+                        <td><span class="badge high">매우 높음</span></td>
+                        <td>순찰 강화, CCTV 확대</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주거 시설</strong></td>
+                        <td>사기, 폭행, 살인</td>
+                        <td><span class="badge high">높음</span></td>
+                        <td>커뮤니티 폴리싱, 가정폭력 예방</td>
+                    </tr>
+                    <tr>
+                        <td><strong>상업 시설</strong></td>
+                        <td>절도, 사기</td>
+                        <td><span class="badge high">높음</span></td>
+                        <td>방범시스템, 직원 교육</td>
+                    </tr>
+                    <tr>
+                        <td><strong>숙박업소</strong></td>
+                        <td>성범죄, 강력범죄</td>
+                        <td><span class="badge high">매우 높음</span></td>
+                        <td>집중 단속, 신고체계 강화</td>
+                    </tr>
+                    <tr>
+                        <td><strong>유흥시설</strong></td>
+                        <td>폭력, 성범죄</td>
+                        <td><span class="badge high">높음</span></td>
+                        <td>야간 순찰, 음주 관련 범죄 예방</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5.3 범죄 예방 포인트</h3>
+            
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <h4>1️⃣ 교통 안전 및 범죄 예방</h4>
+                    <ul>
+                        <li>일반도로와 통행로에서 전체의 21.96%가 발생</li>
+                        <li>CCTV 설치 확대 및 순찰 강화</li>
+                        <li>가로등 정비 등 종합 대책 수립</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <h4>2️⃣ 디지털 범죄 대응</h4>
+                    <ul>
+                        <li>지능범죄의 69.2%가 '기타'/'미상' 장소</li>
+                        <li>사이버 범죄 수사 역량 강화</li>
+                        <li>금융기관 협력 체계 구축</li>
+                        <li>국민 인식 제고 캠페인</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <h4>3️⃣ 주거지 안전 강화</h4>
+                    <ul>
+                        <li>주거 시설에서 15.05% 발생</li>
+                        <li>아파트 단지 방범 시스템 강화</li>
+                        <li>이웃 간 커뮤니티 활성화</li>
+                        <li>가정폭력 조기 발견 시스템</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <h4>4️⃣ 상업 시설 도난 방지</h4>
+                    <ul>
+                        <li>상업 시설 절도 43,151건</li>
+                        <li>무인상점 보안 시스템 개선</li>
+                        <li>방범 카메라 설치 확대</li>
+                        <li>도난방지 시스템(EAS) 설치</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <h4>5️⃣ 취약 시설 집중 관리</h4>
+                    <ul>
+                        <li>숙박업소에서 성범죄 63.6% 발생</li>
+                        <li>유흥시설 정기 점검</li>
+                        <li>안전 기준 강화</li>
+                        <li>종사자 교육 실시</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: 정책 제언 -->
+        <section id="policy" class="section">
+            <h2>6. 결론 및 정책 제언</h2>
+            
+            <h3>6.1 주요 시사점</h3>
+            
+            <div class="findings">
+                <h4>핵심 시사점</h4>
+                <ul>
+                    <li><strong>디지털 전환에 따른 지능범죄 증가:</strong> 전체 범죄의 31.9%를 차지하며, 전통적 방범 전략의 한계를 드러냄</li>
+                    <li><strong>교통 관련 범죄의 심각성:</strong> 21.96%가 교통 관련 장소에서 발생하여 교통 안전 대책이 치안 정책의 핵심</li>
+                    <li><strong>장소별 차별화된 접근 필요:</strong> 주거, 상업, 교통, 유흥 등 장소별로 발생하는 범죄 유형이 상이하여 맞춤형 대응 전략 필요</li>
+                    <li><strong>데이터 기반 치안 행정:</strong> 범죄 발생 패턴 분석을 통한 자원 배치 최적화 및 예방 활동 강화 가능</li>
+                </ul>
+            </div>
+
+            <h3>6.2 정책 제언</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>단기 정책 (1년 이내)</h4>
+                    <ul>
+                        <li>교통 시설 CCTV 확대 설치 및 순찰 강화</li>
+                        <li>무인상점 방범 시스템 의무화 법안 추진</li>
+                        <li>온라인 사기 예방 캠페인 대대적 실시</li>
+                        <li>숙박업소 안전 기준 강화 및 정기 점검</li>
+                        <li>주거지 커뮤니티 폴리싱 확대</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>중기 정책 (2-3년)</h4>
+                    <ul>
+                        <li>디지털 범죄 전담 조직 신설 및 전문 인력 양성</li>
+                        <li>범죄 예측 시스템 구축 및 AI 기반 순찰 최적화</li>
+                        <li>장소별 맞춤형 범죄 예방 가이드라인 개발</li>
+                        <li>금융기관-경찰 실시간 협력 체계 구축</li>
+                        <li>범죄 통계 분류 체계 정교화('기타', '미상' 축소)</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>장기 정책 (3년 이상)</h4>
+                    <ul>
+                        <li>스마트시티 연계 통합 범죄 예방 시스템 구축</li>
+                        <li>빅데이터 기반 범죄 패턴 분석 및 예측 모델 고도화</li>
+                        <li>국민 범죄 인식 개선 및 자율 방범 문화 정착</li>
+                        <li>국제 협력을 통한 초국적 디지털 범죄 대응</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>6.3 향후 연구 방향</h3>
+            
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <h4>📈 시계열 분석</h4>
+                    <ul>
+                        <li>범죄 트렌드 변화 연구</li>
+                        <li>계절별 패턴 분석</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <h4>🗺️ 지역별 분석</h4>
+                    <ul>
+                        <li>시도, 시군구별 비교</li>
+                        <li>지역 특성 반영 연구</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <h4>🔬 인과관계 연구</h4>
+                    <ul>
+                        <li>사회경제적 요인 분석</li>
+                        <li>범죄 발생 원인 규명</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <h4>🤖 예측 모델</h4>
+                    <ul>
+                        <li>기계학습 활용</li>
+                        <li>범죄 위험도 예측</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: 시각화 -->
+        <section id="visualization" class="section">
+            <h2>부록: 데이터 시각화</h2>
+            
+            <p>본 보고서의 분석 결과는 다음의 시각화 자료를 통해 확인할 수 있습니다.</p>
+
+            <h3>일변량 분석 시각화</h3>
+            <p>범죄 대분류별 발생 건수, 장소별 분포, 박스플롯, 히스토그램 등 12개 그래프로 개별 변수의 분포와 특성을 시각화하였습니다.</p>
+            
+            <div class="chart-container">
+                <h4 style="color: var(--secondary); margin-bottom: 1rem;">일변량 EDA 결과</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+                    범죄 유형별/장소별 분포, 통계 지표, 주거/교통/상업시설 비교 등 종합 분석
+                </p>
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 10px; text-align: center;">
+                    <p style="color: var(--text-light);">📊 일변량 분석 시각화 이미지</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem;">
+                        (crime_eda_visualization.png)
+                    </p>
+                </div>
+            </div>
+
+            <h3>다변량 분석 시각화</h3>
+            <p>상관관계 히트맵, PCA 분석, 계층적 클러스터링, 장소 유형별 비교 등 18개 그래프로 변수 간 관계와 복잡한 패턴을 시각화하였습니다.</p>
+            
+            <div class="chart-container">
+                <h4 style="color: var(--secondary); margin-bottom: 1rem;">다변량 EDA 결과 (1)</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+                    상관관계, 히트맵, 주거 vs 상업 비교, PCA, 클러스터링 분석
+                </p>
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 10px; text-align: center;">
+                    <p style="color: var(--text-light);">📈 다변량 분석 시각화 이미지 1</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem;">
+                        (crime_multivariate_eda.png)
+                    </p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h4 style="color: var(--secondary); margin-bottom: 1rem;">다변량 EDA 결과 (2)</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+                    장소 다양성, 시간대별 패턴, 공공 vs 사적장소 비교 분석
+                </p>
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 10px; text-align: center;">
+                    <p style="color: var(--text-light);">📉 다변량 분석 시각화 이미지 2</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem;">
+                        (crime_multivariate_eda2.png)
+                    </p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h3>시각화 활용 안내</h3>
+                <p>모든 시각화 자료는 별도 파일로 제공되며, 다음과 같은 특징이 있습니다:</p>
+                <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                    <li style="padding: 0.5rem 0;">✓ 고해상도(300dpi) 이미지로 인쇄 및 발표 자료에 활용 가능</li>
+                    <li style="padding: 0.5rem 0;">✓ 12개(일변량) + 18개(다변량) = 총 30개 그래프 제공</li>
+                    <li style="padding: 0.5rem 0;">✓ 각 그래프는 명확한 레이블과 설명을 포함하여 독립적 해석 가능</li>
+                    <li style="padding: 0.5rem 0;">✓ Python matplotlib 기반으로 생성되어 재현 가능</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">2024년 경찰청 범죄 발생 장소별 통계 분석 보고서</p>
+        <p>Crime Location Analysis Report | Data-Driven Public Safety Intelligence</p>
+        <p style="margin-top: 1rem; opacity: 0.6;">본 보고서는 공공 데이터를 기반으로 작성되었으며, 범죄 예방 정책 수립에 활용할 수 있습니다.</p>
+        <p style="margin-top: 2rem; font-size: 0.85rem;">© 2024-2026 Crime Analysis Report. All data sourced from Korean National Police Agency.</p>
+    </div>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section, .stat-card, .policy-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Animate progress bars
+        window.addEventListener('load', () => {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        });
+
+        // Active nav highlight
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.background = '';
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.background = 'var(--secondary)';
+                    link.style.color = 'white';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
