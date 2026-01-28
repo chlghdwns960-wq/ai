@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>삼성전자 주가 분석 보고서 (제출용)</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --card2:#0f1730;
+      --text:#e8ecff;
+      --muted:#b9c2ff;
+      --border:rgba(255,255,255,.10);
+      --accent:#7aa2ff;
+      --accent2:#8affc1;
+      --warn:#ffd17a;
+      --danger:#ff7aa2;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(900px 450px at 15% 10%, rgba(122,162,255,.18), transparent 60%),
+        radial-gradient(800px 420px at 85% 20%, rgba(138,255,193,.14), transparent 55%),
+        radial-gradient(900px 540px at 55% 90%, rgba(255,209,122,.10), transparent 65%),
+        var(--bg);
+    }
+
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    header{
+      padding:22px 22px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    header:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:radial-gradient(600px 220px at 30% 20%, rgba(122,162,255,.22), transparent 55%);
+      pointer-events:none;
+    }
+
+    .title{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      justify-content:space-between;
+      position:relative;
+    }
+
+    .title h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-.2px;
+      line-height:1.25;
+    }
+
+    .meta{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color:var(--muted);
+      font-size:13px;
+      position:relative;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(17,26,51,.55);
+      backdrop-filter: blur(6px);
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+    nav{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      position:relative;
+    }
+    nav a{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(17,26,51,.45);
+      color:var(--text);
+      font-size:13px;
+    }
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:16px;
+    }
+
+    @media (max-width: 920px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    .card h2{
+      margin:0 0 12px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+
+    .card h3{
+      margin:18px 0 8px;
+      font-size:15px;
+      color:var(--text);
+    }
+
+    .muted{color:var(--muted)}
+
+    .kpi{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 650px){
+      .kpi{grid-template-columns:1fr}
+    }
+
+    .kpi .box{
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(15,23,48,.70);
+    }
+    .kpi .label{font-size:12px;color:var(--muted)}
+    .kpi .value{font-size:20px;margin-top:6px}
+    .kpi .note{font-size:12px;color:var(--muted); margin-top:6px; line-height:1.35}
+
+    .callouts{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+    .callout{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(15,23,48,.70);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .badge{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      white-space:nowrap;
+    }
+    .badge.ok{color:var(--accent2)}
+    .badge.warn{color:var(--warn)}
+    .badge.danger{color:var(--danger)}
+
+    .table-wrap{overflow:auto; border-radius:14px; border:1px solid var(--border)}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:720px;
+      background:rgba(15,23,48,.70);
+    }
+    th, td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+      text-align:left;
+      font-size:13px;
+      line-height:1.35;
+    }
+    th{position:sticky; top:0; background:rgba(17,26,51,.95); z-index:1}
+    tr:hover td{background:rgba(122,162,255,.06)}
+
+    ul{margin:10px 0 0 18px}
+    li{margin:6px 0; color:var(--muted)}
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 760px){
+      .two-col{grid-template-columns:1fr}
+    }
+
+    .footer{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      opacity:.9;
+    }
+
+    .code{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(0,0,0,.20);
+      color:var(--text);
+      overflow:auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="title">
+        <div>
+          <h1>삼성전자 주가 분석 보고서 <span class="muted">(제출용)</span></h1>
+          <div class="meta">
+            <span class="pill"><span class="dot"></span>작성일: 2026-01-27</span>
+            <span class="pill">분석 기간: 2024-12-12 ~ 2025-12-12 (243거래일)</span>
+            <span class="pill">데이터: 삼성전자.xlsx (Sheet1)</span>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <a href="#summary">핵심 요약</a>
+        <a href="#data">데이터/전처리</a>
+        <a href="#univariate">일변량</a>
+        <a href="#multivariate">다변량</a>
+        <a href="#outliers">이상치/이벤트</a>
+        <a href="#assets">시각화 산출물</a>
+        <a href="#limits">한계/전제</a>
+      </nav>
+    </header>
+
+    <section class="grid" id="summary">
+      <div class="card">
+        <h2>1) Executive Summary</h2>
+        <div class="kpi">
+          <div class="box">
+            <div class="label">데이터 품질</div>
+            <div class="value">결측 0 · 중복 0</div>
+            <div class="note">시총=종가×주식수(243/243), 대비=종가-전일(242/242)</div>
+          </div>
+          <div class="box">
+            <div class="label">종가 수준(원)</div>
+            <div class="value">평균 68,813</div>
+            <div class="note">중앙 60,200 · 범위 51,000~111,100</div>
+          </div>
+          <div class="box">
+            <div class="label">등락률(%)</div>
+            <div class="value">평균 0.31</div>
+            <div class="note">범위 -5.77~6.83 (급변동 이벤트 존재)</div>
+          </div>
+        </div>
+
+        <h3>핵심 포인트</h3>
+        <div class="callouts">
+          <div class="callout">
+            <span class="badge ok">POINT 1</span>
+            <div>
+              <b>가격(OHLC) 변수는 상호 상관이 매우 높아(≈0.998~0.999) 정보 중복이 큼</b>
+              <div class="muted">→ 분석/모델링에서는 대표 변수(예: 종가) 중심으로 단순화 권장</div>
+            </div>
+          </div>
+          <div class="callout">
+            <span class="badge ok">POINT 2</span>
+            <div>
+              <b>대비–등락률(0.9658), 거래량–거래대금(0.8644) 등 구조적으로 강한 페어 존재</b>
+              <div class="muted">→ 동일 정보 축(변동/거래)을 중복 포함하지 않도록 변수 선택 필요</div>
+            </div>
+          </div>
+          <div class="callout">
+            <span class="badge warn">POINT 3</span>
+            <div>
+              <b>거래량/거래대금은 우측 꼬리(왜도↑)가 커서 로그 스케일 확인이 유효</b>
+              <div class="muted">→ 이상치/이벤트 구간에서 거래 급증이 집중됨</div>
+            </div>
+          </div>
+          <div class="callout">
+            <span class="badge warn">POINT 4</span>
+            <div>
+              <b>라그: 등락률(t)↔등락률(t+1) 상관 ≈ -0.020 (거의 0)</b>
+              <div class="muted">→ 단순 선형 시차 구조로는 다음날 수익률 예측력이 제한적</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h2>요약 지표 테이블</h2>
+        <div class="table-wrap" role="region" aria-label="요약 테이블">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:22%">구분</th>
+                <th style="width:42%">핵심 내용(요약)</th>
+                <th style="width:36%">대표 수치</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>데이터</td>
+                <td>OHLC + 거래 + 시총/주식수</td>
+                <td>243행×11열</td>
+              </tr>
+              <tr>
+                <td>종가</td>
+                <td>가격 수준(원)</td>
+                <td>평균 68,813 · 중앙 60,200 · 51,000~111,100</td>
+              </tr>
+              <tr>
+                <td>등락률</td>
+                <td>변동 범위(%)</td>
+                <td>평균 0.31 · -5.77~6.83</td>
+              </tr>
+              <tr>
+                <td>상관</td>
+                <td>가격끼리 거의 동일</td>
+                <td>종가-시가 0.9976 · 고가-저가 0.9991</td>
+              </tr>
+              <tr>
+                <td>핵심 페어</td>
+                <td>강한 관계</td>
+                <td>대비-등락률 0.9658 · 거래량-거래대금 0.8644</td>
+              </tr>
+              <tr>
+                <td>공선성</td>
+                <td>OHLC 동시 사용 위험</td>
+                <td>VIF(종가 959.1~고가 1345.0)</td>
+              </tr>
+              <tr>
+                <td>이상치</td>
+                <td>Tukey/Z 기준 존재</td>
+                <td>거래대금 Tukey 9일 · 대비 Tukey 11일</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin:10px 0 0;">※ 상세 요약표 이미지는 <a href="#assets">산출물</a>에서 파일명으로 확인 가능</p>
+      </aside>
+    </section>
+
+    <section class="card" id="data" style="margin-top:16px;">
+      <h2>2) 데이터 및 전처리</h2>
+      <div class="two-col">
+        <div>
+          <h3>데이터 컬럼</h3>
+          <ul>
+            <li>일자, 종가, 대비, 등락률, 시가, 고가, 저가</li>
+            <li>거래량, 거래대금, 시가총액, 상장주식수</li>
+          </ul>
+          <h3>품질 점검 결과</h3>
+          <ul>
+            <li>결측치: 0건 / 중복행·일자 중복: 0건</li>
+            <li>시가총액=종가×상장주식수: 243/243 일치</li>
+            <li>대비=종가−전일종가: 242/242 일치(첫 행 제외)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>파생 변수(다변량 보조)</h3>
+          <div class="code">절대등락률 = |등락률|\n일중변동폭% = (고가−저가) / 시가 × 100\n라그: 등락률(t+1), 절대등락률(t+1)</div>
+          <p class="muted" style="margin-top:10px;">본 보고서의 상관/라그 분석은 상기 파생 변수를 활용해 시각화/요약함.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="univariate" style="margin-top:16px;">
+      <h2>3) 일변량 분석(요약)</h2>
+      <ul>
+        <li><b>종가</b>: 평균 68,813원 / 중앙 60,200원 / 51,000~111,100원</li>
+        <li><b>등락률</b>: 평균 0.31% / -5.77%~6.83%</li>
+        <li><b>거래량·거래대금</b>: 분포의 우측 꼬리(왜도)로 인해 log10 분포 확인이 유효</li>
+        <li><b>상장주식수</b>: 2개 값 레짐(52일 vs 191일)</li>
+      </ul>
+      <p class="muted">관련 시각화: 종가/등락률/거래량/거래대금의 히스토그램·박스플롯 및 거래 로그 히스토그램</p>
+    </section>
+
+    <section class="card" id="multivariate" style="margin-top:16px;">
+      <h2>4) 다변량 분석(요약)</h2>
+      <div class="two-col">
+        <div>
+          <h3>상관(히트맵) 핵심</h3>
+          <ul>
+            <li>OHLC 상호 상관: 대체로 0.998~0.999</li>
+            <li>종가–시가총액: 0.99995</li>
+            <li>대비–등락률: 0.96583</li>
+            <li>거래량–거래대금: 0.86443</li>
+            <li>종가–거래대금: 0.65533</li>
+          </ul>
+        </div>
+        <div>
+          <h3>공선성(VIF)</h3>
+          <ul>
+            <li>종가 959.1 · 시가 1046.5</li>
+            <li>저가 1308.7 · 고가 1345.0</li>
+          </ul>
+          <p class="muted">실무 권고: OHLC 전부 투입 대신 대표 가격(종가) + 변동성/거래 파생 조합 권장</p>
+        </div>
+      </div>
+      <h3>시차(라그) 요약</h3>
+      <ul>
+        <li>corr(등락률_t, 등락률_t+1) ≈ -0.020</li>
+        <li>거래량(t) vs |등락률|(t+1): 약 0.17~0.23 (약함~보통)</li>
+      </ul>
+    </section>
+
+    <section class="card" id="outliers" style="margin-top:16px;">
+      <h2>5) 이상치(Outlier) 및 이벤트</h2>
+      <div class="two-col">
+        <div>
+          <h3>탐지 기준</h3>
+          <ul>
+            <li>Tukey 1.5×IQR</li>
+            <li>Z-score |z| &gt; 3</li>
+          </ul>
+          <h3>이상치(요약)</h3>
+          <ul>
+            <li>Tukey: 거래량 6일, 거래대금 9일, 등락률 7일, 대비 11일 등</li>
+            <li>Z-score: 대비 4일, 등락률 1일, 거래량 4일, 거래대금 4일</li>
+          </ul>
+        </div>
+        <div>
+          <h3>대표 이벤트</h3>
+          <ul>
+            <li>거래량 최대: 2025/10/31 (54,824,564)</li>
+            <li>|등락률| 최대: 2025/07/28 (+6.83%)</li>
+            <li>큰 하락: 2025/11/21 (-5.77%), 11/04 (-5.58%), 11/14 (-5.45%)</li>
+          </ul>
+          <div class="callout" style="margin-top:10px;">
+            <span class="badge danger">NOTE</span>
+            <div>
+              이벤트 원인(공시/실적/매크로/수급)은 본 데이터에 포함되지 않으므로, 별도 소스 기반 확인이 필요함.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="assets" style="margin-top:16px;">
+      <h2>6) 시각화 산출물(파일 인덱스)</h2>
+      <p class="muted">아래는 생성된 파일명 기준 인덱스다. 실제 배포 환경에서는 서버 경로에 맞게 링크를 교체해줘.</p>
+      <div class="two-col">
+        <div>
+          <h3>일변량(Zip)</h3>
+          <ul>
+            <li><span class="code">삼성전자_일변량_시각화_EDA_png.zip</span></li>
+            <li>대표: <span class="code">종가_hist.png</span>, <span class="code">등락률_box.png</span>, <span class="code">거래량_log10_hist.png</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>다변량(Zip)</h3>
+          <ul>
+            <li><span class="code">삼성전자_다변량_시각화_EDA_png.zip</span></li>
+            <li>대표: <span class="code">A1_상관계수_히트맵.png</span>, <span class="code">D11_방향별_거래량_박스플롯.png</span></li>
+          </ul>
+        </div>
+      </div>
+      <h3>요약표 이미지</h3>
+      <ul>
+        <li><span class="code">삼성전자_주가분석_요약표.png</span></li>
+      </ul>
+
+      <h3>예측 포함 그래프</h3>
+      <ul>
+        <li><span class="code">삼성전자_종가_예측_그래프.png</span></li>
+      </ul>
+    </section>
+
+    <section class="card" id="limits" style="margin-top:16px;">
+      <h2>7) 한계 및 전제</h2>
+      <ul>
+        <li>본 분석은 제공된 가격·거래 데이터 기반이며, 펀더멘털/뉴스/거시 변수는 포함하지 않음</li>
+        <li>상관은 인과를 의미하지 않음</li>
+        <li>시장 환경 변화(비정상성) 가능</li>
+      </ul>
+      <h3>다음 단계(옵션)</h3>
+      <ul>
+        <li>이벤트 일자 기준 ±5거래일 윈도우 비교(평균/분산)</li>
+        <li>레짐(상장주식수 2구간)별 수준 차이 검정(비모수 포함)</li>
+        <li>변동성 지표(일중변동폭%, |등락률|)로 리스크 구간 분류</li>
+      </ul>
+    </section>
+
+    <div class="footer">© 2026 분석 보고서(데이터 기반 요약). 내부 제출용.</div>
+  </div>
+</body>
+</html>
