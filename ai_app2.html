@@ -5,65 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>그렇게 사랑합니다 - 최홍준</title>
     <style>
-      /* 웹페이지 전체를 여백 없이 꽉 채우기 위한 바디 설정 */
+      /* 1. 브라우저의 모든 기본 여백을 완벽하게 제거하여 100% 꽉 채움 */
+      html,
       body {
-        margin: 0;
-        padding: 0;
-        background-color: #9ce89c; /* 원본과 유사한 연녹색을 전체 배경으로 적용 */
-        overflow: hidden; /* 불필요한 스크롤바 방지 */
-      }
-
-      /* 브라우저 화면(Viewport)에 100% 꽉 차는 메인 컨테이너 */
-      .poem-canvas {
+        margin: 0 !important;
+        padding: 0 !important;
         width: 100vw;
         height: 100vh;
+        background-color: #9ce89c; /* 지적하신 하얀색 여백 없이 화면 전체를 연녹색으로 채움 */
+        overflow: hidden; /* 스크롤바 생성 방지 */
+      }
+
+      /* 2. 캔버스 역시 화면 전체 크기로 무제한 확장 */
+      .poem-canvas {
+        width: 100%;
+        height: 100%;
         position: relative;
         font-family: "Gulim", "Dotum", sans-serif;
         color: #000;
       }
 
-      /* 각 텍스트 블록의 공통 설정 (화면 확대에 맞춰 폰트 크기 미세 조정) */
+      /* 각 텍스트 블록의 공통 설정 (원본의 느낌을 위해 16px 고정) */
       .text-block {
-        line-height: 1.5;
-        font-size: 18px; /* 전체 화면 비율을 고려해 폰트 크기 소폭 확대 */
+        line-height: 1.4;
+        font-size: 16px;
         position: absolute;
+        margin: 0; /* p 태그의 브라우저 기본 여백을 제거하여 기존 레이아웃 완벽 유지 */
       }
 
-      /* 제목: 좌측 상단 (화면 비율에 맞춘 위치 조정) */
+      /* 제목: 원본 이미지처럼 좌측 상단 모서리에서 20~25px 고정 */
       .title {
-        top: 6vh;
-        left: 4vw;
-        font-size: 24px;
+        top: 25px;
+        left: 20px;
+        font-size: 18px;
         letter-spacing: 0.5px;
         margin: 0;
         font-weight: bold;
       }
 
-      /* 작가명: 우측 상단 */
+      /* 작가명: 우측 상단 모서리에서 25px 고정 */
       .author {
-        top: 15vh;
-        right: 4vw;
+        top: 65px;
+        right: 25px;
       }
 
-      /* 첫 번째 단락: 좌측 중단 */
+      /* 첫 번째 단락: 좌측 모서리에서 20px 고정 */
       .stanza-1 {
-        top: 35vh;
-        left: 4vw;
+        top: 115px;
+        left: 20px;
         text-align: left;
       }
 
-      /* 두 번째 단락: 정중앙 */
+      /* 두 번째 단락: 화면의 정확한 정중앙 고정 */
       .stanza-2 {
-        top: 60vh;
-        left: 50vw;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
       }
 
-      /* 세 번째 단락: 우측 하단 */
+      /* 세 번째 단락: 우측 하단 모서리에서 25px 고정 */
       .stanza-3 {
-        bottom: 10vh;
-        right: 4vw;
+        bottom: 25px;
+        right: 25px;
         text-align: right;
       }
     </style>
@@ -72,27 +76,27 @@
     <div class="poem-canvas">
       <h3 class="text-block title">그렇게 사랑합니다.</h3>
 
-      <div class="text-block author">-최홍준-</div>
+      <p class="text-block author">-최홍준-</p>
 
-      <div class="text-block stanza-1">
+      <p class="text-block stanza-1">
         사랑한다는 사람앞에서는<br />
         사랑 한다는말을 안합니다.<br />
         안하는것이아니라<br />
         못하는것이 사랑의 진실입니다.
-      </div>
+      </p>
 
-      <div class="text-block stanza-2">
+      <p class="text-block stanza-2">
         잊어버려야 하겠다는 말은<br />
         잊을수 없다는말입니다.<br />
         정말 잊고싶을 때는 말이 없습니다.
-      </div>
+      </p>
 
-      <div class="text-block stanza-3">
+      <p class="text-block stanza-3">
         헤어질때 돌아보지 않는것은<br />
         너무 헤어지기 싫기때문입니다.<br />
         그것은 헤어지는것이 아니라<br />
         같이 있다는 말입니다.
-      </div>
+      </p>
     </div>
   </body>
 </html>
