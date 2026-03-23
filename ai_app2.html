@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>그렇게 사랑합니다 - 최홍준</title>
+    <style>
+      /* 화면 중앙에 결과물을 배치하기 위한 기본 바디 설정 */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      /* 이미지 원본의 크기와 배경색을 묘사하는 메인 컨테이너 */
+      .poem-canvas {
+        width: 850px;
+        height: 380px;
+        background-color: #9ce89c; /* 원본과 유사한 연녹색 */
+        position: relative;
+        font-family: "Gulim", "Dotum", sans-serif; /* 굴림/돋움체 느낌의 폰트 */
+        color: #000;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 웹페이지 구분을 위한 약간의 그림자 (선택사항) */
+      }
+
+      /* 각 텍스트 블록의 공통 줄간격 설정 */
+      .text-block {
+        line-height: 1.4;
+        font-size: 16px;
+        position: absolute;
+      }
+
+      /* 제목: 좌측 상단 */
+      .title {
+        top: 25px;
+        left: 20px;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+        margin: 0; /* h3 태그의 기본 여백 제거 */
+        font-weight: bold; /* 요청에 따라 굵은 글씨체 적용 */
+      }
+
+      /* 작가명: 우측 상단 */
+      .author {
+        top: 65px;
+        right: 25px;
+      }
+
+      /* 첫 번째 단락: 좌측 중단, 좌측 정렬 */
+      .stanza-1 {
+        top: 115px;
+        left: 20px;
+        text-align: left;
+      }
+
+      /* 두 번째 단락: 정중앙, 중앙 정렬 */
+      .stanza-2 {
+        top: 205px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+
+      /* 세 번째 단락: 우측 하단, 우측 정렬 */
+      .stanza-3 {
+        bottom: 25px;
+        right: 25px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poem-canvas">
+      <h3 class="text-block title">그렇게 사랑합니다.</h3>
+
+      <div class="text-block author">-최홍준-</div>
+
+      <div class="text-block stanza-1">
+        사랑한다는 사람앞에서는<br />
+        사랑 한다는말을 안합니다.<br />
+        안하는것이아니라<br />
+        못하는것이 사랑의 진실입니다.
+      </div>
+
+      <div class="text-block stanza-2">
+        잊어버려야 하겠다는 말은<br />
+        잊을수 없다는말입니다.<br />
+        정말 잊고싶을 때는 말이 없습니다.
+      </div>
+
+      <div class="text-block stanza-3">
+        헤어질때 돌아보지 않는것은<br />
+        너무 헤어지기 싫기때문입니다.<br />
+        그것은 헤어지는것이 아니라<br />
+        같이 있다는 말입니다.
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>절대반지는?</title>
+    <style>
+      /* 기본 초기화 및 폰트 설정 */
+      body {
+        font-family:
+          "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
+        text-align: center;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 50px 20px;
+        overflow-x: hidden; /* 추가: 뷰포트 너비 확장 시 발생할 수 있는 가로 스크롤 방지 */
+      }
+
+      /* 메인 컨테이너: 전체 너비 제어 및 중앙 정렬 */
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* 제목 스타일 */
+      h1 {
+        color: #cc0000;
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 35px;
+        letter-spacing: 1px;
+      }
+
+      /* 본문 문단 스타일 */
+      p {
+        font-size: 16px;
+        margin: 14px 0;
+        letter-spacing: -0.3px;
+      }
+
+      /* 텍스트 길이에 맞추기 위한 래퍼 (추가) */
+      .line-wrapper {
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      .line-wrapper p {
+        margin: 10px 0 8px 0;
+      }
+
+      /* 수평선(구분선) 공통 스타일 */
+      hr {
+        border: 0;
+        border-top: 1px solid #cccccc;
+        margin: 15px auto;
+      }
+
+      /* 짧은 수평선 (본문 사이) - 래퍼의 100% (즉, 글자 길이)를 차지 */
+      .hr-short {
+        width: 100%;
+        margin: 0 auto 20px auto;
+      }
+
+      /* 긴 수평선 (푸터 위) - 컨테이너를 벗어나 화면 전체 너비 차지 */
+      .hr-long {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 35px;
+        margin-bottom: 25px;
+      }
+
+      /* === 텍스트 색상 유틸리티 클래스 === */
+
+      /* 갈색/주황 톤 */
+      .color-brown {
+        color: #b85d19;
+      }
+
+      /* 짙은 파랑/보라 톤 */
+      .color-blue {
+        color: #333399;
+      }
+
+      /* 노란색 톤 (가독성을 위해 약간 탁하게 조정) */
+      .color-yellow {
+        color: #d4b000;
+      }
+
+      /* 연두색/황록색 톤 */
+      .color-green-yellow {
+        color: #99b300;
+      }
+
+      /* 짙은 녹색 (출처 표기용) */
+      .color-dark-green {
+        color: #008000;
+        font-style: italic;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 제목 -->
+      <h1>절대반지는?</h1>
+
+      <!-- 첫 번째 단락 -->
+      <div class="line-wrapper">
+        <p class="color-brown">반지 세 개는 하늘 아래 요정왕들을 위한 것,</p>
+        <hr class="hr-short" />
+      </div>
+      <div class="line-wrapper">
+        <p class="color-blue">
+          일곱 개는 돌의 전당에 있는 난쟁이 군주들을 위한 것,
+        </p>
+        <hr class="hr-short" />
+      </div>
+
+      <!-- 두 번째 단락 -->
+      <div class="line-wrapper">
+        <p class="color-yellow">아홉 개는 죽은 운명의 인간을 위한 것,</p>
+        <hr class="hr-short" />
+      </div>
+      <div class="line-wrapper">
+        <p class="color-brown">
+          하나는 암흑의 왕좌에 앉은 암흑 제왕을 위한 것,
+        </p>
+        <hr class="hr-short" />
+      </div>
+
+      <!-- 세 번째 단락 -->
+      <div class="line-wrapper">
+        <p class="color-blue">그곳은 망령들이 지배하는 모르도르의 땅,</p>
+        <hr class="hr-short" />
+      </div>
+      <div class="line-wrapper">
+        <p class="color-yellow">
+          그 모든 반지를 다스릴 반지하나, 그 모든 반지를 찾기 위한 절대반지,
+        </p>
+        <hr class="hr-short" />
+      </div>
+
+      <!-- 네 번째 단락 -->
+      <div class="line-wrapper">
+        <p class="color-brown">
+          그 모든 반지를 암흑 속에 가두기 위한 반지는 절대반지뿐,
+        </p>
+        <hr class="hr-short" />
+      </div>
+
+      <!-- 다섯 번째 단락 -->
+      <p class="color-blue">바로 망령들이 누워 있는 모르도르의 땅에</p>
+
+      <!-- 전체 너비 수평선 -->
+      <hr class="hr-long" />
+
+      <!-- 출처 (푸터) -->
+      <p class="color-dark-green">반지의 제왕 중에서...</p>
+    </div>
+  </body>
+</html>
