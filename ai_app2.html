@@ -5,70 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>그렇게 사랑합니다 - 최홍준</title>
     <style>
-      /* 화면 중앙에 결과물을 배치하기 위한 기본 바디 설정 */
+      /* 웹페이지 전체를 여백 없이 꽉 채우기 위한 바디 설정 */
       body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
         margin: 0;
-        background-color: #f0f0f0;
+        padding: 0;
+        background-color: #9ce89c; /* 원본과 유사한 연녹색을 전체 배경으로 적용 */
+        overflow: hidden; /* 불필요한 스크롤바 방지 */
       }
 
-      /* 이미지 원본의 크기와 배경색을 묘사하는 메인 컨테이너 */
+      /* 브라우저 화면(Viewport)에 100% 꽉 차는 메인 컨테이너 */
       .poem-canvas {
-        width: 850px;
-        height: 380px;
-        background-color: #9ce89c; /* 원본과 유사한 연녹색 */
+        width: 100vw;
+        height: 100vh;
         position: relative;
-        font-family: "Gulim", "Dotum", sans-serif; /* 굴림/돋움체 느낌의 폰트 */
+        font-family: "Gulim", "Dotum", sans-serif;
         color: #000;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 웹페이지 구분을 위한 약간의 그림자 (선택사항) */
       }
 
-      /* 각 텍스트 블록의 공통 줄간격 설정 */
+      /* 각 텍스트 블록의 공통 설정 (화면 확대에 맞춰 폰트 크기 미세 조정) */
       .text-block {
-        line-height: 1.4;
-        font-size: 16px;
+        line-height: 1.5;
+        font-size: 18px; /* 전체 화면 비율을 고려해 폰트 크기 소폭 확대 */
         position: absolute;
       }
 
-      /* 제목: 좌측 상단 */
+      /* 제목: 좌측 상단 (화면 비율에 맞춘 위치 조정) */
       .title {
-        top: 25px;
-        left: 20px;
-        font-size: 18px;
+        top: 6vh;
+        left: 4vw;
+        font-size: 24px;
         letter-spacing: 0.5px;
-        margin: 0; /* h3 태그의 기본 여백 제거 */
-        font-weight: bold; /* 요청에 따라 굵은 글씨체 적용 */
+        margin: 0;
+        font-weight: bold;
       }
 
       /* 작가명: 우측 상단 */
       .author {
-        top: 65px;
-        right: 25px;
+        top: 15vh;
+        right: 4vw;
       }
 
-      /* 첫 번째 단락: 좌측 중단, 좌측 정렬 */
+      /* 첫 번째 단락: 좌측 중단 */
       .stanza-1 {
-        top: 115px;
-        left: 20px;
+        top: 35vh;
+        left: 4vw;
         text-align: left;
       }
 
-      /* 두 번째 단락: 정중앙, 중앙 정렬 */
+      /* 두 번째 단락: 정중앙 */
       .stanza-2 {
-        top: 205px;
-        left: 50%;
-        transform: translateX(-50%);
+        top: 60vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
         text-align: center;
       }
 
-      /* 세 번째 단락: 우측 하단, 우측 정렬 */
+      /* 세 번째 단락: 우측 하단 */
       .stanza-3 {
-        bottom: 25px;
-        right: 25px;
+        bottom: 10vh;
+        right: 4vw;
         text-align: right;
       }
     </style>
