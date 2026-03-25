@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>차박 온보딩 앱</title>
+    <style>
+      :root {
+        --bg: #f2f3f5;
+        --primary: #5f78be;
+        --primary-dark: #4565b4;
+        --text-soft: #8ea0cb;
+        --dot: #d9dde7;
+        --white: #ffffff;
+        --yellow: #f5c51e;
+        --yellow-deep: #e1aa00;
+        --blue: #1e63d8;
+        --blue-deep: #144aa7;
+        --ink: #24304b;
+        --line: #355fb1;
+        --panel: #e3e8f2;
+        --panel-2: #d6deec;
+      }
+
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+          "Pretendard", "Noto Sans KR", sans-serif;
+        background: var(--bg);
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .app {
+        position: relative;
+        width: 100%;
+        max-width: 430px;
+        height: 100dvh;
+        background: var(--bg);
+        overflow: hidden;
+      }
+
+      .slides {
+        display: flex;
+        width: 300%;
+        height: 100%;
+        transition: transform 0.45s ease;
+      }
+
+      .slide {
+        position: relative;
+        width: 100%;
+        flex: 0 0 100%;
+        padding: 108px 24px 34px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100%;
+      }
+
+      .copy {
+        width: 100%;
+        max-width: 330px;
+      }
+
+      .headline {
+        margin: 0;
+        color: var(--primary);
+        font-weight: 800;
+        letter-spacing: -0.06em;
+        line-height: 1.16;
+        font-size: clamp(24px, 6.8vw, 42px);
+      }
+
+      .headline .strong {
+        display: inline-block;
+        color: var(--primary-dark);
+      }
+
+      .headline .light {
+        font-weight: 700;
+        color: var(--primary);
+        opacity: 0.96;
+        font-size: 0.84em;
+      }
+
+      .sub {
+        margin: 20px 0 0;
+        color: var(--text-soft);
+        font-size: clamp(16px, 4.2vw, 24px);
+        line-height: 1.42;
+        letter-spacing: -0.04em;
+        font-weight: 600;
+      }
+
+      .art {
+        position: relative;
+        width: min(86vw, 330px);
+        height: min(86vw, 330px);
+        margin-top: 70px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ground {
+        position: absolute;
+        left: 50%;
+        bottom: 36px;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 95px;
+        background: linear-gradient(90deg, var(--panel), var(--panel-2));
+        clip-path: polygon(
+          0 58%,
+          18% 48%,
+          55% 58%,
+          76% 38%,
+          100% 50%,
+          100% 100%,
+          0 100%
+        );
+        opacity: 0.95;
+        border-radius: 14px;
+      }
+
+      .pager {
+        position: absolute;
+        left: 50%;
+        bottom: 34px;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 3;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--dot);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          opacity 0.25s ease;
+        opacity: 0.95;
+      }
+
+      .dot.active {
+        background: var(--primary-dark);
+        transform: scale(1.1);
+      }
+
+      .hint {
+        position: absolute;
+        right: 22px;
+        bottom: 30px;
+        color: rgba(95, 120, 190, 0.72);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      @media (max-width: 380px) {
+        .slide {
+          padding-top: 88px;
+        }
+        .sub {
+          font-size: 14px;
+        }
+        .art {
+          margin-top: 54px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app" aria-label="모바일 온보딩 앱">
+      <div class="slides" id="slides">
+        <section class="slide">
+          <div class="copy">
+            <h1 class="headline">
+              <span class="strong">차박</span><br />
+              <span class="light">어디로 떠나야 할지 모르겠나요</span>
+            </h1>
+            <p class="sub">
+              지도기반 위치 앱 및 키워드 검색으로<br />내가 원하는 장소를 한번에
+            </p>
+          </div>
+          <div class="art">
+            <div class="ground"></div>
+            <svg
+              viewBox="0 0 360 360"
+              role="img"
+              aria-label="헬멧을 쓴 파란 곰 캐릭터 일러스트"
+            >
+              <!-- light bulb -->
+              <g transform="translate(252 26)">
+                <circle
+                  cx="24"
+                  cy="24"
+                  r="20"
+                  fill="var(--yellow)"
+                  stroke="var(--yellow-deep)"
+                  stroke-width="4"
+                />
+                <rect
+                  x="17"
+                  y="40"
+                  width="14"
+                  height="10"
+                  rx="4"
+                  fill="var(--yellow-deep)"
+                />
+                <line
+                  x1="45"
+                  y1="8"
+                  x2="56"
+                  y2="0"
+                  stroke="var(--yellow-deep)"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="50"
+                  y1="28"
+                  x2="63"
+                  y2="28"
+                  stroke="var(--yellow-deep)"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+              </g>
+
+              <!-- laptop -->
+              <g transform="translate(255 248)">
+                <rect
+                  x="0"
+                  y="0"
+                  width="74"
+                  height="52"
+                  rx="6"
+                  fill="#a7b4cc"
+                />
+                <rect
+                  x="8"
+                  y="7"
+                  width="58"
+                  height="38"
+                  rx="4"
+                  fill="#7f92b5"
+                />
+                <rect
+                  x="-10"
+                  y="50"
+                  width="94"
+                  height="8"
+                  rx="4"
+                  fill="#8092b2"
+                />
+                <circle cx="38" cy="26" r="5" fill="#95a5c4" />
+              </g>
+
+              <!-- notebook -->
+              <g transform="translate(18 277) rotate(-6)">
+                <rect
+                  x="0"
+                  y="0"
+                  width="78"
+                  height="44"
+                  rx="5"
+                  fill="#fffdfb"
+                />
+                <rect x="38" y="0" width="3" height="44" fill="#dde3ef" />
+                <line
+                  x1="11"
+                  y1="11"
+                  x2="29"
+                  y2="11"
+                  stroke="#b0bccf"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="11"
+                  y1="18"
+                  x2="30"
+                  y2="18"
+                  stroke="#b0bccf"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="47"
+                  y1="12"
+                  x2="67"
+                  y2="12"
+                  stroke="#b0bccf"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <polyline
+                  points="49,22 55,29 65,17"
+                  fill="none"
+                  stroke="#6f85b8"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+
+              <!-- pencil -->
+              <g transform="translate(4 317) rotate(-10)">
+                <rect x="0" y="0" width="30" height="6" rx="3" fill="#1b2339" />
+                <rect x="28" y="0" width="7" height="6" fill="#e0665d" />
+                <polygon points="-7,3 0,0 0,6" fill="#f2b371" />
+                <polygon points="-10,3 -7,1 -7,5" fill="#313849" />
+              </g>
+
+              <!-- bear group -->
+              <g transform="translate(70 38)">
+                <!-- legs -->
+                <ellipse
+                  cx="78"
+                  cy="236"
+                  rx="24"
+                  ry="36"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="4"
+                  transform="rotate(16 78 236)"
+                />
+                <ellipse
+                  cx="155"
+                  cy="234"
+                  rx="24"
+                  ry="36"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="4"
+                  transform="rotate(-8 155 234)"
+                />
+                <ellipse cx="84" cy="254" rx="12" ry="17" fill="#f7f7f7" />
+                <ellipse cx="154" cy="252" rx="12" ry="17" fill="#f7f7f7" />
+
+                <!-- body -->
+                <ellipse
+                  cx="124"
+                  cy="151"
+                  rx="78"
+                  ry="98"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="5"
+                />
+                <ellipse cx="123" cy="170" rx="42" ry="58" fill="#f7f7f7" />
+
+                <!-- arms -->
+                <ellipse
+                  cx="47"
+                  cy="147"
+                  rx="20"
+                  ry="46"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="4"
+                  transform="rotate(42 47 147)"
+                />
+                <ellipse
+                  cx="206"
+                  cy="153"
+                  rx="20"
+                  ry="48"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="4"
+                  transform="rotate(-20 206 153)"
+                />
+
+                <!-- phone -->
+                <g transform="translate(21 120) rotate(-12)">
+                  <rect
+                    x="0"
+                    y="0"
+                    width="26"
+                    height="44"
+                    rx="5"
+                    fill="#4c5f85"
+                  />
+                  <rect
+                    x="3"
+                    y="5"
+                    width="20"
+                    height="30"
+                    rx="3"
+                    fill="#8399c3"
+                  />
+                  <circle cx="13" cy="39" r="2" fill="#c5cfdf" />
+                </g>
+
+                <!-- head -->
+                <ellipse
+                  cx="123"
+                  cy="82"
+                  rx="56"
+                  ry="53"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="5"
+                />
+                <circle
+                  cx="92"
+                  cy="46"
+                  r="14"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="5"
+                />
+                <circle
+                  cx="155"
+                  cy="46"
+                  r="14"
+                  fill="var(--blue)"
+                  stroke="var(--blue-deep)"
+                  stroke-width="5"
+                />
+                <circle cx="92" cy="46" r="6" fill="#95b3f4" opacity="0.8" />
+                <circle cx="155" cy="46" r="6" fill="#95b3f4" opacity="0.8" />
+                <ellipse cx="123" cy="95" rx="28" ry="23" fill="#f7f7f7" />
+                <circle cx="105" cy="79" r="4.5" fill="var(--ink)" />
+                <circle cx="141" cy="79" r="4.5" fill="var(--ink)" />
+                <ellipse cx="123" cy="92" rx="7.5" ry="6.5" fill="var(--ink)" />
+                <path
+                  d="M113 101 Q123 111 133 101"
+                  fill="none"
+                  stroke="var(--ink)"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+
+                <!-- helmet -->
+                <g transform="translate(62 10)">
+                  <ellipse
+                    cx="63"
+                    cy="28"
+                    rx="74"
+                    ry="18"
+                    fill="var(--yellow)"
+                    stroke="var(--yellow-deep)"
+                    stroke-width="5"
+                  />
+                  <path
+                    d="M15 26 Q63 -10 111 26 L108 38 Q63 22 18 38 Z"
+                    fill="var(--yellow)"
+                    stroke="var(--yellow-deep)"
+                    stroke-width="5"
+                    stroke-linejoin="round"
+                  />
+                  <rect
+                    x="56"
+                    y="6"
+                    width="14"
+                    height="24"
+                    rx="6"
+                    fill="#e9b500"
+                  />
+                  <line
+                    x1="8"
+                    y1="36"
+                    x2="118"
+                    y2="36"
+                    stroke="#8b6c00"
+                    stroke-width="4"
+                    opacity="0.7"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="copy">
+            <h1 class="headline">
+              <span class="strong">명소 검색</span><br />
+              <span class="light">원하는 분위기만 입력해보세요</span>
+            </h1>
+            <p class="sub">
+              차박, 캠핑, 일몰, 조용한 바다처럼<br />키워드만으로 장소를 빠르게
+              탐색해요
+            </p>
+          </div>
+          <div class="art">
+            <div class="ground"></div>
+            <svg viewBox="0 0 360 360" aria-hidden="true">
+              <rect
+                x="70"
+                y="60"
+                width="220"
+                height="170"
+                rx="24"
+                fill="#ffffff"
+                stroke="#dde4f1"
+                stroke-width="4"
+              />
+              <rect
+                x="90"
+                y="86"
+                width="180"
+                height="24"
+                rx="12"
+                fill="#edf2fb"
+              />
+              <circle cx="110" cy="98" r="7" fill="#7b91c4" />
+              <rect
+                x="126"
+                y="91"
+                width="114"
+                height="14"
+                rx="7"
+                fill="#c8d3ea"
+              />
+              <rect
+                x="90"
+                y="128"
+                width="180"
+                height="78"
+                rx="18"
+                fill="#ecf1fa"
+              />
+              <path
+                d="M107 181 Q138 130 174 156 T249 145"
+                fill="none"
+                stroke="#7b91c4"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <circle cx="242" cy="136" r="14" fill="#f5c51e" />
+              <path
+                d="M211 257 C236 222, 289 224, 305 257"
+                fill="none"
+                stroke="#7b91c4"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <circle cx="245" cy="240" r="14" fill="#7b91c4" />
+              <circle cx="212" cy="258" r="8" fill="#7b91c4" />
+              <circle cx="304" cy="258" r="8" fill="#7b91c4" />
+              <g transform="translate(40 226)">
+                <circle cx="60" cy="34" r="28" fill="#5f78be" />
+                <circle cx="60" cy="34" r="14" fill="#fff" />
+                <rect
+                  x="72"
+                  y="44"
+                  width="86"
+                  height="10"
+                  rx="5"
+                  fill="#7b91c4"
+                />
+              </g>
+            </svg>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="copy">
+            <h1 class="headline">
+              <span class="strong">바로 출발</span><br />
+              <span class="light">저장한 장소를 한눈에 관리하세요</span>
+            </h1>
+            <p class="sub">
+              가고 싶은 장소를 찜해두고<br />동선까지 정리해서 더 쉽게 떠날 수
+              있어요
+            </p>
+          </div>
+          <div class="art">
+            <div class="ground"></div>
+            <svg viewBox="0 0 360 360" aria-hidden="true">
+              <rect
+                x="82"
+                y="52"
+                width="196"
+                height="248"
+                rx="28"
+                fill="#ffffff"
+                stroke="#d8e0ee"
+                stroke-width="4"
+              />
+              <rect
+                x="106"
+                y="78"
+                width="148"
+                height="18"
+                rx="9"
+                fill="#5f78be"
+                opacity="0.22"
+              />
+              <rect
+                x="106"
+                y="112"
+                width="148"
+                height="62"
+                rx="16"
+                fill="#edf2fb"
+              />
+              <circle cx="132" cy="143" r="16" fill="#5f78be" />
+              <path
+                d="M151 142 L236 142"
+                stroke="#9fb0d1"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <path
+                d="M151 160 L206 160"
+                stroke="#c8d3ea"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <rect
+                x="106"
+                y="188"
+                width="148"
+                height="62"
+                rx="16"
+                fill="#edf2fb"
+              />
+              <circle cx="132" cy="219" r="16" fill="#f5c51e" />
+              <path
+                d="M151 218 L236 218"
+                stroke="#9fb0d1"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <path
+                d="M151 236 L196 236"
+                stroke="#c8d3ea"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <path
+                d="M198 292 Q240 274 258 230"
+                fill="none"
+                stroke="#5f78be"
+                stroke-width="8"
+                stroke-linecap="round"
+              />
+              <circle cx="195" cy="295" r="12" fill="#5f78be" />
+              <polygon points="260,224 267,230 257,236" fill="#5f78be" />
+            </svg>
+          </div>
+        </section>
+      </div>
+
+      <div class="pager" id="pager" aria-label="온보딩 페이지 이동">
+        <button class="dot active" aria-label="1번 페이지"></button>
+        <button class="dot" aria-label="2번 페이지"></button>
+        <button class="dot" aria-label="3번 페이지"></button>
+      </div>
+      <div class="hint">좌우로 넘기기</div>
+    </div>
+
+    <script>
+      const slides = document.getElementById("slides");
+      const dots = [...document.querySelectorAll(".dot")];
+      const total = dots.length;
+      let current = 0;
+      let startX = 0;
+      let deltaX = 0;
+      let autoTimer;
+
+      function render() {
+        slides.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((dot, index) =>
+          dot.classList.toggle("active", index === current),
+        );
+      }
+
+      function goTo(index) {
+        current = (index + total) % total;
+        render();
+        resetAuto();
+      }
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => {
+          current = (current + 1) % total;
+          render();
+        }, 3500);
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => goTo(index));
+      });
+
+      slides.addEventListener(
+        "touchstart",
+        (e) => {
+          startX = e.touches[0].clientX;
+          deltaX = 0;
+        },
+        { passive: true },
+      );
+
+      slides.addEventListener(
+        "touchmove",
+        (e) => {
+          deltaX = e.touches[0].clientX - startX;
+        },
+        { passive: true },
+      );
+
+      slides.addEventListener("touchend", () => {
+        if (Math.abs(deltaX) > 45) {
+          current += deltaX < 0 ? 1 : -1;
+          current = (current + total) % total;
+          render();
+          resetAuto();
+        }
+      });
+
+      render();
+      resetAuto();
+    </script>
+  </body>
+</html>
