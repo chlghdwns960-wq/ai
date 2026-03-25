@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>여름의 계절</title>
+    <style>
+      /* 기본 초기화 및 배경 설정 (여름 톤의 연한 파란색) */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        background-color: #adc4eb; /* 서브페이지(여름) 원본 이미지 배경색 고증 */
+        font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+        color: #000;
+      }
+
+      /* 콘텐츠를 감싸는 컨테이너 (일관된 레이아웃 규격 유지) */
+      .container {
+        width: 100%;
+        max-width: 500px;
+        margin: 30px auto 0 auto; /* 상단 여백 30px 및 중앙 정렬 */
+        text-align: center;
+      }
+
+      /* 서브페이지 타이틀 */
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #385d8a; /* 여름 타이틀 텍스트 색상 고증 (탁한 남색) */
+        margin-top: 0;
+        margin-bottom: 25px;
+        letter-spacing: 2px;
+      }
+
+      /* 구분선 스타일링 (가로 500px, 두께 5px 유지) */
+      hr.divider {
+        border: 0;
+        border-top: 5px solid #444;
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      /* 이미지 영역 스타일링 */
+      .image-container {
+        margin: 20px 0; /* 위아래 구분선과의 간격 */
+      }
+
+      .image-container img {
+        width: 500px; /* 구분선 길이에 맞춤 */
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* 하단 이동 링크 스타일 */
+      .bottom-link {
+        display: inline-block;
+        margin-top: 25px;
+        font-size: 15px;
+        color: #333;
+        text-decoration: none;
+        letter-spacing: 1px;
+        transition: font-size 0.2s ease; /* 부드러운 크기 전환 애니메이션 추가 */
+      }
+
+      /* 호버 시 밑줄 제거 및 글자 크기 확대 */
+      .bottom-link:hover {
+        text-decoration: none;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 타이틀 -->
+      <h1>여름의 계절</h1>
+
+      <!-- 상단 굵은 선 -->
+      <hr class="divider" />
+
+      <!-- 이미지 클릭 시 메인화면으로 이동 -->
+      <div class="image-container">
+        <a href="ai_main.html">
+          <!-- src 속성에 실제 가지고 계신 여름 해변 이미지 경로를 넣어주세요. -->
+          <img src="./Image/Summer.jpg" alt="여름 해변 이미지" />
+        </a>
+      </div>
+
+      <!-- 하단 굵은 선 -->
+      <hr class="divider" />
+
+      <!-- 텍스트 클릭 시 메인화면으로 이동 -->
+      <a href="ai_main.html" class="bottom-link">[메인화면으로 이동]</a>
+    </div>
+  </body>
+</html>
