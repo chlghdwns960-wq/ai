@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 반응형을 방지하기 위해 viewport 속성을 제거하거나 데스크탑 크기로 고정 -->
+    <title>BLACKUP - Desktop Version</title>
+    <style>
+      /* =========================================
+           1. Reset & Base (초기화 및 기본 설정)
+           ========================================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background-color: #ffffff;
+        color: #ffffff;
+        /* 데스크탑 고정 폭 강제 (반응형 방지) */
+        min-width: 1280px;
+        overflow-x: auto;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      /* =========================================
+           2. Header (상단 헤더 영역)
+           ========================================= */
+      .top-header {
+        background-color: #ffffff;
+        color: #000000;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 50px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .top-header .logo {
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: 2px;
+      }
+
+      .top-header .right-menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      /* =========================================
+           3. Navigation (GNB 영역)
+           ========================================= */
+      .main-nav {
+        background-color: #000000;
+        color: #ffffff;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        font-size: 12px;
+        font-weight: bold;
+        border-bottom: 1px solid #222;
+      }
+
+      /* =========================================
+           4. Hero Banner (메인 대형 배너)
+           ========================================= */
+      .hero-banner {
+        width: 100%;
+        height: 900px;
+        /* 고화질 패션 모델 이미지로 대체 */
+        background-image: url("https://images.unsplash.com/photo-1529139574466-a303027c028b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center top;
+        position: relative;
+      }
+
+      /* 우측 플로팅 버튼 (스크롤 탑/다운 기능 시각화) */
+      .floating-controls {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+      .floating-controls button {
+        background-color: #111;
+        color: #fff;
+        border: 1px solid #333;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      /* =========================================
+           5. Trio Gallery (중앙 3분할 이미지 영역)
+           ========================================= */
+      .trio-gallery {
+        width: 1100px;
+        margin: 100px auto;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .trio-item {
+        background-color: #1a1a1a;
+      }
+
+      .trio-item img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .trio-item.tall {
+        width: 320px;
+        height: 480px;
+      }
+
+      .trio-item.square {
+        width: 320px;
+        height: 480px;
+        align-self: center; /* 박스 이미지는 중앙에 배치 */
+        background: transparent;
+      }
+
+      .trio-item.square img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* =========================================
+           6. Product Grid (상품 4열 그리드 영역)
+           ========================================= */
+      .product-section {
+        width: 1100px;
+        margin: 0 auto 100px auto;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 정확히 4등분 고정 */
+        gap: 15px;
+      }
+
+      .product-card {
+        position: relative;
+        background-color: #111;
+        width: 100%;
+        height: 380px;
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-label {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 10px;
+        font-weight: bold;
+        color: #000;
+        line-height: 1.2;
+      }
+
+      .load-more {
+        text-align: center;
+        margin-top: 60px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      /* =========================================
+           7. Footer (하단 영역)
+           ========================================= */
+      .footer {
+        background-color: #1c1c1c;
+        padding: 60px 50px;
+        margin-top: 100px;
+        border-top: 1px solid #333;
+      }
+
+      .footer-columns {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .footer-col h4 {
+        font-size: 12px;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+
+      .footer-col p,
+      .footer-col li {
+        font-size: 10px;
+        color: #888;
+        margin-bottom: 5px;
+        line-height: 1.6;
+      }
+
+      .footer-bottom {
+        max-width: 1280px;
+        margin: 40px auto 0 auto;
+        border-top: 1px solid #333;
+        padding-top: 20px;
+        font-size: 9px;
+        color: #666;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="top-header">
+      <div class="left-menu">SHOP</div>
+      <div class="logo">BLACKUP</div>
+      <div class="right-menu">
+        <span>SEARCH</span>
+        <span>ACCOUNT</span>
+        <span>BAG : 0</span>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <a href="#">SUMMER LOOKBOOK</a>
+      <a href="#">실시간 신상품</a>
+      <a href="#">베스트</a>
+      <a href="#">BLACKUP EXCLUSIVE</a>
+      <a href="#">이벤트/세일</a>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <img src="./Image/main.jpg" alt="main" />
+      <div class="floating-controls">
+        <button>▲</button>
+        <button>▼</button>
+      </div>
+    </section>
+
+    <!-- Trio Gallery Section -->
+    <section class="trio-gallery">
+      <!-- 첫번째 세로 이미지 -->
+      <div class="trio-item tall">
+        <img src="./Image/b-basc.jpg" alt="모델 이미지" />
+      </div>
+      <!-- 두번째 세로 이미지 -->
+      <div class="trio-item tall">
+        <img src="./Image/black.jpg" alt="모델 이미지" />
+      </div>
+      <!-- 세번째 박스 이미지 (정사각형 형태) -->
+      <div class="trio-item square">
+        <img src="./Image/today.jpg" alt="제품 이미지" />
+      </div>
+    </section>
+
+    <!-- Product Grid Section -->
+    <section class="product-section">
+      <div class="product-grid">
+        <!-- Item 1 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img1.jpg" alt="제품 1" />
+        </div>
+        <!-- Item 2 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img2.jpg" alt="제품 2 2" />
+        </div>
+        <!-- Item 3 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img3.jpg" alt="제품 3" />
+        </div>
+        <!-- Item 4 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img4.jpg" alt="제품 4" />
+        </div>
+        <!-- Item 5 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img5.jpg" alt="제품 5" />
+        </div>
+        <!-- Item 6 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img6.jpg" alt="제품 6" />
+        </div>
+        <!-- Item 7 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img7.jpg" alt="제품 7" />
+        </div>
+        <!-- Item 8 -->
+        <div class="product-card">
+          <div class="product-label"></div>
+          <img src="./Image/img8.jpg" alt="제품 8" />
+        </div>
+      </div>
+
+      <div class="load-more">24 SUMMER 신상품 보러가기</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>AGREEMENT</h4>
+          <ul>
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>GUIDE</h4>
+          <ul>
+            <li>이용안내</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>PRIVACY POLICY</h4>
+          <ul>
+            <li>개인정보처리방침</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>CONTACT US</h4>
+          <p>고객센터: 1588-0000</p>
+          <p>운영시간: 평일 10:00 - 17:00</p>
+        </div>
+        <div class="footer-col">
+          <h4>SHOPPING GUIDE</h4>
+          <p>배송조회</p>
+          <p>반품/교환 안내</p>
+        </div>
+        <div class="footer-col">
+          <h4>CUSTOMER CARE</h4>
+          <p>Q&A 게시판</p>
+          <p>FAQ</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          <p>COMPANY: (주)블랙업 | CEO: 홍길동 | BUSINESS NO: 123-45-67890</p>
+          <p>ADDRESS: 서울특별시 강남구 테헤란로 123</p>
+        </div>
+        <div>
+          <p>© BLACKUP ALL RIGHTS RESERVED.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1440" />
+    <title>BLACKUP Desktop Mockup</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+        color: #fff;
+        min-width: 1440px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: 100%;
+        background: #000;
+      }
+
+      .top-wrap {
+        background: #fff;
+        color: #000;
+      }
+
+      .header {
+        width: 100%;
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 34px;
+        border-bottom: 1px solid #e9e9e9;
+      }
+
+      .header-left,
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        width: 360px;
+      }
+
+      .header-right {
+        justify-content: flex-end;
+        font-size: 22px;
+        gap: 28px;
+      }
+
+      .logo {
+        font-size: 58px;
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        line-height: 1;
+        transform: scaleY(0.9);
+      }
+
+      .gnb {
+        height: 52px;
+        background: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 64px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .hero {
+        width: 100%;
+        height: 740px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 1120px;
+        max-width: none;
+        display: block;
+        object-fit: cover;
+      }
+
+      .content {
+        background: #000;
+        padding-top: 126px;
+        padding-bottom: 88px;
+      }
+
+      .section {
+        width: 1110px;
+        margin: 0 auto;
+      }
+
+      .triptych {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .card-large {
+        height: 520px;
+        border: 1px solid #4c4c4c;
+        background: #111;
+        overflow: hidden;
+      }
+
+      .card-large img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .spacer {
+        height: 300px;
+      }
+
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .card {
+        height: 360px;
+        border: 1px solid #4c4c4c;
+        background: #111;
+        overflow: hidden;
+      }
+
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .grid-gap {
+        margin-top: 16px;
+      }
+
+      .more {
+        text-align: center;
+        color: #bdbdbd;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 38px;
+        letter-spacing: -0.02em;
+      }
+
+      .footer {
+        background: linear-gradient(180deg, #1a1a1a 0%, #141414 100%);
+        padding: 72px 0 66px;
+        border-top: 1px solid #252525;
+      }
+
+      .footer-inner {
+        width: 1110px;
+        margin: 0 auto;
+      }
+
+      .footer-menu {
+        display: flex;
+        gap: 82px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #f2f2f2;
+        margin-bottom: 42px;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 60px;
+      }
+
+      .footer-info {
+        color: #9c9c9c;
+        font-size: 10px;
+        line-height: 1.9;
+        text-transform: uppercase;
+      }
+
+      .footer-info .muted {
+        display: block;
+        margin-top: 8px;
+      }
+
+      .footer-side {
+        text-align: right;
+        color: #9c9c9c;
+        font-size: 10px;
+        line-height: 1.9;
+        text-transform: uppercase;
+        min-width: 220px;
+      }
+
+      .copyright {
+        margin-top: 18px;
+      }
+
+      .floating {
+        position: fixed;
+        right: 18px;
+        top: 54%;
+        transform: translateY(-50%);
+        width: 42px;
+        z-index: 20;
+      }
+
+      .floating button {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #5e5e5e;
+        background: rgba(20, 20, 20, 0.95);
+        color: #fff;
+        font-size: 18px;
+        cursor: default;
+      }
+
+      .floating button + button {
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="top-wrap">
+        <header class="header">
+          <div class="header-left">
+            <a href="#">SHOP</a>
+          </div>
+          <div class="logo">BLACKUP</div>
+          <div class="header-right">
+            <a href="#">SEARCH</a>
+            <a href="#">ACCOUNT</a>
+            <a href="#">BAG : 0</a>
+          </div>
+        </header>
+
+        <nav class="gnb">
+          <a href="#">25HS LOOKBOOK</a>
+          <a href="#">실시간 인기상품</a>
+          <a href="#">신상품</a>
+          <a href="#">B-BASIC &amp; B-DENIM</a>
+          <a href="#">트렌드 키워드</a>
+        </nav>
+
+        <section class="hero">
+          <img src="./Image/main.jpg" alt="main visual" />
+        </section>
+      </div>
+
+      <main class="content">
+        <section class="section">
+          <div class="triptych">
+            <div class="card-large">
+              <img
+                src="/mnt/data/pc.png"
+                alt="look 1"
+                style="object-position: left 40% top 38%"
+              />
+            </div>
+            <div class="card-large">
+              <img
+                src="/mnt/data/pc.png"
+                alt="look 2"
+                style="object-position: center 58%"
+              />
+            </div>
+            <div class="card-large">
+              <img
+                src="/mnt/data/pc.png"
+                alt="package"
+                style="object-position: right 38% top 45%"
+              />
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+
+          <div class="grid-4">
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 1"
+                style="object-position: left 14% top 66%"
+              />
+            </div>
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 2"
+                style="object-position: 34% 67%"
+              />
+            </div>
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 3"
+                style="object-position: 53% 67%"
+              />
+            </div>
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 4"
+                style="object-position: 73% 67%"
+              />
+            </div>
+          </div>
+
+          <div class="grid-4 grid-gap">
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 5"
+                style="object-position: left 14% bottom 7%"
+              />
+            </div>
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 6"
+                style="object-position: 34% bottom 7%"
+              />
+            </div>
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 7"
+                style="object-position: 53% bottom 7%"
+              />
+            </div>
+            <div class="card">
+              <img
+                src="/mnt/data/pc.png"
+                alt="item 8"
+                style="object-position: 74% bottom 7%"
+              />
+            </div>
+          </div>
+
+          <div class="more">25HS 블랙 회원 상품 보러가기</div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="footer-menu">
+            <a href="#">AGREEMENT</a>
+            <a href="#">GUIDE</a>
+            <a href="#">PRIVACYPOLICY</a>
+            <a href="#">CONTACTUS</a>
+            <a href="#">SHOPPINGGUIDE</a>
+            <a href="#">CUSTOMERCARE</a>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="footer-info">
+              <div>TEL : 02-1566-9873</div>
+              <div>E-MAIL : CONTACT@BLACKUP.KR</div>
+              <div>BUSINESS LICENSE : 419-87-00857 [CHECK]</div>
+              <div>E-COMMERCE PERMIT : 2017-SEOUL-MAPO-2275</div>
+              <div>
+                ADDRESS : 04062 5F 19, JANDARI-RO, MAPO-GU, SEOUL, REPUBLIC OF
+                KOREA
+              </div>
+            </div>
+
+            <div class="footer-side">
+              <div>COMPANY : BP CORP.</div>
+              <div>OWNER : CHOI YUNHAE</div>
+              <div class="copyright">© BLACKUP 2025</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="floating" aria-hidden="true">
+      <button>⌃</button>
+      <button>⌄</button>
+    </div>
+  </body>
+</html>
