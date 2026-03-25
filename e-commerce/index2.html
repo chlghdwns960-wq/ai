@@ -19,7 +19,7 @@
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
         background-color: #ffffff;
-        color: #ffffff;
+        color: #000000; /* 전체 기본 텍스트 색상을 검정으로 수정 (가독성) */
         /* 데스크탑 고정 폭 강제 (반응형 방지) */
         min-width: 1280px;
         overflow-x: auto;
@@ -28,6 +28,11 @@
       a {
         text-decoration: none;
         color: inherit;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #888;
       }
 
       ul {
@@ -53,11 +58,16 @@
         font-size: 24px;
         font-weight: 900;
         letter-spacing: 2px;
+        cursor: pointer;
       }
 
       .top-header .right-menu {
         display: flex;
         gap: 20px;
+      }
+
+      .top-header .right-menu span {
+        cursor: pointer;
       }
 
       /* =========================================
@@ -82,11 +92,19 @@
       .hero-banner {
         width: 100%;
         height: 900px;
-        /* 고화질 패션 모델 이미지로 대체 */
-        background-image: url("https://images.unsplash.com/photo-1529139574466-a303027c028b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+        background-image: url("./Image/main.jpg");
         background-size: cover;
         background-position: center top;
         position: relative;
+        overflow: hidden;
+      }
+
+      /* 기존 img 태그 스타일링 (배경 이미지와 겹치지 않게 처리) */
+      .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none; /* background-image를 우선 사용하기 위해 숨김 처리 */
       }
 
       /* 우측 플로팅 버튼 (스크롤 탑/다운 기능 시각화) */
@@ -98,28 +116,64 @@
         flex-direction: column;
       }
       .floating-controls button {
-        background-color: #111;
+        background-color: rgba(17, 17, 17, 0.8);
         color: #fff;
         border: 1px solid #333;
         width: 40px;
         height: 40px;
         cursor: pointer;
         font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      .floating-controls button:hover {
+        background-color: #555;
       }
 
       /* =========================================
            5. Trio Gallery (중앙 3분할 이미지 영역)
            ========================================= */
+      .section-header {
+        width: 1100px;
+        margin: 100px auto 30px auto;
+      }
+
+      .section-header h2 {
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 1px;
+      }
+
+      .section-header.center {
+        text-align: center;
+      }
+
+      .section-header.center h2 {
+        font-size: 32px;
+      }
+
+      .section-header.center p {
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
       .trio-gallery {
         width: 1100px;
-        margin: 100px auto;
+        margin: 0 auto 100px auto;
         display: flex;
         justify-content: center;
         gap: 20px;
       }
 
       .trio-item {
-        background-color: #1a1a1a;
+        width: 350px;
+      }
+
+      .trio-img-wrap {
+        width: 100%;
+        height: 480px;
+        background-color: #f4f4f4;
+        overflow: hidden;
       }
 
       .trio-item img {
@@ -127,24 +181,26 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.5s ease;
       }
 
-      .trio-item.tall {
-        width: 320px;
-        height: 480px;
+      .trio-item:hover img {
+        transform: scale(1.05);
       }
 
-      .trio-item.square {
-        width: 320px;
-        height: 480px;
-        align-self: center; /* 박스 이미지는 중앙에 배치 */
-        background: transparent;
+      .trio-info {
+        margin-top: 15px;
       }
 
-      .trio-item.square img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      .trio-info h3 {
+        font-size: 14px;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+
+      .trio-info p {
+        font-size: 11px;
+        color: #666;
       }
 
       /* =========================================
@@ -157,21 +213,32 @@
 
       .product-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 정확히 4등분 고정 */
+        grid-template-columns: repeat(4, 1fr);
         gap: 15px;
       }
 
       .product-card {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .product-img-wrap {
         position: relative;
-        background-color: #111;
+        background-color: #f9f9f9;
         width: 100%;
         height: 380px;
+        overflow: hidden;
       }
 
       .product-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+
+      .product-card:hover img {
+        opacity: 0.85;
       }
 
       .product-label {
@@ -179,17 +246,61 @@
         top: 15px;
         left: 15px;
         font-size: 10px;
-        font-weight: bold;
+        font-weight: 900;
         color: #000;
         line-height: 1.2;
+        background: transparent;
+        padding: 0;
+      }
+
+      .product-info {
+        margin-top: 12px;
+      }
+
+      .product-info-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .product-info .name {
+        font-size: 11px;
+        color: #333;
+        line-height: 1.4;
+        padding-right: 10px;
+      }
+
+      .product-info .bookmark {
+        width: 12px;
+        height: 14px;
+        flex-shrink: 0;
+        cursor: pointer;
+        color: #999;
+      }
+
+      .product-info .price {
+        font-size: 13px;
+        font-weight: 800;
+        margin-top: 6px;
       }
 
       .load-more {
+        display: block;
+        width: 320px;
+        margin: 60px auto 0 auto;
+        padding: 16px 0;
         text-align: center;
-        margin-top: 60px;
+        background-color: #000;
+        color: #fff;
         font-size: 12px;
-        letter-spacing: 1px;
-        color: #ccc;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .load-more:hover {
+        background-color: #333;
       }
 
       /* =========================================
@@ -197,6 +308,7 @@
            ========================================= */
       .footer {
         background-color: #1c1c1c;
+        color: #ffffff;
         padding: 60px 50px;
         margin-top: 100px;
         border-top: 1px solid #333;
@@ -221,6 +333,12 @@
         color: #888;
         margin-bottom: 5px;
         line-height: 1.6;
+        cursor: pointer;
+      }
+
+      .footer-col li:hover,
+      .footer-col p:hover {
+        color: #fff;
       }
 
       .footer-bottom {
@@ -258,75 +376,264 @@
 
     <!-- Hero Banner -->
     <section class="hero-banner">
+      <!-- 배경 이미지를 우선으로 사용하므로 img 태그는 구조상 유지하되 CSS로 숨김 처리 -->
       <img src="./Image/main.jpg" alt="main" />
       <div class="floating-controls">
-        <button>▲</button>
-        <button>▼</button>
+        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+          ▲
+        </button>
+        <button
+          onclick="
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth',
+            })
+          "
+        >
+          ▼
+        </button>
       </div>
     </section>
 
     <!-- Trio Gallery Section -->
+    <div class="section-header">
+      <h2>ONLY BLACKUP</h2>
+    </div>
     <section class="trio-gallery">
       <!-- 첫번째 세로 이미지 -->
-      <div class="trio-item tall">
-        <img src="./Image/b-basc.jpg" alt="모델 이미지" />
+      <div class="trio-item">
+        <div class="trio-img-wrap">
+          <img src="./Image/b-basc.jpg" alt="B-BASIC & B-DENIM" />
+        </div>
+        <div class="trio-info">
+          <h3>B-BASIC & B-DENIM</h3>
+          <p>2025 HOT SUMMER 신상품 발매</p>
+        </div>
       </div>
       <!-- 두번째 세로 이미지 -->
-      <div class="trio-item tall">
-        <img src="./Image/black.jpg" alt="모델 이미지" />
+      <div class="trio-item">
+        <div class="trio-img-wrap">
+          <img src="./Image/black.jpg" alt="BLACKUP PROJECT" />
+        </div>
+        <div class="trio-info">
+          <h3>BLACKUP PROJECT</h3>
+          <p>블랙업 자체제작</p>
+        </div>
       </div>
       <!-- 세번째 박스 이미지 (정사각형 형태) -->
-      <div class="trio-item square">
-        <img src="./Image/today.jpg" alt="제품 이미지" />
+      <div class="trio-item">
+        <div class="trio-img-wrap" style="background: #000">
+          <img src="./Image/today.jpg" alt="TODAY DELIVERY" />
+        </div>
+        <div class="trio-info">
+          <h3>TODAY DELIVERY</h3>
+          <p>오늘도착 + 오늘출발</p>
+        </div>
       </div>
     </section>
 
     <!-- Product Grid Section -->
+    <div class="section-header center">
+      <h2>2025 HS LOOKBOOK</h2>
+      <p>핫썸머 신상품 발매</p>
+    </div>
     <section class="product-section">
       <div class="product-grid">
         <!-- Item 1 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img1.jpg" alt="제품 1" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img1.jpg" alt="제품 1" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
         <!-- Item 2 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img2.jpg" alt="제품 2 2" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img2.jpg" alt="제품 2" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
         <!-- Item 3 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img3.jpg" alt="제품 3" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img3.jpg" alt="제품 3" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
         <!-- Item 4 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img4.jpg" alt="제품 4" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img4.jpg" alt="제품 4" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
         <!-- Item 5 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img5.jpg" alt="제품 5" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img5.jpg" alt="제품 5" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
         <!-- Item 6 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img6.jpg" alt="제품 6" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img6.jpg" alt="제품 6" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
         <!-- Item 7 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img7.jpg" alt="제품 7" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img7.jpg" alt="제품 7" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
         <!-- Item 8 -->
         <div class="product-card">
-          <div class="product-label"></div>
-          <img src="./Image/img8.jpg" alt="제품 8" />
+          <div class="product-img-wrap">
+            <div class="product-label"></div>
+            <img src="./Image/img8.jpg" alt="제품 8" />
+          </div>
+          <div class="product-info">
+            <div class="product-info-top">
+              <p class="name">[MADE] 카르 도트 캡소매 반팔티</p>
+              <svg
+                class="bookmark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="price">29,000원</p>
+          </div>
         </div>
       </div>
 
-      <div class="load-more">24 SUMMER 신상품 보러가기</div>
+      <div class="load-more">25HS 썸머 전체 상품 보러가기</div>
     </section>
 
     <!-- Footer -->
