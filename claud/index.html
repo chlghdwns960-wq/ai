@@ -22,6 +22,7 @@
       .header-wrap {
         width: 100%;
         position: relative;
+        overflow: visible;
       }
 
       .header {
@@ -31,10 +32,12 @@
         border-bottom: 1px solid #c8c8c8;
         position: relative;
         z-index: 20;
+        overflow: visible;
       }
 
       .header-inner {
-        width: 1440px;
+        width: 100%;
+        max-width: 1440px;
         height: 80px;
         margin: 0 auto;
         display: grid;
@@ -42,6 +45,8 @@
         align-items: center;
         padding: 0 40px;
         column-gap: 32px;
+        position: relative;
+        overflow: visible;
       }
 
       .brand {
@@ -84,6 +89,7 @@
       }
 
       .nav {
+        list-style: none;
         height: 100%;
         display: flex;
         align-items: center;
@@ -92,11 +98,19 @@
         gap: 42px;
       }
 
+      .nav > li {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
       .nav-item {
         position: relative;
         height: 100%;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         text-decoration: none;
         font-size: 15px;
         font-weight: 700;
@@ -104,9 +118,13 @@
         color: #333333;
         transition: color 0.2s ease;
         z-index: 30;
+        padding: 0 2px;
       }
 
-      .nav-item:hover {
+      .nav-item:hover,
+      .about-menu:hover > .nav-item,
+      .products-menu:hover > .nav-item,
+      .partnership-menu:hover > .nav-item {
         color: #d9764f;
       }
 
@@ -115,14 +133,17 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 0;
+        bottom: -1px;
         height: 3px;
         background: transparent;
         border-radius: 2px 2px 0 0;
         transition: background 0.2s ease;
       }
 
-      .nav-item:hover::after {
+      .nav-item:hover::after,
+      .about-menu:hover > .nav-item::after,
+      .products-menu:hover > .nav-item::after,
+      .partnership-menu:hover > .nav-item::after {
         background: #d9764f;
       }
 
@@ -130,7 +151,8 @@
         position: absolute;
         top: 80px;
         left: 0;
-        height: 70px;
+        width: max-content;
+        height: 80px;
         background: transparent;
         border: none;
         opacity: 0;
@@ -139,25 +161,54 @@
         transition:
           opacity 0.2s ease,
           visibility 0.2s ease;
-        z-index: 10;
+        z-index: 15;
       }
 
-      .about-menu {
+      .submenu-bar::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 80px;
+        width: 100vw;
+        min-width: 1440px;
+        height: 80px;
+        background: #ffffff;
+        border-top: 1px solid #c8c8c8;
+        z-index: -1;
+      }
+
+      .about-menu,
+      .products-menu,
+      .partnership-menu {
         position: relative;
         height: 100%;
-        display: inline-flex;
+        display: flex;
         align-items: center;
         z-index: 30;
       }
 
       .submenu-inner {
-        height: 70px;
+        list-style: none;
+        width: max-content;
+        height: 80px;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         gap: 56px;
         padding: 0;
-        transform: none;
         white-space: nowrap;
+        overflow: visible;
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-submenu-list {
+      }
+
+      .products-submenu-list {
+      }
+
+      .partnership-submenu-list {
       }
 
       .submenu-item {
@@ -176,7 +227,11 @@
       }
 
       .about-menu:hover .submenu-bar,
-      .about-menu .submenu-bar:hover {
+      .about-menu .submenu-bar:hover,
+      .products-menu:hover .submenu-bar,
+      .products-menu .submenu-bar:hover,
+      .partnership-menu:hover .submenu-bar,
+      .partnership-menu .submenu-bar:hover {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
@@ -210,6 +265,287 @@
         background: #d98561;
         color: #ffffff;
       }
+
+      .hero {
+        width: 100%;
+        height: 640px;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(217, 118, 79, 0.08) 0%,
+            rgba(217, 118, 79, 0.02) 40%,
+            rgba(255, 255, 255, 0.96) 100%
+          ),
+          radial-gradient(
+            circle at 18% 22%,
+            rgba(217, 118, 79, 0.24) 0,
+            rgba(217, 118, 79, 0.08) 18%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 78% 26%,
+            rgba(45, 43, 42, 0.14) 0,
+            rgba(45, 43, 42, 0.03) 20%,
+            transparent 42%
+          ),
+          linear-gradient(180deg, #f7f5f3 0%, #f1ece8 48%, #ebe5e0 100%);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 255, 255, 0.24) 0,
+          rgba(255, 255, 255, 0.04) 28%,
+          transparent 52%
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        width: 100%;
+        max-width: 1440px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-copy {
+        max-width: 560px;
+      }
+
+      .hero-eyebrow {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        color: #d9764f;
+      }
+
+      .hero-title {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 64px;
+        line-height: 1.06;
+        letter-spacing: -1.6px;
+        color: #181818;
+        margin-bottom: 18px;
+      }
+
+      .hero-text {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #4b4b4b;
+        margin-bottom: 30px;
+      }
+
+      .hero-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 160px;
+        height: 48px;
+        padding: 0 24px;
+        border-radius: 999px;
+        background: #2d2b2a;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .hero-visual {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-card {
+        position: relative;
+        width: 560px;
+        height: 420px;
+        border-radius: 36px;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.68) 100%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f3ece7 100%);
+        box-shadow: 0 30px 80px rgba(24, 24, 24, 0.18);
+        backdrop-filter: blur(12px);
+        overflow: hidden;
+        transform: rotate(-7deg);
+      }
+
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        width: 360px;
+        height: 360px;
+        right: -60px;
+        top: -30px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(217, 118, 79, 0.32) 0%,
+          rgba(217, 118, 79, 0.08) 42%,
+          transparent 70%
+        );
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 24px;
+        border-radius: 26px;
+        border: 1px solid rgba(51, 51, 51, 0.08);
+      }
+
+      .hero-device {
+        position: absolute;
+        right: 56px;
+        top: 44px;
+        width: 250px;
+        height: 332px;
+        border-radius: 32px;
+        background: #fbfbfb;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+        padding: 28px 24px;
+        z-index: 2;
+      }
+
+      .hero-device::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 32px;
+        border: 1px solid rgba(51, 51, 51, 0.08);
+      }
+
+      .hero-device-back {
+        position: absolute;
+        left: 58px;
+        top: 82px;
+        width: 210px;
+        height: 292px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        transform: rotate(-8deg);
+      }
+
+      .hero-screen-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 42px;
+        color: #2d2b2a;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .hero-logo {
+        width: 54px;
+        height: 54px;
+        margin: 0 auto 24px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #7f82ff 0%, #5b5fff 100%);
+        position: relative;
+      }
+
+      .hero-logo::before {
+        content: "";
+        position: absolute;
+        inset: 12px 14px 14px 12px;
+        border-radius: 50% 56% 48% 52%;
+        background: rgba(255, 255, 255, 0.9);
+        clip-path: polygon(
+          20% 30%,
+          56% 12%,
+          74% 25%,
+          84% 10%,
+          92% 16%,
+          83% 36%,
+          88% 48%,
+          78% 58%,
+          62% 58%,
+          40% 82%,
+          18% 74%,
+          22% 48%
+        );
+      }
+
+      .hero-device-title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: #222222;
+        margin-bottom: 10px;
+      }
+
+      .hero-device-text {
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #8b8b8b;
+        margin-bottom: 32px;
+      }
+
+      .hero-input {
+        width: 100%;
+        height: 50px;
+        border-radius: 999px;
+        background: #f3f1f1;
+        margin-bottom: 16px;
+        position: relative;
+      }
+
+      .hero-input::before {
+        content: "";
+        position: absolute;
+        left: 18px;
+        top: 11px;
+        width: 2px;
+        height: 28px;
+        background: #6f74ff;
+        border-radius: 2px;
+      }
+
+      .hero-chips {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero-chip {
+        height: 32px;
+        border-radius: 999px;
+        background: #f2f3ff;
+        padding: 0 14px;
+        display: inline-flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 700;
+        color: #6f74ff;
+      }
+
+      .hero-chip.alt {
+        background: #f7f5f5;
+        color: #333333;
+      }
     </style>
   </head>
   <body>
@@ -221,25 +557,49 @@
             <h1 class="brand-name">Claude</h1>
           </div>
 
-          <nav class="nav" aria-label="메인 메뉴">
-            <div class="about-menu">
+          <ul class="nav" aria-label="메인 메뉴">
+            <li class="about-menu">
               <a href="#" class="nav-item">ABOUT</a>
               <div class="submenu-bar" aria-label="2차 메뉴">
-                <div class="submenu-inner">
-                  <a href="#" class="submenu-item is-active">대표 인사말</a>
-                  <a href="#" class="submenu-item">기업소개</a>
-                  <a href="#" class="submenu-item">비주얼 아이덴티티</a>
-                  <a href="#" class="submenu-item">사회 공헌</a>
-                  <a href="#" class="submenu-item">오시는 길</a>
-                </div>
+                <ul class="submenu-inner about-submenu-list">
+                  <li><a href="#" class="submenu-item">대표 인사말</a></li>
+                  <li><a href="#" class="submenu-item">기업소개</a></li>
+                  <li>
+                    <a href="#" class="submenu-item">비주얼 아이덴티티</a>
+                  </li>
+                  <li><a href="#" class="submenu-item">사회 공헌</a></li>
+                  <li><a href="#" class="submenu-item">오시는 길</a></li>
+                </ul>
               </div>
-            </div>
-            <a href="#" class="nav-item">PRODUCTS</a>
-            <a href="#" class="nav-item">PARTERSHIP</a>
-            <a href="#" class="nav-item">EDUCATION</a>
-            <a href="#" class="nav-item">WHAT’S NEW</a>
-            <a href="#" class="nav-item">SUPPORT</a>
-          </nav>
+            </li>
+            <li class="products-menu">
+              <a href="#" class="nav-item">PRODUCTS</a>
+              <div class="submenu-bar" aria-label="PRODUCTS 2차 메뉴">
+                <ul class="submenu-inner products-submenu-list">
+                  <li>
+                    <a href="#" class="submenu-item">AI &amp; 인공지능</a>
+                  </li>
+                  <li><a href="#" class="submenu-item">Sonnet 모델</a></li>
+                  <li><a href="#" class="submenu-item">Coding Pro</a></li>
+                  <li><a href="#" class="submenu-item">대표적인 AI</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="partnership-menu">
+              <a href="#" class="nav-item">PARTERSHIP</a>
+              <div class="submenu-bar" aria-label="PARTERSHIP 2차 메뉴">
+                <ul class="submenu-inner partnership-submenu-list">
+                  <li><a href="#" class="submenu-item">가맹점 현황</a></li>
+                  <li><a href="#" class="submenu-item">가맹점 개설 안내</a></li>
+                  <li><a href="#" class="submenu-item">가맹점 개설 문의</a></li>
+                  <li><a href="#" class="submenu-item">제휴 문의</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="#" class="nav-item">EDUCATION</a></li>
+            <li><a href="#" class="nav-item">WHAT’S NEW</a></li>
+            <li><a href="#" class="nav-item">SUPPORT</a></li>
+          </ul>
 
           <div class="actions">
             <button class="btn btn-dark">매장찾기</button>
@@ -248,5 +608,40 @@
         </div>
       </header>
     </div>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="hero-eyebrow">CLAUDE EXPERIENCE</span>
+          <h2 class="hero-title">
+            더 직관적인 AI 경험을 위한<br />프리미엄 데스크톱 화면
+          </h2>
+          <p class="hero-text">
+            헤더 아래에 브랜드 무드와 잘 어울리는 비주얼 영역을 추가했어. 전체
+            톤은 지금 만든 상단 내비게이션과 자연스럽게 이어지도록 밝은 배경,
+            오렌지 포인트, 소프트한 카드형 이미지로 맞췄어.
+          </p>
+          <a href="#" class="hero-link">자세히 보기</a>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-device-back"></div>
+            <div class="hero-device">
+              <div class="hero-screen-top">
+                <span>≡</span>
+                <span>⊕</span>
+              </div>
+              <div class="hero-logo"></div>
+              <p class="hero-device-title">Hi, I'm DeepSeek.</p>
+              <p class="hero-device-text">How can I help you today?</p>
+              <div class="hero-input"></div>
+              <div class="hero-chips">
+                <span class="hero-chip">DeepThink</span>
+                <span class="hero-chip alt">Search</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
