@@ -19,11 +19,18 @@
         color: #1f1f1f;
       }
 
+      .header-wrap {
+        width: 100%;
+        position: relative;
+      }
+
       .header {
         width: 100%;
         height: 80px;
         background: #ffffff;
         border-bottom: 1px solid #c8c8c8;
+        position: relative;
+        z-index: 20;
       }
 
       .header-inner {
@@ -96,6 +103,7 @@
         letter-spacing: 0.2px;
         color: #333333;
         transition: color 0.2s ease;
+        z-index: 30;
       }
 
       .nav-item:hover {
@@ -116,6 +124,62 @@
 
       .nav-item:hover::after {
         background: #d9764f;
+      }
+
+      .submenu-bar {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        height: 70px;
+        background: transparent;
+        border: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.2s ease,
+          visibility 0.2s ease;
+        z-index: 10;
+      }
+
+      .about-menu {
+        position: relative;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        z-index: 30;
+      }
+
+      .submenu-inner {
+        height: 70px;
+        display: flex;
+        align-items: center;
+        gap: 56px;
+        padding: 0;
+        transform: none;
+        white-space: nowrap;
+      }
+
+      .submenu-item {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.1px;
+        color: #333333;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .submenu-item:hover,
+      .submenu-item.is-active {
+        color: #d9764f;
+      }
+
+      .about-menu:hover .submenu-bar,
+      .about-menu .submenu-bar:hover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
       }
 
       .actions {
@@ -149,27 +213,40 @@
     </style>
   </head>
   <body>
-    <header class="header">
-      <div class="header-inner">
-        <div class="brand">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <h1 class="brand-name">Claude</h1>
-        </div>
+    <div class="header-wrap">
+      <header class="header">
+        <div class="header-inner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <h1 class="brand-name">Claude</h1>
+          </div>
 
-        <nav class="nav" aria-label="메인 메뉴">
-          <a href="#" class="nav-item">ABOUT</a>
-          <a href="#" class="nav-item">PRODUCTS</a>
-          <a href="#" class="nav-item">PARTERSHIP</a>
-          <a href="#" class="nav-item">EDUCATION</a>
-          <a href="#" class="nav-item">WHAT’S NEW</a>
-          <a href="#" class="nav-item">SUPPORT</a>
-        </nav>
+          <nav class="nav" aria-label="메인 메뉴">
+            <div class="about-menu">
+              <a href="#" class="nav-item">ABOUT</a>
+              <div class="submenu-bar" aria-label="2차 메뉴">
+                <div class="submenu-inner">
+                  <a href="#" class="submenu-item is-active">대표 인사말</a>
+                  <a href="#" class="submenu-item">기업소개</a>
+                  <a href="#" class="submenu-item">비주얼 아이덴티티</a>
+                  <a href="#" class="submenu-item">사회 공헌</a>
+                  <a href="#" class="submenu-item">오시는 길</a>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="nav-item">PRODUCTS</a>
+            <a href="#" class="nav-item">PARTERSHIP</a>
+            <a href="#" class="nav-item">EDUCATION</a>
+            <a href="#" class="nav-item">WHAT’S NEW</a>
+            <a href="#" class="nav-item">SUPPORT</a>
+          </nav>
 
-        <div class="actions">
-          <button class="btn btn-dark">매장찾기</button>
-          <button class="btn btn-accent">글로드 마켓</button>
+          <div class="actions">
+            <button class="btn btn-dark">매장찾기</button>
+            <button class="btn btn-accent">클로드 마켓</button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   </body>
 </html>
