@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Claude Header Desktop</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
       * {
         box-sizing: border-box;
         margin: 0;
@@ -112,6 +113,7 @@
         align-items: center;
         justify-content: center;
         text-decoration: none;
+        font-family: "Noto Sans KR", Arial, Helvetica, sans-serif;
         font-size: 15px;
         font-weight: 700;
         letter-spacing: 0.2px;
@@ -150,11 +152,13 @@
       .submenu-bar {
         position: absolute;
         top: 80px;
-        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 196px;
         width: max-content;
-        height: 80px;
-        background: transparent;
-        border: none;
+        background: #ffffff;
+        border: 1px solid #e5e5e5;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
@@ -162,19 +166,6 @@
           opacity 0.2s ease,
           visibility 0.2s ease;
         z-index: 15;
-      }
-
-      .submenu-bar::before {
-        content: "";
-        position: fixed;
-        left: 0;
-        top: 80px;
-        width: 100vw;
-        min-width: 1440px;
-        height: 80px;
-        background: #ffffff;
-        border-top: 1px solid #c8c8c8;
-        z-index: -1;
       }
 
       .about-menu,
@@ -189,13 +180,13 @@
 
       .submenu-inner {
         list-style: none;
-        width: max-content;
-        height: 80px;
+        width: 100%;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: stretch;
         justify-content: flex-start;
-        gap: 56px;
-        padding: 0;
+        gap: 0;
+        padding: 10px 0;
         white-space: nowrap;
         overflow: visible;
         position: relative;
@@ -203,18 +194,27 @@
       }
 
       .about-submenu-list {
+        min-width: 168px;
       }
 
       .products-submenu-list {
+        min-width: 184px;
       }
 
       .partnership-submenu-list {
+        min-width: 196px;
       }
 
       .submenu-item {
+        display: block;
+        width: 100%;
+        padding: 10px 24px;
+        text-align: center;
         text-decoration: none;
+        font-family: "Noto Sans KR", Arial, Helvetica, sans-serif;
         font-size: 14px;
         font-weight: 700;
+        line-height: 1.45;
         letter-spacing: -0.1px;
         color: #333333;
         transition: color 0.2s ease;
@@ -250,6 +250,7 @@
         padding: 0 20px;
         border: none;
         border-radius: 999px;
+        font-family: "Noto Sans KR", Arial, Helvetica, sans-serif;
         font-size: 14px;
         font-weight: 700;
         letter-spacing: -0.1px;
