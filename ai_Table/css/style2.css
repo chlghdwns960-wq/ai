@@ -1,0 +1,62 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Malgun Gothic", sans-serif;
+  background: #f8f8f8;
+  padding: 40px;
+}
+
+.table-wrap {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.table-box {
+  border-collapse: collapse;
+  background: #ffffff;
+  text-align: center;
+}
+
+.table-food {
+  width: 900px;
+  margin-bottom: 100px;
+}
+
+.table-ride {
+  width: 300px;
+  table-layout: fixed;
+}
+
+.table-ride th {
+  width: 100px;
+}
+
+.table-ride td {
+  width: 200px;
+}
+
+th,
+td {
+  border: 1px solid #333;
+  padding: 18px;
+  font-size: 18px;
+}
+
+th {
+  background: #f1f1f1;
+  font-weight: bold;
+}
+
+.table-ride a {
+  color: #000;
+  text-decoration: none;
+}
+
+.table-ride a:hover {
+  text-decoration: underline;
+}

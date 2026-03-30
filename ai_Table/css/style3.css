@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+  color: #333333;
+  font-family: "Malgun Gothic", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 40px;
+}
+
+.table-wrap {
+  width: 400px;
+}
+
+.table-box {
+  width: 400px;
+  border-collapse: collapse;
+  background: #ffffff;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.table-sales {
+  table-layout: fixed;
+}
+
+.table-sales th,
+.table-sales td {
+  width: 100px;
+}
+
+.table-site {
+  table-layout: fixed;
+}
+
+.table-site th:first-child,
+.table-site td:first-child {
+  width: 120px;
+}
+
+.table-site th:last-child,
+.table-site td:last-child {
+  width: 280px;
+}
+
+th,
+td {
+  border: 1px solid #333333;
+  padding: 14px 10px;
+  font-size: 16px;
+}
+
+th {
+  font-weight: bold;
+}
+
+.table-site a {
+  color: #333333;
+  text-decoration: none;
+}
+
+/* 방문 전 링크에 마우스를 올렸을 때 */
+.table-site a:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+/* 한 번 방문한 링크 */
+.table-site a:visited {
+  color: purple;
+}
+
+/* 방문한 링크에 다시 마우스를 올렸을 때 */
+.table-site a:visited:hover {
+  color: purple;
+  text-decoration: underline;
+}
