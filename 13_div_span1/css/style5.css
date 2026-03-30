@@ -21,10 +21,13 @@ h1 {
 div .p1 {
   color: #0201fd;
   margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 400;
 }
 div .p2 {
   font-weight: 600;
   margin-bottom: 20px;
+  font-size: 17px;
 }
 h2 {
   background-color: #d3d3d3;
