@@ -37,7 +37,7 @@ h2 {
 }
 div ul {
   padding: 0 24px;
-  margin-bottom: 40px;
+  margin: 24px 0 40px 22px;
 }
 div .p3 {
   font-size: 11px;
@@ -50,7 +50,7 @@ div .p4 {
   margin-bottom: 35px;
 }
 div .span1 {
-  padding: 9px 5px 6px 6px;
+  padding: 9px;
   font-size: 10px;
   color: #ffffff;
   background-color: #850082;
