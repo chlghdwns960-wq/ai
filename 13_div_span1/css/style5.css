@@ -1,0 +1,54 @@
+@charset "utf-8";
+body {
+  font-family: "맑은 고딕";
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
+  width: 640px;
+  border: 2px solid #fd0005;
+  margin: 0 auto;
+  padding: 36px 24px;
+}
+h1 {
+  background-color: #ffff00;
+  text-align: center;
+  padding: 17px;
+  margin-bottom: 29px;
+}
+div .p1 {
+  color: #0201fd;
+  margin-bottom: 25px;
+}
+div .p2 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+h2 {
+  background-color: #d3d3d3;
+  text-align: center;
+  padding: 16px;
+  margin-bottom: 25px;
+}
+div ul {
+  padding: 0 24px;
+  margin-bottom: 40px;
+}
+div .p3 {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 48px;
+}
+div .p4 {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 35px;
+}
+div .span1 {
+  padding: 9px 5px 6px 6px;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: #850082;
+}
