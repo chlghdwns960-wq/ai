@@ -1,0 +1,64 @@
+@charset "utf-8";
+body {
+  font-family: "맑은 고딕";
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
+  width: 630px;
+  border: 1px dotted #000000;
+  /* div 박스 통(개체)으로 가운데 정열 */
+  margin: 0 auto;
+  padding: 36px 16px;
+}
+div h1 {
+  margin-bottom: 26px;
+}
+div h2 {
+  margin-bottom: 26px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 9px 6px;
+}
+div p {
+  margin-bottom: 24px;
+  /* 글자 양쪽 정열 */
+  text-align: justify;
+}
+div .h22 {
+  background: none;
+  color: #0006ff;
+}
+div p .span1 {
+  color: #a23040;
+  font-weight: 600;
+}
+div p .span2 {
+  color: #0006ff;
+  font-weight: 600;
+}
+div .list {
+  color: #0006ff;
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 16px;
+}
+div .free {
+  background: green;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 4px;
+}
+div .p1 {
+  /* 자간 */
+  letter-spacing: 5px;
+}
+div .p2 {
+  /* 행간 */
+  line-height: 28px;
+}
+div .p3 {
+  letter-spacing: -2px;
+}
