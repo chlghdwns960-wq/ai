@@ -1,0 +1,46 @@
+@charset "utf-8";
+body {
+  font-family: "malgun gothic", sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+.box {
+  width: 350px;
+  margin: 0 auto;
+}
+.box .img {
+  width: 350px;
+  height: 260px;
+}
+.box .img img {
+  width: 350px;
+  height: 260px;
+}
+.box .info {
+  width: 350px;
+  padding: 42px 0;
+}
+.box .info p {
+  font-size: 14px;
+  color: #9c91c7;
+  font-weight: 600;
+  padding-bottom: 16px;
+}
+.box .info h3 {
+  font-size: 20px;
+  color: #111111;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+.box .info h2 {
+  font-size: 22px;
+  color: #111111;
+  font-weight: 900;
+}
+.box .info h2 span {
+  font-size: 18px;
+  font-weight: 500;
+}
