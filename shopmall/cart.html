@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니 - CHIC</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- 모바일 컨테이너 -->
+    <div class="mobile-container">
+      <!-- 헤더 -->
+      <header class="header">
+        <div class="header-content">
+          <a href="index.html" class="logo">CHIC</a>
+          <div class="header-icons">
+            <button class="icon-btn" aria-label="검색">
+              <i data-lucide="search"></i>
+            </button>
+            <a href="cart.html" class="icon-btn cart-btn" aria-label="장바구니">
+              <i data-lucide="shopping-bag"></i>
+              <span class="cart-badge">2</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- 메인 컨텐츠 -->
+      <main class="main-content">
+        <div class="page-title">
+          <h1>장바구니</h1>
+        </div>
+
+        <!-- 장바구니 리스트 -->
+        <div class="cart-container">
+          <!-- 전체선택 -->
+          <div class="cart-select-all">
+            <label class="checkbox-label">
+              <input type="checkbox" id="select-all" checked />
+              <span>전체선택 (2)</span>
+            </label>
+            <button class="delete-selected">선택삭제</button>
+          </div>
+
+          <!-- 장바구니 아이템 -->
+          <div class="cart-items">
+            <div class="cart-item">
+              <label class="checkbox-label">
+                <input type="checkbox" class="item-checkbox" checked />
+              </label>
+              <div class="cart-item-image">
+                <img
+                  src="https://images.unsplash.com/photo-1761574028262-6d834741bfd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwZHJlc3MlMjBmYXNoaW9ufGVufDF8fHx8MTc3NDgxNzI0OHww&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="상품 이미지"
+                />
+              </div>
+              <div class="cart-item-info">
+                <h3 class="cart-item-name">실크 플리츠 롱 드레스</h3>
+                <p class="cart-item-option">컬러: 베이지 / 사이즈: M</p>
+                <div class="cart-item-bottom">
+                  <div class="quantity-control">
+                    <button class="quantity-btn minus">
+                      <i data-lucide="minus"></i>
+                    </button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn plus">
+                      <i data-lucide="plus"></i>
+                    </button>
+                  </div>
+                  <div class="cart-item-price">89,000원</div>
+                </div>
+              </div>
+              <button class="cart-item-delete">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+
+            <div class="cart-item">
+              <label class="checkbox-label">
+                <input type="checkbox" class="item-checkbox" checked />
+              </label>
+              <div class="cart-item-image">
+                <img
+                  src="https://images.unsplash.com/photo-1590588460172-2e7f65714644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwYmxvdXNlJTIwd2hpdGV8ZW58MXx8fHwxNzc0OTI0MTYwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="상품 이미지"
+                />
+              </div>
+              <div class="cart-item-info">
+                <h3 class="cart-item-name">퓨어 코튼 셔츠 블라우스</h3>
+                <p class="cart-item-option">컬러: 화이트 / 사이즈: S</p>
+                <div class="cart-item-bottom">
+                  <div class="quantity-control">
+                    <button class="quantity-btn minus">
+                      <i data-lucide="minus"></i>
+                    </button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn plus">
+                      <i data-lucide="plus"></i>
+                    </button>
+                  </div>
+                  <div class="cart-item-price">52,000원</div>
+                </div>
+              </div>
+              <button class="cart-item-delete">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 주문 요약 -->
+          <div class="order-summary">
+            <div class="summary-row">
+              <span>상품금액</span>
+              <span>141,000원</span>
+            </div>
+            <div class="summary-row">
+              <span>배송비</span>
+              <span>무료</span>
+            </div>
+            <div class="summary-row total">
+              <span>총 결제금액</span>
+              <span>141,000원</span>
+            </div>
+          </div>
+
+          <!-- 구매하기 버튼 -->
+          <button class="checkout-btn">구매하기</button>
+        </div>
+      </main>
+
+      <!-- 하단 탭바 -->
+      <nav class="bottom-tabbar">
+        <a href="index.html" class="tab-item" data-tab="home">
+          <i data-lucide="home"></i>
+          <span>홈</span>
+        </a>
+        <a href="category.html" class="tab-item" data-tab="category">
+          <i data-lucide="grid-3x3"></i>
+          <span>카테고리</span>
+        </a>
+        <a href="cart.html" class="tab-item active" data-tab="cart">
+          <i data-lucide="shopping-bag"></i>
+          <span>장바구니</span>
+        </a>
+        <a href="mypage.html" class="tab-item" data-tab="mypage">
+          <i data-lucide="user"></i>
+          <span>마이</span>
+        </a>
+      </nav>
+    </div>
+
+    <script src="./Script/script.js"></script>
+  </body>
+</html>

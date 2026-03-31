@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지 - CHIC</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- 모바일 컨테이너 -->
+    <div class="mobile-container">
+      <!-- 헤더 -->
+      <header class="header">
+        <div class="header-content">
+          <a href="index.html" class="logo">CHIC</a>
+          <div class="header-icons">
+            <button class="icon-btn" aria-label="검색">
+              <i data-lucide="search"></i>
+            </button>
+            <a href="cart.html" class="icon-btn cart-btn" aria-label="장바구니">
+              <i data-lucide="shopping-bag"></i>
+              <span class="cart-badge">2</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- 메인 컨텐츠 -->
+      <main class="main-content">
+        <!-- 프로필 섹션 -->
+        <section class="profile-section">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <i data-lucide="user"></i>
+            </div>
+            <div class="profile-info">
+              <h2>김지은님</h2>
+              <p>jieun@email.com</p>
+            </div>
+            <button class="profile-edit">
+              <i data-lucide="settings"></i>
+            </button>
+          </div>
+
+          <!-- 멤버십 카드 -->
+          <div class="membership-card">
+            <div class="membership-info">
+              <span class="membership-badge">VIP</span>
+              <p class="membership-text">
+                다음 등급까지 <strong>50,000원</strong>
+              </p>
+            </div>
+            <div class="membership-points">
+              <div class="points-item">
+                <span class="points-label">적립금</span>
+                <span class="points-value">15,500원</span>
+              </div>
+              <div class="points-divider"></div>
+              <div class="points-item">
+                <span class="points-label">쿠폰</span>
+                <span class="points-value">3장</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 주문 현황 -->
+        <section class="order-status">
+          <h3 class="section-title">주문 현황</h3>
+          <div class="status-grid">
+            <div class="status-item">
+              <div class="status-icon">
+                <i data-lucide="package"></i>
+              </div>
+              <span class="status-count">2</span>
+              <span class="status-label">배송중</span>
+            </div>
+            <div class="status-item">
+              <div class="status-icon">
+                <i data-lucide="check-circle"></i>
+              </div>
+              <span class="status-count">12</span>
+              <span class="status-label">배송완료</span>
+            </div>
+            <div class="status-item">
+              <div class="status-icon">
+                <i data-lucide="rotate-ccw"></i>
+              </div>
+              <span class="status-count">0</span>
+              <span class="status-label">교환/반품</span>
+            </div>
+            <div class="status-item">
+              <div class="status-icon">
+                <i data-lucide="message-circle"></i>
+              </div>
+              <span class="status-count">1</span>
+              <span class="status-label">문의내역</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 메뉴 리스트 -->
+        <section class="menu-section">
+          <h3 class="section-title">쇼핑 정보</h3>
+          <div class="menu-list">
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="clock"></i>
+              </div>
+              <span>주문 내역</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="heart"></i>
+              </div>
+              <span>찜한 상품</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="star"></i>
+              </div>
+              <span>리뷰 관리</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+          </div>
+        </section>
+
+        <section class="menu-section">
+          <h3 class="section-title">혜택 관리</h3>
+          <div class="menu-list">
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="gift"></i>
+              </div>
+              <span>쿠폰함</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="coins"></i>
+              </div>
+              <span>적립금</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+          </div>
+        </section>
+
+        <section class="menu-section">
+          <h3 class="section-title">고객센터</h3>
+          <div class="menu-list">
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="headphones"></i>
+              </div>
+              <span>고객센터</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="bell"></i>
+              </div>
+              <span>공지사항</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+            <a href="#" class="menu-item">
+              <div class="menu-icon">
+                <i data-lucide="info"></i>
+              </div>
+              <span>앱 정보</span>
+              <i data-lucide="chevron-right"></i>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <!-- 하단 탭바 -->
+      <nav class="bottom-tabbar">
+        <a href="index.html" class="tab-item" data-tab="home">
+          <i data-lucide="home"></i>
+          <span>홈</span>
+        </a>
+        <a href="category.html" class="tab-item" data-tab="category">
+          <i data-lucide="grid-3x3"></i>
+          <span>카테고리</span>
+        </a>
+        <a href="cart.html" class="tab-item" data-tab="cart">
+          <i data-lucide="shopping-bag"></i>
+          <span>장바구니</span>
+        </a>
+        <a href="mypage.html" class="tab-item active" data-tab="mypage">
+          <i data-lucide="user"></i>
+          <span>마이</span>
+        </a>
+      </nav>
+    </div>
+
+    <script src="./Script/script.js"></script>
+  </body>
+</html>

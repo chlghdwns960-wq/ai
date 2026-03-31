@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHIC - Premium Fashion</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- 모바일 컨테이너 -->
+    <div class="mobile-container">
+      <!-- 헤더 -->
+      <header class="header">
+        <div class="header-content">
+          <h1 class="logo">CHIC</h1>
+          <div class="header-icons">
+            <button class="icon-btn" aria-label="검색">
+              <i data-lucide="search"></i>
+            </button>
+            <button class="icon-btn cart-btn" aria-label="장바구니">
+              <i data-lucide="shopping-bag"></i>
+              <span class="cart-badge">2</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- 메인 컨텐츠 -->
+      <main class="main-content">
+        <!-- 히어로 배너 -->
+        <section class="hero-banner">
+          <div class="hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1609565911206-04527a94436e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwd29tYW4lMjBtaW5pbWFsfGVufDF8fHx8MTc3NDkyNDE1OXww&ixlib=rb-4.1.0&q=80&w=1080"
+              alt="Hero Banner"
+            />
+            <div class="hero-overlay">
+              <div class="hero-text">
+                <h2>Spring Collection</h2>
+                <p>새로운 시즌을 위한 특별한 컬렉션</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 빠른 카테고리 -->
+        <section class="quick-categories">
+          <div class="category-grid">
+            <button class="category-item">
+              <div class="category-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <span>신상</span>
+            </button>
+            <button class="category-item">
+              <div class="category-icon">
+                <i data-lucide="trending-up"></i>
+              </div>
+              <span>베스트</span>
+            </button>
+            <button class="category-item">
+              <div class="category-icon">
+                <i data-lucide="shirt"></i>
+              </div>
+              <span>의류</span>
+            </button>
+            <button class="category-item">
+              <div class="category-icon">
+                <i data-lucide="tag"></i>
+              </div>
+              <span>세일</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 오늘의 추천 -->
+        <section class="product-section">
+          <div class="section-header">
+            <h2>오늘의 추천</h2>
+            <button class="more-btn">더보기</button>
+          </div>
+          <div class="product-grid" id="recommended-products"></div>
+        </section>
+
+        <!-- 카테고리 탭 -->
+        <section class="category-tabs">
+          <div class="tabs-container">
+            <button class="tab-btn active" data-category="전체">전체</button>
+            <button class="tab-btn" data-category="아우터">아우터</button>
+            <button class="tab-btn" data-category="상의">상의</button>
+            <button class="tab-btn" data-category="하의">하의</button>
+            <button class="tab-btn" data-category="원피스">원피스</button>
+            <button class="tab-btn" data-category="가방">가방</button>
+            <button class="tab-btn" data-category="악세서리">악세서리</button>
+          </div>
+        </section>
+
+        <!-- 신상품 -->
+        <section class="product-section">
+          <div class="section-header">
+            <h2>신상품</h2>
+            <button class="more-btn">더보기</button>
+          </div>
+          <div class="product-grid" id="new-products"></div>
+        </section>
+
+        <!-- 베스트 상품 -->
+        <section class="product-section">
+          <div class="section-header">
+            <h2>베스트 상품</h2>
+            <button class="more-btn">더보기</button>
+          </div>
+          <div class="product-grid" id="best-products"></div>
+        </section>
+      </main>
+
+      <!-- 하단 탭바 -->
+      <nav class="bottom-tabbar">
+        <a href="index.html" class="tab-item active" data-tab="home">
+          <i data-lucide="home"></i>
+          <span>홈</span>
+        </a>
+        <a href="category.html" class="tab-item" data-tab="category">
+          <i data-lucide="grid-3x3"></i>
+          <span>카테고리</span>
+        </a>
+        <a href="cart.html" class="tab-item" data-tab="cart">
+          <i data-lucide="shopping-bag"></i>
+          <span>장바구니</span>
+        </a>
+        <a href="mypage.html" class="tab-item" data-tab="mypage">
+          <i data-lucide="user"></i>
+          <span>마이</span>
+        </a>
+      </nav>
+    </div>
+
+    <script src="./Script/script.js"></script>
+  </body>
+</html>
