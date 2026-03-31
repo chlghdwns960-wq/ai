@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품 상세 - CHJ</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="mobile-container" id="product-detail-page">
+      <header class="header detail-header">
+        <div class="header-content">
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="뒤로가기"
+            onclick="history.back()"
+          >
+            <i data-lucide="arrow-left"></i>
+          </button>
+          <h1 class="logo">CHJ</h1>
+          <a href="cart.html" class="icon-btn cart-btn" aria-label="장바구니">
+            <i data-lucide="shopping-bag"></i>
+            <span class="cart-badge">2</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="main-content detail-main">
+        <section class="detail-hero">
+          <div class="detail-image-wrap">
+            <img id="detail-image" src="" alt="상품 이미지" />
+          </div>
+        </section>
+
+        <section class="detail-content">
+          <span class="detail-category" id="detail-category">카테고리</span>
+          <h2 class="detail-name" id="detail-name">상품명</h2>
+
+          <div class="detail-price-row">
+            <span
+              class="detail-original-price"
+              id="detail-original-price"
+              hidden
+            ></span>
+            <span class="detail-price" id="detail-price"></span>
+            <span class="detail-discount" id="detail-discount" hidden></span>
+          </div>
+
+          <p class="detail-description" id="detail-description"></p>
+
+          <div class="detail-meta" id="detail-meta"></div>
+
+          <div class="detail-size-box">
+            <h3>사이즈</h3>
+            <div class="detail-size-list">
+              <button type="button" class="size-chip active">S</button>
+              <button type="button" class="size-chip">M</button>
+              <button type="button" class="size-chip">L</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="detail-bottom-bar">
+        <button type="button" class="detail-like-btn">
+          <i data-lucide="heart"></i>
+        </button>
+        <button type="button" class="detail-cart-btn">장바구니 담기</button>
+        <button type="button" class="detail-buy-btn">바로 구매</button>
+      </div>
+    </div>
+
+    <script src="./Script/script.js"></script>
+  </body>
+</html>

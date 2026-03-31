@@ -276,6 +276,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
+}
+
+.product-card[data-category="가방"] .product-image img {
+  object-position: center center;
 }
 
 .like-btn {
@@ -1009,4 +1014,234 @@ a {
   color: var(--shop-text-secondary);
   stroke-width: 2;
   flex-shrink: 0;
+}
+
+
+/* 홈 탭 필터 리스트 */
+.filtered-product-section {
+  margin-top: -4px;
+}
+
+.empty-message {
+  padding: 0 20px;
+  color: var(--shop-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+.filtered-product-section {
+  margin-bottom: 24px;
+}
+
+.empty-message {
+  padding: 8px 20px 0;
+  color: var(--shop-text-secondary);
+  font-size: 14px;
+}
+
+.product-card {
+  cursor: pointer;
+}
+
+.product-card:focus-visible {
+  outline: 2px solid var(--shop-point-main);
+  outline-offset: 4px;
+  border-radius: 20px;
+}
+
+.product-image {
+  background-color: var(--shop-bg-sub);
+}
+
+.product-image img {
+  display: block;
+}
+
+/* 상품 상세 페이지 */
+.detail-header .header-content {
+  justify-content: space-between;
+}
+
+.detail-main {
+  padding-top: 72px;
+  padding-bottom: 110px;
+}
+
+.detail-hero {
+  padding: 0 20px 20px;
+}
+
+.detail-image-wrap {
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: var(--shop-bg-sub);
+  aspect-ratio: 3 / 4;
+}
+
+.detail-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-content {
+  padding: 0 20px 24px;
+}
+
+.detail-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: var(--shop-point-sub);
+  color: var(--shop-point-deep);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.detail-name {
+  color: var(--shop-text-primary);
+  font-size: 24px;
+  line-height: 1.35;
+  letter-spacing: -0.4px;
+  margin-bottom: 14px;
+}
+
+.detail-price-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.detail-original-price {
+  color: var(--shop-text-secondary);
+  font-size: 15px;
+  text-decoration: line-through;
+}
+
+.detail-price {
+  color: var(--shop-text-primary);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.detail-discount {
+  color: var(--shop-point-main);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.detail-description {
+  color: var(--shop-text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.detail-meta {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.detail-meta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background-color: var(--shop-bg-sub);
+  border-radius: 16px;
+}
+
+.detail-meta-item span {
+  color: var(--shop-text-secondary);
+  font-size: 14px;
+}
+
+.detail-meta-item strong {
+  color: var(--shop-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.detail-size-box h3 {
+  color: var(--shop-text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.detail-size-list {
+  display: flex;
+  gap: 10px;
+}
+
+.size-chip {
+  min-width: 52px;
+  height: 42px;
+  border: 1px solid var(--shop-border);
+  background-color: white;
+  border-radius: 12px;
+  color: var(--shop-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.size-chip.active {
+  border-color: var(--shop-cta);
+  background-color: var(--shop-cta);
+  color: white;
+}
+
+.detail-bottom-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  display: grid;
+  grid-template-columns: 56px 1fr 1fr;
+  gap: 10px;
+  padding: 12px 20px 16px;
+  background-color: var(--shop-bg-main);
+  border-top: 1px solid var(--shop-border);
+}
+
+.detail-like-btn,
+.detail-cart-btn,
+.detail-buy-btn {
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.detail-like-btn {
+  background-color: var(--shop-bg-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-like-btn i {
+  width: 20px;
+  height: 20px;
+  color: var(--shop-text-primary);
+}
+
+.detail-cart-btn {
+  background-color: var(--shop-point-sub);
+  color: var(--shop-point-deep);
+}
+
+.detail-buy-btn {
+  background-color: var(--shop-cta);
+  color: white;
 }
