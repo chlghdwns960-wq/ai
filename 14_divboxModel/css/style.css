@@ -1,0 +1,57 @@
+@charset "utf-8";
+body {
+  /* 개발자 */
+  font-family: "malgun gothic", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+/* li 초기화 */
+li {
+  list-style: none;
+}
+/* div 박스 모델 구현 */
+.box {
+  width: 1000px;
+  height: 500px;
+  border: 5px solid #0201fc;
+  margin: auto;
+  /* 자식 요소 옆으로 배치 */
+  display: flex;
+  margin-bottom: 50px;
+}
+.box .child {
+  width: 300px;
+  height: 200px;
+  border: 4px solid #000;
+  margin-right: 20px;
+}
+.box .child2 {
+  width: 300px;
+  height: 200px;
+  border: 4px solid #000;
+}
+.box .child3 {
+  width: 300px;
+  height: 200px;
+  border: 4px solid #000;
+  margin-left: 20px;
+}
+/* 순서없는 목록으로 박스 모델 구현 */
+ul {
+  width: 1000px;
+  height: 500px;
+  border: 5px solid red;
+  margin: 0 auto;
+  display: flex;
+}
+ul li {
+  width: 300px;
+  height: 200px;
+  border: 4px solid #000;
+  margin-right: 20px;
+}
+ul .last {
+  margin-right: 0;
+}

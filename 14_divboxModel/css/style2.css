@@ -1,0 +1,44 @@
+@charset "utf-8";
+body {
+  font-family: "malgun gothic", sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+.box {
+  width: 1000px;
+  height: 300px;
+  border: 4px solid red;
+  margin: 0 auto;
+}
+.box div {
+  width: 480px;
+  height: 300px;
+  background: pink;
+  /* html4 버전 박스 정열한느 방법 */
+  float: left;
+  margin-right: 40px;
+}
+.box .last {
+  margin-right: 0;
+}
+ul {
+  width: 1000px;
+  height: 300px;
+  border: 4px solid blue;
+  margin: 0 auto;
+}
+li {
+  width: 480px;
+  height: 300px;
+  background: purple;
+  float: left;
+  margin-right: 40px;
+}
+ul .last2 {
+  margin-right: 0;
+}
