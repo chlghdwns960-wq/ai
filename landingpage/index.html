@@ -856,6 +856,215 @@
         color: var(--ink-4);
       }
 
+
+
+      /* MODAL */
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
+      }
+      .modal.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.56);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+      .modal-panel {
+        position: relative;
+        width: min(100%, 960px);
+        max-height: min(90vh, 920px);
+        background: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 28px;
+        padding: 28px 28px 24px;
+        box-shadow: 0 28px 80px rgba(15, 23, 42, 0.22);
+        transform: translateY(16px) scale(0.98);
+        transition: transform 0.25s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .modal.is-open .modal-panel {
+        transform: translateY(0) scale(1);
+      }
+      .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: #fff;
+        color: var(--ink-3);
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .modal-close:hover {
+        background: var(--bg-1);
+        color: var(--ink-1);
+        border-color: var(--ink-4);
+        transform: rotate(90deg);
+      }
+      .modal-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--blue-dim);
+        color: var(--blue);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        margin-bottom: 20px;
+      }
+      .modal-title {
+        font-size: 30px;
+        font-weight: 900;
+        letter-spacing: -1.2px;
+        line-height: 1.25;
+        color: var(--ink-1);
+        margin-bottom: 14px;
+      }
+      .modal-desc {
+        font-size: 15px;
+        color: var(--ink-3);
+        line-height: 1.75;
+        margin-bottom: 26px;
+      }
+      .modal-points {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .modal-point {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+        background: var(--bg-1);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+      }
+      .modal-point-icon {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        color: var(--blue);
+        font-size: 14px;
+        font-weight: 900;
+      }
+      .modal-point strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--ink-1);
+        margin-bottom: 2px;
+      }
+      .modal-point span {
+        display: block;
+        font-size: 13px;
+        color: var(--ink-3);
+        line-height: 1.6;
+      }
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+      }
+      .modal-actions .btn-primary,
+      .modal-actions .btn-ghost {
+        flex: 1;
+        padding: 16px 20px;
+        font-size: 15px;
+      }
+      .modal-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+        padding-right: 44px;
+      }
+      .modal-head-copy {
+        min-width: 0;
+      }
+      .modal-title {
+        margin-bottom: 10px;
+      }
+      .modal-desc {
+        margin-bottom: 0;
+      }
+      .modal-frame-wrap {
+        position: relative;
+        flex: 1;
+        min-height: 560px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--bg-1);
+      }
+      .modal-frame {
+        width: 100%;
+        height: min(68vh, 720px);
+        border: 0;
+        background: #fff;
+      }
+      .modal-help {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 4px 0;
+        flex-wrap: wrap;
+      }
+      .modal-help-text {
+        font-size: 13px;
+        color: var(--ink-4);
+        line-height: 1.6;
+      }
+      .modal-link {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--blue);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .modal-link:hover {
+        text-decoration: underline;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+
       /* ANIMATIONS */
       @keyframes fadeUp {
         to {
@@ -941,6 +1150,29 @@
           flex-direction: column;
           align-items: flex-start;
         }
+        .modal {
+          padding: 12px;
+        }
+        .modal-panel {
+          width: 100%;
+          max-height: 92vh;
+          padding: 20px 16px 16px;
+          border-radius: 22px;
+        }
+        .modal-title {
+          font-size: 24px;
+        }
+        .modal-frame-wrap {
+          min-height: 420px;
+          border-radius: 16px;
+        }
+        .modal-frame {
+          height: 62vh;
+          min-height: 420px;
+        }
+        .modal-help {
+          align-items: flex-start;
+        }
       }
     </style>
   </head>
@@ -960,7 +1192,7 @@
         <li><a href="#topics">콘텐츠</a></li>
         <li><a href="#process">시작 방법</a></li>
       </ul>
-      <button class="nav-cta" onclick="handleCTA()">무료로 시작하기 →</button>
+      <button class="nav-cta" onclick="handleCTA(event)">무료로 시작하기 →</button>
     </nav>
 
     <!-- HERO -->
@@ -985,7 +1217,7 @@
           생산성을 높이고, 창의적인 일에 집중하는 즐거움을 되찾으세요.
         </p>
         <div class="hero-actions">
-          <button class="btn-primary" onclick="handleCTA()">
+          <button class="btn-primary" onclick="handleCTA(event)">
             지금 바로 시작하기
           </button>
           <button
@@ -1081,7 +1313,7 @@
             나에게 맞는 진입점을 찾아드립니다. 복잡한 이론 없이 지금 당장 내
             상황에서 시작할 수 있는 방법을 알게 됩니다.
           </p>
-          <button class="topic-cta-btn" onclick="handleCTA()">
+          <button class="topic-cta-btn" onclick="handleCTA(event)">
             신청하고 확인하기 →
           </button>
         </div>
@@ -1181,7 +1413,7 @@
           </div>
         </div>
         <div class="outcome-cta-wrap reveal">
-          <button class="btn-white" onclick="handleCTA()">
+          <button class="btn-white" onclick="handleCTA(event)">
             무료로 시작하기 →
           </button>
           <p class="cta-note">
@@ -1192,6 +1424,61 @@
       </div>
     </section>
 
+
+
+    <!-- MODAL -->
+    <div
+      class="modal"
+      id="ctaModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="ctaModalTitle"
+    >
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-panel" role="document">
+        <button class="modal-close" type="button" aria-label="닫기" data-close-modal>
+          ×
+        </button>
+        <div class="modal-head">
+          <div class="modal-head-copy">
+            <div class="modal-badge">무료 신청 폼</div>
+            <h3 class="modal-title" id="ctaModalTitle">
+              버튼을 누르면<br />구글폼이 바로 열립니다
+            </h3>
+            <p class="modal-desc">
+              새 창으로 이동하지 않고, 현재 페이지 안에서 바로 신청할 수 있게 구성했습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="modal-frame-wrap">
+          <iframe
+            id="formFrame"
+            class="modal-frame"
+            title="무료 신청 구글폼"
+            src="https://forms.gle/kkxSHeB3k8H38qFeA"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+
+        <div class="modal-help">
+          <p class="modal-help-text">
+            브라우저 정책 때문에 폼이 보이지 않으면 오른쪽 링크로 바로 열 수 있습니다.
+          </p>
+          <a
+            class="modal-link"
+            href="https://forms.gle/kkxSHeB3k8H38qFeA"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            폼이 안 보이면 새 창으로 열기
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- FOOTER -->
     <footer>
       <div class="footer-logo">
@@ -1201,14 +1488,48 @@
     </footer>
 
     <script>
-      // ── CTA 핸들러 — 구글 폼 URL로 교체 ──
-      function handleCTA() {
-        const formUrl = "https://forms.gle/kkxSHeB3k8H38qFeA"; // ← 여기에 구글 폼 URL 입력
-        window.open(formUrl, "_blank");
+      const formUrl = "https://forms.gle/kkxSHeB3k8H38qFeA";
+      const nav = document.getElementById("nav");
+      const modal = document.getElementById("ctaModal");
+      const formFrame = document.getElementById("formFrame");
+      const modalCloseTargets = document.querySelectorAll("[data-close-modal]");
+      let lastTrigger = null;
+
+      function openModal(trigger = null) {
+        lastTrigger = trigger;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+
+        if (formFrame && !formFrame.getAttribute("src")) {
+          formFrame.setAttribute("src", formUrl);
+        }
+
+        const closeButton = modal.querySelector(".modal-close");
+        if (closeButton) closeButton.focus();
       }
 
-      // ── Nav 스크롤 감지 ──
-      const nav = document.getElementById("nav");
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        if (lastTrigger) lastTrigger.focus();
+      }
+
+      function handleCTA(event) {
+        openModal(event?.currentTarget || null);
+      }
+
+      modalCloseTargets.forEach((button) => {
+        button.addEventListener("click", closeModal);
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+
       window.addEventListener(
         "scroll",
         () => {
@@ -1217,7 +1538,6 @@
         { passive: true },
       );
 
-      // ── Scroll Reveal ──
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -1229,6 +1549,7 @@
         },
         { threshold: 0.12 },
       );
+
       document
         .querySelectorAll(".reveal")
         .forEach((el) => observer.observe(el));
