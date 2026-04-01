@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card UI Layout</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #ffffff;
+        font-family: "Pretendard", sans-serif;
+      }
+
+      .wrap {
+        width: 1500px;
+        margin: 60px auto;
+        background: #ffffff;
+      }
+
+      .card-list {
+        display: flex;
+        list-style: none;
+      }
+
+      .card-item {
+        width: 480px;
+        height: 530px;
+        margin-right: 30px;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 260px;
+        display: block;
+        object-fit: cover;
+        background: #dddddd;
+      }
+
+      .card-body {
+        flex: 1;
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-title {
+        padding: 0;
+        margin: 0 0 22px 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
+        color: #009c75;
+      }
+
+      .card-text {
+        padding: 0;
+        margin: 0 0 22px 0;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 0.92;
+        letter-spacing: 1px;
+        color: #262626;
+      }
+
+      .card-subtext {
+        padding: 0;
+        margin: 0;
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 0.5px;
+        color: #676767;
+      }
+
+      .card-thirdtext {
+        padding: 0;
+        margin: 0;
+        font-size: 26px;
+        font-weight: 700;
+        text-align: right;
+      }
+
+      .card-thirdtext span {
+        font-size: 24px;
+        font-weight: 400;
+      }
+
+      .card-item:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="card-list">
+        <li class="card-item">
+          <img class="card-image" src="./imges/img1.jpg" alt="카드 이미지 1" />
+          <div class="card-body">
+            <div class="card-content">
+              <h2 class="card-title">해외여행</h2>
+              <p class="card-text">
+                [서유럽 여행] ★런던/프랑스/스위스/이탈리아
+              </p>
+              <p class="card-subtext">
+                #6월연휴기간출발 #가족여행추천 #베스트상품
+              </p>
+            </div>
+            <p class="card-thirdtext">3,199,000<span>원~</span></p>
+          </div>
+        </li>
+
+        <li class="card-item">
+          <img class="card-image" src="./imges/img2.jpg" alt="카드 이미지 2" />
+          <div class="card-body">
+            <div class="card-content">
+              <h2 class="card-title">해외여행</h2>
+              <p class="card-text">
+                [대만/단수이/예류/스펀/지우펀] 3/4/5일 ★BEST
+              </p>
+              <p class="card-subtext">
+                #스펀 천등 체험 #센과치히로의행방불명'지우펀' # 기암괴석
+                예류해양공원
+              </p>
+            </div>
+            <p class="card-thirdtext">529,900<span>원~</span></p>
+          </div>
+        </li>
+
+        <li class="card-item">
+          <img class="card-image" src="./imges/img3.jpg" alt="카드 이미지 3" />
+          <div class="card-body">
+            <div class="card-content">
+              <h2 class="card-title">해외여행</h2>
+              <p class="card-text">[시드니] 베스트셀러 6/7일 ★전일정 4성</p>
+              <p class="card-subtext">
+                #블루마운틴 #오페라하우스 # 시드니동물원 # 저비스베이 #
+                돌핀크루즈 # 하버크루즈
+              </p>
+            </div>
+            <p class="card-thirdtext">1,149,000<span>원~</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
