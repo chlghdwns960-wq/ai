@@ -118,6 +118,10 @@ body {
   transition: background-color 0.2s ease;
 }
 
+.visual-card:hover {
+  background: #ff6400;
+}
+
 .video-card {
   grid-column: 2;
   grid-row: 1 / 3;
