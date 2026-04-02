@@ -7,12 +7,11 @@
 
 body {
   font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  background: url(./image/img4.jpg);
+  background: url(/image/img4.jpg);
 }
 
 .hero {
   min-height: 100vh;
-  background-image: url("./images/bg.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
