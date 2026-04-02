@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form태그</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <h1>[폼 구성 요소 알아보기]</h1>
+    <!-- 데이터를 전송하는 방식 GET 방식(보완성이 낮음)method -->
+    <!-- 데이터를 전송하는 방식 POST 방식-->
+    <form action="" name="login" method="post">
+      <!-- 그룹 테두리 -->
+      <fieldset>
+        <legend>로그인화면</legend>
+        <ol>
+          <li>
+            <label for="idinput">ID</label>
+            <input
+              type="text"
+              class="idbox"
+              name="id"
+              id="idinput"
+              placeholder="아이디또는전화번호"
+            />
+          </li>
+          <li>
+            <!-- for= name= 장애자를 위한 코딩(웹접근성 코드) -->
+            <label for="pwbox">PASSWORD</label>
+            <input
+              type="password"
+              name="pw"
+              placeholder="비밀번호"
+              id="pwbox"
+            />
+          </li>
+        </ol>
+      </fieldset>
+      <!-- 서버로 데이터를 전송하는 버튼 -->
+      <input type="submit" value="로그인" />
+      <!-- 입력한 데이터를 초기화 버튼 -->
+      <input type="reset" value="다시입력" />
+    </form>
+    <!-- 2번째 버튼 박스 만들기-->
+    <form action="" name="my" method="POST">
+      <fieldset>
+        <legend>개인신상정보</legend>
+        <ul>
+          <li>
+            <!-- radio 버튼은 여러개 요소 중에서 하나만 선택시 이름똑같게 -->
+            <input type="radio" name="gender" id="men" /><label for="men"
+              >남</label
+            >
+            <!-- 버튼 기본값 설정 checked -->
+            <input type="radio" name="gender" checked id="women" />
+            <label for="women">여</label>
+            <input type="radio" name="gender" />
+            <label for="">중성자</label>
+          </li>
+          <li>
+            <!-- checkbox 버튼은 여러개 요소를 선택할 시 -->
+            <label for="tour">여행</label>
+            <input type="checkbox" checked id="tour" name="chk" value="여행" />
+            <label for="movi">영화 </label>
+            <input type="checkbox" id="movi" name="chk2" value="영화" />
+            <label for="book">독서 </label>
+            <input type="checkbox" id="book" name="chk3" value="독서" />
+          </li>
+          <li>
+            <!-- 체크박스 만들기 -->
+            <label for="color">칼라선택</label>
+            <select name="colorlist" id="color">
+              <option>:::::색상선택:::::</option>
+              <option value="빨강">빨간색</option>
+              <option value="초록">녹색</option>
+              <option value="파랑">파란색</option>
+            </select>
+          </li>
+          <li>
+            <label for="ml">리스트 목록 (다중 선택)</label>
+            <select name="multiselect" id="ml" multiple>
+              <option>사이즈를 선택하세요</option>
+              <option value="44">44</option>
+              <option value="55">55</option>
+              <option value="66">66</option>
+              <option value="77">77</option>
+            </select>
+          </li>
+          <li>
+            <!--여러 줄 입력 받을 때  -->
+            <label for="ms">MESSAGE</label>
+            <textarea name="msg" id="ms" cols="60" rows="20">
+문의 사항 작성</textarea
+            >
+          </li>
+          <li>
+            <label for="file">파일첨부</label>
+            <input type="file" id="file" name="file" />
+          </li>
+          <li>
+            <label for="col">색상선택</label>
+            <input type="color" name="color" id="col" />
+          </li>
+          <li>
+            <label for="ddd">예약날짜</label>
+            <input type="date" id="ddd" name="date" />
+          </li>
+          <li>
+            <label for="time">예약시간</label>
+            <input type="time" name="time" id="time" />
+          </li>
+          <li>
+            <label for="dt">날짜시간예약</label>
+            <input type="datetime-local" name="datetime" id="dt" />
+          </li>
+        </ul>
+      </fieldset>
+      <input type="submit" value="가입" />
+      <input type="reset" value="다시입력" />
+    </form>
+    <!-- 3번째-->
+  </body>
+</html>

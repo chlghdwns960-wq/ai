@@ -1,0 +1,25 @@
+@charset "utf-8";
+body {
+  font-family: "맑은 고딕";
+}
+
+form {
+  width: 428px;
+}
+
+form ol li {
+  list-style: none;
+  margin-bottom: 22px;
+}
+
+form ol .name {
+  margin-left: 32px;
+}
+
+form ol .id {
+  margin-left: 16px;
+}
+
+form input [type="text"] [type="password"] {
+  border-radius: 8px;
+}
