@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 협업 — 직장인을 위한 실전 AI 가이드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 16 16">
+            <path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5L8 1Z" />
+          </svg>
+        </div>
+        AI<em>협업</em>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#problem">문제 정의</a></li>
+        <li><a href="#topics">콘텐츠</a></li>
+        <li><a href="#process">시작 방법</a></li>
+      </ul>
+      <button class="nav-cta" onclick="handleCTA(event)">
+        무료로 시작하기 →
+      </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
+      <div class="hero-grid"></div>
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          직장인을 위한 실전 AI 협업
+        </div>
+        <h1 class="hero-title">
+          AI 때문에 복잡해지는 게 아니라<br />
+          <span class="hl">AI 덕분에 일이 가벼워집니다</span>
+        </h1>
+        <p class="hero-sub">
+          AI 활용이 막막한 직장인에게 실무에서 바로 쓸 수 있는<br />
+          AI 협업 방법을 알려드립니다.<br />
+          생산성을 높이고, 창의적인 일에 집중하는 즐거움을 되찾으세요.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="handleCTA(event)">
+            지금 바로 시작하기
+          </button>
+          <button
+            class="btn-ghost"
+            onclick="
+              document
+                .getElementById('topics')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            콘텐츠 보기 ↓
+          </button>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="trust-num">3배</span>
+            <div class="trust-label">업무 속도 향상</div>
+          </div>
+          <div class="trust-div"></div>
+          <div class="trust-item">
+            <span class="trust-num">즉시</span>
+            <div class="trust-label">실무 적용</div>
+          </div>
+          <div class="trust-div"></div>
+          <div class="trust-item">
+            <span class="trust-num">100%</span>
+            <div class="trust-label">비전문가 가능</div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue">
+        <div class="scroll-line"></div>
+        scroll
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section problem-section" id="problem">
+      <div class="reveal">
+        <p class="section-eyebrow">왜 AI가 어려운가</p>
+        <h2 class="section-title">직장인이 AI에서<br />막히는 진짜 이유</h2>
+        <p class="section-desc">
+          써야 한다는 압박은 있는데, 어디서부터 시작해야 할지 모르는 게 핵심
+          문제입니다.
+        </p>
+      </div>
+      <div class="problem-grid">
+        <div class="prob-card reveal reveal-d1">
+          <div class="prob-icon">😤</div>
+          <h3>심리적 장벽</h3>
+          <p>
+            AI는 개발자나 IT 전문가 얘기라고 느껴져서 나와는 상관없다고 생각하게
+            됩니다.
+          </p>
+          <div class="prob-quote">"AI는 나랑 다른 세계 얘기잖아요"</div>
+        </div>
+        <div class="prob-card reveal reveal-d2">
+          <div class="prob-icon">🤯</div>
+          <h3>프롬프트 진입 장벽</h3>
+          <p>
+            프롬프트라는 말 자체가 낯설고, ChatGPT 창 앞에서 무엇을 입력해야
+            할지 막막합니다.
+          </p>
+          <div class="prob-quote">"뭘 물어봐야 할지 모르겠어요"</div>
+        </div>
+        <div class="prob-card reveal reveal-d3">
+          <div class="prob-icon">😩</div>
+          <h3>부정적 경험</h3>
+          <p>
+            한두 번 써봤지만 결과가 기대와 달라 오히려 더 많은 수정이 필요했던
+            경험이 있습니다.
+          </p>
+          <div class="prob-quote">"써봤는데 오히려 더 복잡해졌어요"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICS -->
+    <section class="section topics-section" id="topics">
+      <div class="reveal">
+        <p class="section-eyebrow">실무 AI 협업 콘텐츠</p>
+        <h2 class="section-title">이론 말고,<br />내일 바로 써먹는 내용만</h2>
+        <p class="section-desc">
+          3개의 핵심 주제로 AI 협업을 처음부터 실전까지 안내합니다.
+        </p>
+      </div>
+      <div class="topics-layout">
+        <div class="topic-main reveal reveal-d1">
+          <div class="topic-tag">📌 Topic 01</div>
+          <h3>왜 AI가 어려운가:<br />직장인이 막히는 진짜 이유</h3>
+          <p>
+            AI를 써야 한다는 압박은 있는데 어디부터 시작해야 할지 모릅니다.
+            나에게 맞는 진입점을 찾아드립니다. 복잡한 이론 없이 지금 당장 내
+            상황에서 시작할 수 있는 방법을 알게 됩니다.
+          </p>
+          <button class="topic-cta-btn" onclick="handleCTA(event)">
+            신청하고 확인하기 →
+          </button>
+        </div>
+        <div class="topic-side reveal reveal-d2">
+          <div class="topic-num">TOPIC 02</div>
+          <h3>실무에 바로 적용하는<br />AI 협업 방법</h3>
+          <p>
+            이론이 아니라 바로 써먹는 실전 활용. 문서 작성, 이메일, 회의록,
+            보고서 — 지금 당장 내 업무에 적용할 수 있는 방법을 담았습니다.
+          </p>
+          <div class="topic-badge">⚡ 즉시 적용 가능</div>
+        </div>
+        <div class="topic-side reveal reveal-d3">
+          <div class="topic-num">TOPIC 03</div>
+          <h3>AI를 잘 쓰면 생기는 변화:<br />생산성 + 창의성 회복</h3>
+          <p>
+            단순 반복 업무에서 벗어나 정말 중요한 일에 집중하는 시간이 생깁니다.
+            AI 덕분에 퇴근이 빨라지는 경험을 하게 됩니다.
+          </p>
+          <div class="topic-badge">✨ 삶의 질 변화</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process-section" id="process">
+      <div class="reveal">
+        <p class="section-eyebrow">시작 방법</p>
+        <h2 class="section-title">4단계로 바로<br />시작할 수 있습니다</h2>
+        <p class="section-desc">
+          복잡한 설치나 준비 없이, 신청만 하면 바로 시작됩니다.
+        </p>
+      </div>
+      <div class="process-steps">
+        <div class="step reveal reveal-d1">
+          <div class="step-circle">1</div>
+          <div>
+            <h4>무료 신청</h4>
+            <p>
+              구글 폼으로 30초 안에 신청 완료. 이름과 이메일만 입력하면 됩니다.
+            </p>
+          </div>
+        </div>
+        <div class="step reveal reveal-d2">
+          <div class="step-circle">2</div>
+          <div>
+            <h4>콘텐츠 수신</h4>
+            <p>신청 즉시 첫 번째 AI 협업 가이드를 받아볼 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="step reveal reveal-d3">
+          <div class="step-circle">3</div>
+          <div>
+            <h4>실무 적용</h4>
+            <p>오늘 배운 내용을 내일 업무에 바로 적용해보세요.</p>
+          </div>
+        </div>
+        <div class="step reveal reveal-d4">
+          <div class="step-circle">4</div>
+          <div>
+            <h4>변화 경험</h4>
+            <p>AI 덕분에 일이 가벼워지는 경험을 직접 느껴보세요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTCOME / CTA -->
+    <section class="outcome-section">
+      <div class="outcome-inner">
+        <div class="reveal" style="text-align: center">
+          <div class="outcome-badge">✦ 지금 신청하면</div>
+          <h2 class="outcome-title">
+            AI가 복잡하게 느껴지던 날은<br />끝납니다
+          </h2>
+          <p class="outcome-sub">
+            AI 때문에 뒤처질까 봐 불안했던 마음 대신,<br />
+            AI 덕분에 퇴근이 빨라지는 경험을 하게 됩니다.
+          </p>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card">
+            <span class="stat-num" id="cnt-speed"
+              >3<span class="stat-unit">배</span></span
+            >
+            <div class="stat-label">문서 작성 속도 향상</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" style="font-size: 32px">즉시</span>
+            <div class="stat-label">이론 아닌 실무 적용</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="cnt-pct"
+              >100<span class="stat-unit">%</span></span
+            >
+            <div class="stat-label">비전문가도 가능</div>
+          </div>
+        </div>
+        <div class="outcome-cta-wrap reveal">
+          <button class="btn-white" onclick="handleCTA(event)">
+            무료로 시작하기 →
+          </button>
+          <p class="cta-note">
+            ✓ 무료<span>·</span>부담 없이 신청 가능<span>·</span>언제든 구독
+            취소
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <div
+      class="modal"
+      id="ctaModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="ctaModalTitle"
+    >
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-panel modal-panel-form" role="document">
+        <button
+          class="modal-close"
+          type="button"
+          aria-label="닫기"
+          data-close-modal
+        >
+          ×
+        </button>
+
+        <div class="modal-head">
+          <div class="modal-head-copy">
+            <div class="modal-badge">개인정보 수집 폼</div>
+            <h3 class="modal-title" id="ctaModalTitle">
+              신청 정보를 입력하면<br />구글시트로 전송됩니다
+            </h3>
+            <p class="modal-desc">
+              이름, 전화번호, 이메일주소를 입력하면 네가 연결한 Apps Script
+              URL로 제출되도록 구성했습니다.
+            </p>
+          </div>
+        </div>
+
+        <form
+          id="leadForm"
+          class="lead-form"
+          action="https://script.google.com/macros/s/AKfycbyJslRG1ED9zLCPiI1bm_SQWLJHwGrF92SkGLsTLuQQ1eQlqcJa-umzGSQk5yPt7ip5/exec"
+          method="POST"
+          target="hiddenFormFrame"
+          accept-charset="UTF-8"
+          novalidate
+        >
+          <div class="form-field">
+            <label for="nameInput">이름</label>
+            <input
+              type="text"
+              id="nameInput"
+              name="Name"
+              placeholder="이름을 입력해줘"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="phoneInput">전화번호</label>
+            <input
+              type="tel"
+              id="phoneInput"
+              name="Pone"
+              placeholder="010-1234-5678"
+              autocomplete="tel"
+              inputmode="numeric"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="emailInput">이메일주소</label>
+            <input
+              type="email"
+              id="emailInput"
+              name="Email"
+              placeholder="example@email.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-consent">
+            <div class="consent-box">
+              <p class="consent-title">개인정보 수집 안내</p>
+              <p class="consent-text">수집 항목: 이름, 전화번호, 이메일주소</p>
+            </div>
+
+            <label class="consent-check" for="privacyConsent">
+              <input type="checkbox" id="privacyConsent" required />
+              <span>개인정보 수집 및 이용에 동의합니다.</span>
+            </label>
+          </div>
+
+          <button class="form-submit" type="submit">정보 제출하기</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+
+        <iframe
+          name="hiddenFormFrame"
+          id="hiddenFormFrame"
+          class="hidden-submit-frame"
+          title="hidden submit frame"
+        ></iframe>
+
+        <div class="modal-help">
+          <p class="modal-help-text">
+            필드 name 값은 요청대로 Name / Pone / Email로 맞춰뒀어.
+          </p>
+          <a
+            class="modal-link"
+            href="https://script.google.com/macros/s/AKfycbyJslRG1ED9zLCPiI1bm_SQWLJHwGrF92SkGLsTLuQQ1eQlqcJa-umzGSQk5yPt7ip5/exec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apps Script 주소 열기
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">
+        AI<em>협업</em> — 직장인을 위한 실전 AI 가이드
+      </div>
+      <p>© 2025 AI협업 · 개인 브랜딩 프로젝트 · v1.0</p>
+    </footer>
+
+    <script src="./script/script.js"></script>
+  </body>
+</html>
