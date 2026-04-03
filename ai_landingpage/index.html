@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 랜딩페이지</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #2c1d3d;
+        --panel: #241634;
+        --card: #f6f4f8;
+        --text: #ffffff;
+        --muted: #c9bfd7;
+        --digit-top: #1d132d;
+        --digit-bottom: #4f3a70;
+        --green: #27c02f;
+        --danger: #ff8f8f;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        font-family:
+          "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        padding: 36px 20px 60px;
+      }
+
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 940px;
+      }
+
+      .hero {
+        text-align: center;
+        padding-top: 18px;
+        margin-bottom: 30px;
+      }
+
+      .hero h1 {
+        margin: 0 0 22px;
+        font-size: 46px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        color: #f2edf7;
+      }
+
+      .hero h1 strong {
+        font-weight: 600;
+      }
+
+      .countdown {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+
+      .count-group {
+        display: flex;
+        gap: 8px;
+      }
+
+      .colon {
+        font-size: 62px;
+        font-weight: 700;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.9);
+        transform: translateY(-5px);
+        padding: 0 6px;
+      }
+
+      .digit {
+        position: relative;
+        width: 72px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      }
+
+      .digit::before,
+      .digit::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50%;
+      }
+
+      .digit::before {
+        top: 0;
+        background: var(--digit-top);
+      }
+
+      .digit::after {
+        bottom: 0;
+        background: var(--digit-bottom);
+      }
+
+      .digit span {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: 58px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        z-index: 1;
+        color: #ffffff;
+      }
+
+      .search-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .search-row p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--muted);
+      }
+
+      .search-select {
+        position: relative;
+        width: 270px;
+      }
+
+      .search-select select {
+        width: 100%;
+        height: 32px;
+        padding: 0 38px 0 12px;
+        border: 2px solid var(--green);
+        background: #f7f7f7;
+        color: #888;
+        font-size: 12px;
+        outline: none;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      .search-select::after {
+        content: "";
+        position: absolute;
+        right: 11px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid #38aa24;
+        transform: translateY(-35%);
+        pointer-events: none;
+      }
+
+      .board {
+        width: 100%;
+        max-width: 940px;
+        background: var(--panel);
+        border-radius: 0;
+        padding: 64px 102px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .question {
+        margin: 0 0 40px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.55;
+        color: #f1eef6;
+        letter-spacing: -0.02em;
+      }
+
+      .question em {
+        font-style: normal;
+        color: #ffffff;
+      }
+
+      .eventForm {
+        margin-bottom: 140px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 232px);
+        gap: 20px;
+        max-width: 736px;
+        margin: 0 auto 72px;
+      }
+
+      .prize-card {
+        position: relative;
+      }
+
+      .prize-input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .card-ui {
+        width: 232px;
+        height: 330px;
+        background: var(--card);
+        border: 2px solid transparent;
+        border-radius: 7px;
+        padding: 16px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .card-ui:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.14);
+      }
+
+      .prize-input:checked + .card-ui {
+        border-color: rgba(123, 44, 255, 0.85);
+        box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.08);
+      }
+
+      .item-name {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: #26212e;
+        line-height: 1.35;
+        min-height: 32px;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+      }
+
+      .item-visual {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+
+      .item-visual--drive,
+      .item-visual--milk {
+        align-items: center;
+      }
+
+      .item-visual img {
+        max-width: 100%;
+        max-height: 110%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        display: block;
+      }
+
+      .item-image--drive {
+        width: auto !important;
+        max-width: 78%;
+        height: auto !important;
+        max-height: 88%;
+        transform: none;
+      }
+
+      .item-image--milk {
+        width: auto !important;
+        max-width: 78%;
+        height: auto !important;
+        max-height: 88%;
+        transform: none;
+      }
+
+      .item-image--voucher {
+        width: auto !important;
+        max-width: 118%;
+        height: auto !important;
+        max-height: 126%;
+        transform: scale(1.26);
+        transform-origin: center;
+      }
+
+      .item-image--camera {
+        width: auto !important;
+        max-width: 118%;
+        height: auto !important;
+        max-height: 126%;
+        transform: scale(1.16);
+        transform-origin: center;
+      }
+
+      .item-image--voucher-ticket {
+        width: auto !important;
+        max-width: 118%;
+        height: auto !important;
+        max-height: 126%;
+        transform: scale(1.18);
+        transform-origin: center;
+      }
+
+      .qty {
+        margin-top: auto;
+        margin-bottom: 10px;
+        font-size: 13px;
+        color: #706777;
+      }
+
+      .qty strong {
+        font-size: 30px;
+        line-height: 1;
+        color: #7129ff;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        vertical-align: -1px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.08);
+        margin-bottom: 12px;
+      }
+
+      .radio-visual {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 2px solid #d4d0d7;
+        display: grid;
+        place-items: center;
+        transition: border-color 0.2s ease;
+      }
+
+      .radio-visual::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: transparent;
+        transition: background 0.2s ease;
+      }
+
+      .prize-input:checked + .card-ui .radio-visual {
+        border-color: #7129ff;
+      }
+
+      .prize-input:checked + .card-ui .radio-visual::after {
+        background: #7129ff;
+      }
+
+      .submit-wrap {
+        display: flex;
+        justify-content: center;
+      }
+
+      .submit-btn {
+        width: 522px;
+        height: 70px;
+        border: 0;
+        border-radius: 8px;
+        background: linear-gradient(
+          90deg,
+          #7322ff 0%,
+          #8828ff 40%,
+          #7a10ff 100%
+        );
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        cursor: pointer;
+        box-shadow: 0 14px 24px rgba(74, 10, 163, 0.28);
+        transition:
+          transform 0.18s ease,
+          filter 0.18s ease;
+      }
+
+      .submit-btn:hover,
+      .modal-submit:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.04);
+      }
+
+      .submit-btn:active,
+      .modal-submit:active {
+        transform: translateY(0);
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 30;
+      }
+
+      .modal.is-open {
+        display: flex;
+      }
+
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(8, 5, 16, 0.74);
+      }
+
+      .modal-dialog {
+        position: relative;
+        width: 100%;
+        max-width: 520px;
+        background: #ffffff;
+        color: #111111;
+        border-radius: 18px;
+        padding: 28px 24px 24px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+        z-index: 1;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+        border: 0;
+        border-radius: 999px;
+        background: #f2f2f2;
+        color: #333333;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .modal-title {
+        margin: 0 0 10px;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.03em;
+      }
+
+      .modal-desc {
+        margin: 0 0 20px;
+        font-size: 15px;
+        line-height: 1.5;
+        color: #666666;
+      }
+
+      .selected-gift-box {
+        margin-bottom: 20px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #f5efff;
+        border: 1px solid #e3d7ff;
+      }
+
+      .selected-gift-label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #6d43cb;
+      }
+
+      .selected-gift-value {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        color: #2d1b52;
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+      }
+
+      .entry-form {
+        display: grid;
+        gap: 14px;
+      }
+
+      .field-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #222222;
+      }
+
+      .field-input {
+        width: 100%;
+        height: 52px;
+        padding: 0 16px;
+        border: 1px solid #d6d6d6;
+        border-radius: 12px;
+        background: #ffffff;
+        font-size: 15px;
+        color: #111111;
+        outline: none;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .field-input:focus {
+        border-color: #7a10ff;
+        box-shadow: 0 0 0 4px rgba(122, 16, 255, 0.08);
+      }
+
+      .privacy-box {
+        margin-top: 4px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #f7f7f9;
+        border: 1px solid #e8e8ee;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333333;
+      }
+
+      .checkbox-row input {
+        margin-top: 2px;
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+      }
+
+      .field-error,
+      .submit-error,
+      .submit-success {
+        display: none;
+        font-size: 13px;
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+      }
+
+      .field-error,
+      .submit-error {
+        color: #d73a49;
+      }
+
+      .submit-success {
+        color: #177245;
+      }
+
+      .field-error.is-visible,
+      .submit-error.is-visible,
+      .submit-success.is-visible {
+        display: block;
+      }
+
+      .modal-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 6px;
+      }
+
+      .modal-cancel,
+      .modal-submit {
+        height: 56px;
+        border-radius: 12px;
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.18s ease,
+          filter 0.18s ease;
+      }
+
+      .modal-cancel {
+        border: 1px solid #d9d9e2;
+        background: #ffffff;
+        color: #333333;
+      }
+
+      .modal-submit {
+        border: 0;
+        background: linear-gradient(
+          90deg,
+          #7322ff 0%,
+          #8828ff 40%,
+          #7a10ff 100%
+        );
+        color: #ffffff;
+      }
+
+      .modal-submit:disabled {
+        opacity: 0.7;
+        cursor: wait;
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(20px);
+        background: rgba(19, 12, 29, 0.92);
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+        z-index: 40;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      @media (max-width: 840px) {
+        .board {
+          padding: 34px 18px 34px;
+        }
+
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          max-width: 484px;
+          justify-content: center;
+          margin-bottom: 48px;
+        }
+
+        .submit-btn {
+          width: 100%;
+          max-width: 522px;
+          height: 70px;
+          font-size: 24px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        body {
+          padding: 20px 14px 40px;
+        }
+
+        .hero h1 {
+          font-size: 22px;
+          line-height: 1.45;
+        }
+
+        .digit {
+          width: 46px;
+          height: 66px;
+        }
+
+        .digit span {
+          font-size: 38px;
+        }
+
+        .colon {
+          font-size: 38px;
+          padding: 0 2px;
+        }
+
+        .search-row {
+          gap: 10px;
+        }
+
+        .search-row p {
+          width: 100%;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+          max-width: 232px;
+        }
+
+        .question {
+          font-size: 18px;
+        }
+
+        .modal-dialog {
+          padding: 24px 18px 18px;
+        }
+
+        .modal-title {
+          font-size: 24px;
+        }
+
+        .modal-actions {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>매일 밤 <strong>10시</strong> 이벤트가 시작됩니다.</h1>
+
+        <div class="countdown" aria-label="이벤트 시작 카운트다운">
+          <div class="count-group" data-group="hours">
+            <div class="digit"><span>0</span></div>
+            <div class="digit"><span>0</span></div>
+          </div>
+          <div class="colon">:</div>
+          <div class="count-group" data-group="minutes">
+            <div class="digit"><span>0</span></div>
+            <div class="digit"><span>0</span></div>
+          </div>
+          <div class="colon">:</div>
+          <div class="count-group" data-group="seconds">
+            <div class="digit"><span>0</span></div>
+            <div class="digit"><span>0</span></div>
+          </div>
+        </div>
+
+        <div class="search-row">
+          <p>회원님이 보다 빠르게 정답을 찾을 수 있도록</p>
+          <div class="search-select">
+            <select aria-label="검색 힌트 선택">
+              <option selected>초록 검색창을 띄워주세요!</option>
+              <option>네이버에서 검색해보기</option>
+              <option>이벤트 공지 먼저 보기</option>
+              <option>힌트 키워드 확인하기</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="board">
+        <p class="question">
+          Q. 3월 13일 문제 : 커넥츠에서 등업을 하려면 어떤 신청을 해야
+          할까요?<br />
+          <em>(힌트 : 000신청 / 3글자)</em>
+        </p>
+
+        <section class="eventForm" id="eventForm">
+          <div class="grid">
+            <label class="prize-card">
+              <input
+                class="prize-input"
+                type="radio"
+                name="gift"
+                value="소니 미러리스 A5100"
+                checked
+              />
+              <span class="card-ui">
+                <span class="item-name">소니 미러리스 A5100</span>
+                <span class="item-visual" aria-hidden="true">
+                  <img
+                    class="item-image--camera"
+                    src="./images/img1.png"
+                    alt="소니 미러리스 A5100"
+                  />
+                </span>
+                <span class="qty"><strong>3</strong>개 남음</span>
+                <span class="divider"></span>
+                <span class="radio-visual"></span>
+              </span>
+            </label>
+
+            <label class="prize-card">
+              <input
+                class="prize-input"
+                type="radio"
+                name="gift"
+                value="신라호텔 더 파크뷰 식사권"
+              />
+              <span class="card-ui">
+                <span class="item-name">신라호텔 더 파크 뷔 식사권</span>
+                <span class="item-visual" aria-hidden="true">
+                  <img
+                    class="item-image--voucher-ticket"
+                    src="./images/img2.png"
+                    alt="신라호텔 더 파크 뷔 식사권"
+                  />
+                </span>
+                <span class="qty"><strong>5</strong>개 남음</span>
+                <span class="divider"></span>
+                <span class="radio-visual"></span>
+              </span>
+            </label>
+
+            <label class="prize-card">
+              <input
+                class="prize-input"
+                type="radio"
+                name="gift"
+                value="외장하드 1TB"
+              />
+              <span class="card-ui">
+                <span class="item-name">외장하드 1TB</span>
+                <span class="item-visual item-visual--drive" aria-hidden="true">
+                  <img
+                    class="item-image--drive"
+                    src="./images/img3.png"
+                    alt="외장하드 1TB"
+                  />
+                </span>
+                <span class="qty"><strong>10</strong>개 남음</span>
+                <span class="divider"></span>
+                <span class="radio-visual"></span>
+              </span>
+            </label>
+
+            <label class="prize-card">
+              <input
+                class="prize-input"
+                type="radio"
+                name="gift"
+                value="라미 만년필"
+              />
+              <span class="card-ui">
+                <span class="item-name">라미 만년필</span>
+                <span class="item-visual" aria-hidden="true">
+                  <img src="./images/img4.png" alt="라미 만년필" />
+                </span>
+                <span class="qty"><strong>3</strong>개 남음</span>
+                <span class="divider"></span>
+                <span class="radio-visual"></span>
+              </span>
+            </label>
+
+            <label class="prize-card">
+              <input
+                class="prize-input"
+                type="radio"
+                name="gift"
+                value="백화점 상품권 1만원"
+              />
+              <span class="card-ui">
+                <span class="item-name">백화점 상품권 1만원</span>
+                <span class="item-visual" aria-hidden="true">
+                  <img
+                    class="item-image--voucher"
+                    src="./images/img5.png"
+                    alt="백화점 상품권 1만원"
+                  />
+                </span>
+                <span class="qty"><strong>10</strong>개 남음</span>
+                <span class="divider"></span>
+                <span class="radio-visual"></span>
+              </span>
+            </label>
+
+            <label class="prize-card">
+              <input
+                class="prize-input"
+                type="radio"
+                name="gift"
+                value="초코맛 우유"
+              />
+              <span class="card-ui">
+                <span class="item-name">초코맛 우유</span>
+                <span class="item-visual item-visual--milk" aria-hidden="true">
+                  <img
+                    class="item-image--milk"
+                    src="./images/img6.png"
+                    alt="초코맛 우유"
+                  />
+                </span>
+                <span class="qty"><strong>2</strong>개 남음</span>
+                <span class="divider"></span>
+                <span class="radio-visual"></span>
+              </span>
+            </label>
+          </div>
+
+          <div class="submit-wrap">
+            <button class="submit-btn" id="openModalButton" type="button">
+              응모하기
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="modal" id="entryModal" aria-hidden="true">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button
+          class="modal-close"
+          id="modalCloseButton"
+          type="button"
+          aria-label="닫기"
+        >
+          ×
+        </button>
+        <h2 class="modal-title" id="modalTitle">이벤트 응모 정보 입력</h2>
+        <p class="modal-desc">
+          선택한 상품과 개인정보를 입력하면 구글시트로 저장돼.
+        </p>
+
+        <div class="selected-gift-box">
+          <span class="selected-gift-label">선택한 상품</span>
+          <strong class="selected-gift-value" id="selectedGiftText">-</strong>
+        </div>
+
+        <form class="entry-form" id="entryForm">
+          <input type="hidden" id="selectedGiftInput" name="Item" value="" />
+
+          <div>
+            <label class="field-label" for="nameInput">이름</label>
+            <input
+              class="field-input"
+              id="nameInput"
+              name="Name"
+              type="text"
+              placeholder="이름을 입력해줘"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="field-label" for="phoneInput">전화번호</label>
+            <input
+              class="field-input"
+              id="phoneInput"
+              name="Pone"
+              type="tel"
+              inputmode="tel"
+              placeholder="전화번호를 입력해줘"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="field-label" for="emailInput">이메일주소</label>
+            <input
+              class="field-input"
+              id="emailInput"
+              name="Email"
+              type="email"
+              placeholder="이메일주소를 입력해줘"
+              required
+            />
+          </div>
+
+          <div class="privacy-box">
+            <label class="checkbox-row" for="privacyConsent">
+              <input
+                id="privacyConsent"
+                name="PrivacyConsent"
+                type="checkbox"
+                required
+              />
+              <span
+                >개인정보 수집 및 저장에 동의합니다. 수집 항목: 이름, 전화번호,
+                이메일주소, 선택 상품</span
+              >
+            </label>
+          </div>
+
+          <p class="field-error" id="fieldError">입력값을 다시 확인해줘.</p>
+          <p class="submit-error" id="submitError">
+            저장 중 오류가 발생했어. Apps Script 배포 상태와 CORS 설정을
+            확인해줘.
+          </p>
+          <p class="submit-success" id="submitSuccess">
+            응모 정보가 저장되었어.
+          </p>
+
+          <div class="modal-actions">
+            <button class="modal-cancel" id="modalCancelButton" type="button">
+              취소
+            </button>
+            <button class="modal-submit" id="modalSubmitButton" type="submit">
+              저장하고 응모하기
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast">응모가 완료되었습니다.</div>
+
+    <script>
+      const scriptUrl =
+        "https://script.google.com/macros/s/AKfycbyJslRG1ED9zLCPiI1bm_SQWLJHwGrF92SkGLsTLuQQ1eQlqcJa-umzGSQk5yPt7ip5/exec";
+      const targetHour = 22;
+
+      const hourDigits = document.querySelectorAll(
+        '[data-group="hours"] .digit span',
+      );
+      const minuteDigits = document.querySelectorAll(
+        '[data-group="minutes"] .digit span',
+      );
+      const secondDigits = document.querySelectorAll(
+        '[data-group="seconds"] .digit span',
+      );
+
+      const openModalButton = document.getElementById("openModalButton");
+      const entryModal = document.getElementById("entryModal");
+      const modalBackdrop = document.getElementById("modalBackdrop");
+      const modalCloseButton = document.getElementById("modalCloseButton");
+      const modalCancelButton = document.getElementById("modalCancelButton");
+      const entryForm = document.getElementById("entryForm");
+      const selectedGiftText = document.getElementById("selectedGiftText");
+      const selectedGiftInput = document.getElementById("selectedGiftInput");
+      const fieldError = document.getElementById("fieldError");
+      const submitError = document.getElementById("submitError");
+      const submitSuccess = document.getElementById("submitSuccess");
+      const modalSubmitButton = document.getElementById("modalSubmitButton");
+      const toast = document.getElementById("toast");
+
+      let toastTimer;
+
+      function getNextTargetTime() {
+        const now = new Date();
+        const target = new Date();
+        target.setHours(targetHour, 0, 0, 0);
+
+        if (now >= target) {
+          target.setDate(target.getDate() + 1);
+        }
+
+        return target;
+      }
+
+      function splitTime(value) {
+        return String(value).padStart(2, "0").split("");
+      }
+
+      function renderCountdown() {
+        const now = new Date();
+        const target = getNextTargetTime();
+        const diff = target - now;
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        const [h1, h2] = splitTime(hours);
+        const [m1, m2] = splitTime(minutes);
+        const [s1, s2] = splitTime(seconds);
+
+        hourDigits[0].textContent = h1;
+        hourDigits[1].textContent = h2;
+        minuteDigits[0].textContent = m1;
+        minuteDigits[1].textContent = m2;
+        secondDigits[0].textContent = s1;
+        secondDigits[1].textContent = s2;
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
+      }
+
+      function getSelectedGift() {
+        const checked = document.querySelector('input[name="gift"]:checked');
+        return checked ? checked.value : "";
+      }
+
+      function openModal() {
+        const selectedGift = getSelectedGift();
+
+        if (!selectedGift) {
+          showToast("상품을 먼저 선택해줘.");
+          return;
+        }
+
+        selectedGiftText.textContent = selectedGift;
+        selectedGiftInput.value = selectedGift;
+        fieldError.classList.remove("is-visible");
+        submitError.classList.remove("is-visible");
+        submitSuccess.classList.remove("is-visible");
+        entryModal.classList.add("is-open");
+        entryModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        setTimeout(() => {
+          document.getElementById("nameInput").focus();
+        }, 50);
+      }
+
+      function closeModal() {
+        entryModal.classList.remove("is-open");
+        entryModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+      }
+
+      function validatePhone(phone) {
+        return /^[0-9+\-()\s]{8,20}$/.test(phone.trim());
+      }
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+      }
+
+      async function submitEntry(event) {
+        event.preventDefault();
+
+        const selectedGift = selectedGiftInput.value.trim();
+        const name = entryForm.Name.value.trim();
+        const phone = entryForm.Pone.value.trim();
+        const email = entryForm.Email.value.trim();
+        const privacyConsent = entryForm.PrivacyConsent.checked;
+
+        fieldError.classList.remove("is-visible");
+        submitError.classList.remove("is-visible");
+        submitSuccess.classList.remove("is-visible");
+
+        if (
+          !selectedGift ||
+          !name ||
+          !phone ||
+          !email ||
+          !privacyConsent ||
+          !validatePhone(phone) ||
+          !validateEmail(email)
+        ) {
+          fieldError.textContent =
+            "이름, 전화번호, 이메일주소, 개인정보 동의를 모두 정확히 입력해줘.";
+          fieldError.classList.add("is-visible");
+          return;
+        }
+
+        modalSubmitButton.disabled = true;
+        modalSubmitButton.textContent = "저장 중...";
+
+        try {
+          const payload = new URLSearchParams();
+          payload.append("Name", name);
+          payload.append("Pone", phone);
+          payload.append("Email", email);
+          payload.append("Item", selectedGift);
+
+          const response = await fetch(scriptUrl, {
+            method: "POST",
+            body: payload,
+          });
+
+          if (!response.ok) {
+            throw new Error("HTTP " + response.status);
+          }
+
+          submitSuccess.classList.add("is-visible");
+          entryForm.reset();
+          closeModal();
+          showToast(selectedGift + " 응모 정보가 저장되었어.");
+        } catch (error) {
+          console.error(error);
+          submitError.classList.add("is-visible");
+        } finally {
+          modalSubmitButton.disabled = false;
+          modalSubmitButton.textContent = "저장하고 응모하기";
+        }
+      }
+
+      openModalButton.addEventListener("click", openModal);
+      modalBackdrop.addEventListener("click", closeModal);
+      modalCloseButton.addEventListener("click", closeModal);
+      modalCancelButton.addEventListener("click", closeModal);
+      entryForm.addEventListener("submit", submitEntry);
+
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.key === "Escape" &&
+          entryModal.classList.contains("is-open")
+        ) {
+          closeModal();
+        }
+      });
+
+      renderCountdown();
+      setInterval(renderCountdown, 1000);
+    </script>
+  </body>
+</html>
