@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시안 구현</title>
+    <style>
+      :root {
+        --bg: #dedede;
+        --header-color: #08090d;
+        --banner-color: #dc5755;
+        --main-color: #320bd9;
+        --footer-color: #63a789;
+
+        --inner-width: 1200px;
+        --header-height: 150px;
+        --banner-height: 450px;
+        --main-min-height: 600px;
+        --footer-height: 200px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      .site-header,
+      .main-content,
+      .site-footer {
+        width: min(100%, var(--inner-width));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        height: var(--header-height);
+        background: var(--header-color);
+        padding: 0;
+      }
+
+      .header-box-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0;
+        gap: 0;
+      }
+
+      .header-box {
+        flex: none;
+      }
+
+      .header-box--search {
+        width: 350px;
+        height: 60px;
+        background: #ff2a2a;
+      }
+
+      .header-box--logo {
+        width: 350px;
+        height: 70px;
+        background: #fff200;
+      }
+
+      .header-box--right {
+        width: 350px;
+        height: 90px;
+        background: #22ff22;
+      }
+
+      .banner {
+        width: 100%;
+        height: var(--banner-height);
+        background: var(--banner-color);
+      }
+
+      .main-content {
+        min-height: var(--main-min-height);
+        background: var(--main-color);
+        padding-top: 0;
+      }
+
+      .main-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .content-box {
+        width: 100%;
+      }
+
+      .content-box--box1 {
+        height: 1000px;
+        background: #f4e67a;
+      }
+
+      .content-box--box2 {
+        height: 600px;
+        background: #f7c97a;
+      }
+
+      .content-box--box3 {
+        height: 1000px;
+        background: #bfe28a;
+      }
+
+      .content-box--box4 {
+        height: 200px;
+        background: #8fd3c7;
+      }
+
+      .content-box--box5 {
+        height: 1000px;
+        background: #d8b4f8;
+      }
+
+      .site-footer {
+        display: flex;
+        align-items: center;
+        height: var(--footer-height);
+        background: var(--footer-color);
+        padding: 0;
+      }
+
+      .footer-box-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        gap: 0;
+      }
+
+      .footer-box {
+        flex: none;
+        height: 125px;
+      }
+
+      .footer-box--left {
+        width: 385px;
+        background: #efb0b0;
+      }
+
+      .footer-box--right {
+        width: 775px;
+        background: #d6ea29;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" aria-label="헤더 영역">
+      <div class="header-box-group" aria-label="헤더 자식 박스 영역">
+        <div
+          class="header-box header-box--search"
+          aria-label="search 박스"
+        ></div>
+        <div class="header-box header-box--logo" aria-label="logo 박스"></div>
+        <div class="header-box header-box--right" aria-label="right 박스"></div>
+      </div>
+    </header>
+
+    <div class="banner" aria-label="슬라이드 영역"></div>
+
+    <main class="main-content" aria-label="메인 영역">
+      <div class="main-stack" aria-label="메인 자식 박스 영역">
+        <article
+          class="content-box content-box--box1"
+          aria-label="자식 박스 1"
+        ></article>
+        <article
+          class="content-box content-box--box2"
+          aria-label="자식 박스 2"
+        ></article>
+        <article
+          class="content-box content-box--box3"
+          aria-label="자식 박스 3"
+        ></article>
+        <article
+          class="content-box content-box--box4"
+          aria-label="자식 박스 4"
+        ></article>
+        <article
+          class="content-box content-box--box5"
+          aria-label="자식 박스 5"
+        ></article>
+      </div>
+    </main>
+
+    <footer class="site-footer" aria-label="풋터 영역">
+      <div class="footer-box-group" aria-label="풋터 자식 박스 영역">
+        <div
+          class="footer-box footer-box--left"
+          aria-label="풋터 자식 박스 1"
+        ></div>
+        <div
+          class="footer-box footer-box--right"
+          aria-label="풋터 자식 박스 2"
+        ></div>
+      </div>
+    </footer>
+  </body>
+</html>
