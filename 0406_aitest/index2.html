@@ -11,12 +11,8 @@
 
       html,
       body {
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        min-width: 1600px;
+        min-width: 0;
+        overflow-x: hidden;
         font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
         color: #222;
         background: #fff;
@@ -34,42 +30,65 @@
 
       .page {
         width: 100%;
-        min-width: 1600px;
-        overflow-x: auto;
+        min-width: 0;
+        overflow-x: hidden;
       }
 
       .hero {
         position: relative;
         width: 100%;
-        min-width: 1600px;
+        min-width: 0;
         height: 820px;
         overflow: visible;
-        background:
+        background-color: #1d1d22;
+        background-image:
           radial-gradient(
-            circle at 14% 16%,
+            circle at 18% 14%,
             rgba(255, 255, 255, 0.05),
-            transparent 20%
+            transparent 16%
           ),
           radial-gradient(
-            circle at 76% 18%,
-            rgba(255, 255, 255, 0.03),
-            transparent 16%
+            circle at 78% 20%,
+            rgba(255, 255, 255, 0.035),
+            transparent 18%
+          ),
+          radial-gradient(
+            circle at 30% 34%,
+            rgba(255, 255, 255, 0.018),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at 68% 64%,
+            rgba(0, 0, 0, 0.18),
+            transparent 24%
+          ),
+          repeating-radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 255, 255, 0.012) 0 1px,
+            rgba(0, 0, 0, 0.012) 1px 3px,
+            transparent 3px 11px
+          ),
+          repeating-radial-gradient(
+            circle at 74% 56%,
+            rgba(255, 255, 255, 0.008) 0 1px,
+            rgba(0, 0, 0, 0.014) 1px 4px,
+            transparent 4px 13px
           ),
           linear-gradient(
             180deg,
-            rgba(24, 24, 29, 0.98),
-            rgba(34, 34, 39, 0.99)
-          ),
-          repeating-linear-gradient(
-            115deg,
-            rgba(255, 255, 255, 0.012) 0 2px,
-            transparent 2px 12px
-          ),
-          repeating-linear-gradient(
-            25deg,
-            rgba(255, 255, 255, 0.008) 0 1px,
-            transparent 1px 9px
+            rgba(28, 28, 32, 0.98),
+            rgba(35, 35, 41, 0.995)
           );
+        background-size:
+          auto,
+          auto,
+          auto,
+          auto,
+          180px 180px,
+          220px 220px,
+          auto;
+        background-blend-mode:
+          screen, screen, soft-light, multiply, overlay, overlay, normal;
       }
 
       .hero::before {
@@ -101,7 +120,8 @@
       .hero-inner,
       .content-inner {
         position: relative;
-        width: 1600px;
+        width: 100%;
+        max-width: 1600px;
         height: 100%;
         margin: 0 auto;
       }
@@ -203,7 +223,7 @@
       .content {
         position: relative;
         width: 100%;
-        min-width: 1600px;
+        min-width: 0;
         height: 1353px;
         overflow: visible;
         z-index: 1;
@@ -227,7 +247,7 @@
 
       .message-block {
         position: absolute;
-        top: 232px;
+        top: 323px;
         left: 50%;
         transform: translateX(-50%);
         width: 980px;
@@ -456,7 +476,7 @@
         --green: #27c02f;
         position: relative;
         width: 100%;
-        min-width: 1600px;
+        min-width: 0;
         background: var(--bg);
         color: var(--text);
         font-family:
@@ -476,6 +496,7 @@
       .event2-section .event2-page {
         width: 100%;
         max-width: 940px;
+        margin: 0 auto;
       }
       .event2-section .event2-hero {
         text-align: center;
@@ -1073,5 +1094,64 @@
         </section>
       </main>
     </section>
+
+    <script>
+      (function () {
+        const targetHour = 22;
+        const hourDigits = document.querySelectorAll(
+          '[data-event2-group="hours"] .digit span',
+        );
+        const minuteDigits = document.querySelectorAll(
+          '[data-event2-group="minutes"] .digit span',
+        );
+        const secondDigits = document.querySelectorAll(
+          '[data-event2-group="seconds"] .digit span',
+        );
+
+        function getNextTargetTime() {
+          const now = new Date();
+          const target = new Date();
+          target.setHours(targetHour, 0, 0, 0);
+          if (now >= target) {
+            target.setDate(target.getDate() + 1);
+          }
+          return target;
+        }
+
+        function splitTime(value) {
+          return String(value).padStart(2, "0").split("");
+        }
+
+        function renderCountdown() {
+          const now = new Date();
+          const target = getNextTargetTime();
+          const diff = Math.max(0, target - now);
+          const totalSeconds = Math.floor(diff / 1000);
+          const hours = Math.floor(totalSeconds / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+
+          const [h1, h2] = splitTime(hours);
+          const [m1, m2] = splitTime(minutes);
+          const [s1, s2] = splitTime(seconds);
+
+          if (
+            hourDigits.length === 2 &&
+            minuteDigits.length === 2 &&
+            secondDigits.length === 2
+          ) {
+            hourDigits[0].textContent = h1;
+            hourDigits[1].textContent = h2;
+            minuteDigits[0].textContent = m1;
+            minuteDigits[1].textContent = m2;
+            secondDigits[0].textContent = s1;
+            secondDigits[1].textContent = s2;
+          }
+        }
+
+        renderCountdown();
+        setInterval(renderCountdown, 1000);
+      })();
+    </script>
   </body>
 </html>
