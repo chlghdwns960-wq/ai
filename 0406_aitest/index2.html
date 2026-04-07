@@ -151,7 +151,7 @@
       .title-wrap .kicker {
         margin: 0 0 6px;
         color: #7f21ff;
-        font-size: 62px;
+        font-size: 84px;
         font-weight: 300;
         line-height: 1;
         letter-spacing: -0.08em;
@@ -160,7 +160,7 @@
       .title-wrap .headline {
         margin: 0;
         color: #fff;
-        font-size: 78px;
+        font-size: 80px;
         font-weight: 300;
         line-height: 1.1;
         letter-spacing: -0.08em;
@@ -173,64 +173,21 @@
         letter-spacing: -0.05em;
       }
 
-      .camera-deco {
+      .hero-camera {
         position: absolute;
-        top: -6px;
-        right: 64px;
-        width: 320px;
-        height: 320px;
-        border-radius: 22px;
-        transform: rotate(12deg);
-        background: linear-gradient(145deg, #0c0d11, #1c1f24 54%, #101115);
-        box-shadow: 0 28px 50px rgba(0, 0, 0, 0.46);
-        z-index: 2;
-        opacity: 0.95;
-      }
-
-      .camera-deco::before {
-        content: "";
-        position: absolute;
-        left: 58px;
-        top: 44px;
-        width: 178px;
-        height: 178px;
-        border-radius: 50%;
-        background:
-          radial-gradient(
-            circle at 45% 44%,
-            #64d9ff 0,
-            #3f6f89 10%,
-            #0d1117 18%,
-            #000 35%,
-            #20262d 48%,
-            #08090c 60%,
-            #343944 74%,
-            transparent 75%
-          ),
-          radial-gradient(
-            circle at 64% 30%,
-            rgba(255, 255, 255, 0.34),
-            transparent 22%
-          );
-        box-shadow:
-          inset 0 0 0 14px #252a33,
-          inset 0 0 0 32px #11151a;
-      }
-
-      .camera-deco::after {
-        content: "α";
-        position: absolute;
-        right: 20px;
-        bottom: 28px;
-        color: rgba(255, 255, 255, 0.45);
-        font-size: 36px;
-        font-weight: 300;
+        top: -96px;
+        right: -42px;
+        width: 468px;
+        height: auto;
+        transform: rotate(16deg);
+        z-index: 3;
+        pointer-events: none;
       }
 
       .prizes {
         position: absolute;
         left: 50%;
-        bottom: -154px;
+        bottom: -228px;
         transform: translateX(-50%);
         width: 1080px;
         z-index: 6;
@@ -248,7 +205,7 @@
         width: 100%;
         min-width: 1600px;
         height: 1353px;
-        overflow: hidden;
+        overflow: visible;
         z-index: 1;
         background: linear-gradient(
           180deg,
@@ -270,7 +227,7 @@
 
       .message-block {
         position: absolute;
-        top: 158px;
+        top: 232px;
         left: 50%;
         transform: translateX(-50%);
         width: 980px;
@@ -280,28 +237,28 @@
 
       .section-title {
         margin: 0;
-        color: #4a4a4a;
-        font-size: 30px;
+        color: #4b4b4b;
+        font-size: 31px;
         font-weight: 300;
-        line-height: 1.3;
-        letter-spacing: -0.08em;
+        line-height: 1.28;
+        letter-spacing: -0.085em;
       }
 
       .section-desc {
-        width: 760px;
-        margin: 26px auto 0;
-        color: #848484;
-        font-size: 15px;
-        line-height: 1.7;
-        letter-spacing: -0.04em;
+        width: 700px;
+        margin: 24px auto 0;
+        color: #8b8b8b;
+        font-size: 13px;
+        line-height: 1.75;
+        letter-spacing: -0.045em;
       }
 
       .video-zone {
         position: absolute;
-        top: 404px;
+        top: 430px;
         left: 50%;
         transform: translateX(-50%);
-        width: 1040px;
+        width: 1260px;
         z-index: 2;
       }
 
@@ -313,100 +270,33 @@
         overflow: hidden;
         border: 6px solid #fff;
         box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
-        background:
-          linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.18)),
-          linear-gradient(180deg, #d7dce4 0, #b9c5d7 48%, #d7d7d7 100%);
+        background: #d7d7d7;
       }
 
-      .video-card .person {
+      .video-card iframe {
         position: absolute;
         inset: 0;
-        background:
-          linear-gradient(
-            90deg,
-            transparent 0 27%,
-            rgba(75, 106, 156, 0.68) 27% 36%,
-            rgba(255, 255, 255, 0.12) 36% 40%,
-            rgba(76, 112, 170, 0.7) 40% 49%,
-            transparent 49% 51%,
-            rgba(76, 112, 170, 0.7) 51% 60%,
-            rgba(255, 255, 255, 0.12) 60% 64%,
-            rgba(75, 106, 156, 0.68) 64% 73%,
-            transparent 73% 100%
-          ),
-          radial-gradient(
-            circle at 50% 66%,
-            rgba(245, 211, 185, 0.92),
-            rgba(219, 185, 157, 0.96) 14%,
-            transparent 15%
-          ),
-          radial-gradient(
-            circle at 38% 54%,
-            rgba(245, 211, 185, 0.95),
-            rgba(219, 185, 157, 0.98) 14%,
-            transparent 15%
-          ),
-          radial-gradient(
-            circle at 61% 54%,
-            rgba(245, 211, 185, 0.95),
-            rgba(219, 185, 157, 0.98) 14%,
-            transparent 15%
-          ),
-          linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.32),
-            rgba(255, 255, 255, 0)
-          );
-        filter: blur(0.3px);
+        width: 100%;
+        height: 100%;
+        border: 0;
+        z-index: 0;
       }
 
-      .video-card .lens {
+      .video-card::before {
+        content: "";
         position: absolute;
-        left: 50%;
-        top: 49%;
-        transform: translate(-50%, -50%);
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background:
-          radial-gradient(
-            circle at 42% 44%,
-            #73d7f6 0,
-            #406a84 8%,
-            #0f1217 16%,
-            #020305 30%,
-            #2a313b 43%,
-            #0f1114 56%,
-            #39404b 72%,
-            transparent 73%
-          ),
-          radial-gradient(
-            circle at 64% 34%,
-            rgba(255, 255, 255, 0.38),
-            transparent 18%
-          );
-        box-shadow:
-          inset 0 0 0 18px #14171c,
-          inset 0 0 0 34px #0c0d10,
-          0 0 0 14px rgba(255, 255, 255, 0.22);
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.04),
+          rgba(0, 0, 0, 0.12)
+        );
+        z-index: 1;
+        pointer-events: none;
       }
-
-      .video-card .play {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 0;
-        height: 0;
-        transform: translate(-42%, -50%);
-        border-top: 16px solid transparent;
-        border-bottom: 16px solid transparent;
-        border-left: 26px solid #fff;
-        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.34));
-      }
-
       .slider-arrow {
         position: absolute;
-        top: 122px;
+        top: 192px;
         width: 46px;
         height: 46px;
         border-top: 6px solid #fff;
@@ -415,18 +305,18 @@
       }
 
       .slider-arrow.left {
-        left: 112px;
+        left: 156px;
         transform: rotate(-135deg);
       }
 
       .slider-arrow.right {
-        right: 112px;
+        right: 156px;
         transform: rotate(45deg);
       }
 
       .method-wrap {
         position: absolute;
-        top: 866px;
+        top: 928px;
         left: 50%;
         transform: translateX(-50%);
         width: 760px;
@@ -526,6 +416,17 @@
         line-height: 1.85;
         letter-spacing: -0.04em;
         text-align: left;
+        max-width: 560px;
+      }
+
+      .bottom-note p .lead {
+        display: block;
+        margin-bottom: 4px;
+        color: rgba(255, 255, 255, 0.96);
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: -0.05em;
       }
 
       .cta {
@@ -543,13 +444,339 @@
         white-space: nowrap;
         box-shadow: 0 8px 18px rgba(81, 0, 173, 0.24);
       }
+
+      .event2-section {
+        --bg: #2c1d3d;
+        --panel: #241634;
+        --card: #f6f4f8;
+        --text: #ffffff;
+        --muted: #c9bfd7;
+        --digit-top: #1d132d;
+        --digit-bottom: #4f3a70;
+        --green: #27c02f;
+        position: relative;
+        width: 100%;
+        min-width: 1600px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+        padding: 36px 0 60px;
+        display: flex;
+        justify-content: center;
+      }
+      .event2-section * {
+        box-sizing: border-box;
+      }
+      .event2-section button,
+      .event2-section input,
+      .event2-section select {
+        font: inherit;
+      }
+      .event2-section .event2-page {
+        width: 100%;
+        max-width: 940px;
+      }
+      .event2-section .event2-hero {
+        text-align: center;
+        padding-top: 18px;
+        margin-bottom: 30px;
+      }
+      .event2-section .event2-hero h1 {
+        margin: 0 0 22px;
+        font-size: 46px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        color: #f2edf7;
+      }
+      .event2-section .event2-hero h1 strong {
+        font-weight: 600;
+      }
+      .event2-section .countdown {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .event2-section .count-group {
+        display: flex;
+        gap: 8px;
+      }
+      .event2-section .colon {
+        font-size: 62px;
+        font-weight: 700;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.9);
+        transform: translateY(-5px);
+        padding: 0 6px;
+      }
+      .event2-section .digit {
+        position: relative;
+        width: 72px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      }
+      .event2-section .digit::before,
+      .event2-section .digit::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50%;
+      }
+      .event2-section .digit::before {
+        top: 0;
+        background: var(--digit-top);
+      }
+      .event2-section .digit::after {
+        bottom: 0;
+        background: var(--digit-bottom);
+      }
+      .event2-section .digit span {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: 58px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        z-index: 1;
+        color: #fff;
+      }
+      .event2-section .search-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .event2-section .search-row p {
+        margin: 0;
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .event2-section .search-select {
+        position: relative;
+        width: 270px;
+      }
+      .event2-section .search-select select {
+        width: 100%;
+        height: 32px;
+        padding: 0 38px 0 12px;
+        border: 2px solid var(--green);
+        background: #f7f7f7;
+        color: #888;
+        font-size: 12px;
+        outline: none;
+        appearance: none;
+      }
+      .event2-section .search-select::after {
+        content: "";
+        position: absolute;
+        right: 11px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid #38aa24;
+        transform: translateY(-35%);
+        pointer-events: none;
+      }
+      .event2-section .board {
+        width: 100%;
+        max-width: 940px;
+        background: var(--panel);
+        padding: 64px 102px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+      .event2-section .question {
+        margin: 0 0 40px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.55;
+        color: #f1eef6;
+        letter-spacing: -0.02em;
+      }
+      .event2-section .question em {
+        font-style: normal;
+        color: #fff;
+      }
+      .event2-section .eventForm {
+        margin-bottom: 140px;
+      }
+      .event2-section .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 232px);
+        gap: 20px;
+        max-width: 736px;
+        margin: 0 auto 72px;
+      }
+      .event2-section .prize-card {
+        position: relative;
+      }
+      .event2-section .prize-input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .event2-section .card-ui {
+        width: 232px;
+        height: 330px;
+        background: var(--card);
+        border: 2px solid transparent;
+        border-radius: 7px;
+        padding: 16px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .event2-section .card-ui:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.14);
+      }
+      .event2-section .prize-input:checked + .card-ui {
+        border-color: rgba(123, 44, 255, 0.85);
+        box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.08);
+      }
+      .event2-section .item-name {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: #26212e;
+        line-height: 1.35;
+        min-height: 32px;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+      }
+      .event2-section .item-visual {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+      .event2-section .item-visual img {
+        max-width: 100%;
+        max-height: 110%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        display: block;
+      }
+      .event2-section .item-image--drive {
+        max-width: 78%;
+        max-height: 88%;
+      }
+      .event2-section .item-image--milk {
+        max-width: 78%;
+        max-height: 88%;
+      }
+      .event2-section .item-image--voucher {
+        max-width: 118%;
+        max-height: 126%;
+        transform: scale(1.26);
+        transform-origin: center;
+      }
+      .event2-section .item-image--camera {
+        max-width: 118%;
+        max-height: 126%;
+        transform: scale(1.16);
+        transform-origin: center;
+      }
+      .event2-section .item-image--voucher-ticket {
+        max-width: 118%;
+        max-height: 126%;
+        transform: scale(1.18);
+        transform-origin: center;
+      }
+      .event2-section .qty {
+        margin-top: auto;
+        margin-bottom: 10px;
+        font-size: 13px;
+        color: #706777;
+      }
+      .event2-section .qty strong {
+        font-size: 30px;
+        line-height: 1;
+        color: #7129ff;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        vertical-align: -1px;
+      }
+      .event2-section .divider {
+        width: 100%;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.08);
+        margin-bottom: 12px;
+      }
+      .event2-section .radio-visual {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 2px solid #d4d0d7;
+        display: grid;
+        place-items: center;
+      }
+      .event2-section .radio-visual::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: transparent;
+      }
+      .event2-section .prize-input:checked + .card-ui .radio-visual {
+        border-color: #7129ff;
+      }
+      .event2-section .prize-input:checked + .card-ui .radio-visual::after {
+        background: #7129ff;
+      }
+      .event2-section .submit-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .event2-section .submit-btn {
+        width: 522px;
+        height: 70px;
+        border: 0;
+        border-radius: 8px;
+        background: linear-gradient(
+          90deg,
+          #7322ff 0%,
+          #8828ff 40%,
+          #7a10ff 100%
+        );
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        cursor: pointer;
+        box-shadow: 0 14px 24px rgba(74, 10, 163, 0.28);
+      }
     </style>
   </head>
   <body>
     <div class="page">
       <section class="hero">
         <div class="hero-inner">
-          <div class="camera-deco" aria-hidden="true"></div>
+          <img
+            src="./Image/img1.png"
+            alt="우측 상단 카메라 이미지"
+            class="hero-camera"
+            aria-hidden="true"
+          />
 
           <header class="topbar">
             <div class="left">
@@ -584,12 +811,14 @@
               소중한 경험을 공유하는 여러분을 커넥츠가 응원합니다.
             </h2>
             <p class="section-desc">
-              프리미엄 커넥츠는 좋은 경험과 가치를 제공하기 위해 시작하게
+              프리미엄 넥너켁츠는 좋은 경험과 가치를 제공하기 위해 시작하게
               되었습니다.<br />
-              커넥츠는 프리미엄 리뷰 플랫폼 서비스로서, 여러분들의 리뷰 활동과
-              체험 활동을 그저 팔로만 응원하지 않고, 등록한 리뷰와 활동마다
-              가치를 제공하고 있습니다. 그리고 이번에는 커넥츠를 여러분들에게
-              리뷰 활동이 진짜 도움이 될 수 있는 선물로 준비하였습니다.
+              커넥츠는 프리미엄 리뷰 플랫폼 사이트로서, 여러분들의 리뷰 활동과
+              체험 활동을 그저 말로만<br />
+              응원하지&nbsp;&nbsp;않고, 등록한 리뷰마다, 활동마다 가치를
+              제공하고 있습니다. 그리고 이번에 커넥츠는<br />
+              여러분들에게는 리뷰 활동에 '진짜'도움이 될 수 있는 선물을
+              준비하였습니다.
             </p>
           </div>
 
@@ -597,9 +826,22 @@
             <div class="slider-arrow left"></div>
 
             <div class="video-card">
-              <div class="person"></div>
-              <div class="lens"></div>
-              <div class="play"></div>
+              <iframe
+                src="https://www.youtube.com/embed/o4VtWOmbF3M?si=N0zga1nK9hOuoqAW"
+                title="YouTube video player"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              >
+              </iframe>
             </div>
 
             <div class="slider-arrow right"></div>
@@ -651,9 +893,13 @@
 
             <div class="bottom-note">
               <p>
-                단, 미러리스의 경우 평론가 등급의 회원에게만 주정됩니다.<br />
+                <span class="lead"
+                  >단, 미러리스의 경우 평론가 등급의 회원에게만
+                  주정됩니다.</span
+                >
                 리뷰를 하는 데 있어 도움이 될 수 있는 분들에게 드리기 위하여
-                선착순 안에 참여하여도, 평론가 등급이 아닌 경우 당첨 제외됩니다.
+                선착순 안에 참여하여도,<br />
+                평론가 등급이 아닌 경우 당첨 제외됩니다.
               </p>
               <a class="cta" href="#">평론가 신청</a>
             </div>
@@ -661,5 +907,171 @@
         </div>
       </section>
     </div>
+    <section class="event2-section">
+      <main class="event2-page">
+        <section class="event2-hero">
+          <h1>매일 밤 <strong>10시</strong> 이벤트가 시작됩니다.</h1>
+          <div class="countdown" aria-label="이벤트 시작 카운트다운">
+            <div class="count-group" data-event2-group="hours">
+              <div class="digit"><span>0</span></div>
+              <div class="digit"><span>0</span></div>
+            </div>
+            <div class="colon">:</div>
+            <div class="count-group" data-event2-group="minutes">
+              <div class="digit"><span>0</span></div>
+              <div class="digit"><span>0</span></div>
+            </div>
+            <div class="colon">:</div>
+            <div class="count-group" data-event2-group="seconds">
+              <div class="digit"><span>0</span></div>
+              <div class="digit"><span>0</span></div>
+            </div>
+          </div>
+          <div class="search-row">
+            <p>회원님이 보다 빠르게 정답을 찾을 수 있도록</p>
+            <div class="search-select">
+              <select aria-label="검색 힌트 선택">
+                <option selected>초록 검색창을 띄워주세요!</option>
+                <option>네이버에서 검색해보기</option>
+                <option>이벤트 공지 먼저 보기</option>
+                <option>힌트 키워드 확인하기</option>
+              </select>
+            </div>
+          </div>
+        </section>
+        <section class="board">
+          <p class="question">
+            Q. 3월 13일 문제 : 커넥츠에서 등업을 하려면 어떤 신청을 해야
+            할까요?<br />
+            <em>(힌트 : 000신청 / 3글자)</em>
+          </p>
+          <section class="eventForm">
+            <div class="grid">
+              <label class="prize-card">
+                <input
+                  class="prize-input"
+                  type="radio"
+                  name="event2Gift"
+                  value="소니 미러리스 A5100"
+                  checked
+                />
+                <span class="card-ui">
+                  <span class="item-name">소니 미러리스 A5100</span>
+                  <span class="item-visual" aria-hidden="true"
+                    ><img
+                      class="item-image--camera"
+                      src="./images/img1.png"
+                      alt="소니 미러리스 A5100"
+                  /></span>
+                  <span class="qty"><strong>3</strong>개 남음</span>
+                  <span class="divider"></span>
+                  <span class="radio-visual"></span>
+                </span>
+              </label>
+              <label class="prize-card">
+                <input
+                  class="prize-input"
+                  type="radio"
+                  name="event2Gift"
+                  value="신라호텔 더 파크뷰 식사권"
+                />
+                <span class="card-ui">
+                  <span class="item-name">신라호텔 더 파크 뷔 식사권</span>
+                  <span class="item-visual" aria-hidden="true"
+                    ><img
+                      class="item-image--voucher-ticket"
+                      src="./images/img2.png"
+                      alt="신라호텔 더 파크 뷔 식사권"
+                  /></span>
+                  <span class="qty"><strong>5</strong>개 남음</span>
+                  <span class="divider"></span>
+                  <span class="radio-visual"></span>
+                </span>
+              </label>
+              <label class="prize-card">
+                <input
+                  class="prize-input"
+                  type="radio"
+                  name="event2Gift"
+                  value="외장하드 1TB"
+                />
+                <span class="card-ui">
+                  <span class="item-name">외장하드 1TB</span>
+                  <span class="item-visual" aria-hidden="true"
+                    ><img
+                      class="item-image--drive"
+                      src="./images/img3.png"
+                      alt="외장하드 1TB"
+                  /></span>
+                  <span class="qty"><strong>10</strong>개 남음</span>
+                  <span class="divider"></span>
+                  <span class="radio-visual"></span>
+                </span>
+              </label>
+              <label class="prize-card">
+                <input
+                  class="prize-input"
+                  type="radio"
+                  name="event2Gift"
+                  value="라미 만년필"
+                />
+                <span class="card-ui">
+                  <span class="item-name">라미 만년필</span>
+                  <span class="item-visual" aria-hidden="true"
+                    ><img src="./images/img4.png" alt="라미 만년필"
+                  /></span>
+                  <span class="qty"><strong>3</strong>개 남음</span>
+                  <span class="divider"></span>
+                  <span class="radio-visual"></span>
+                </span>
+              </label>
+              <label class="prize-card">
+                <input
+                  class="prize-input"
+                  type="radio"
+                  name="event2Gift"
+                  value="백화점 상품권 1만원"
+                />
+                <span class="card-ui">
+                  <span class="item-name">백화점 상품권 1만원</span>
+                  <span class="item-visual" aria-hidden="true"
+                    ><img
+                      class="item-image--voucher"
+                      src="./images/img5.png"
+                      alt="백화점 상품권 1만원"
+                  /></span>
+                  <span class="qty"><strong>10</strong>개 남음</span>
+                  <span class="divider"></span>
+                  <span class="radio-visual"></span>
+                </span>
+              </label>
+              <label class="prize-card">
+                <input
+                  class="prize-input"
+                  type="radio"
+                  name="event2Gift"
+                  value="초코맛 우유"
+                />
+                <span class="card-ui">
+                  <span class="item-name">초코맛 우유</span>
+                  <span class="item-visual" aria-hidden="true"
+                    ><img
+                      class="item-image--milk"
+                      src="./images/img6.png"
+                      alt="초코맛 우유"
+                  /></span>
+                  <span class="qty"><strong>2</strong>개 남음</span>
+                  <span class="divider"></span>
+                  <span class="radio-visual"></span>
+                </span>
+              </label>
+            </div>
+            <div class="submit-wrap">
+              <button class="submit-btn" type="button">응모하기</button>
+            </div>
+          </section>
+        </section>
+      </main>
+    </section>
   </body>
 </html>
