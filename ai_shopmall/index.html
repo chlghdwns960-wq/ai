@@ -6,7 +6,7 @@
     <title>시안 구현</title>
     <style>
       :root {
-        --bg: #dedede;
+        --bg: #ffffff;
         --header-color: #08090d;
         --banner-color: #dc5755;
         --main-color: #320bd9;
@@ -103,8 +103,9 @@
       }
 
       .content-box--box1 {
-        height: 1000px;
-        background: #f4e67a;
+        min-height: 1256px;
+        background: #ffffff;
+        padding: 50px 0 16px;
       }
 
       .content-box--box2 {
@@ -125,6 +126,139 @@
       .content-box--box5 {
         height: 1000px;
         background: #d8b4f8;
+      }
+
+      .box1-inner {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      .box1-title-wrap {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .box1-title {
+        margin: 0 0 8px;
+        font-size: 28px;
+        line-height: 1.2;
+        color: #333333;
+        font-weight: 600;
+      }
+
+      .box1-subtitle {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333333;
+        font-weight: 400;
+      }
+
+      .card-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .food-card {
+        background: #ffffff;
+        overflow: hidden;
+      }
+
+      .food-card-thumb {
+        width: 100%;
+        height: 370px;
+        background: #f2f2f2;
+      }
+
+      .food-card-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .food-card-body {
+        min-height: 162px;
+        padding: 16px;
+      }
+
+      .food-card-badges {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        min-height: 18px;
+        margin: 0 0 8px;
+      }
+
+      .food-card-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 18px;
+        padding: 0 6px;
+        border-radius: 2px;
+        font-size: 12px;
+        line-height: 1;
+        color: #ffffff;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .food-card-badge--new {
+        background: #ef4d4d;
+      }
+
+      .food-card-badge--popular {
+        background: #6bbf59;
+      }
+
+      .food-card-badge--mild {
+        background: #f0ad45;
+      }
+
+      .food-card-title {
+        margin: 0 0 8px;
+        font-size: 16px;
+        line-height: 1.4;
+        color: #333333;
+        font-weight: 600;
+      }
+
+      .food-card-desc {
+        margin: 0 0 8px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #333333;
+        font-weight: 400;
+      }
+
+      .food-card-price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+
+      .food-card-sale {
+        font-size: 16px;
+        font-weight: 600;
+        color: #f05b78;
+      }
+
+      .food-card-price {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333333;
+      }
+
+      .food-card-origin {
+        margin: 6px 0 0;
+        font-size: 14px;
+        color: #808080;
+        text-decoration: line-through;
       }
 
       .site-footer {
@@ -176,10 +310,204 @@
 
     <main class="main-content" aria-label="메인 영역">
       <div class="main-stack" aria-label="메인 자식 박스 영역">
-        <article
-          class="content-box content-box--box1"
-          aria-label="자식 박스 1"
-        ></article>
+        <article class="content-box content-box--box1" aria-label="자식 박스 1">
+          <div class="box1-inner">
+            <div class="box1-title-wrap" aria-label="박스 1 제목 영역">
+              <h2 class="box1-title">부담없는 알뜰 반찬</h2>
+              <p class="box1-subtitle">착한 가격으로 챙기는 든든 한 끼</p>
+            </div>
+
+            <div class="card-grid" aria-label="상품 카드 목록">
+              <article class="food-card" aria-label="상품 카드 1">
+                <div class="food-card-thumb">
+                  <img src="./images/img1.jpg" alt="파스타 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--new"
+                      >신제품</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">쭈구미 풋마늘 파스타</h3>
+                  <p class="food-card-desc">
+                    봄기운 가득! 쭈꾸미와 풋마늘의 찰떡 궁합
+                  </p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">7%</span>
+                    <strong class="food-card-price">12,800원</strong>
+                  </div>
+                  <p class="food-card-origin">13,800원</p>
+                </div>
+              </article>
+
+              <article class="food-card" aria-label="상품 카드 2">
+                <div class="food-card-thumb">
+                  <img src="./images/img2.jpg" alt="크림 파스타 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--new"
+                      >신제품</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">쭈구미 미나리 파스타</h3>
+                  <p class="food-card-desc">
+                    지금이 제철! 쭈꾸미와 미나리의 만남
+                  </p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">7%</span>
+                    <strong class="food-card-price">12,800원</strong>
+                  </div>
+                  <p class="food-card-origin">13,800원</p>
+                </div>
+              </article>
+
+              <article class="food-card" aria-label="상품 카드 3">
+                <div class="food-card-thumb">
+                  <img src="./images/img3.jpg" alt="면 요리 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--popular"
+                      >인기</span
+                    >
+                    <span class="food-card-badge food-card-badge--mild"
+                      >맵지 않음</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">잡채</h3>
+                  <p class="food-card-desc">탱글한 면발과 맛깔진 고명이 가득</p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">7%</span>
+                    <strong class="food-card-price">12,800원</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="food-card" aria-label="상품 카드 4">
+                <div class="food-card-thumb">
+                  <img src="./images/img4.jpg" alt="볶음 요리 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--mild"
+                      >맵지 않음</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">한끼 한돈제육_완조리</h3>
+                  <p class="food-card-desc">
+                    혼자 먹기 딱 좋은. 1인분 제육 볶음
+                  </p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">6%</span>
+                    <strong class="food-card-price">8,000원</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="food-card" aria-label="상품 카드 5">
+                <div class="food-card-thumb">
+                  <img src="./images/img5.jpg" alt="덮밥 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--popular"
+                      >인기</span
+                    >
+                    <span class="food-card-badge food-card-badge--mild"
+                      >맵지 않음</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">[원더스푼]두부덮밥</h3>
+                  <p class="food-card-desc">
+                    아이들도 입맛 없는 날 뚝딱 한 그릇
+                  </p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">7%</span>
+                    <strong class="food-card-price">3,500원</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="food-card" aria-label="상품 카드 6">
+                <div class="food-card-thumb">
+                  <img src="./images/img6.jpg" alt="야채 덮밥 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--new"
+                      >신제품</span
+                    >
+                    <span class="food-card-badge food-card-badge--mild"
+                      >맵지 않음</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">[원더스푼]한돈 순두부 덮밥</h3>
+                  <p class="food-card-desc">
+                    몽글몽글 부드러운 한돈 순두부 소스
+                  </p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">7%</span>
+                    <strong class="food-card-price">3,800원</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="food-card" aria-label="상품 카드 7">
+                <div class="food-card-thumb">
+                  <img src="./images/img7.jpg" alt="카레 덮밥 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--new"
+                      >신제품</span
+                    >
+                    <span class="food-card-badge food-card-badge--mild"
+                      >맵지 않음</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">
+                    [원더스푼] 한우 하이라이스 덮밥
+                  </h3>
+                  <p class="food-card-desc">
+                    부드럽게 끓여낸 한우 하이라이스 소스
+                  </p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">7%</span>
+                    <strong class="food-card-price">4,300원</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="food-card" aria-label="상품 카드 8">
+                <div class="food-card-thumb">
+                  <img src="./images/img8.jpg" alt="옥수수 덮밥 이미지" />
+                </div>
+                <div class="food-card-body">
+                  <div class="food-card-badges">
+                    <span class="food-card-badge food-card-badge--new"
+                      >신제품</span
+                    >
+                    <span class="food-card-badge food-card-badge--mild"
+                      >맵지 않음</span
+                    >
+                  </div>
+                  <h3 class="food-card-title">
+                    [원더스푼] 한우 삼색 소보로 덮밥
+                  </h3>
+                  <p class="food-card-desc">
+                    알록달록 색감까지 맛있는 삼색 덮밥
+                  </p>
+                  <div class="food-card-price-row">
+                    <span class="food-card-sale">7%</span>
+                    <strong class="food-card-price">4,800원</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+
         <article
           class="content-box content-box--box2"
           aria-label="자식 박스 2"
