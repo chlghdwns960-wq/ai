@@ -1,0 +1,102 @@
+@charset "utf-8";
+body {
+  font-family: "맑은 고딕";
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 1000px;
+  height: 1000px;
+  background: #87ceea;
+  margin: 0 auto;
+  position: relative;
+}
+div div {
+  width: 200px;
+  height: 200px;
+}
+/* 왼쪽 박스 구간 */
+.main .pu1 {
+  background: #81007f;
+}
+.main .ye1 {
+  background: #ffff00;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+}
+.main .re1 {
+  background: #fe0000;
+  position: absolute;
+  left: 200px;
+  top: 200px;
+}
+/* 오른쪽 박스 구간 */
+.main .pu2 {
+  background: #81007f;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.main .ye2 {
+  background: #ffff00;
+  position: absolute;
+  right: 100px;
+  top: 100px;
+}
+.main .re2 {
+  background: #fe0000;
+  position: absolute;
+  right: 200px;
+  top: 200px;
+}
+/* 중앙 박스 구간 */
+.main .bk {
+  margin: 0 auto;
+  background: black;
+  position: absolute;
+  right: 400px;
+  top: 400px;
+}
+/* 왼쪽 하단 박스 구간 */
+.main .pu3 {
+  background: #81007f;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.main .ye3 {
+  background: #ffff00;
+  position: absolute;
+  left: 100px;
+  bottom: 100px;
+}
+.main .re3 {
+  background: #fe0000;
+  position: absolute;
+  left: 200px;
+  bottom: 200px;
+}
+/* 오른쪽 하단 박스 구간 */
+.main .pu4 {
+  background: #81007f;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.main .ye4 {
+  background: #ffff00;
+  position: absolute;
+  right: 100px;
+  bottom: 100px;
+}
+.main .re4 {
+  background: #fe0000;
+  position: absolute;
+  right: 200px;
+  bottom: 200px;
+}
