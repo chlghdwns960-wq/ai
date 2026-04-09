@@ -1,0 +1,49 @@
+@charset "utf-8";
+body {
+  font-family: "맑은 고딕";
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.box1 {
+  background: #000000;
+  width: 712px;
+  height: 130px;
+  margin: 0 auto;
+}
+h1 {
+  color: #000;
+  text-shadow: 2px 2px 0px #ffffff;
+  text-align: center;
+  padding: 20px;
+  font-size: 53px;
+}
+h1 span {
+  color: #000;
+  text-shadow: 0px 0px 8px #ffffff;
+}
+.box2 {
+  width: 712px;
+  height: 130px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 8px gray;
+  margin: 100px;
+  border-radius: 8px;
+}
+.box3 {
+  width: 712px;
+  height: 130px;
+  background: purple;
+  background-image: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    navy,
+    purple
+  );
+}
