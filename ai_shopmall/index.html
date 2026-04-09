@@ -95,6 +95,10 @@
         color: #cccccc;
       }
 
+      .search-box input:focus {
+        color: #333333;
+      }
+
       .search-button {
         width: 38px;
         height: 38px;
@@ -527,33 +531,32 @@
 
       .footer-box-group {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         width: 100%;
-        height: 100%;
         gap: 0;
       }
 
       .footer-box {
         flex: none;
-        height: 125px;
+        height: auto;
       }
 
       .footer-content {
         width: 100%;
-        height: 100%;
+        height: auto;
       }
 
       .footer-box--left {
         width: 385px;
         background: #ffffff;
-        padding: 14px 16px;
+        padding: 0 16px;
       }
 
       .footer-box--right {
         width: 775px;
         background: #ffffff;
-        padding: 12px 18px;
+        padding: 0 18px;
       }
 
       .footer-box--left .footer-contact {
