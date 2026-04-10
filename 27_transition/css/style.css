@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+body {
+  font-family: "맑은 고딕";
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  /* transition 원래 요소사용 가능 */
+  transition: all 3s;
+  transition: all 0.5s ease-in-out 1s;
+  /* w지연시간 */
+  /* 크로스 부라우징 */
+  /* -webkit-transition: all 3s;
+  -moz-transition: all 3s;
+  -o-transition: all 3s; */
+}
+/* transition 사용불가 */
+div:hover {
+  width: 1500px;
+}
