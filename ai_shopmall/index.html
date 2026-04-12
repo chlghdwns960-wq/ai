@@ -196,7 +196,8 @@
       .banner {
         width: 100%;
         height: var(--banner-height);
-        background: var(--banner-color);
+        background: var(--banner-color) url("./images/00_banner/banner.jpg")
+          center center / cover no-repeat;
       }
 
       .main-content {
@@ -228,22 +229,115 @@
       }
 
       .content-box--box3 {
-        height: 1000px;
-        background: #53afb0;
+        min-height: 760px;
+        background: transparent;
+        padding: 56px 0 20px;
       }
 
       .content-box--box4 {
         height: 200px;
-        background: #b2389a;
+        background: transparent;
+        padding: 25px 0;
       }
 
       .content-box--box5 {
-        height: 1000px;
-        background: #9be8a8;
+        height: 1351px;
+        background: transparent;
+        padding: 50px 0 0;
       }
 
       .box1-inner,
-      .box2-inner {
+      .box2-inner,
+      .box3-inner,
+      .box5-inner {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      .box4-inner {
+        width: 1200px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .box5-header {
+        text-align: center;
+        margin-bottom: 41px;
+      }
+
+      .box5-title {
+        margin: 0 0 8px;
+        font-size: 28px;
+        line-height: 1.2;
+        color: #333333;
+        font-weight: 600;
+      }
+
+      .box5-subtitle {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333333;
+        font-weight: 400;
+      }
+
+      .promo-banner-grid {
+        display: flex;
+        gap: 16px;
+      }
+
+      .promo-banner {
+        display: block;
+        width: 389px;
+        height: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+        text-decoration: none;
+        flex: none;
+      }
+
+      .promo-banner__full-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .md-filter-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 0 0 41px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .md-filter-button {
+        min-width: 56px;
+        height: 34px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 999px;
+        background: #efefef;
+        font-size: 14px;
+        line-height: 1;
+        color: #555555;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        cursor: pointer;
+      }
+
+      .md-filter-button--active {
+        background: #0c6a1a;
+        color: #ffffff;
+      }
+
+      .box3-inner {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
@@ -252,6 +346,11 @@
 
       .box1-title-wrap,
       .box2-title-wrap {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .box3-title-wrap {
         text-align: center;
         margin-bottom: 28px;
       }
@@ -265,8 +364,24 @@
         font-weight: 600;
       }
 
+      .box3-title {
+        margin: 0 0 8px;
+        font-size: 28px;
+        line-height: 1.2;
+        color: #333333;
+        font-weight: 600;
+      }
+
       .box1-subtitle,
       .box2-subtitle {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333333;
+        font-weight: 400;
+      }
+
+      .box3-subtitle {
         margin: 0;
         font-size: 16px;
         line-height: 1.5;
@@ -290,6 +405,8 @@
         width: 100%;
         height: 370px;
         background: #f2f2f2;
+        border-radius: 8px 8px 0 0;
+        overflow: hidden;
       }
 
       .food-card-thumb img {
@@ -399,6 +516,8 @@
         width: 100%;
         height: 380px;
         background: #f2f2f2;
+        border-radius: 8px 8px 0 0;
+        overflow: hidden;
       }
 
       .meal-card-thumb img {
@@ -513,6 +632,133 @@
         color: #a8a8a8;
         font-weight: 600;
         text-decoration: line-through;
+      }
+
+      .recommend-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .recommend-row {
+        display: grid;
+        grid-template-columns: 576px 576px;
+        gap: 16px;
+      }
+
+      .recommend-row-main {
+        display: block;
+        width: 576px;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .recommend-row-main-thumb {
+        width: 576px;
+        height: 538px;
+        background: #cccccc;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .recommend-row-main-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .recommend-row-side {
+        display: grid;
+        grid-template-columns: repeat(2, 280px);
+        gap: 16px;
+      }
+
+      .recommend-item-card {
+        width: 280px;
+        background: #ffffff;
+      }
+
+      .recommend-item-thumb {
+        width: 280px;
+        height: 380px;
+        background: #cccccc;
+        border-radius: 8px 8px 0 0;
+        overflow: hidden;
+      }
+
+      .recommend-item-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .recommend-item-body {
+        width: 280px;
+        height: 158px;
+        padding-top: 16px;
+      }
+
+      .recommend-item-badges {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        min-height: 18px;
+        margin: 0 0 8px;
+      }
+
+      .recommend-item-badges:empty {
+        display: none;
+      }
+
+      .recommend-item-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 18px;
+        padding: 0 6px;
+        border-radius: 2px;
+        font-size: 12px;
+        line-height: 1;
+        color: #ffffff;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .recommend-item-badge--best {
+        background: #6bbf59;
+      }
+
+      .recommend-item-badge--mild {
+        background: #f0ad45;
+      }
+
+      .recommend-item-title {
+        margin: 0 0 8px;
+        font-size: 16px;
+        line-height: 1.4;
+        color: #333333;
+        font-weight: 600;
+      }
+
+      .recommend-item-desc {
+        margin: 0 0 8px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #333333;
+        font-weight: 400;
+      }
+
+      .recommend-item-price-row {
+        display: flex;
+        align-items: baseline;
+      }
+
+      .recommend-item-price {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333333;
       }
 
       .footer-divider {
@@ -1009,18 +1255,280 @@
           </div>
         </article>
 
-        <article
-          class="content-box content-box--box3"
-          aria-label="자식 박스 3"
-        ></article>
+        <article class="content-box content-box--box3" aria-label="자식 박스 3">
+          <div class="box3-inner">
+            <div class="box3-title-wrap" aria-label="박스 3 제목 영역">
+              <h2 class="box3-title">고객 추천 반찬</h2>
+              <p class="box3-subtitle">정성 가득한 반찬을 한 번에 만나보세요</p>
+            </div>
+
+            <div class="recommend-layout" aria-label="고객 추천 반찬 목록">
+              <div
+                class="recommend-row recommend-row--top"
+                aria-label="추천 상단 행"
+              >
+                <a
+                  href="#"
+                  class="recommend-row-main recommend-row-main--1"
+                  aria-label="추천 대표 카드 1"
+                >
+                  <div
+                    class="recommend-row-main-thumb recommend-row-main-thumb--1"
+                  >
+                    <img
+                      src="./images/03_day_bancham/img1.png"
+                      alt="고객 추천 반찬 1"
+                    />
+                  </div>
+                </a>
+
+                <div
+                  class="recommend-row-side recommend-row-side--top"
+                  aria-label="추천 상단 보조 카드 영역"
+                >
+                  <article
+                    class="recommend-item-card recommend-item-card--2"
+                    aria-label="추천 상품 카드 2"
+                  >
+                    <div class="recommend-item-thumb recommend-item-thumb--2">
+                      <img
+                        src="./images/03_day_bancham/img2.jpg"
+                        alt="고객 추천 반찬 2"
+                      />
+                    </div>
+                    <div class="recommend-item-body recommend-item-body--2">
+                      <div
+                        class="recommend-item-badges recommend-item-badges--2"
+                      >
+                        <span
+                          class="recommend-item-badge recommend-item-badge--mild"
+                          >맵지 않음</span
+                        >
+                      </div>
+                      <h3 class="recommend-item-title recommend-item-title--2">
+                        미역줄기볶음
+                      </h3>
+                      <p class="recommend-item-desc recommend-item-desc--2">
+                        바다의 채소 미역줄기
+                      </p>
+                      <div
+                        class="recommend-item-price-row recommend-item-price-row--2"
+                      >
+                        <strong
+                          class="recommend-item-price recommend-item-price--2"
+                          >2,800원</strong
+                        >
+                      </div>
+                    </div>
+                  </article>
+
+                  <article
+                    class="recommend-item-card recommend-item-card--3"
+                    aria-label="추천 상품 카드 3"
+                  >
+                    <div class="recommend-item-thumb recommend-item-thumb--3">
+                      <img
+                        src="./images/03_day_bancham/img3.jpg"
+                        alt="고객 추천 반찬 3"
+                      />
+                    </div>
+                    <div class="recommend-item-body recommend-item-body--3">
+                      <div
+                        class="recommend-item-badges recommend-item-badges--3"
+                      >
+                        <span
+                          class="recommend-item-badge recommend-item-badge--mild"
+                          >맵지 않음</span
+                        >
+                      </div>
+                      <h3 class="recommend-item-title recommend-item-title--3">
+                        느타리버섯볶음
+                      </h3>
+                      <p class="recommend-item-desc recommend-item-desc--3">
+                        담백한 버섯 특유의 향미가 일품
+                      </p>
+                      <div
+                        class="recommend-item-price-row recommend-item-price-row--3"
+                      >
+                        <strong
+                          class="recommend-item-price recommend-item-price--3"
+                          >3,800원</strong
+                        >
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <div
+                class="recommend-row recommend-row--bottom"
+                aria-label="추천 하단 행"
+              >
+                <a
+                  href="#"
+                  class="recommend-row-main recommend-row-main--4"
+                  aria-label="추천 대표 카드 4"
+                >
+                  <div
+                    class="recommend-row-main-thumb recommend-row-main-thumb--4"
+                  >
+                    <img
+                      src="./images/03_day_bancham/img4.png"
+                      alt="고객 추천 반찬 4"
+                    />
+                  </div>
+                </a>
+
+                <div
+                  class="recommend-row-side recommend-row-side--bottom"
+                  aria-label="추천 하단 보조 카드 영역"
+                >
+                  <article
+                    class="recommend-item-card recommend-item-card--5"
+                    aria-label="추천 상품 카드 5"
+                  >
+                    <div class="recommend-item-thumb recommend-item-thumb--5">
+                      <img
+                        src="./images/03_day_bancham/img5.jpg"
+                        alt="고객 추천 반찬 5"
+                      />
+                    </div>
+                    <div class="recommend-item-body recommend-item-body--5">
+                      <div
+                        class="recommend-item-badges recommend-item-badges--5"
+                      ></div>
+                      <h3 class="recommend-item-title recommend-item-title--5">
+                        감자채볶음
+                      </h3>
+                      <p class="recommend-item-desc recommend-item-desc--5">
+                        고소하면서 담백한 감자채볶음
+                      </p>
+                      <div
+                        class="recommend-item-price-row recommend-item-price-row--5"
+                      >
+                        <strong
+                          class="recommend-item-price recommend-item-price--5"
+                          >2,800원</strong
+                        >
+                      </div>
+                    </div>
+                  </article>
+
+                  <article
+                    class="recommend-item-card recommend-item-card--6"
+                    aria-label="추천 상품 카드 6"
+                  >
+                    <div class="recommend-item-thumb recommend-item-thumb--6">
+                      <img
+                        src="./images/03_day_bancham/img6.jpg"
+                        alt="고객 추천 반찬 6"
+                      />
+                    </div>
+                    <div class="recommend-item-body recommend-item-body--6">
+                      <div
+                        class="recommend-item-badges recommend-item-badges--6"
+                      >
+                        <span
+                          class="recommend-item-badge recommend-item-badge--mild"
+                          >맵지 않음</span
+                        >
+                      </div>
+                      <h3 class="recommend-item-title recommend-item-title--6">
+                        호두 멸치볶음
+                      </h3>
+                      <p class="recommend-item-desc recommend-item-desc--6">
+                        잔멸치와 호두가 만나 짭조름하지만 고소하게!
+                      </p>
+                      <div
+                        class="recommend-item-price-row recommend-item-price-row--6"
+                      >
+                        <strong
+                          class="recommend-item-price recommend-item-price--6"
+                          >4,800원</strong
+                        >
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
         <article
           class="content-box content-box--box4"
           aria-label="자식 박스 4"
-        ></article>
+        >
+          <div class="box4-inner">
+            <div class="promo-banner-grid" aria-label="프로모션 배너 목록">
+              <a href="#" class="promo-banner" aria-label="프로모션 배너 1">
+                <img class="promo-banner__full-image" src="./images/00_banner/banner2.png" alt="프로모션 배너 1" />
+              </a>
+              <a href="#" class="promo-banner" aria-label="프로모션 배너 2">
+                <img class="promo-banner__full-image" src="./images/00_banner/banner3.png" alt="프로모션 배너 2" />
+              </a>
+              <a href="#" class="promo-banner" aria-label="프로모션 배너 3">
+                <img class="promo-banner__full-image" src="./images/00_banner/banner4.png" alt="프로모션 배너 3" />
+              </a>
+            </div>
+          </div>
+        </article>
         <article
           class="content-box content-box--box5"
           aria-label="자식 박스 5"
-        ></article>
+        >
+          <div class="box5-inner">
+            <div class="box5-header" aria-label="박스 5 제목 영역">
+              <h2 class="box5-title">MD 추천반찬</h2>
+              <p class="box5-subtitle">이번 주 가장 추천하는 제품만 골라 드려요</p>
+            </div>
+
+            <ul class="md-filter-list" aria-label="MD 추천반찬 카테고리">
+              <li><button class="md-filter-button md-filter-button--active" type="button">비빔밥</button></li>
+              <li><button class="md-filter-button" type="button">국 / 찌개 / 탕</button></li>
+              <li><button class="md-filter-button" type="button">어린이 반찬</button></li>
+              <li><button class="md-filter-button" type="button">볶음</button></li>
+              <li><button class="md-filter-button" type="button">무침</button></li>
+              <li><button class="md-filter-button" type="button">메인요리</button></li>
+              <li><button class="md-filter-button" type="button">조림</button></li>
+            </ul>
+
+            <div class="card-grid" aria-label="MD 추천반찬 카드 목록">
+              <article class="food-card" aria-label="MD 추천 카드 1">
+                <div class="food-card-thumb"><img src="./images/05_md/img1.jpg" alt="매콤 콩나물 무침" /></div>
+                <div class="food-card-body"><div class="food-card-badges"></div><h3 class="food-card-title">매콤 콩나물 무침</h3><p class="food-card-desc">참기름으로 아삭하게 무쳐낸 콩나물 무침</p><div class="food-card-price-row"><strong class="food-card-price">3,200원</strong></div></div>
+              </article>
+              <article class="food-card" aria-label="MD 추천 카드 2">
+                <div class="food-card-thumb"><img src="./images/05_md/img2.jpg" alt="브로콜리 두부무침" /></div>
+                <div class="food-card-body"><div class="food-card-badges"><span class="food-card-badge food-card-badge--mild">매진임박</span></div><h3 class="food-card-title">브로콜리 두부무침</h3><p class="food-card-desc">브로콜리를 담백한 두부에 버무렸어요</p><div class="food-card-price-row"><strong class="food-card-price">3,800원</strong></div></div>
+              </article>
+              <article class="food-card" aria-label="MD 추천 카드 3">
+                <div class="food-card-thumb"><img src="./images/05_md/img3.jpg" alt="새콤달콤 도라지무침" /></div>
+                <div class="food-card-body"><div class="food-card-badges"></div><h3 class="food-card-title">새콤달콤 도라지무침</h3><p class="food-card-desc">달콤한 도라지와 오이를 새콤하게 무쳤어요</p><div class="food-card-price-row"><strong class="food-card-price">5,800원</strong></div></div>
+              </article>
+              <article class="food-card" aria-label="MD 추천 카드 4">
+                <div class="food-card-thumb"><img src="./images/05_md/img4.jpg" alt="새콤달콤 오이맛살무침" /></div>
+                <div class="food-card-body"><div class="food-card-badges"><span class="food-card-badge food-card-badge--mild">매진임박</span></div><h3 class="food-card-title">새콤달콤 오이맛살무침</h3><p class="food-card-desc">함께하면 입맛을 돋우는 산뜻한 반찬</p><div class="food-card-price-row"><strong class="food-card-price">3,800원</strong></div></div>
+              </article>
+              <article class="food-card" aria-label="MD 추천 카드 5">
+                <div class="food-card-thumb"><img src="./images/05_md/img5.jpg" alt="원더스푼 된장국" /></div>
+                <div class="food-card-body"><div class="food-card-badges"><span class="food-card-badge food-card-badge--new">신제품</span><span class="food-card-badge food-card-badge--mild">매진임박</span></div><h3 class="food-card-title">[원더스푼] 된장국</h3><p class="food-card-desc">매일 먹어도 좋은 담백한 된장국</p><div class="food-card-price-row"><strong class="food-card-price">3,300원</strong></div></div>
+              </article>
+              <article class="food-card" aria-label="MD 추천 카드 6">
+                <div class="food-card-thumb"><img src="./images/05_md/img6.jpg" alt="원더스푼 맑은 순두부찌개" /></div>
+                <div class="food-card-body"><div class="food-card-badges"><span class="food-card-badge food-card-badge--new">신제품</span><span class="food-card-badge food-card-badge--mild">매진임박</span></div><h3 class="food-card-title">[원더스푼] 맑은 순두부찌개</h3><p class="food-card-desc">맑은 국물 순두부찌개, 아이도 OK</p><div class="food-card-price-row"><strong class="food-card-price">4,300원</strong></div></div>
+              </article>
+              <article class="food-card" aria-label="MD 추천 카드 7">
+                <div class="food-card-thumb"><img src="./images/05_md/img7.jpg" alt="원더스푼 맛살 계란 덮밥" /></div>
+                <div class="food-card-body"><div class="food-card-badges"><span class="food-card-badge food-card-badge--new">신제품</span><span class="food-card-badge food-card-badge--mild">매진임박</span></div><h3 class="food-card-title">[원더스푼] 맛살 계란 덮밥</h3><p class="food-card-desc">고소한 맛살과 부드러운 계란이 조화로운 덮밥</p><div class="food-card-price-row"><strong class="food-card-price">4,300원</strong></div></div>
+              </article>
+              <article class="food-card" aria-label="MD 추천 카드 8">
+                <div class="food-card-thumb"><img src="./images/05_md/img8.jpg" alt="원더스푼 한우 스테이크소스 덮밥" /></div>
+                <div class="food-card-body"><div class="food-card-badges"><span class="food-card-badge food-card-badge--new">신제품</span><span class="food-card-badge food-card-badge--mild">매진임박</span></div><h3 class="food-card-title">[원더스푼] 한우 스테이크소스 덮밥</h3><p class="food-card-desc">한우의 풍미를 그대로 담은 스테이크소스 덮밥</p><div class="food-card-price-row"><strong class="food-card-price">4,500원</strong></div></div>
+              </article>
+            </div>
+          </div>
+        </article>
       </div>
     </main>
 
@@ -1064,4 +1572,4 @@
       </div>
     </footer>
   </body>
-</html>
+</html> <img src="./images/05_md_bancham/img1.jpg" alt="">
