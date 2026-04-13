@@ -24,7 +24,7 @@ header {
   align-items: center;
 }
 header .gnb {
-  width: 1000px;
+  width: 600px;
   height: 100px;
 }
 header .gnb > ul {
