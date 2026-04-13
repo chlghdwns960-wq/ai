@@ -1,0 +1,135 @@
+@charset "utf-8";
+body {
+  font-family: "맑은 고딕", "malgun gothic", "snas-seif";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 1200px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .gnb {
+  width: 1000px;
+  height: 100px;
+}
+header .gnb > ul {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .gnb > ul > li {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #333;
+  text-align: center;
+  line-height: 50px;
+  position: relative;
+}
+header .gnb > .ul > li > a {
+  color: #333;
+  /* 하이퍼링크 영역 확대 */
+  /* a태그는 inline태그는 크기 설정 불가 */
+  display: block;
+  /* 블럭 요소로 변경 */
+  width: 100%;
+  height: 100%;
+}
+header .gnb > ul > li:hover {
+  background: #333;
+}
+header .gnb > ul > li:hover > a {
+  color: #fff;
+}
+/* 2차메뉴 */
+.gnb > ul > li > .depth2 {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  text-align: center;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #333;
+  /* 화면에 보이지 않게 */
+  display: none;
+}
+/* 1차메뉴 hover시 2차 메뉴 보이게 */
+.gnb > ul > li:hover > .depth2 {
+  display: block;
+}
+.gnb > ul > li > .depth2 > li > a {
+  color: #333;
+}
+.gnb > ul > li > .depth2 > li:hover {
+  background: #333;
+}
+.gnb > ul > li > .depth2 > li:hover a {
+  color: #fff;
+}
+.slide {
+  width: 1200px;
+  height: 300px;
+  margin: 0 auto;
+  background: blue;
+}
+
+.contents {
+  width: 1200px;
+  height: 200px;
+  margin: 0 auto;
+  background: chartreuse;
+  display: flex;
+}
+.contents .notice {
+  width: 400px;
+  height: 200px;
+  background: forestgreen;
+}
+.contents .banner {
+  width: 400px;
+  height: 200px;
+  background: gold;
+}
+.contents .go {
+  width: 400px;
+  height: 200px;
+  background: hotpink;
+}
+
+footer {
+  width: 1200px;
+  height: 100px;
+  margin: 0 auto;
+  background: darkgreen;
+  display: flex;
+}
+footer .logo {
+  width: 200px;
+  height: 100px;
+  background: indigo;
+}
+footer .copy {
+  width: 800px;
+  height: 100px;
+  background: khaki;
+}
+footer .sns {
+  width: 200px;
+  height: 100px;
+  background: lawngreen;
+}
