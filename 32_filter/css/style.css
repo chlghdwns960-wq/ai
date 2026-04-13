@@ -1,0 +1,25 @@
+@charset "utf-8";
+body {
+  font-family: "맑은 고딕";
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.test1 {
+  filter: blur(10px);
+}
+.test2 {
+  filter: brightness(200%);
+}
+.test3 {
+  /* 흑백으로 */
+  filter: grayscale(100%);
+}
+.test4 {
+  /* 그림자효과 */
+  /* filter: drop-shadow(x y bluer color); */
+  filter: drop-shadow(10px 10px 10px #000);
+}
