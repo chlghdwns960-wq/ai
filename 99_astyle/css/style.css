@@ -65,6 +65,7 @@ header .gnb > ul > li:hover > a {
   width: 100%;
   background: #fff;
   border: 1px solid #333;
+  flex-direction: column;
   /* 화면에 보이지 않게 */
   display: none;
 }
