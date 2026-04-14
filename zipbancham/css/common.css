@@ -157,7 +157,6 @@ header {
 .h3 {
   background: #ff4da8;
 }
-
 .footer-left {
   width: 320px;
 }
@@ -245,14 +244,8 @@ footer {
 /* footer */
 footer {
   margin-top: 20px;
-  width: 1200px;
+  width: 100%;
   min-height: 200px;
-  margin-left: auto;
-  margin-right: auto;
   background: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 46px 16px 38px;
-  color: #767676;
+  border-top: 1px solid #e5e5e5;
 }

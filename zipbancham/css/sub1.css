@@ -571,3 +571,6 @@
   font-weight: 400;
   color: #808080;
 }
+.site-footer {
+  border-top: none;
+}
