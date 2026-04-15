@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "쭈꾸미 풋마늘 파스타",
+    "descr": "봄기운이 가득! 쭈꾸미와 풋마늘의 찰떡 궁합",
+    "price": 12800,
+    "img": "images/01_bancham/bancham1"
+  },
+  {
+    "id": 2,
+    "name": "쭈꾸미 미나리 파스타",
+    "descr": "지금이 제철! 쭈꾸미와 미나리의 만남",
+    "price": 12800,
+    "img": "images/01_bancham/bancham2"
+  },
+  {
+    "id": 3,
+    "name": "잡채",
+    "descr": "탱글한 면발과 맛깔진 고명이 가득",
+    "price": 12800,
+    "img": "images/01_bancham/bancham3"
+  },
+  {
+    "id": 4,
+    "name": "한끼 한돈제육_완조리",
+    "descr": "혼자 먹기 딱 좋은. 1인분 제육 볶음",
+    "price": 6800,
+    "img": "images/01_bancham/bancham4"
+  },
+  {
+    "id": 5,
+    "name": "[펀더스쿱]두부멜바",
+    "descr": "아이들도 입맛 없는 날 뚝딱 한 그릇",
+    "price": 3500,
+    "img": "images/01_bancham/bancham5"
+  },
+  {
+    "id": 6,
+    "name": "[펀더스쿱]한돈 순두부 멜바",
+    "descr": "몽글몽글 부드러운 한돈 순두부 소스",
+    "price": 3800,
+    "img": "images/01_bancham/bancham6"
+  },
+  {
+    "id": 7,
+    "name": "[원더스푼] 한우 하이라이스 덮밥",
+    "descr": "부드럽게 끓여낸 한우 하이라이스 소스",
+    "price": 4300,
+    "img": "images/01_bancham/bancham7"
+  },
+  {
+    "id": 8,
+    "name": "[원더스푼] 한우 삼색 솜보로 덮밥",
+    "descr": "알록달록 색감까지 맛있는 삼색 덮밥",
+    "price": 4800,
+    "img": "images/01_bancham/bancham8"
+  }
+]
