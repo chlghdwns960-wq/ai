@@ -187,13 +187,101 @@ body {
   flex: none;
 }
 
-.banner {
+/* .banner {
   width: 100%;
   height: var(--banner-height);
   background: var(--banner-color) url("./images/00_banner/banner.jpg") center
     center / cover no-repeat;
+} */
+.main-visual {
+  width: 1920px;
+  height: 480px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: #dbe7e4;
 }
 
+.main-visual .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.main-visual .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.main-visual .swiper-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.main-visual .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* 이전/다음 버튼 */
+.mv-nav {
+  position: absolute;
+  left: 358px;
+  bottom: 23px;
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+}
+
+.mv-btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mv-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mv-btn path {
+  fill: none;
+  stroke: #8f8f8f;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* 페이지 표시 1/5 */
+.mv-fraction {
+  position: absolute;
+  right: 363px;
+  bottom: 23px;
+  z-index: 10;
+  min-width: 48px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 13px;
+  background: rgba(110, 110, 110, 0.85);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: center;
+}
+
+.mv-fraction .slash {
+  margin: 0 2px;
+}
 .main-content {
   min-height: var(--main-min-height);
   background: transparent;

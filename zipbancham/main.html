@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>시안 구현</title>
     <link rel="stylesheet" href="./css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
@@ -73,10 +77,63 @@
         </div>
       </div>
     </header>
-
-    <div class="banner" aria-label="슬라이드 영역">
+    <!-- 배너 슬라이드 -->
+    <!-- <div class="banner" aria-label="슬라이드 영역">
       <img src="./images/00_banner/banner.jpg" alt="" />
-    </div>
+    </div> -->
+    <section class="main-visual">
+      <div class="swiper mainVisualSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="#">
+              <img src="./images/00_banner/banner.jpg" alt="슬라이드 1" />
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#">
+              <img src="./images/00_banner/banner01.jpg" alt="슬라이드 2" />
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#">
+              <img src="./images/00_banner/banner02.jpg" alt="슬라이드 3" />
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#">
+              <img src="./images/00_banner/banner03.png" alt="슬라이드 4" />
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#">
+              <img src="./images/00_banner/banner04.jpg" alt="슬라이드 5" />
+            </a>
+          </div>
+        </div>
+
+        <!-- 이전/다음 버튼 -->
+        <div class="mv-nav">
+          <button type="button" class="mv-btn mv-prev" aria-label="이전">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.5 5.5L8 12l6.5 6.5" />
+            </svg>
+          </button>
+
+          <button type="button" class="mv-btn mv-next" aria-label="다음">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9.5 5.5L16 12l-6.5 6.5" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- 페이지 표시 -->
+        <div class="mv-fraction">
+          <span class="current">1</span>
+          <span class="slash">/</span>
+          <span class="total">5</span>
+        </div>
+      </div>
+    </section>
 
     <main class="main-content" aria-label="메인 영역">
       <div class="main-stack" aria-label="메인 자식 박스 영역">
@@ -894,4 +951,31 @@
       </div>
     </footer>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script>
+    const fractionCurrent = document.querySelector(".mv-fraction .current");
+    const fractionTotal = document.querySelector(".mv-fraction .total");
+
+    const mainVisualSwiper = new Swiper(".mainVisualSwiper", {
+      loop: true,
+      speed: 800,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        prevEl: ".mv-prev",
+        nextEl: ".mv-next",
+      },
+      on: {
+        init: function () {
+          fractionTotal.textContent = 5;
+          fractionCurrent.textContent = this.realIndex + 1;
+        },
+        slideChange: function () {
+          fractionCurrent.textContent = this.realIndex + 1;
+        },
+      },
+    });
+  </script>
 </html>
