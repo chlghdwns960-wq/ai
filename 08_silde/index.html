@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인슬라이드</title>
+    <!-- swiper slide 사용하기 위한 css 주소 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main>
+      <!-- swiper slide -->
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img src="./images/01_banner/banner.png" alt="배너1" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/01_banner/banner01.png" alt="배너2" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/01_banner/banner02.png" alt="배너3" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/01_banner/banner03.png" alt="배너4" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/01_banner/banner04.png" alt="배너5" />
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <!-- 페이지 버튼 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <!-- 좌측 버튼 -->
+        <div class="swiper-button-prev"></div>
+        <!-- 우측 버튼 -->
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <!-- 슬라이드 스크롤바 -->
+        <!-- <div class="swiper-scrollbar"></div> -->
+      </div>
+    </main>
+  </body>
+  <!-- swiper slide 사용하기 위한 script 주소 -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper(".swiper", {
+      // Optional parameters
+      //   슬라이드 방향
+      direction: "horizontal",
+      autoplay: {
+        delay: 3000, // 3초마다 슬라이드 변경 (1000 = 1초)
+        disableOnInteraction: false, // 사용자 상호작용 후에도 자동재생 유지
+      },
+      loop: true,
+
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction", // ★ 페이지 번호(Fraction) 타입 설정
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+    });
+  </script>
+</html>
