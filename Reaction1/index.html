@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nature Skin Responsive</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      body {
+        font-family: "Georgia", "Times New Roman", serif;
+        background: linear-gradient(
+          to bottom,
+          #dcc9b9 0%,
+          #dcc9b9 26.5%,
+          #d7c2b1 26.5%,
+          #d7c2b1 75%,
+          #b29f8f 75%,
+          #b29f8f 100%
+        );
+        color: #111;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .inner {
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        background: #f4f4f4;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 345px;
+        background-image: url("./images/main_img02.png");
+        background-size: cover;
+        background-position: center center;
+        overflow: hidden;
+      }
+
+      .brand {
+        position: absolute;
+        top: 110px;
+        right: 42px;
+        font-size: 28px;
+        line-height: 1;
+        font-style: italic;
+        color: #111;
+        white-space: nowrap;
+      }
+
+      .gnb {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(214, 34, 31, 0.78);
+      }
+
+      .gnb ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+      }
+
+      .gnb li {
+        flex: 1;
+      }
+
+      .gnb a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        font-size: 12px;
+        color: #fff3ea;
+        font-weight: 600;
+        transition:
+          background-color 0.25s ease,
+          opacity 0.25s ease;
+      }
+
+      .gnb a:hover {
+        opacity: 1;
+        background: rgba(214, 34, 31, 1);
+      }
+
+      .content {
+        padding: 18px 16px 22px;
+        background: #f3f3f3;
+      }
+
+      .section-title {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 28px;
+        line-height: 1.1;
+        font-style: italic;
+        color: #111;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 274px;
+        column-gap: 18px;
+        align-items: start;
+      }
+
+      .article h2 {
+        margin-bottom: 18px;
+        font-size: 24px;
+        line-height: 1.2;
+        font-style: italic;
+        font-weight: 500;
+      }
+
+      .article p {
+        font-size: 14px;
+        line-height: 1.75;
+        margin-bottom: 32px;
+        color: #222;
+      }
+
+      .article p:last-child {
+        margin-bottom: 0;
+      }
+
+      .gallery {
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+
+      .gallery figure {
+        overflow: hidden;
+        background: #cfc6b8;
+      }
+
+      .gallery img {
+        aspect-ratio: 274 / 183;
+        object-fit: cover;
+        filter: grayscale(1) sepia(0.35) brightness(0.72);
+        transition:
+          filter 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .gallery img:hover {
+        filter: grayscale(0.2) sepia(0.12) brightness(1.08);
+      }
+
+      .footer {
+        background: #303238;
+        text-align: center;
+        padding: 14px 16px 15px;
+      }
+
+      .footer p {
+        color: #f3ddc8;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      @media (max-width: 1023px) {
+        .page {
+          padding: 0 24px;
+        }
+
+        .inner {
+          max-width: none;
+        }
+
+        .hero {
+          min-height: 300px;
+          background-position: 36% center;
+        }
+
+        .brand {
+          top: 72px;
+          right: 46px;
+          font-size: 29px;
+        }
+
+        .gnb ul {
+          min-height: 50px;
+        }
+
+        .gnb a {
+          min-height: 50px;
+          font-size: 14px;
+        }
+
+        .content {
+          padding: 28px 30px 24px;
+        }
+
+        .section-title {
+          font-size: 34px;
+          margin-bottom: 18px;
+        }
+
+        .content-grid {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+
+        .article h2 {
+          font-size: 22px;
+          margin-bottom: 14px;
+        }
+
+        .article p {
+          font-size: 16px;
+          line-height: 1.7;
+          margin-bottom: 24px;
+        }
+
+        .article p:last-child {
+          margin-bottom: 0;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 26px;
+        }
+
+        .gallery img {
+          aspect-ratio: 1 / 0.67;
+        }
+
+        .footer {
+          padding: 16px;
+        }
+
+        .footer p {
+          font-size: 17px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .page {
+          padding: 0 16px;
+        }
+
+        .hero {
+          min-height: 558px;
+          background-position: 38% center;
+        }
+
+        .brand {
+          top: 24px;
+          right: 34px;
+          font-size: 26px;
+        }
+
+        .gnb {
+          left: 50%;
+          right: auto;
+          bottom: 118px;
+          transform: translateX(-50%);
+          width: calc(100% - 90px);
+          background: transparent;
+        }
+
+        .gnb ul {
+          flex-direction: column;
+          gap: 10px;
+          align-items: stretch;
+        }
+
+        .gnb li {
+          flex: none;
+        }
+
+        .gnb a {
+          min-height: 56px;
+          border-radius: 10px;
+          background: rgba(214, 34, 31, 0.78);
+          font-size: 12px;
+          transition:
+            background-color 0.25s ease,
+            opacity 0.25s ease;
+        }
+
+        .gnb a:hover {
+          opacity: 1;
+          background: rgba(214, 34, 31, 1);
+        }
+
+        .content {
+          padding: 18px 14px 22px;
+        }
+
+        .section-title {
+          font-size: 28px;
+          margin-bottom: 16px;
+        }
+
+        .article h2 {
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+
+        .article p {
+          font-size: 12px;
+          line-height: 1.9;
+          margin-bottom: 26px;
+        }
+
+        .gallery {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .gallery img {
+          aspect-ratio: 1 / 0.76;
+        }
+
+        .footer {
+          padding: 20px 12px;
+        }
+
+        .footer p {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="inner">
+        <header class="hero">
+          <h1 class="brand">Nature Skin</h1>
+
+          <nav class="gnb">
+            <ul>
+              <li><a href="#">Nature Skin</a></li>
+              <li><a href="#">Guide Info</a></li>
+              <li><a href="#">Reservation</a></li>
+              <li><a href="#">Custom</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <main class="content">
+          <h2 class="section-title">About Nature Skin</h2>
+
+          <div class="content-grid">
+            <article class="article">
+              <h2>What is Aromatherapy</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ratione dolor veniam cum sunt ipsam, esse asperiores quas, sed
+                eveniet, delectus ad! Rerum commodi assumenda iure reiciendis
+                distinctio laborum, quod odit.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita obcaecati, repellendus incidunt voluptate, esse eaque
+                dolor ducimus ab pariatur architecto distinctio! Autem quia
+                labore necessitatibus aperiam accusamus. Repudiandae, iusto,
+                accusantium.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit
+                mollitia itaque eum libero ab dignissimos nostrum facere illum
+                necessitatibus! Deleniti illum quibusdam dignissimos dolore
+                earum fugiat pariatur, tempora nam sunt.
+              </p>
+            </article>
+
+            <aside class="gallery">
+              <figure>
+                <img src="./images/subimg01.png" alt="아로마 이미지 1" />
+              </figure>
+              <figure>
+                <img src="./images/subimg02.png" alt="아로마 이미지 2" />
+              </figure>
+              <figure>
+                <img src="./images/subimg03.png" alt="아로마 이미지 3" />
+              </figure>
+            </aside>
+          </div>
+        </main>
+
+        <footer class="footer">
+          <p>© Nature Skin.</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
