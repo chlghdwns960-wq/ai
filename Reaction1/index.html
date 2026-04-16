@@ -3,12 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nature Skin Responsive</title>
+    <title>Nature Skin</title>
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
       }
 
       img {
@@ -17,18 +27,9 @@
         height: auto;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      ul,
-      ol {
-        list-style: none;
-      }
-
       body {
         font-family: "Georgia", "Times New Roman", serif;
+        color: #111;
         background: linear-gradient(
           to bottom,
           #dcc9b9 0%,
@@ -38,54 +39,45 @@
           #b29f8f 75%,
           #b29f8f 100%
         );
-        color: #111;
       }
 
-      .page {
+      .wrap {
         width: 100%;
-        padding: 0;
       }
 
       .inner {
-        width: 100%;
-        max-width: 960px;
+        width: 960px;
         margin: 0 auto;
-        background: #f4f4f4;
+        background: #efefef;
       }
 
+      /* header */
       .hero {
         position: relative;
-        min-height: 345px;
-        background-image: url("./images/main_img02.png");
-        background-size: cover;
-        background-position: center center;
-        overflow: hidden;
+        min-height: 395px;
+        background: url("./images/main_img02.png") no-repeat left top / cover;
       }
 
-      .brand {
+      .logo {
         position: absolute;
-        top: 110px;
-        right: 42px;
-        font-size: 28px;
-        line-height: 1;
+        top: 85px;
+        right: 46px;
+        font-size: 33px;
         font-style: italic;
-        color: #111;
-        white-space: nowrap;
+        font-weight: 700;
+        color: #1a1a1a;
       }
 
       .gnb {
         position: absolute;
         left: 0;
-        right: 0;
         bottom: 0;
-        background: rgba(214, 34, 31, 0.78);
+        width: 100%;
+        background: rgba(230, 56, 50, 0.78);
       }
 
       .gnb ul {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 42px;
       }
 
       .gnb li {
@@ -93,45 +85,47 @@
       }
 
       .gnb a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 42px;
-        font-size: 12px;
-        color: #fff3ea;
-        font-weight: 600;
-        transition:
-          background-color 0.25s ease,
-          opacity 0.25s ease;
+        display: block;
+        height: 52px;
+        line-height: 52px;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        transition: background 0.25s ease;
       }
 
       .gnb a:hover {
-        opacity: 1;
-        background: rgba(214, 34, 31, 1);
+        background: rgba(230, 56, 50, 1);
       }
 
+      /* content */
       .content {
-        padding: 18px 16px 22px;
-        background: #f3f3f3;
+        padding: 18px 20px 20px;
+        background: #efefef;
       }
 
-      .section-title {
-        margin-bottom: 20px;
+      .content-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .box1 {
+        flex: 1;
+      }
+
+      .main-title {
+        margin-bottom: 24px;
         text-align: center;
         font-size: 28px;
         line-height: 1.1;
         font-style: italic;
-        color: #111;
+        font-weight: 700;
       }
 
-      .content-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 274px;
-        column-gap: 18px;
-        align-items: start;
-      }
-
-      .article h2 {
+      .sub-title {
         margin-bottom: 18px;
         font-size: 24px;
         line-height: 1.2;
@@ -139,223 +133,213 @@
         font-weight: 500;
       }
 
-      .article p {
+      .box1 p {
+        margin-bottom: 34px;
         font-size: 14px;
-        line-height: 1.75;
-        margin-bottom: 32px;
+        line-height: 1.9;
         color: #222;
       }
 
-      .article p:last-child {
+      .box1 p:last-child {
         margin-bottom: 0;
       }
 
-      .gallery {
-        display: grid;
+      .box2 {
+        width: 280px;
+      }
+
+      .box2 ul {
+        display: flex;
+        flex-direction: column;
         gap: 18px;
-        align-content: start;
       }
 
-      .gallery figure {
-        overflow: hidden;
-        background: #cfc6b8;
-      }
-
-      .gallery img {
-        aspect-ratio: 274 / 183;
+      .box2 img {
+        width: 100%;
+        height: 183px;
         object-fit: cover;
-        filter: grayscale(1) sepia(0.35) brightness(0.72);
-        transition:
-          filter 0.3s ease,
-          transform 0.3s ease;
+        filter: grayscale(1) brightness(0.72);
+        transition: filter 0.3s ease;
       }
 
-      .gallery img:hover {
-        filter: grayscale(0.2) sepia(0.12) brightness(1.08);
+      .box2 img:hover {
+        filter: grayscale(0.15) brightness(1.1);
       }
 
+      /* footer */
       .footer {
-        background: #303238;
+        padding: 14px 0;
         text-align: center;
-        padding: 14px 16px 15px;
-      }
-
-      .footer p {
-        color: #f3ddc8;
+        background: #2e2f35;
+        color: #f4e3d2;
         font-size: 14px;
-        line-height: 1.2;
       }
 
+      /* tablet */
       @media (max-width: 1023px) {
-        .page {
-          padding: 0 24px;
-        }
-
         .inner {
-          max-width: none;
+          width: auto;
+          margin: 0 24px;
         }
 
         .hero {
           min-height: 300px;
-          background-position: 36% center;
+          background-position: left top;
         }
 
-        .brand {
-          top: 72px;
-          right: 46px;
-          font-size: 29px;
-        }
-
-        .gnb ul {
-          min-height: 50px;
+        .logo {
+          top: 78px;
+          right: 42px;
+          font-size: 34px;
         }
 
         .gnb a {
-          min-height: 50px;
-          font-size: 14px;
+          height: 60px;
+          line-height: 60px;
+          font-size: 18px;
         }
 
         .content {
-          padding: 28px 30px 24px;
+          padding: 26px 28px 24px;
         }
 
-        .section-title {
+        .content-wrap {
+          display: block;
+        }
+
+        .box1 {
+          width: 100%;
+        }
+
+        .main-title {
+          margin-bottom: 22px;
           font-size: 34px;
-          margin-bottom: 18px;
         }
 
-        .content-grid {
-          grid-template-columns: 1fr;
-          gap: 22px;
-        }
-
-        .article h2 {
+        .sub-title {
+          margin-bottom: 16px;
           font-size: 22px;
-          margin-bottom: 14px;
         }
 
-        .article p {
+        .box1 p {
+          margin-bottom: 28px;
           font-size: 16px;
-          line-height: 1.7;
-          margin-bottom: 24px;
+          line-height: 1.75;
         }
 
-        .article p:last-child {
-          margin-bottom: 0;
+        .box2 {
+          width: 100%;
+          margin-top: 24px;
         }
 
-        .gallery {
-          grid-template-columns: repeat(3, 1fr);
+        .box2 ul {
+          flex-direction: row;
           gap: 26px;
         }
 
-        .gallery img {
+        .box2 li {
+          flex: 1;
+        }
+
+        .box2 img {
+          width: 100%;
+          height: auto;
           aspect-ratio: 1 / 0.67;
         }
 
         .footer {
-          padding: 16px;
-        }
-
-        .footer p {
+          padding: 16px 0;
           font-size: 17px;
         }
       }
 
+      /* mobile */
       @media (max-width: 767px) {
-        .page {
-          padding: 0 16px;
+        .inner {
+          margin: 0 16px;
         }
 
         .hero {
-          min-height: 558px;
-          background-position: 38% center;
+          min-height: 560px;
+          background-position: left top;
         }
 
-        .brand {
+        .logo {
           top: 24px;
-          right: 34px;
+          right: 28px;
           font-size: 26px;
         }
 
         .gnb {
           left: 50%;
-          right: auto;
           bottom: 118px;
-          transform: translateX(-50%);
           width: calc(100% - 90px);
+          transform: translateX(-50%);
           background: transparent;
         }
 
         .gnb ul {
           flex-direction: column;
           gap: 10px;
-          align-items: stretch;
-        }
-
-        .gnb li {
-          flex: none;
         }
 
         .gnb a {
-          min-height: 56px;
+          height: 62px;
+          line-height: 62px;
           border-radius: 10px;
-          background: rgba(214, 34, 31, 0.78);
-          font-size: 12px;
-          transition:
-            background-color 0.25s ease,
-            opacity 0.25s ease;
+          background: rgba(230, 56, 50, 0.78);
+          font-size: 16px;
         }
 
         .gnb a:hover {
-          opacity: 1;
-          background: rgba(214, 34, 31, 1);
+          background: rgba(230, 56, 50, 1);
         }
 
         .content {
           padding: 18px 14px 22px;
         }
 
-        .section-title {
+        .main-title {
+          margin-bottom: 18px;
           font-size: 28px;
-          margin-bottom: 16px;
         }
 
-        .article h2 {
+        .sub-title {
+          margin-bottom: 12px;
           font-size: 18px;
-          margin-bottom: 10px;
         }
 
-        .article p {
+        .box1 p {
+          margin-bottom: 26px;
           font-size: 12px;
           line-height: 1.9;
-          margin-bottom: 26px;
         }
 
-        .gallery {
-          grid-template-columns: 1fr;
+        .box2 {
+          margin-top: 20px;
+        }
+
+        .box2 ul {
+          flex-direction: column;
           gap: 24px;
         }
 
-        .gallery img {
+        .box2 img {
           aspect-ratio: 1 / 0.76;
         }
 
         .footer {
-          padding: 20px 12px;
-        }
-
-        .footer p {
+          padding: 20px 0;
           font-size: 13px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="page">
+    <div class="wrap">
       <div class="inner">
         <header class="hero">
-          <h1 class="brand">Nature Skin</h1>
+          <h1 class="logo">Nature Skin</h1>
 
           <nav class="gnb">
             <ul>
@@ -368,17 +352,18 @@
         </header>
 
         <main class="content">
-          <h2 class="section-title">About Nature Skin</h2>
+          <div class="content-wrap">
+            <div class="box1">
+              <h2 class="main-title">About Nature Skin</h2>
+              <h3 class="sub-title">What is Aromatherapy</h3>
 
-          <div class="content-grid">
-            <article class="article">
-              <h2>What is Aromatherapy</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Ratione dolor veniam cum sunt ipsam, esse asperiores quas, sed
                 eveniet, delectus ad! Rerum commodi assumenda iure reiciendis
                 distinctio laborum, quod odit.
               </p>
+
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Expedita obcaecati, repellendus incidunt voluptate, esse eaque
@@ -386,25 +371,28 @@
                 labore necessitatibus aperiam accusamus. Repudiandae, iusto,
                 accusantium.
               </p>
+
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit
                 mollitia itaque eum libero ab dignissimos nostrum facere illum
                 necessitatibus! Deleniti illum quibusdam dignissimos dolore
                 earum fugiat pariatur, tempora nam sunt.
               </p>
-            </article>
+            </div>
 
-            <aside class="gallery">
-              <figure>
-                <img src="./images/subimg01.png" alt="아로마 이미지 1" />
-              </figure>
-              <figure>
-                <img src="./images/subimg02.png" alt="아로마 이미지 2" />
-              </figure>
-              <figure>
-                <img src="./images/subimg03.png" alt="아로마 이미지 3" />
-              </figure>
-            </aside>
+            <div class="box2">
+              <ul>
+                <li>
+                  <img src="./images/subimg01.png" alt="아로마 이미지 1" />
+                </li>
+                <li>
+                  <img src="./images/subimg02.png" alt="아로마 이미지 2" />
+                </li>
+                <li>
+                  <img src="./images/subimg03.png" alt="아로마 이미지 3" />
+                </li>
+              </ul>
+            </div>
           </div>
         </main>
 
