@@ -943,6 +943,54 @@ body {
   font-weight: 600;
   color: #cccccc;
 }
+/* 집밥 한 끼 슬라이드 */
+.meal-slider-wrap {
+  position: relative;
+  width: 100%;
+  padding: 0;
+}
+
+.mealSwiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.meal-btn {
+  position: absolute;
+  top: 200px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d9d9d9;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.meal-prev {
+  left: -20px;
+}
+
+.meal-next {
+  right: -20px;
+}
+
+.meal-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.meal-btn path {
+  fill: none;
+  stroke: #8f8f8f;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 @media (max-width: 768px) {
   :root {
     --inner-width: 100%;
@@ -1413,6 +1461,141 @@ body {
 
   .footer-box--left .footer-contact-phone {
     font-size: 13px;
+  }
+  /* 집밥 한 끼 슬라이드 모바일 */
+  @media (max-width: 768px) {
+    .content-box--box2 {
+      min-height: auto;
+      padding: 40px 0;
+    }
+
+    /* 집밥 한 끼 슬라이드 */
+    .meal-slider-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .mealSwiper {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .mealSwiper .swiper-slide {
+      height: auto;
+    }
+
+    .mealSwiper .meal-card {
+      width: 100%;
+      height: auto;
+    }
+    .mealSwiper .swiper-wrapper {
+      align-items: flex-start;
+    }
+
+    .mealSwiper .swiper-slide {
+      height: auto !important;
+    }
+
+    .meal-card-thumb {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    .meal-card-body {
+      height: auto;
+      padding: 12px 8px 8px;
+    }
+
+    .meal-card-title {
+      margin: 0 0 6px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .meal-card-desc {
+      margin: 0 0 6px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .meal-card-price-row {
+      gap: 6px;
+    }
+
+    .meal-card-sale,
+    .meal-card-price {
+      font-size: 14px;
+    }
+
+    .meal-card-origin {
+      margin-top: 4px;
+      font-size: 12px;
+    }
+
+    .meal-card-badge {
+      font-size: 10px;
+      height: 16px;
+      padding: 0 5px;
+    }
+
+    .meal-card-sale-badge {
+      top: 8px;
+      left: 8px;
+    }
+
+    .meal-card-sale-badge img {
+      transform: scale(0.85);
+      transform-origin: top left;
+    }
+
+    .meal-card-lock {
+      right: 8px;
+      bottom: 8px;
+    }
+
+    .meal-card-lock img {
+      transform: scale(0.85);
+      transform-origin: bottom right;
+    }
+
+    /* 좌우 버튼 */
+    .meal-btn {
+      position: absolute;
+      top: 200px;
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #d9d9d9;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .meal-prev {
+      left: -20px;
+    }
+
+    .meal-next {
+      right: -20px;
+    }
+
+    .meal-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .meal-btn path {
+      fill: none;
+      stroke: #8f8f8f;
+      stroke-width: 2.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
   }
 }
 
