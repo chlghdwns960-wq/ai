@@ -855,3 +855,443 @@ body {
   font-weight: 600;
   color: #cccccc;
 }
+@media (max-width: 768px) {
+  :root {
+    --inner-width: 100%;
+    --header-height: auto;
+    --footer-height: auto;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header,
+  .main-content,
+  .site-footer {
+    width: 100%;
+  }
+
+  /* 모바일 공통 좌우 20px */
+  .site-header {
+    height: auto;
+    padding: 12px 20px;
+  }
+
+  .box1-inner,
+  .box2-inner,
+  .box3-inner,
+  .box4-inner,
+  .box5-inner {
+    width: 100%;
+    max-width: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .site-footer {
+    height: auto;
+    padding: 20px 20px 28px;
+  }
+
+  /* 모바일 헤더: 왼쪽 검색 / 가운데 로고 / 오른쪽 햄버거 */
+  .header-box-group {
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    align-items: center;
+    min-height: 48px;
+    width: 100%;
+  }
+
+  .header-box--search {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .search-box {
+    width: 24px;
+    height: 24px;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .search-box input {
+    display: none;
+  }
+
+  .search-button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+
+  .search-button img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .header-box--logo {
+    width: 140px;
+    height: 40px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .logo-box {
+    width: 140px;
+    height: 40px;
+  }
+
+  .logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .header-box--right {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    justify-self: end;
+  }
+
+  .utility-box,
+  .utility-top,
+  .utility-bottom {
+    display: none;
+  }
+
+  .header-box--right::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    width: 20px;
+    height: 2px;
+    background: #0c6a1a;
+    box-shadow:
+      0 6px 0 #0c6a1a,
+      0 12px 0 #0c6a1a;
+  }
+
+  /* 배너: 이미지도 화면 폭에 맞춰 같이 축소/확대 */
+  .banner {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 섹션 공통: 시안처럼 아래 여백 */
+  .content-box--box1,
+  .content-box--box2,
+  .content-box--box3,
+  .content-box--box4,
+  .content-box--box5 {
+    min-height: auto;
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .box1-title-wrap,
+  .box2-title-wrap,
+  .box3-title-wrap,
+  .box5-header {
+    margin-bottom: 20px;
+  }
+
+  .box1-title,
+  .box2-title,
+  .box3-title,
+  .box5-title {
+    margin: 0 0 6px;
+    font-size: 24px;
+  }
+
+  .box1-subtitle,
+  .box2-subtitle,
+  .box3-subtitle,
+  .box5-subtitle {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* 공통 카드 2열 */
+  .card-grid,
+  .meal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  /* 모든 카드 이미지 비율 반응형 */
+  .food-card-thumb,
+  .meal-card-thumb,
+  .recommend-item-thumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .recommend-row-main-thumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: 8px;
+  }
+
+  .food-card-thumb img,
+  .meal-card-thumb img,
+  .recommend-item-thumb img,
+  .recommend-row-main-thumb img,
+  .promo-banner__full-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .food-card-body,
+  .meal-card-body {
+    min-height: auto;
+    height: auto;
+    padding: 12px 8px 8px;
+  }
+
+  .food-card-badges,
+  .meal-card-badges,
+  .recommend-item-badges {
+    min-height: 16px;
+    margin-bottom: 6px;
+  }
+
+  .food-card-badge,
+  .meal-card-badge,
+  .recommend-item-badge {
+    height: 16px;
+    padding: 0 5px;
+    font-size: 10px;
+  }
+
+  .food-card-title,
+  .meal-card-title,
+  .recommend-item-title {
+    margin-bottom: 4px;
+    font-size: 13px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .food-card-desc,
+  .meal-card-desc,
+  .recommend-item-desc {
+    margin-bottom: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .food-card-price-row,
+  .meal-card-price-row,
+  .recommend-item-price-row {
+    gap: 6px;
+  }
+
+  .food-card-sale,
+  .food-card-price,
+  .meal-card-sale,
+  .meal-card-price,
+  .recommend-item-price {
+    font-size: 13px;
+  }
+
+  .food-card-origin,
+  .meal-card-origin {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .meal-card {
+    height: auto;
+  }
+
+  .meal-card-sale-badge {
+    top: 8px;
+    left: 8px;
+  }
+
+  .meal-card-sale-badge img {
+    transform: scale(0.85);
+    transform-origin: top left;
+  }
+
+  .meal-card-lock {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .meal-card-lock img {
+    transform: scale(0.85);
+    transform-origin: bottom right;
+  }
+
+  /* 고객 추천 반찬 */
+  .recommend-layout {
+    gap: 24px;
+  }
+
+  .recommend-row {
+    display: block;
+  }
+
+  .recommend-row-main,
+  .recommend-row-main-thumb,
+  .recommend-row-side,
+  .recommend-item-card,
+  .recommend-item-thumb,
+  .recommend-item-body {
+    width: 100%;
+  }
+
+  .recommend-row-main {
+    margin-bottom: 12px;
+  }
+
+  .recommend-row-side {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .recommend-item-body {
+    height: auto;
+    padding-top: 12px;
+  }
+
+  /* 프로모션 배너 */
+  .promo-banner-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .promo-banner {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .promo-banner__full-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  /* MD 필터 - 모바일 2줄 */
+  .md-filter-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 10px 8px;
+    margin: 0 0 41px;
+    padding: 0;
+  }
+
+  .md-filter-list li {
+    display: flex;
+    justify-content: center;
+  }
+
+  .md-filter-button {
+    min-width: 0;
+    height: 32px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 999px;
+    background: #efefef;
+    font-size: 13px;
+    line-height: 1;
+    color: #555555;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    flex: 0 0 auto;
+  }
+
+  .md-filter-button--active {
+    background: #0c6a1a;
+    color: #ffffff;
+  }
+
+  /* footer */
+  .footer-divider {
+    margin-top: 0;
+  }
+
+  .footer-box-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-box--left,
+  .footer-box--right {
+    width: 100%;
+    padding: 0;
+  }
+
+  .footer-box--left .footer-contact,
+  .footer-box--left .footer-text,
+  .footer-box--right .footer-title,
+  .footer-box--right .footer-text,
+  .footer-links,
+  .footer-copy {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .footer-box--left .footer-contact-phone {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid,
+  .meal-grid,
+  .recommend-row-side {
+    gap: 14px 10px;
+  }
+
+  .box1-title,
+  .box2-title,
+  .box3-title,
+  .box5-title {
+    font-size: 22px;
+  }
+
+  .header-box--logo,
+  .logo-box {
+    width: 126px;
+    height: 36px;
+  }
+}
