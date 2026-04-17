@@ -20,6 +20,13 @@
   --radius-sm: 12px;
 }
 
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
 img {
   display: block;
   width: 100%;
@@ -29,22 +36,19 @@ body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
     sans-serif;
-  background: #f8f8f8;
+  background: #ffffff;
   color: var(--text);
-  display: flex;
-  justify-content: center;
   min-height: 100vh;
+  margin: 0;
 }
 
 .app {
   width: 100%;
-  max-width: 375px;
   min-height: 100vh;
   background: var(--bg);
   position: relative;
   overflow-x: hidden;
   padding-bottom: 92px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 /* 상태바 */
@@ -428,7 +432,7 @@ body {
 }
 
 .content-card {
-  width: 327px;
+  width: 100%;
   height: 290px;
   border-radius: 22px;
   overflow: hidden;
@@ -481,11 +485,10 @@ body {
 /* 하단 탭바 */
 .bottom-nav {
   position: fixed;
-  left: 50%;
+  left: 0;
   bottom: 0;
-  transform: translateX(-50%);
+  transform: none;
   width: 100%;
-  max-width: 375px;
   height: 88px;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
@@ -494,6 +497,7 @@ body {
   align-items: center;
   justify-content: space-around;
   padding: 10px 10px 20px;
+  z-index: 100;
 }
 
 .nav-item {
@@ -680,11 +684,4 @@ body {
   height: 5px;
   border-radius: 999px;
   background: #111;
-}
-
-@media (min-width: 768px) {
-  body {
-    padding: 20px 0;
-    background: #f2f2f2;
-  }
 }
