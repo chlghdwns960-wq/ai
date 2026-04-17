@@ -4,44 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>제주도 자전거 여행 앱</title>
-    <link rel="stylesheet" href="./script/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="app">
-      <header class="status-bar">
-        <div class="status-time">9:41</div>
-
-        <div class="status-icons">
-          <div class="cellular" aria-label="cellular">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div class="wifi" aria-label="wifi">
-            <span class="wifi-arc wifi-arc-1"></span>
-            <span class="wifi-arc wifi-arc-2"></span>
-            <span class="wifi-dot"></span>
-          </div>
-
-          <div class="battery" aria-label="battery">
-            <div class="battery-body">
-              <div class="battery-level"></div>
-            </div>
-            <div class="battery-cap"></div>
-          </div>
-        </div>
-      </header>
-
       <main class="main-content">
         <section class="hero-section">
           <div class="hero-card">
-            <img
-              class="hero-image"
-              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80"
-              alt="제주 해안 풍경"
-            />
+            <div class="hero-slider" id="heroSlider">
+              <div class="hero-slide active">
+                <img
+                  class="hero-image"
+                  src="./images/box1/img1.png"
+                  alt="제주 풍경 1"
+                />
+              </div>
+              <div class="hero-slide">
+                <img
+                  class="hero-image"
+                  src="./images/box1/img2.png"
+                  alt="제주 풍경 2"
+                />
+              </div>
+              <div class="hero-slide">
+                <img
+                  class="hero-image"
+                  src="./images/box1/img3.png"
+                  alt="제주 풍경 3"
+                />
+              </div>
+            </div>
+
             <div class="hero-overlay">
               <span class="hero-badge">JEJU BICYCLE TRIP</span>
               <h1>풍경 좋은 제주도<br />자전거와 함께</h1>
@@ -58,7 +51,6 @@
               <p class="weather-label">현재 날씨</p>
               <p class="weather-status" id="weatherStatus">날씨 불러오는 중</p>
             </div>
-
             <div class="weather-bottom">
               <div class="weather-temp-wrap">
                 <p class="weather-temp" id="weatherTemp">--°</p>
@@ -66,13 +58,7 @@
                   현재 위치 확인 중
                 </p>
               </div>
-              <div
-                class="weather-icon"
-                id="weatherIcon"
-                aria-label="weather icon"
-              >
-                ☀️
-              </div>
+              <div class="weather-icon" id="weatherIcon">☀️</div>
             </div>
           </div>
 
@@ -215,39 +201,105 @@
       </main>
 
       <nav class="bottom-nav">
-        <a href="#" class="nav-item active">
-          <span class="nav-icon home-icon"></span>
+        <a href="#" class="nav-item active" aria-label="홈">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" class="icon-svg" aria-hidden="true">
+              <path
+                d="M3.75 9.5L12 3l8.25 6.5v9.25a1 1 0 0 1-1 1h-5.25v-6h-4v6H4.75a1 1 0 0 1-1-1z"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </span>
           <span class="nav-text">홈</span>
         </a>
 
-        <a href="#" class="nav-item">
-          <span class="nav-icon community-icon">
-            <span></span>
-            <span></span>
+        <a href="#" class="nav-item" aria-label="커뮤니티">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" class="icon-svg" aria-hidden="true">
+              <path
+                d="M4.5 6.75h9a2.25 2.25 0 0 1 2.25 2.25v3.5A2.25 2.25 0 0 1 13.5 14.75H9l-3.75 2.75v-2.75H4.5A2.25 2.25 0 0 1 2.25 12.5V9A2.25 2.25 0 0 1 4.5 6.75z"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M15.5 9.5h4a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H18l-2.75 2v-2H15"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
           </span>
           <span class="nav-text">커뮤니티</span>
         </a>
 
-        <a href="#" class="nav-item">
-          <span class="nav-icon course-icon"></span>
+        <a href="#" class="nav-item" aria-label="코스">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" class="icon-svg" aria-hidden="true">
+              <path
+                d="M3.75 5.25l5.75-1.5 5 1.5 5.75-1.5v15l-5.75 1.5-5-1.5-5.75 1.5z"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M9.5 3.75v15"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M14.5 5.25v15"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              ></path>
+            </svg>
+          </span>
           <span class="nav-text">코스</span>
         </a>
 
-        <a href="#" class="nav-item">
-          <span class="nav-icon my-icon">
-            <span class="my-head"></span>
-            <span class="my-body"></span>
+        <a href="#" class="nav-item" aria-label="마이">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" class="icon-svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.25" stroke-width="1.8"></circle>
+              <path
+                d="M5.5 19c0-3.15 2.95-5.5 6.5-5.5s6.5 2.35 6.5 5.5"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              ></path>
+            </svg>
           </span>
           <span class="nav-text">마이</span>
         </a>
 
-        <a href="#" class="nav-item">
-          <span class="nav-icon ranking-icon"></span>
+        <a href="#" class="nav-item" aria-label="랭킹">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" class="icon-svg" aria-hidden="true">
+              <path
+                d="M6 5.5h2.5l1.2 2.5h4.6L15.5 5.5H18c1.1 0 2 .9 2 2 0 2.5-1.7 4.5-4 5.2-.7 1.6-2 2.8-3.5 3.2V19h3"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M6 5.5H3.8c-1.1 0-2 .9-2 2 0 2.5 1.7 4.5 4 5.2.7 1.6 2 2.8 3.5 3.2V19h-3"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M9.3 19h5.4"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              ></path>
+            </svg>
+          </span>
           <span class="nav-text">랭킹</span>
         </a>
       </nav>
     </div>
 
-    <script src="./css/script.js"></script>
+    <script src="./script/script.js"></script>
   </body>
 </html>

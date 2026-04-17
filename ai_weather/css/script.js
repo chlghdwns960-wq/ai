@@ -5,6 +5,7 @@ const weatherStatus = document.getElementById("weatherStatus");
 const weatherLocation = document.getElementById("weatherLocation");
 const weatherIcon = document.getElementById("weatherIcon");
 
+/* 날씨 아이콘 */
 function getWeatherIcon(main) {
   const weather = main.toLowerCase();
 
@@ -37,6 +38,7 @@ function getWeatherLabel(main, description) {
   return description || main;
 }
 
+/* 위치 기반 날씨 */
 function fetchWeatherByCoords(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`;
 
@@ -94,6 +96,21 @@ function initWeather() {
   );
 }
 
+/* 상단 히어로 슬라이드 */
+const heroSlides = document.querySelectorAll(".hero-slide");
+let heroCurrentIndex = 0;
+
+function moveHeroSlide() {
+  heroSlides[heroCurrentIndex].classList.remove("active");
+  heroCurrentIndex = (heroCurrentIndex + 1) % heroSlides.length;
+  heroSlides[heroCurrentIndex].classList.add("active");
+}
+
+function initHeroSlider() {
+  setInterval(moveHeroSlide, 2000);
+}
+
+/* 하단 가이드 슬라이드 */
 const sliderTrack = document.getElementById("sliderTrack");
 const originalSlideCount = 5;
 let currentIndex = 0;
@@ -123,5 +140,6 @@ function initSlider() {
 
 window.addEventListener("load", () => {
   initWeather();
+  initHeroSlider();
   initSlider();
 });
