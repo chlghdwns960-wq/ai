@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전세계 날씨</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-top">
+          <div class="title-wrap">
+            <h1>전세계 날씨</h1>
+            <p>현재위치 + 도시 검색으로 전세계 날씨 조회</p>
+          </div>
+          <button class="location-btn" id="locationBtn">내 위치</button>
+        </div>
+
+        <div class="search-card">
+          <div class="search-box">
+            <div class="input-wrap">
+              <span class="search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M21 21L16.65 16.65M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <input
+                type="text"
+                id="cityInput"
+                placeholder="도시명을 입력하세요(예:Seoul,Tokyo)"
+                autocomplete="off"
+              />
+            </div>
+            <button class="search-btn" id="searchBtn">검색</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="weather-section">
+        <section class="weather-card">
+          <div class="weather-main">
+            <div class="city-area">
+              <h2 id="cityName">도시명</h2>
+              <p id="weatherDesc" class="weather-desc">
+                날씨 정보를 불러와주세요
+              </p>
+            </div>
+            <div class="temp-area">
+              <strong id="temp">15°</strong>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <span class="label">풍속</span>
+              <strong class="value" id="windSpeed"
+                >6.69 <small>m/s</small></strong
+              >
+            </div>
+
+            <div class="info-box">
+              <span class="label">습도</span>
+              <strong class="value" id="humidity">52%</strong>
+            </div>
+
+            <div class="info-box">
+              <span class="label">체감 기온</span>
+              <strong class="value" id="feelsLike">15°</strong>
+            </div>
+
+            <div class="info-box">
+              <span class="label">오존(O₃)</span>
+              <strong class="value" id="ozone">111 <small>μg/m³</small></strong>
+            </div>
+          </div>
+        </section>
+
+        <p class="status-message" id="statusMessage"></p>
+      </main>
+    </div>
+
+    <script src="./script/script.js"></script>
+  </body>
+</html>
