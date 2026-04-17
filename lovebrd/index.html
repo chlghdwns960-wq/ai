@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for eunkyung</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <audio id="bgm" loop preload="none">
+      <source src="./Music/brd.mp3" type="audio/mpeg" />
+    </audio>
+
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <img src="./images/logo.png" alt="장은경 생일 축하 로고" />
+        </div>
+        <nav class="nav">
+          <a href="#moments">우리의 순간</a>
+          <a href="#you">너라는 사람</a>
+          <a href="#secret">작은 비밀</a>
+          <a href="#letter">오늘의 편지</a>
+          <a href="#celebrate">마지막 축하</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="section hero" id="home">
+        <div class="hero-copy">
+          <div class="hero-visual">
+            <div class="hero-visual-box">
+              <img src="./images/box1/img1.jpg" alt="대표 이미지" />
+            </div>
+          </div>
+
+          <div class="eyebrow">오늘의 주인공 💖</div>
+
+          <h1>사랑하는 은경이에게</h1>
+
+          <p class="hero-lead">
+            <span class="line"
+              >오늘은 네가 주인공인 하루라서, 그냥 축하 한마디보다</span
+            >
+            <span class="line"
+              >조금 더 오래 남는 방식으로 내 마음을 준비해봤어,</span
+            >
+            <span class="line"
+              >천천히 눌러보면 우리가 행복했던 장면들을 하나씩 만나게 될
+              거야</span
+            >
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#moments" id="startButton"
+              >페이지 시작하기</a
+            >
+            <button class="btn btn-secondary" id="musicToggle" type="button">
+              🎵 음악 켜기
+            </button>
+          </div>
+          <div class="music-indicator" id="musicIndicator">🔇💖</div>
+        </div>
+
+        <div class="hero-menu">
+          <a class="menu-card" href="#moments">
+            <strong>우리의 순간</strong>
+            <div class="menu-thumb">
+              <img src="./images/box1/img2.jpg" alt="우리의 순간 이미지" />
+            </div>
+            <span>행복했던 순간을 모아둔 구역</span>
+          </a>
+
+          <a class="menu-card" href="#you">
+            <strong>너라는 사람</strong>
+            <div class="menu-thumb">
+              <img src="./images/box1/img3.jpg" alt="너라는 사람 이미지" />
+            </div>
+            <span>내가 좋아하는 은경이의 모습들</span>
+          </a>
+
+          <a class="menu-card" href="#secret">
+            <strong>작은 비밀</strong>
+            <div class="menu-thumb">
+              <img src="./images/box1/img4.jpg" alt="작은 비밀 이미지" />
+            </div>
+            <span>눌러야 열리는 작은 이벤트</span>
+          </a>
+
+          <a class="menu-card" href="#letter">
+            <strong>오늘의 편지</strong>
+            <div class="menu-thumb">
+              <img src="./images/box1/img5.jpg" alt="오늘의 편지 이미지" />
+            </div>
+            <span>생일에 꼭 전하고 싶었던 마음</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="moments">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">우리의 순간</h2>
+            <p class="section-desc">
+              우리의 처음과 여행, 데이트를 차곡차곡 모아둔 구역이야.
+            </p>
+          </div>
+          <a class="section-link" href="#home">처음으로 돌아가기 ↑</a>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="photo-card" id="moment1">
+            <div class="placeholder">
+              <img src="./images/box2/img1.jpg" alt="처음 사진을 찍은 날" />
+            </div>
+            <h3>처음 사진을 찍은 날</h3>
+            <p>처음 만나고<br />집에서 함께 찍은 날이야.</p>
+          </article>
+
+          <article class="photo-card" id="moment2">
+            <div class="placeholder">
+              <img src="./images/box2/img2.jpg" alt="처음 쉑쉑버거를 먹은 날" />
+            </div>
+            <h3>처음 쉑쉑버거를 먹은 날</h3>
+            <p>내 인생 첫 스타필드, 쉑쉑버거야.<br />자기랑 있어서 행복했어.</p>
+          </article>
+
+          <article class="photo-card" id="moment3">
+            <div class="placeholder">
+              <img src="./images/box2/img3.jpg" alt="처음 같이 보낸 휴가" />
+            </div>
+            <h3>처음 같이 보낸 휴가</h3>
+            <p>두근두근 호캉스!<br />자기랑 먹었던 와인이 아직도 기억나.</p>
+          </article>
+
+          <article class="photo-card" id="moment4">
+            <div class="placeholder">
+              <img src="./images/box2/img4.jpg" alt="뜨거운 사우나 데이트" />
+            </div>
+            <h3>뜨거운 사우나 데이트</h3>
+            <p>피자 먹고 계란 먹고 좋았지만,<br />피부를 위해 이제는 No~!</p>
+          </article>
+
+          <article class="photo-card" id="moment5">
+            <div class="placeholder">
+              <img src="./images/box2/img5.jpg" alt="설레는 일본 오사카 여행" />
+            </div>
+            <h3>설레는 일본 오사카 여행</h3>
+            <p>
+              내 꿈인 일본 여행을 사랑하는 자기랑<br />갈 수 있었어! 행복한
+              여행이야.
+            </p>
+          </article>
+
+          <article class="photo-card" id="moment6">
+            <div class="placeholder">
+              <img
+                src="./images/box2/img6.jpg"
+                alt="완벽한 휴양지 코타키나발루"
+              />
+            </div>
+            <h3>완벽한 휴양지 코타키나발루</h3>
+            <p>
+              습하고 더웠지만 이것저것 할 게 많았어.<br />정말 재미있었어 ㅎㅎ
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="you">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">너라는 사람</h2>
+          </div>
+          <a class="section-link" href="#letter">편지로 바로 가기 →</a>
+        </div>
+
+        <article class="person-intro-card">
+          평범한 날도 특별하게 만드는 사람
+        </article>
+
+        <div class="person-grid">
+          <article
+            class="person-card"
+            tabindex="0"
+            role="button"
+            aria-expanded="false"
+          >
+            <h3>웃을 때</h3>
+            <p>같이 웃게 만드는 표정이 있어.</p>
+            <div class="person-card-extra">
+              그래서 나는 네 웃는 얼굴을 오래 보고 싶어.
+            </div>
+          </article>
+
+          <article
+            class="person-card"
+            tabindex="0"
+            role="button"
+            aria-expanded="false"
+          >
+            <h3>보리랑 있을 때</h3>
+            <p>다정함이 제일 잘 보이는 순간이야.</p>
+            <div class="person-card-extra">
+              보리를 보는 눈빛까지도 참 따뜻해서 좋아.
+            </div>
+          </article>
+
+          <article
+            class="person-card"
+            tabindex="0"
+            role="button"
+            aria-expanded="false"
+          >
+            <h3>여행할 때</h3>
+            <p>설렘이 얼굴에 그대로 보여서 더 예뻐.</p>
+            <div class="person-card-extra">
+              같이 떠나는 길마다 더 특별해지는 이유 같아.
+            </div>
+          </article>
+
+          <article
+            class="person-card"
+            tabindex="0"
+            role="button"
+            aria-expanded="false"
+          >
+            <h3>조용히 옆에 있을 때</h3>
+            <p>말이 없어도 제일 편안한 사람이야.</p>
+            <div class="person-card-extra">
+              아무 말 없이도 마음이 놓이는 사람이 흔하진 않잖아.
+            </div>
+          </article>
+        </div>
+
+        <p class="person-closing">
+          그래서 나는 특별한 장면보다, 그 장면 안에 있는 은경이를 더 좋아해.
+        </p>
+      </section>
+
+      <section class="section" id="secret">
+        <div class="secret-layout">
+          <article class="secret-card">
+            <h3>너만 열 수 있는 선물</h3>
+
+            <button
+              class="secret-gift"
+              id="giftBox"
+              type="button"
+              aria-label="선물 열기"
+            >
+              <span class="gift-lid"></span>
+              <span class="gift-box-body"></span>
+              <span class="gift-ribbon gift-ribbon-v"></span>
+              <span class="gift-ribbon gift-ribbon-h"></span>
+              <span class="gift-bow">
+                <span class="gift-bow-left"></span>
+                <span class="gift-bow-right"></span>
+                <span class="gift-knot"></span>
+              </span>
+            </button>
+
+            <p class="secret-sub">숫자를 맞히면 준비한 선물이 열려.</p>
+          </article>
+
+          <article class="secret-side-card">
+            <h3>내가 주는 힌트</h3>
+            <div class="secret-side-grid">
+              <div class="secret-side-item">
+                <div class="secret-side-thumb">
+                  <img src="./images/box4/img1.jpg" alt="힌트 이미지 1" />
+                </div>
+                <p>끼가 사랑하는 사람의 생일</p>
+              </div>
+
+              <div class="secret-side-item">
+                <div class="secret-side-thumb">
+                  <img src="./images/box4/img2.jpg" alt="힌트 이미지 2" />
+                </div>
+                <p>7월 이야~~</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="letter">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">생일 편지</h2>
+          </div>
+          <a class="section-link" href="#home">맨 위로 ↑</a>
+        </div>
+
+        <article class="letter-card">
+          <div class="letter-layout">
+            <div class="letter-text">
+              <h3>은경이에게</h3>
+
+              <p>사랑하는 우리 끼끼 씨~<br />생일 축하해용!! ㅎㅎㅎ</p>
+
+              <p>
+                이 웹사이트를 보고 있다는 건<br />
+                우리가 청풍에 있다는 소리겠지?
+              </p>
+
+              <p>
+                이미 닌텐도 스위치는 줬고,<br />
+                그냥 보내기에는 아쉬워서<br />
+                오로지 은경이만을 위한<br />
+                생일 축하 웹사이트를 만들어봤져영.
+              </p>
+
+              <p>
+                아직은 엄청 서툴고 많이 부족하지만,<br />
+                우리 은경이가 감동받았으면 해.
+              </p>
+
+              <p>
+                앞으로도 좋은 순간을 많이 만들고 싶어.<br />
+                같이 웃고, 같이 걷고,<br />
+                사소한 하루도 오래 기억나는 장면으로<br />
+                남길 수 있으면 좋겠어.
+              </p>
+
+              <p>
+                은경이가 태어나줘서 정말 고맙고,<br />
+                앞으로 남은 인생 우리 생일 같이 보내자.
+              </p>
+
+              <p>
+                <strong
+                  >오늘의 주인공인 너에게, 다시 한 번 진심으로 생일
+                  축하해♥</strong
+                >
+              </p>
+            </div>
+
+            <div class="letter-photo">
+              <img src="./images/box4/img3.jpg" alt="은경이와 함께한 사진" />
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="celebrate">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">마지막 축하</h2>
+          </div>
+          <a class="section-link" href="#home">처음부터 다시 보기 ↑</a>
+        </div>
+
+        <article class="celebrate-card">
+          <h3>Happy Birthday, Eunkyung</h3>
+          <p>오늘의 장면이 오래 예쁘게 남았으면 좋겠어.</p>
+          <div class="cake-wrap">
+            <div class="cake">
+              <div class="flame" id="flame"></div>
+              <div class="candle"></div>
+              <div class="cake-top"></div>
+              <div class="cake-bottom"></div>
+            </div>
+            <button class="btn btn-primary" id="blowBtn" type="button">
+              초 불기
+            </button>
+            <div class="footer-note" id="blowText">
+              버튼을 눌러 작은 마무리 이벤트를 볼 수 있어.
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="answer-modal" id="answerModal" aria-hidden="true">
+      <div class="answer-modal-card">
+        <button
+          class="answer-modal-close"
+          id="answerModalClose"
+          type="button"
+          aria-label="닫기"
+        >
+          ×
+        </button>
+        <h4>숫자를 입력해줘 💌</h4>
+        <p>홍준이의 생일 날짜를 입력하면 선물이 열려.</p>
+        <input
+          class="answer-input"
+          id="answerInput"
+          type="password"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="4"
+          placeholder="숫자 입력"
+        />
+        <div class="answer-actions">
+          <button class="btn btn-secondary" id="answerCancel" type="button">
+            닫기
+          </button>
+          <button class="btn btn-primary" id="answerSubmit" type="button">
+            확인
+          </button>
+        </div>
+        <div class="answer-error" id="answerError"></div>
+      </div>
+    </div>
+
+    <div class="secret-modal" id="secretModal" aria-hidden="true">
+      <div class="secret-modal-card">
+        <button
+          class="secret-modal-close"
+          id="secretModalClose"
+          type="button"
+          aria-label="닫기"
+        >
+          ×
+        </button>
+        <h4>짜잔, 은경이에게 💖</h4>
+        <div class="secret-modal-media">
+          <img src="./images/box4/img5.jpg" alt="은경이를 위한 모달 이미지" />
+        </div>
+        <p>
+          오늘 제일 하고 싶었던 말은,<br />네가 누구보다 많이 웃는 하루였으면
+          좋겠다는 거야.<br /><br />그리고 그 하루 한가운데에 내가 같이 있으면
+          더 좋겠어.
+        </p>
+      </div>
+    </div>
+
+    <div class="site-lock show" id="siteLock" aria-hidden="false">
+      <div
+        class="site-lock-curtain site-lock-curtain-left"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="site-lock-curtain site-lock-curtain-right"
+        aria-hidden="true"
+      ></div>
+      <div class="site-lock-light" aria-hidden="true"></div>
+
+      <div class="site-lock-card">
+        <div class="site-lock-badge">우리만 아는 비밀번호 💌</div>
+        <h4>은경이만 열 수 있는 페이지</h4>
+        <p class="site-lock-desc">힌트: <strong>은굥이 양력생일</strong></p>
+
+        <input
+          class="site-lock-input"
+          id="siteLockInput"
+          type="password"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="4"
+          placeholder="비밀번호 4자리"
+        />
+
+        <div class="site-lock-actions">
+          <button class="btn btn-primary" id="siteLockSubmit" type="button">
+            열기
+          </button>
+        </div>
+
+        <div class="site-lock-error" id="siteLockError"></div>
+      </div>
+    </div>
+
+    <div class="effect-layer" aria-hidden="true">
+      <div class="start-toast" id="startToast">은경이의 하루가 시작돼 💖</div>
+    </div>
+    <div class="bg-rain-layer" id="bgRainLayer" aria-hidden="true"></div>
+    <script src="./script/script.js"></script>
+  </body>
+</html>
