@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반복문3</title>
+  </head>
+  <body>
+    <ul>
+      <li>date1</li>
+      <li>date2</li>
+      <li>date3</li>
+      <li>date4</li>
+      <li>date5</li>
+      <li>date6</li>
+      <li>date7</li>
+      <li>date8</li>
+      <li>date9</li>
+      <li>date10</li>
+      <li>date11</li>
+      <li>date12</li>
+      <li>date13</li>
+      <li>date14</li>
+      <li>date15</li>
+      <li>date16</li>
+      <li>date17</li>
+      <li>date18</li>
+      <li>date19</li>
+      <li>date20</li>
+    </ul>
+    <hr />
+    <!-- 스크립트를 사용하여 반복작업 -->
+    <script>
+      let output = "<ul>";
+      for (let i = 1; i <= 20; i++) {
+        output = output + "<li>" + "date" + i + "</li>";
+      }
+      output = output + "</ul>";
+      document.write(output);
+    </script>
+  </body>
+</html>
