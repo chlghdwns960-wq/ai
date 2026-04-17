@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제주도 자전거 여행 앱</title>
+    <link rel="stylesheet" href="./script/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- iOS 상태바 -->
+      <header class="status-bar">
+        <div class="status-time">9:41</div>
+
+        <div class="status-icons">
+          <!-- 셀룰러 수신 -->
+          <div class="cellular" aria-label="cellular">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <!-- 와이파이 -->
+          <div class="wifi" aria-label="wifi">
+            <span class="wifi-arc wifi-arc-1"></span>
+            <span class="wifi-arc wifi-arc-2"></span>
+            <span class="wifi-dot"></span>
+          </div>
+
+          <!-- 배터리 -->
+          <div class="battery" aria-label="battery">
+            <div class="battery-body">
+              <div class="battery-level"></div>
+            </div>
+            <div class="battery-cap"></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- 메인 비주얼 -->
+        <section class="hero-section">
+          <div class="hero-card">
+            <img
+              class="hero-image"
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+              alt="제주 해안 풍경"
+            />
+            <div class="hero-overlay">
+              <h1>풍경 좋은 제주도<br />자전거와 함께</h1>
+            </div>
+          </div>
+        </section>
+
+        <!-- 정보 카드 -->
+        <section class="info-grid">
+          <div class="weather-card">
+            <div class="weather-top">
+              <p class="weather-status" id="weatherStatus">날씨 불러오는 중</p>
+            </div>
+
+            <div class="weather-bottom">
+              <div class="weather-temp-wrap">
+                <p class="weather-temp" id="weatherTemp">--°</p>
+                <p class="weather-location" id="weatherLocation">
+                  현재 위치 확인 중
+                </p>
+              </div>
+              <div
+                class="weather-icon"
+                id="weatherIcon"
+                aria-label="weather icon"
+              >
+                ☀️
+              </div>
+            </div>
+          </div>
+
+          <div class="small-cards">
+            <div class="small-card">
+              <span class="small-label">완주 코스</span>
+              <span class="small-value">1/10</span>
+            </div>
+
+            <div class="small-card">
+              <span class="small-label">이동거리</span>
+              <span class="small-value">15km</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 가이드 섹션 -->
+        <section class="guide-section">
+          <h2 class="section-title">제주도 자전거 여행정보 가이드</h2>
+
+          <!-- 자동 슬라이드 -->
+          <div class="slider-wrap">
+            <div class="slider-track" id="sliderTrack">
+              <!-- 원본 5개 -->
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 오름"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 바다 마을"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 풍경"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 해안"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 산책길"
+                />
+              </div>
+
+              <!-- 무한 슬라이드용 복제 -->
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 오름"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 바다 마을"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 풍경"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 해안"
+                />
+              </div>
+
+              <div class="slide-item">
+                <img
+                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80"
+                  alt="제주 산책길"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 아래 카드 영역 -->
+        <section class="content-section">
+          <h2 class="section-title">제주도 자전거 여행정보 가이드</h2>
+
+          <div class="content-cards">
+            <article class="content-card">
+              <img
+                src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=900&q=80"
+                alt="자전거"
+              />
+            </article>
+
+            <article class="content-card overlay-card">
+              <img
+                src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80"
+                alt="해변 자전거"
+              />
+              <div class="overlay-text">
+                <p>제주도 자전거 여행 패키지</p>
+                <strong>첫번째 코스 이야기</strong>
+              </div>
+            </article>
+
+            <article class="content-card">
+              <img
+                src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80"
+                alt="라이딩"
+              />
+            </article>
+
+            <article class="content-card">
+              <img
+                src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=900&q=80"
+                alt="일몰 자전거"
+              />
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <!-- 하단 메뉴 -->
+      <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+          <span class="nav-icon home-icon"></span>
+          <span class="nav-text">홈</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon community-icon">
+            <span></span>
+            <span></span>
+          </span>
+          <span class="nav-text">커뮤니티</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon course-icon"></span>
+          <span class="nav-text">코스</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon my-icon">
+            <span class="my-head"></span>
+            <span class="my-body"></span>
+          </span>
+          <span class="nav-text">마이</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon ranking-icon"></span>
+          <span class="nav-text">랭킹</span>
+        </a>
+      </nav>
+    </div>
+
+    <script src="./css/script.js"></script>
+  </body>
+</html>
