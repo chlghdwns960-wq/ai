@@ -1,17 +1,10 @@
-/* =========================
-   OpenWeather 설정
-========================= */
 const API_KEY = "08b7f44f0fb5d621b9725681d2900167";
-// ↑ 여기에 네 API Key를 직접 넣으면 돼
 
 const weatherTemp = document.getElementById("weatherTemp");
 const weatherStatus = document.getElementById("weatherStatus");
 const weatherLocation = document.getElementById("weatherLocation");
 const weatherIcon = document.getElementById("weatherIcon");
 
-/* =========================
-   날씨 아이콘 매핑
-========================= */
 function getWeatherIcon(main) {
   const weather = main.toLowerCase();
 
@@ -44,9 +37,6 @@ function getWeatherLabel(main, description) {
   return description || main;
 }
 
-/* =========================
-   위치 기반 날씨 가져오기
-========================= */
 function fetchWeatherByCoords(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`;
 
@@ -104,12 +94,6 @@ function initWeather() {
   );
 }
 
-/* =========================
-   자동 슬라이드
-   - 버튼 없음
-   - 2초마다 이동
-   - 무한 반복
-========================= */
 const sliderTrack = document.getElementById("sliderTrack");
 const originalSlideCount = 5;
 let currentIndex = 0;
@@ -118,10 +102,10 @@ function moveSlide() {
   const slide = sliderTrack.querySelector(".slide-item");
   if (!slide) return;
 
-  const slideWidth = slide.offsetWidth + 10; // gap 포함
+  const slideWidth = slide.offsetWidth + 12;
   currentIndex++;
 
-  sliderTrack.style.transition = "transform 0.6s ease";
+  sliderTrack.style.transition = "transform 0.75s ease";
   sliderTrack.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
 
   if (currentIndex === originalSlideCount) {
@@ -129,7 +113,7 @@ function moveSlide() {
       sliderTrack.style.transition = "none";
       sliderTrack.style.transform = "translateX(0)";
       currentIndex = 0;
-    }, 650);
+    }, 800);
   }
 }
 
@@ -137,9 +121,6 @@ function initSlider() {
   setInterval(moveSlide, 2000);
 }
 
-/* =========================
-   실행
-========================= */
 window.addEventListener("load", () => {
   initWeather();
   initSlider();

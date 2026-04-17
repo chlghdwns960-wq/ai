@@ -8,12 +8,10 @@
   </head>
   <body>
     <div class="app">
-      <!-- iOS 상태바 -->
       <header class="status-bar">
         <div class="status-time">9:41</div>
 
         <div class="status-icons">
-          <!-- 셀룰러 수신 -->
           <div class="cellular" aria-label="cellular">
             <span></span>
             <span></span>
@@ -21,14 +19,12 @@
             <span></span>
           </div>
 
-          <!-- 와이파이 -->
           <div class="wifi" aria-label="wifi">
             <span class="wifi-arc wifi-arc-1"></span>
             <span class="wifi-arc wifi-arc-2"></span>
             <span class="wifi-dot"></span>
           </div>
 
-          <!-- 배터리 -->
           <div class="battery" aria-label="battery">
             <div class="battery-body">
               <div class="battery-level"></div>
@@ -39,24 +35,27 @@
       </header>
 
       <main class="main-content">
-        <!-- 메인 비주얼 -->
         <section class="hero-section">
           <div class="hero-card">
             <img
               class="hero-image"
-              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80"
               alt="제주 해안 풍경"
             />
             <div class="hero-overlay">
+              <span class="hero-badge">JEJU BICYCLE TRIP</span>
               <h1>풍경 좋은 제주도<br />자전거와 함께</h1>
+              <p class="hero-subtext">
+                바람 좋은 길 위에서 제주를 천천히 만나는 여행
+              </p>
             </div>
           </div>
         </section>
 
-        <!-- 정보 카드 -->
         <section class="info-grid">
           <div class="weather-card">
             <div class="weather-top">
+              <p class="weather-label">현재 날씨</p>
               <p class="weather-status" id="weatherStatus">날씨 불러오는 중</p>
             </div>
 
@@ -79,102 +78,105 @@
 
           <div class="small-cards">
             <div class="small-card">
-              <span class="small-label">완주 코스</span>
+              <div class="small-card-left">
+                <span class="small-label">완주 코스</span>
+                <span class="small-sub">오늘 추천 코스</span>
+              </div>
               <span class="small-value">1/10</span>
             </div>
 
             <div class="small-card">
-              <span class="small-label">이동거리</span>
+              <div class="small-card-left">
+                <span class="small-label">이동거리</span>
+                <span class="small-sub">예상 라이딩</span>
+              </div>
               <span class="small-value">15km</span>
             </div>
           </div>
         </section>
 
-        <!-- 가이드 섹션 -->
         <section class="guide-section">
-          <h2 class="section-title">제주도 자전거 여행정보 가이드</h2>
+          <div class="section-head">
+            <h2 class="section-title">제주도 자전거 여행정보 가이드</h2>
+            <p class="section-desc">
+              풍경이 좋은 코스와 뷰포인트를 가볍게 둘러봐
+            </p>
+          </div>
 
-          <!-- 자동 슬라이드 -->
           <div class="slider-wrap">
             <div class="slider-track" id="sliderTrack">
-              <!-- 원본 5개 -->
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=500&q=80"
+                  src="https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=600&q=80"
                   alt="제주 오름"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=500&q=80"
-                  alt="제주 바다 마을"
+                  src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80"
+                  alt="제주 마을 풍경"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
-                  alt="제주 풍경"
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                  alt="제주 자연 풍경"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80"
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80"
                   alt="제주 해안"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80"
-                  alt="제주 산책길"
+                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80"
+                  alt="산책길"
                 />
               </div>
 
-              <!-- 무한 슬라이드용 복제 -->
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=500&q=80"
+                  src="https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=600&q=80"
                   alt="제주 오름"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=500&q=80"
-                  alt="제주 바다 마을"
+                  src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80"
+                  alt="제주 마을 풍경"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
-                  alt="제주 풍경"
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                  alt="제주 자연 풍경"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80"
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80"
                   alt="제주 해안"
                 />
               </div>
-
               <div class="slide-item">
                 <img
-                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80"
-                  alt="제주 산책길"
+                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80"
+                  alt="산책길"
                 />
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 아래 카드 영역 -->
         <section class="content-section">
-          <h2 class="section-title">제주도 자전거 여행정보 가이드</h2>
+          <div class="section-head">
+            <h2 class="section-title">제주도 자전거 여행정보 가이드</h2>
+            <p class="section-desc">
+              여행 코스, 패키지, 라이딩 무드를 한 번에 보기
+            </p>
+          </div>
 
           <div class="content-cards">
             <article class="content-card">
@@ -212,7 +214,6 @@
         </section>
       </main>
 
-      <!-- 하단 메뉴 -->
       <nav class="bottom-nav">
         <a href="#" class="nav-item active">
           <span class="nav-icon home-icon"></span>
