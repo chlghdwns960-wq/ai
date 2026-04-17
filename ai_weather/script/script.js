@@ -1,4 +1,4 @@
-const API_KEY = "YOUR_OPENWEATHER_API_KEY_HERE";
+const API_KEY = "08b7f44f0fb5d621b9725681d2900167";
 
 const weatherTemp = document.getElementById("weatherTemp");
 const weatherStatus = document.getElementById("weatherStatus");
@@ -9,7 +9,12 @@ function getWeatherIcon(main) {
   const weather = main.toLowerCase();
   if (weather.includes("clear")) return "☀️";
   if (weather.includes("cloud")) return "☁️";
-  if (weather.includes("rain") || weather.includes("drizzle") || weather.includes("thunderstorm")) return "🌧️";
+  if (
+    weather.includes("rain") ||
+    weather.includes("drizzle") ||
+    weather.includes("thunderstorm")
+  )
+    return "🌧️";
   if (weather.includes("snow")) return "❄️";
   return "⛅";
 }
@@ -18,7 +23,12 @@ function getWeatherLabel(main, description) {
   const weather = main.toLowerCase();
   if (weather.includes("clear")) return "맑음";
   if (weather.includes("cloud")) return "흐림";
-  if (weather.includes("rain") || weather.includes("drizzle") || weather.includes("thunderstorm")) return "비";
+  if (
+    weather.includes("rain") ||
+    weather.includes("drizzle") ||
+    weather.includes("thunderstorm")
+  )
+    return "비";
   if (weather.includes("snow")) return "눈";
   return description || main;
 }
@@ -72,7 +82,7 @@ function initWeather() {
       enableHighAccuracy: true,
       timeout: 10000,
       maximumAge: 0,
-    }
+    },
   );
 }
 
