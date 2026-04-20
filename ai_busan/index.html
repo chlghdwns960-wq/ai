@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>부산 맛집 서비스</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <section
+        id="listView"
+        class="view view--active"
+        aria-label="맛집 목록 화면"
+      >
+        <header class="top-header">
+          <div>
+            <h1 class="page-title">부산 맛집 서비스</h1>
+            <p id="resultCount" class="result-count">전체 0건</p>
+          </div>
+          <div class="header-actions">
+            <button
+              id="refreshButton"
+              class="icon-btn"
+              type="button"
+              aria-label="새로고침"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M17.65 6.35A7.95 7.95 0 0 0 12 4V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 12.65-5.65Z"
+                />
+              </svg>
+            </button>
+            <button
+              id="favoriteHeaderButton"
+              class="icon-btn"
+              type="button"
+              aria-label="즐겨찾기 보기"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M15.5 14h-.79l-.28-.27a6 6 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20l-6-6ZM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"
+            />
+          </svg>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="가게명/주소/메뉴로 검색"
+            autocomplete="off"
+          />
+        </div>
+
+        <div id="statusMessage" class="status-message">
+          데이터를 불러오는 중이야.
+        </div>
+        <div id="restaurantList" class="restaurant-list"></div>
+
+        <nav class="bottom-nav" aria-label="하단 탭">
+          <button id="tabAll" class="nav-btn nav-btn--active" type="button">
+            맛집
+          </button>
+          <button id="tabFavorites" class="nav-btn" type="button">
+            즐겨찾기
+          </button>
+        </nav>
+      </section>
+
+      <section id="detailView" class="view" aria-label="맛집 상세 화면">
+        <header class="detail-header">
+          <button
+            id="backButton"
+            class="icon-btn icon-btn--back"
+            type="button"
+            aria-label="뒤로가기"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+          <h2 class="detail-title">맛집 상세</h2>
+          <button
+            id="detailFavoriteButton"
+            class="icon-btn"
+            type="button"
+            aria-label="즐겨찾기 토글"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <div class="detail-scroll">
+          <div class="hero-image-wrap">
+            <img id="detailImage" class="hero-image" alt="맛집 대표 이미지" />
+          </div>
+
+          <div class="detail-content">
+            <div class="info-block">
+              <span class="info-chip">상호명</span>
+              <h3 id="detailName" class="info-value info-value--title"></h3>
+            </div>
+
+            <div class="info-block">
+              <span class="info-chip">주소</span>
+              <p id="detailAddress" class="info-value"></p>
+            </div>
+
+            <div class="info-block">
+              <span class="info-chip">소개</span>
+              <p
+                id="detailDescription"
+                class="info-value info-value--multiline"
+              ></p>
+            </div>
+
+            <div class="info-block">
+              <span class="info-chip">대표 메뉴</span>
+              <p id="detailMenu" class="info-value"></p>
+            </div>
+
+            <div class="info-block">
+              <span class="info-chip">연락처</span>
+              <p id="detailPhone" class="info-value"></p>
+            </div>
+
+            <div class="info-block">
+              <span class="info-chip">운영 및 시간</span>
+              <p id="detailHours" class="info-value"></p>
+            </div>
+
+            <div id="detailHomepageWrap" class="info-block info-block--hidden">
+              <span class="info-chip">홈페이지</span>
+              <a
+                id="detailHomepage"
+                class="info-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >바로가기</a
+              >
+            </div>
+
+            <div class="map-section">
+              <div id="map" class="map-box" aria-label="카카오맵"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 카카오맵 JavaScript 키를 아래 YOUR_KAKAO_JAVASCRIPT_KEY에 넣으면 돼 -->
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_JAVASCRIPT_KEY&autoload=false"></script>
+    <script src="./script/app.js"></script>
+  </body>
+</html>
