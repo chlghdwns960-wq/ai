@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>온보딩 슬라이드</title>
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        font-family: "Pretendard", "Noto Sans KR", sans-serif;
+        background: #dedede;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      /* 모바일 앱 프레임 */
+      .app {
+        position: relative;
+        width: 100%;
+        max-width: 430px;
+        height: 100dvh;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 120px 22px 120px;
+        background: #fff;
+      }
+
+      .slide-text {
+        width: 100%;
+        max-width: 330px;
+      }
+
+      .slide-sub-title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.25;
+        color: #6f87c6;
+        margin-bottom: 4px;
+        letter-spacing: -0.04em;
+      }
+
+      .slide-title {
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.25;
+        color: #5f78bf;
+        letter-spacing: -0.05em;
+        margin-bottom: 18px;
+        word-break: keep-all;
+      }
+
+      .slide-desc {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #a7b3d9;
+        letter-spacing: -0.03em;
+        word-break: keep-all;
+      }
+
+      .slide-image-wrap {
+        margin-top: 44px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .slide-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+      }
+
+      .swiper-pagination {
+        bottom: 92px !important;
+      }
+
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: #d7d9e5;
+        opacity: 1;
+        margin: 0 6px !important;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: #5f78bf;
+      }
+
+      .start-btn {
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        bottom: 24px;
+        height: 54px;
+        border: none;
+        border-radius: 16px;
+        background: #5f78bf;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        cursor: pointer;
+        z-index: 20;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: 0.25s ease;
+        box-shadow: 0 8px 20px rgba(95, 120, 191, 0.22);
+      }
+
+      .start-btn.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .start-btn:active {
+        transform: scale(0.98);
+      }
+
+      @media (max-width: 390px) {
+        .swiper-slide {
+          padding: 106px 20px 116px;
+        }
+
+        .slide-sub-title {
+          font-size: 21px;
+        }
+
+        .slide-title {
+          font-size: 26px;
+        }
+
+        .slide-desc {
+          font-size: 14px;
+        }
+
+        .slide-image {
+          max-width: 285px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="swiper onboardingSwiper">
+        <div class="swiper-wrapper">
+          <!-- 1 -->
+          <div class="swiper-slide">
+            <div class="slide-text">
+              <p class="slide-sub-title">차박</p>
+              <h2 class="slide-title">어디로 떠나야 할지 모르겠나요</h2>
+              <p class="slide-desc">
+                지도 기반 위치 앱 및 키워드 검색으로<br />
+                내가 원하는 장소를 한번에
+              </p>
+            </div>
+            <div class="slide-image-wrap">
+              <img
+                src="./images/work1.png"
+                alt="차박 안내 이미지"
+                class="slide-image"
+              />
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="swiper-slide">
+            <div class="slide-text">
+              <p class="slide-sub-title">차만있다면</p>
+              <h2 class="slide-title">장비는 부담적은 렌탈로</h2>
+              <p class="slide-desc">
+                차박에 필요한 물품들을 용도별로 둘러보세요
+              </p>
+            </div>
+            <div class="slide-image-wrap">
+              <img
+                src="./images/work2.png"
+                alt="장비 렌탈 안내 이미지"
+                class="slide-image"
+              />
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="swiper-slide">
+            <div class="slide-text">
+              <p class="slide-sub-title">일상이 바쁠땐 실시간</p>
+              <h2 class="slide-title">라이브로 대리만족 하세요</h2>
+              <p class="slide-desc">
+                라이브로 나를 뽐내고 시청자들과 소통하는<br />
+                즐거움
+              </p>
+            </div>
+            <div class="slide-image-wrap">
+              <img
+                src="./images/work3.png"
+                alt="라이브 안내 이미지"
+                class="slide-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <button type="button" class="start-btn" id="startBtn">시작하기</button>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const startBtn = document.getElementById("startBtn");
+      const moveUrl = "./index3.html";
+      let moveTimer = null;
+
+      const swiper = new Swiper(".onboardingSwiper", {
+        loop: false,
+        speed: 500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        on: {
+          init: function () {
+            updateStartButton(this);
+            startAutoMove(this);
+          },
+          slideChange: function () {
+            updateStartButton(this);
+            startAutoMove(this);
+          },
+        },
+      });
+
+      function updateStartButton(swiperInstance) {
+        const realIndex = swiperInstance.realIndex;
+
+        if (realIndex === 2) {
+          startBtn.classList.add("show");
+        } else {
+          startBtn.classList.remove("show");
+        }
+      }
+
+      function startAutoMove(swiperInstance) {
+        const lastIndex = swiperInstance.slides.length - 1;
+
+        clearTimeout(moveTimer);
+
+        if (swiperInstance.activeIndex === lastIndex) {
+          swiperInstance.autoplay.stop();
+
+          moveTimer = setTimeout(function () {
+            window.location.href = moveUrl;
+          }, 2000);
+        }
+      }
+
+      startBtn.addEventListener("click", function () {
+        window.location.href = moveUrl;
+      });
+    </script>
+  </body>
+</html>

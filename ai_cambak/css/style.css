@@ -60,7 +60,7 @@ img {
 
 .app-main {
   position: relative;
-  height: 100dvh;
+  height: calc(100dvh - 70px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,7 @@ img {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding-bottom: 70px;
+  padding-bottom: 0;
 }
 .view.is-active {
   display: block;
