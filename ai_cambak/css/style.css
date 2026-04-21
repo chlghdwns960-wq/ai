@@ -50,30 +50,31 @@ img {
 
 .app-shell {
   width: min(100%, 390px);
-  height: 100dvh;
+  min-height: 100dvh;
   margin: 0 auto;
   background: var(--bg);
   position: relative;
-  overflow: hidden;
   box-shadow: var(--shadow);
+  padding-bottom: 70px;
 }
 
 .app-main {
   position: relative;
-  height: calc(100dvh - 70px);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
+
 .view {
   display: none;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding-bottom: 0;
 }
+
 .view.is-active {
   display: block;
+}
+
+/* 검색 결과 / 상세만 스크롤 */
+#resultView,
+#detailView {
+  height: calc(100dvh - 70px);
+  overflow-y: auto;
 }
 
 .search-header {
@@ -749,11 +750,12 @@ img {
     radial-gradient(circle at 26px 5px, #223c84 0 2.5px, transparent 3px);
 }
 .tab-bar {
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0;
   z-index: 30;
+  width: min(100%, 390px);
   height: 70px;
   margin: 0;
   padding: 0 !important;
