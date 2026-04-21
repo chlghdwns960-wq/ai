@@ -364,3 +364,129 @@ input {
   font-size: 14px;
   color: #767676;
 }
+.hero-section {
+  position: relative;
+}
+
+.heroSwiper {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section {
+  position: relative;
+}
+
+.heroSwiper {
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSwiper .hero-pagination {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroSwiper .hero-pagination.swiper-pagination-bullets,
+.heroSwiper .hero-pagination.swiper-pagination-horizontal {
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: auto;
+}
+
+.heroSwiper .hero-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px !important;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.heroSwiper .hero-pagination .swiper-pagination-bullet-active {
+  width: 18px;
+  background: #5a74bb;
+}
+
+.theme-feature-card {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.theme-feature-card img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.theme-feature-head {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-bookmark {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  cursor: pointer;
+}
+
+.theme-bookmark svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.theme-feature-desc {
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #666;
+}
+
+.theme-feature-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+}
+
+.theme-feature-btn {
+  flex: 1;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.theme-feature-btn--primary {
+  border: 0;
+  background: #5a74bb;
+  color: #fff;
+}
+
+.theme-feature-btn--ghost {
+  border: 1px solid #b7c3e0;
+  background: #fff;
+  color: #444;
+}

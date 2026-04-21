@@ -1,11 +1,12 @@
-const heroSwiper = new Swiper('.heroSwiper', {
+const heroSwiper = new Swiper(".heroSwiper", {
   loop: true,
-  speed: 550,
-  slidesPerView: 1,
-  spaceBetween: 0,
+  speed: 500,
   autoplay: {
     delay: 2000,
     disableOnInteraction: false,
   },
-  allowTouchMove: true,
+  pagination: {
+    el: ".hero-pagination",
+    clickable: true,
+  },
 });
