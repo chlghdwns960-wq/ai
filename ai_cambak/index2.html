@@ -145,12 +145,9 @@
         height: 150px;
         top: 61%;
       }
-
       .slide-3 .slide-image-wrap::before {
-        height: 140px;
-        top: 62%;
+        display: none;
       }
-
       .slide-image {
         position: relative;
         z-index: 1;
@@ -206,6 +203,9 @@
 
       .start-btn:active {
         transform: scale(0.98);
+      }
+      .slide-3 .slide-image-wrap::before {
+        content: none !important;
       }
 
       @media (max-width: 390px) {
