@@ -43,7 +43,7 @@
         max-width: 430px;
         height: 100dvh;
         background: #fff;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .swiper {
@@ -56,13 +56,14 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding: 120px 22px 120px;
+        padding: 120px 0 120px;
         background: #fff;
       }
 
       .slide-text {
         width: 100%;
         max-width: 330px;
+        padding: 0 22px;
       }
 
       .slide-sub-title {
@@ -94,16 +95,66 @@
       }
 
       .slide-image-wrap {
+        position: relative;
         margin-top: 44px;
         width: 100%;
+        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+      }
+      .slide-image-wrap::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        width: calc(100% + 80px);
+        height: 145px;
+        background: #e9eef9;
+        border-radius: 999px;
+        z-index: 0;
+      }
+      .slide-image--1 {
+        width: calc(100% + 32px);
+        max-width: none;
+        transform: translateX(16px);
+      }
+
+      .slide-image--2 {
+        width: calc(100% + 18px);
+        max-width: none;
+        transform: translateX(0);
+      }
+
+      .slide-image--3 {
+        width: calc(100% + 34px);
+        max-width: none;
+        transform: translateX(0);
+      }
+      .slide-1 .slide-image-wrap::before {
+        width: calc(100% - 40px);
+        height: 120px;
+        top: 63%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .slide-2 .slide-image-wrap::before {
+        height: 150px;
+        top: 61%;
+      }
+
+      .slide-3 .slide-image-wrap::before {
+        height: 140px;
+        top: 62%;
       }
 
       .slide-image {
+        position: relative;
+        z-index: 1;
         width: 100%;
-        max-width: 300px;
         height: auto;
         display: block;
         object-fit: contain;
@@ -158,8 +209,8 @@
       }
 
       @media (max-width: 390px) {
-        .swiper-slide {
-          padding: 106px 20px 116px;
+        .slide-text {
+          padding: 0 20px;
         }
 
         .slide-sub-title {
@@ -175,7 +226,10 @@
         }
 
         .slide-image {
-          max-width: 285px;
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain;
         }
       }
     </style>
@@ -185,7 +239,7 @@
       <div class="swiper onboardingSwiper">
         <div class="swiper-wrapper">
           <!-- 1 -->
-          <div class="swiper-slide">
+          <div class="swiper-slide slide-1">
             <div class="slide-text">
               <p class="slide-sub-title">차박</p>
               <h2 class="slide-title">어디로 떠나야 할지 모르겠나요</h2>
@@ -198,13 +252,14 @@
               <img
                 src="./images/work1.png"
                 alt="차박 안내 이미지"
-                class="slide-image"
+                class="slide-image slide-image--1"
+              />
               />
             </div>
           </div>
 
           <!-- 2 -->
-          <div class="swiper-slide">
+          <div class="swiper-slide slide-2">
             <div class="slide-text">
               <p class="slide-sub-title">차만있다면</p>
               <h2 class="slide-title">장비는 부담적은 렌탈로</h2>
@@ -216,13 +271,13 @@
               <img
                 src="./images/work2.png"
                 alt="장비 렌탈 안내 이미지"
-                class="slide-image"
+                class="slide-image slide-image--2"
               />
             </div>
           </div>
 
           <!-- 3 -->
-          <div class="swiper-slide">
+          <div class="swiper-slide slide-3">
             <div class="slide-text">
               <p class="slide-sub-title">일상이 바쁠땐 실시간</p>
               <h2 class="slide-title">라이브로 대리만족 하세요</h2>
@@ -235,7 +290,7 @@
               <img
                 src="./images/work3.png"
                 alt="라이브 안내 이미지"
-                class="slide-image"
+                class="slide-image slide-image--3"
               />
             </div>
           </div>

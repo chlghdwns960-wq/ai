@@ -2,408 +2,373 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <title>전국 캠핑장 검색</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>차박지 홈</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script>
-      window.APP_CONFIG = {
-        GOCAMPING_SERVICE_KEY:
-          "bb4e376a3a8fb98ae9a09b56c35b3800a4dab631fbf24fa3e54b93d8d176af00",
-        KAKAO_MAP_APP_KEY: "db9e577f9be8ad1e9a73a4f3d1b1bf7e",
-        MOBILE_OS: "ETC",
-        MOBILE_APP: "CampingSearchApp",
-      };
-    </script>
-    <script src="./script/script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/style4.css" />
   </head>
   <body>
     <div class="app-shell">
-      <main class="app-main">
-        <section id="searchView" class="view is-active" aria-label="검색 화면">
-          <div class="search-header search-header--home">
-            <div class="search-input-wrap">
-              <button
-                class="search-button"
-                id="openSearchResultBtn"
-                aria-label="검색 실행"
-              >
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M10.5 18a7.5 7.5 0 1 1 0-15a7.5 7.5 0 0 1 0 15Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="m16 16 5 5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </button>
-              <input
-                id="searchInput"
-                type="text"
-                placeholder="지역 또는 키워드를 입력하세요."
-                autocomplete="off"
-              />
-              <button
-                class="map-icon-button"
-                id="quickMapBtn"
-                aria-label="지도 보기"
-              >
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M3 6.5 8 4l8 2 5-2v13.5L16 20l-8-2-5 2V6.5Z"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M8 4v14M16 6v14"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <section class="keyword-section">
-            <div class="section-head">
-              <h2>최근 검색어</h2>
-              <button id="clearRecentBtn" class="text-button" type="button">
-                수정
-              </button>
-            </div>
-            <div id="recentKeywordList" class="chip-list"></div>
-          </section>
-
-          <section class="keyword-section">
-            <div class="section-head">
-              <h2>인기 키워드</h2>
-            </div>
-            <div
-              id="popularKeywordList"
-              class="chip-list chip-list--blue"
-            ></div>
-          </section>
-
-          <section class="banner-card" aria-label="기획전 배너">
-            <div class="banner-bear" aria-hidden="true">
-              <div class="banner-bear-face"></div>
-            </div>
-            <div class="banner-overlay">
-              <p class="banner-eyebrow">전국 캠핑장 검색</p>
-              <h3>봄·여름 차박지 기획전</h3>
-              <p>특별할인 장소 추천 리스트 확인</p>
+      <main class="app-screen">
+        <div class="app-scroll">
+          <section class="hero-section">
+            <div class="swiper heroSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide hero-slide">
+                  <img src="./images/04_main/img1.png" alt="메인 슬라이드 1" />
+                  <div class="hero-copy">
+                    <strong>2025 여름<br />차박지 기획전</strong>
+                  </div>
+                </div>
+                <div class="swiper-slide hero-slide">
+                  <img src="./images/04_main/img2.png" alt="메인 슬라이드 2" />
+                  <div class="hero-copy">
+                    <strong>2025 여름<br />차박지 기획전</strong>
+                  </div>
+                </div>
+                <div class="swiper-slide hero-slide">
+                  <img src="./images/04_main/img3.png" alt="메인 슬라이드 3" />
+                  <div class="hero-copy">
+                    <strong>2025 여름<br />차박지 기획전</strong>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
-        </section>
 
-        <section id="resultView" class="view" aria-label="검색 결과 화면">
-          <header class="topbar">
-            <button
-              id="backToSearchBtn"
-              class="icon-button"
-              aria-label="뒤로가기"
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <section class="section-block">
+            <h2 class="section-title">테마 카테고리</h2>
+            <div class="theme-grid">
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon1.png" alt="꽃놀이"
+                /></span>
+                <span class="theme-label">꽃놀이</span>
+              </button>
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon2.png" alt="불멍"
+                /></span>
+                <span class="theme-label">불멍</span>
+              </button>
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon3.png" alt="도심"
+                /></span>
+                <span class="theme-label">도심</span>
+              </button>
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon4.png" alt="별감상"
+                /></span>
+                <span class="theme-label">별감상</span>
+              </button>
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon5.png" alt="반려견"
+                /></span>
+                <span class="theme-label">반려견</span>
+              </button>
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon6.png" alt="오지"
+                /></span>
+                <span class="theme-label">오지</span>
+              </button>
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon7.png" alt="바베큐"
+                /></span>
+                <span class="theme-label">바베큐</span>
+              </button>
+              <button class="theme-item" type="button">
+                <span class="theme-icon theme-icon--large"
+                  ><img src="./images/04_main/icon8.png" alt="장비"
+                /></span>
+                <span class="theme-label">장비</span>
+              </button>
+            </div>
+
+            <div class="quick-actions">
+              <button class="quick-action" type="button">
+                <span class="quick-action__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect
+                      x="4"
+                      y="6"
+                      width="16"
+                      height="12"
+                      rx="3"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <path
+                      d="M9 9h6M9 12h4"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+                <span>쿠폰</span>
+              </button>
+              <button class="quick-action" type="button">
+                <span class="quick-action__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M13 3 6.5 13h4L9 21l8.5-11h-4L13 3Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span>이벤트</span>
+              </button>
+              <button class="quick-action" type="button">
+                <span class="quick-action__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M5 10h14v9H5z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <path
+                      d="M12 10V6M8 10V7.8a2 2 0 0 1 4 0V10M16 10V7.8a2 2 0 0 0-4 0"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+                <span>혜택</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="section-block ranking-section">
+            <h2 class="section-title">장소 랭킹 Top 10</h2>
+            <div class="ranking-grid">
+              <article class="rank-card">
+                <span class="rank-badge">1</span
+                ><img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 1"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">2</span
+                ><img
+                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 2"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">3</span
+                ><img
+                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 3"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">4</span
+                ><img
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 4"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">5</span
+                ><img
+                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 5"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">6</span
+                ><img
+                  src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 6"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">7</span
+                ><img
+                  src="https://images.unsplash.com/photo-1464823063530-08f10ed1a2dd?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 7"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">8</span
+                ><img
+                  src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 8"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">9</span
+                ><img
+                  src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 9"
+                />
+              </article>
+              <article class="rank-card">
+                <span class="rank-badge">10</span
+                ><img
+                  src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80"
+                  alt="장소 10"
+                />
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <nav class="tabbar" aria-label="하단 탭바">
+          <a class="tabbar-item is-active" href="./index4.html">
+            <span class="tabbar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
                 <path
-                  d="M15 5 8 12l7 7"
+                  d="M6.6 10.4 12 5.5l5.4 4.9"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2.2"
+                  stroke-width="1.9"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />
-              </svg>
-            </button>
-            <h1>검색 결과</h1>
-            <button
-              id="toggleResultMapBtn"
-              class="text-link-button"
-              type="button"
-            >
-              지도
-            </button>
-          </header>
-
-          <section class="result-filter-row">
-            <button id="showAllBtn" class="filter-chip is-active" type="button">
-              전체
-            </button>
-            <button id="showFavoritesBtn" class="filter-chip" type="button">
-              즐겨찾기
-            </button>
-          </section>
-
-          <section class="result-search-row">
-            <div class="result-search-box">
-              <button
-                class="search-button"
-                id="resultSearchBtn"
-                aria-label="재검색"
-              >
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M10.5 18a7.5 7.5 0 1 1 0-15a7.5 7.5 0 0 1 0 15Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="m16 16 5 5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </button>
-              <input
-                id="resultSearchInput"
-                type="text"
-                placeholder="지역 또는 캠핑장명을 검색하세요."
-                autocomplete="off"
-              />
-            </div>
-          </section>
-
-          <section id="resultSummary" class="result-summary"></section>
-          <section id="resultState" class="result-state"></section>
-          <section id="resultList" class="result-list"></section>
-          <section id="resultPagination" class="result-pagination"></section>
-        </section>
-
-        <section id="detailView" class="view" aria-label="상세 화면">
-          <header class="topbar">
-            <button
-              id="backToResultBtn"
-              class="icon-button"
-              aria-label="뒤로가기"
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
-                  d="M15 5 8 12l7 7"
+                  d="M8.2 9.6v7.2h7.6V9.6"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-            <h1 id="detailTopTitle">캠핑장 상세</h1>
-            <button
-              id="openMapExternalBtn"
-              class="text-link-button"
-              type="button"
-            >
-              확장하기
-            </button>
-          </header>
-
-          <section class="detail-hero-wrap">
-            <img
-              id="detailHeroImage"
-              class="detail-hero-image"
-              alt="캠핑장 대표 이미지"
-            />
-          </section>
-
-          <section class="detail-card">
-            <div class="detail-title-row">
-              <div>
-                <h2 id="detailTitle"></h2>
-                <p id="detailAddress" class="detail-address"></p>
-              </div>
-              <button
-                id="detailBookmarkBtn"
-                class="bookmark-button"
-                aria-label="저장"
-              ></button>
-            </div>
-
-            <div class="detail-link-row">
-              <button id="copyAddressBtn" class="link-action" type="button">
-                주소 복사
-              </button>
-              <a
-                id="homepageLink"
-                class="link-action"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                >홈페이지</a
-              >
-              <a
-                id="reservationLink"
-                class="link-action"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                >예약</a
-              >
-            </div>
-
-            <div class="detail-chip-section">
-              <h3>편의시설</h3>
-              <div
-                id="detailFacilityChips"
-                class="chip-list chip-list--outline"
-              ></div>
-            </div>
-
-            <div class="detail-chip-section">
-              <h3>키워드</h3>
-              <div id="detailKeywordChips" class="keyword-text"></div>
-            </div>
-
-            <div class="detail-info-grid" id="detailInfoGrid"></div>
-
-            <div class="detail-description-block">
-              <h3>소개</h3>
-              <p id="detailDescription"></p>
-            </div>
-
-            <div class="detail-map-block">
-              <div class="detail-block-head">
-                <h3>지도</h3>
-                <button id="recenterMapBtn" class="text-button" type="button">
-                  현재 캠핑장 보기
-                </button>
-              </div>
-              <div id="detailMap" class="detail-map"></div>
-            </div>
-
-            <div class="detail-related-block">
-              <div class="detail-block-head">
-                <h3>주변 추천 캠핑장</h3>
-                <button id="showNearbyBtn" class="text-button" type="button">
-                  새로고침
-                </button>
-              </div>
-              <div id="nearbyList" class="nearby-list"></div>
-            </div>
-          </section>
-        </section>
-        <nav class="tab-bar" aria-label="하단 탭바">
-          <button class="tab-item" type="button">
-            <span class="tab-icon">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M5 12.5 12 6l7 6.5"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  stroke-width="1.9"
                   stroke-linejoin="round"
                 />
               </svg>
             </span>
-            <span class="tab-label">홈</span>
-          </button>
-
-          <button class="tab-item is-active" id="tabSearchBtn" type="button">
-            <span class="tab-icon">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <span class="tabbar-label">홈</span>
+          </a>
+          <a class="tabbar-item" href="./index5.html">
+            <span class="tabbar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
                 <circle
                   cx="11"
                   cy="11"
-                  r="6.5"
+                  r="4.8"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.9"
                 />
                 <path
-                  d="m16 16 4 4"
+                  d="m15.2 15.2 3.6 3.6"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.9"
                   stroke-linecap="round"
                 />
               </svg>
             </span>
-            <span class="tab-label">검색</span>
-          </button>
-
-          <button class="tab-item" type="button">
-            <span class="tab-icon">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <span class="tabbar-label">검색</span>
+          </a>
+          <a class="tabbar-item" href="#">
+            <span class="tabbar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
                 <circle
                   cx="8"
-                  cy="10"
-                  r="3"
+                  cy="9"
+                  r="2.2"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.8"
                 />
                 <circle
                   cx="16"
-                  cy="10"
-                  r="3"
+                  cy="9"
+                  r="2.2"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.8"
                 />
                 <path
-                  d="M3.5 18c.8-2.6 3-4 5.5-4"
+                  d="M4.8 16.8c.5-2.1 2.1-3.3 4.2-3.3s3.7 1.2 4.2 3.3"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.8"
                   stroke-linecap="round"
                 />
                 <path
-                  d="M15 14c2.5 0 4.7 1.4 5.5 4"
+                  d="M10.8 16.8c.5-2.1 2.1-3.3 4.2-3.3s3.7 1.2 4.2 3.3"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.8"
                   stroke-linecap="round"
                 />
               </svg>
             </span>
-            <span class="tab-label">모임</span>
-          </button>
-
-          <button class="tab-item" type="button">
-            <span class="tab-icon">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <span class="tabbar-label">모임</span>
+          </a>
+          <a class="tabbar-item" href="#">
+            <span class="tabbar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
                 <rect
-                  x="4"
-                  y="6"
-                  width="16"
-                  height="12"
-                  rx="2"
+                  x="5.2"
+                  y="6.8"
+                  width="13.6"
+                  height="10.4"
+                  rx="1.6"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.8"
                 />
-                <path d="m10 10 5 3-5 3v-6Z" fill="currentColor" />
+                <path
+                  d="m10.5 9.7 4 2.3-4 2.3Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
               </svg>
             </span>
-            <span class="tab-label">LIVE</span>
-          </button>
-
-          <button class="tab-item" type="button">
-            <span class="tab-icon">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <span class="tabbar-label">LIVE</span>
+          </a>
+          <a class="tabbar-item" href="#">
+            <span class="tabbar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
                 <circle
                   cx="12"
-                  cy="8"
-                  r="3.5"
+                  cy="8.3"
+                  r="2.6"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.8"
                 />
                 <path
-                  d="M6.5 19c.9-3 3-4.5 5.5-4.5s4.6 1.5 5.5 4.5"
+                  d="M6.8 17.2c.7-2.6 2.8-4 5.2-4s4.5 1.4 5.2 4"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.8"
                   stroke-linecap="round"
                 />
               </svg>
             </span>
-            <span class="tab-label">MY</span>
-          </button>
+            <span class="tabbar-label">MY</span>
+          </a>
         </nav>
       </main>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./script/script4.js"></script>
   </body>
 </html>
