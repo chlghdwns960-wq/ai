@@ -10,3 +10,10 @@ const heroSwiper = new Swiper(".heroSwiper", {
     clickable: true,
   },
 });
+
+document.querySelectorAll(".theme-bookmark").forEach((button) => {
+  button.addEventListener("click", () => {
+    const isActive = button.classList.toggle("is-active");
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+});

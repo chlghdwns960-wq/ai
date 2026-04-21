@@ -9,6 +9,11 @@ const state = {
   currentCamp: null,
   detailMap: null,
   detailMarker: null,
+  resultMap: null,
+  resultMarkers: [],
+  selectedMapCampId: null,
+  nationwideMapItems: [],
+  resultClusterer: null,
   pendingQuickMap: false,
   resultMode: "all",
   currentPage: 1,
@@ -85,6 +90,12 @@ const cacheElements = () => {
     "recenterMapBtn",
     "showNearbyBtn",
     "nearbyList",
+    "mapOverlayView",
+    "closeMapOverlayBtn",
+    "resultMapCanvas",
+    "mapBottomSheet",
+    "mapBottomCard",
+    "mapBottomSheetHandle",
   ];
 
   ids.forEach((id) => {
@@ -134,6 +145,7 @@ const bindEvents = () => {
 
   els.clearRecentBtn?.addEventListener("click", onClearRecentClick);
   els.quickMapBtn?.addEventListener("click", onQuickMapClick);
+  els.closeMapOverlayBtn?.addEventListener("click", closeMapOverlay);
   els.backToSearchBtn?.addEventListener("click", () => showView("search"));
   els.backToResultBtn?.addEventListener("click", () => showView("result"));
   els.toggleResultMapBtn?.addEventListener("click", toggleResultMapPanel);
@@ -261,6 +273,13 @@ const switchResultMode = (mode) => {
   renderResultList();
 };
 
+const updateTabState = (viewName) => {
+  if (!els.tabSearchBtn) return;
+  const searchLikeView =
+    viewName === "search" || viewName === "result" || viewName === "detail";
+  els.tabSearchBtn.classList.toggle("is-active", searchLikeView);
+};
+
 const updateFilterButtons = () => {
   els.showAllBtn?.classList.toggle("is-active", state.resultMode === "all");
   els.showFavoritesBtn?.classList.toggle(
@@ -333,6 +352,48 @@ const fetchCampingData = async (keyword) => {
 
   if (!items) return [];
   return Array.isArray(items) ? items : [items];
+};
+
+
+const fetchAllCampingData = async () => {
+  const serviceKey = window.APP_CONFIG?.GOCAMPING_SERVICE_KEY;
+  if (!serviceKey || serviceKey.includes("YOUR_GOCAMPING_SERVICE_KEY_HERE")) {
+    throw new Error("GoCamping service key is missing.");
+  }
+
+  const allItems = [];
+  let pageNo = 1;
+  const maxPages = 8;
+
+  while (pageNo <= maxPages) {
+    const params = new URLSearchParams({
+      serviceKey,
+      pageNo: String(pageNo),
+      numOfRows: "300",
+      MobileOS: window.APP_CONFIG?.MOBILE_OS || "ETC",
+      MobileApp: window.APP_CONFIG?.MOBILE_APP || "CampingSearchApp",
+      _type: "json",
+    });
+
+    const url = `https://apis.data.go.kr/B551011/GoCamping/basedList?${params.toString()}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const data = await response.json();
+    const items = data?.response?.body?.items?.item;
+    const rows = !items ? [] : Array.isArray(items) ? items : [items];
+
+    if (!rows.length) break;
+    allItems.push(...rows);
+
+    const totalCount = Number(data?.response?.body?.totalCount || 0);
+    const loadedCount = pageNo * 300;
+    if (totalCount && loadedCount >= totalCount) break;
+
+    pageNo += 1;
+  }
+
+  return allItems;
 };
 
 const enrichResults = (items) => {
@@ -476,6 +537,7 @@ const renderResultList = () => {
               type="button"
               data-bookmark-id="${escapeHtml(String(item.contentId))}"
               aria-label="저장"
+              aria-pressed="${item.isFavorite ? "true" : "false"}"
             >
               ${BOOKMARK_ICON}
             </button>
@@ -720,11 +782,16 @@ const updateDetailFavoriteButton = () => {
   const isFavorite = state.favoriteIds.includes(
     String(state.currentCamp.contentId),
   );
+
   els.detailBookmarkBtn.classList.toggle("is-active", Boolean(isFavorite));
   els.detailBookmarkBtn.innerHTML = BOOKMARK_ICON;
   els.detailBookmarkBtn.setAttribute(
     "aria-label",
     isFavorite ? "저장됨" : "저장",
+  );
+  els.detailBookmarkBtn.setAttribute(
+    "aria-pressed",
+    isFavorite ? "true" : "false",
   );
 };
 
@@ -821,23 +888,242 @@ const showView = (viewName) => {
   els.searchView?.classList.toggle("is-active", viewName === "search");
   els.resultView?.classList.toggle("is-active", viewName === "result");
   els.detailView?.classList.toggle("is-active", viewName === "detail");
+  updateTabState(viewName);
 };
 
 const toggleResultMapPanel = () => openResultMap();
 
-const openResultMap = () => {
-  const visibleResults = getVisibleResults();
-  if (!visibleResults.length) {
-    alert("먼저 검색 결과를 불러와야 해.");
+const openResultMap = async () => {
+  els.mapOverlayView?.removeAttribute("hidden");
+  document.body.style.overflow = "hidden";
+  if (els.resultMapCanvas) {
+    els.resultMapCanvas.innerHTML = '<div class="state-box" style="height:100%;display:flex;align-items:center;justify-content:center;">전국 캠핑장 지도를 준비 중이야.</div>';
+  }
+
+  try {
+    if (!state.nationwideMapItems.length) {
+      const nationwideItems = await fetchAllCampingData();
+      state.nationwideMapItems = enrichResults(nationwideItems);
+    }
+
+    const visibleResults = state.nationwideMapItems.filter(
+      (item) => Number(item.mapY) && Number(item.mapX),
+    );
+
+    if (!visibleResults.length) {
+      alert("지도 좌표가 있는 캠핑장 데이터가 없어.");
+      closeMapOverlay();
+      return;
+    }
+
+    renderResultMapOverlay(visibleResults, true);
+  } catch (error) {
+    console.error(error);
+    if (els.resultMapCanvas) {
+      els.resultMapCanvas.innerHTML =
+        '<div class="state-box" style="height:100%;display:flex;align-items:center;justify-content:center;">전국 지도를 불러오지 못했어.</div>';
+    }
+  }
+};
+
+
+const closeMapOverlay = () => {
+  els.mapOverlayView?.setAttribute("hidden", "");
+  els.mapBottomSheet?.setAttribute("hidden", "");
+  document.body.style.overflow = "";
+};
+
+const renderResultMapOverlay = (items, nationwide = false) => {
+  const kakao = window.kakao;
+
+  if (!kakao?.maps || !kakao?.maps?.MarkerClusterer) {
+    if (els.resultMapCanvas) {
+      els.resultMapCanvas.innerHTML =
+        '<div class="state-box" style="height:100%;display:flex;align-items:center;justify-content:center;">카카오맵 클러스터 라이브러리를 불러오지 못했어.</div>';
+    }
     return;
   }
 
-  const labels = visibleResults
-    .slice(0, 6)
-    .map((item, index) => `${index + 1}. ${item.title}`)
-    .join("\n");
+  const validItems = items.filter((item) => Number(item.mapY) && Number(item.mapX));
+  if (!validItems.length) return;
 
-  alert(`카카오맵은 상세 화면에서 바로 표시돼.\n\n현재 목록 상위:\n${labels}`);
+  const first = validItems[0];
+  const center = new kakao.maps.LatLng(Number(first.mapY), Number(first.mapX));
+
+  if (!state.resultMap) {
+    state.resultMap = new kakao.maps.Map(els.resultMapCanvas, {
+      center,
+      level: nationwide ? 13 : 8,
+    });
+  } else {
+    state.resultMap.relayout();
+    state.resultMap.setCenter(center);
+    state.resultMap.setLevel(nationwide ? 13 : 8);
+  }
+
+  state.resultMarkers.forEach((marker) => marker.setMap(null));
+  state.resultMarkers = [];
+
+  if (state.resultClusterer) {
+    state.resultClusterer.clear();
+  }
+
+  const bounds = new kakao.maps.LatLngBounds();
+
+  state.resultClusterer = new kakao.maps.MarkerClusterer({
+    map: state.resultMap,
+    averageCenter: true,
+    minLevel: 9,
+    disableClickZoom: false,
+    styles: [
+      {
+        width: '44px',
+        height: '44px',
+        background: 'rgba(85,114,199,0.92)',
+        borderRadius: '22px',
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: '700',
+        lineHeight: '44px',
+        border: '2px solid rgba(255,255,255,0.92)',
+      },
+      {
+        width: '52px',
+        height: '52px',
+        background: 'rgba(70,96,173,0.94)',
+        borderRadius: '26px',
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: '700',
+        lineHeight: '52px',
+        border: '2px solid rgba(255,255,255,0.92)',
+      },
+      {
+        width: '60px',
+        height: '60px',
+        background: 'rgba(54,75,130,0.96)',
+        borderRadius: '30px',
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: '800',
+        lineHeight: '60px',
+        border: '2px solid rgba(255,255,255,0.92)',
+      },
+    ],
+  });
+
+  const markers = validItems.map((item) => {
+    const position = new kakao.maps.LatLng(Number(item.mapY), Number(item.mapX));
+    bounds.extend(position);
+
+    const marker = new kakao.maps.Marker({
+      position,
+      title: item.title,
+      clickable: true,
+    });
+
+    kakao.maps.event.addListener(marker, "click", () => {
+      state.selectedMapCampId = String(item.contentId);
+      renderMapBottomCard(item);
+    });
+
+    return marker;
+  });
+
+  state.resultMarkers = markers;
+  state.resultClusterer.addMarkers(markers);
+
+  state.resultMap.setBounds(bounds);
+
+  setTimeout(() => {
+    state.resultMap.relayout();
+    state.resultMap.setBounds(bounds);
+    if (nationwide) {
+      state.resultMap.setLevel(Math.max(state.resultMap.getLevel(), 12));
+    }
+  }, 80);
+
+  renderMapBottomCard(validItems[0]);
+
+  kakao.maps.event.addListener(state.resultMap, "idle", () => {
+    const level = state.resultMap.getLevel();
+
+    if (level >= 11) {
+      els.mapBottomSheet?.setAttribute("hidden", "");
+      return;
+    }
+
+    if (state.selectedMapCampId) {
+      const selected = validItems.find(
+        (item) => String(item.contentId) === String(state.selectedMapCampId),
+      );
+      if (selected) renderMapBottomCard(selected);
+    }
+  });
+};
+
+const renderMapBottomCard = (camp) => {
+  if (!camp || !els.mapBottomCard || !els.mapBottomSheet) return;
+
+  const isFavorite = state.favoriteIds.includes(String(camp.contentId));
+
+  els.mapBottomSheet.removeAttribute("hidden");
+  els.mapBottomCard.innerHTML = `
+    <button class="map-bottom-card__button" type="button" data-map-card-id="${escapeHtml(String(camp.contentId))}">
+      <img
+        class="map-bottom-card__thumb"
+        src="${escapeAttribute(camp.image)}"
+        alt="${escapeAttribute(camp.title)}"
+        onerror="this.src='${FALLBACK_IMAGE}'"
+      />
+      <div>
+        <div class="map-bottom-card__title-row">
+          <div>
+            <h3 class="map-bottom-card__title">${escapeHtml(camp.title)}</h3>
+            <p class="map-bottom-card__address">${escapeHtml(camp.address || "주소 정보 없음")}</p>
+          </div>
+          <button
+            class="bookmark-button ${isFavorite ? "is-active" : ""}"
+            type="button"
+            data-map-bookmark-id="${escapeHtml(String(camp.contentId))}"
+            aria-label="저장"
+            aria-pressed="${isFavorite ? "true" : "false"}"
+          >
+            ${BOOKMARK_ICON}
+          </button>
+        </div>
+        <div class="map-bottom-card__meta">
+          <div class="map-bottom-card__chip-group">
+            ${camp.facilities
+              .slice(0, 2)
+              .map((chip) => `<span class="chip chip--blue">${escapeHtml(chip)}</span>`)
+              .join("")}
+          </div>
+          <span class="distance-text">${escapeHtml(camp.distanceText)}</span>
+        </div>
+      </div>
+    </button>
+  `;
+
+  const cardButton = els.mapBottomCard.querySelector("[data-map-card-id]");
+  const bookmarkButton = els.mapBottomCard.querySelector("[data-map-bookmark-id]");
+
+  cardButton?.addEventListener("click", (event) => {
+    if (event.target.closest("[data-map-bookmark-id]")) return;
+    closeMapOverlay();
+    openDetail(cardButton.dataset.mapCardId);
+  });
+
+  bookmarkButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleFavorite(bookmarkButton.dataset.mapBookmarkId);
+    const updatedCamp = findCampById(bookmarkButton.dataset.mapBookmarkId) || camp;
+    renderMapBottomCard({
+      ...camp,
+      ...updatedCamp,
+      isFavorite: state.favoriteIds.includes(String(bookmarkButton.dataset.mapBookmarkId)),
+    });
+  });
 };
 
 const loadKakaoMapScript = () => {
@@ -850,7 +1136,7 @@ const loadKakaoMapScript = () => {
   if (window.kakao?.maps) return;
 
   const script = document.createElement("script");
-  script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
+  script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false&libraries=clusterer`;
   script.async = true;
   script.onload = () =>
     window.kakao.maps.load(() => {
