@@ -158,6 +158,111 @@ select:focus {
   background: linear-gradient(90deg, var(--primary-color), #7c3aed);
 }
 
+.calendar-toolbar {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px auto;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.calendar-center {
+  position: relative;
+  min-width: 0;
+}
+
+.calendar-icon-button,
+.calendar-today-button,
+.calendar-view-trigger,
+.calendar-menu-button {
+  border: 1px solid var(--line-color);
+  background: #ffffff;
+}
+
+.calendar-icon-button,
+.calendar-today-button {
+  min-height: 44px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.calendar-icon-button {
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+}
+
+.calendar-today-button {
+  min-width: 62px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+.calendar-view-trigger {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 999px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-color);
+}
+
+.current-date-label {
+  font-size: 15px;
+  font-weight: 700;
+  min-width: 0;
+}
+
+.current-view-type-label {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-color);
+  background: #eef2ff;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.calendar-view-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  padding: 8px;
+  z-index: 30;
+}
+
+.calendar-menu-button {
+  width: 100%;
+  min-height: 42px;
+  border-radius: 12px;
+  padding: 0 14px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.calendar-menu-button + .calendar-menu-button {
+  margin-top: 6px;
+}
+
+.calendar-menu-button.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
 .todo-form {
   display: flex;
   flex-direction: column;
@@ -263,6 +368,13 @@ select:focus {
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
+  cursor: pointer;
+  border: 0;
+}
+
+.category-badge.is-active {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 1px;
 }
 
 .category-personal {
@@ -278,6 +390,11 @@ select:focus {
 .category-study {
   background: #dcfce7;
   color: #15803d;
+}
+
+.todo-date {
+  font-size: 12px;
+  color: var(--sub-text-color);
 }
 
 .todo-actions {
@@ -326,80 +443,6 @@ select:focus {
   opacity: 0.7;
 }
 
-@media (min-width: 768px) {
-  .app {
-    padding: 40px 24px;
-    align-items: center;
-  }
-
-  .todo-card {
-    padding: 32px 28px;
-  }
-
-  .app-title {
-    font-size: 32px;
-  }
-
-  .todo-form {
-    display: grid;
-    grid-template-columns: 1.6fr 0.8fr 0.6fr;
-    align-items: end;
-    gap: 14px;
-  }
-
-  .submit-button {
-    width: 100%;
-  }
-
-  .todo-item {
-    align-items: center;
-    padding: 16px;
-  }
-}
-.todo-date {
-  font-size: 12px;
-  color: var(--sub-text-color);
-}
-.todo-count-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 32px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: #eef2ff;
-  color: var(--primary-color);
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.filter-group {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-
-.filter-button {
-  min-height: 36px;
-  padding: 0 14px;
-  border: 1px solid var(--line-color);
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--text-color);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.filter-button:hover {
-  background: #f8fafc;
-}
-
-.filter-button.active {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: #ffffff;
-}
 .todo-count-badge {
   display: inline-flex;
   align-items: center;
@@ -426,6 +469,28 @@ select:focus {
   gap: 8px;
   flex-wrap: wrap;
 }
+
+.filter-button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line-color);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.filter-button:hover {
+  background: #f8fafc;
+}
+
+.filter-button.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
 .active-category-filter {
   display: inline-flex;
   align-items: center;
@@ -460,63 +525,37 @@ select:focus {
   background: #e5e7eb;
 }
 
-.category-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 28px;
-  padding: 0 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  border: 0;
-}
+@media (min-width: 768px) {
+  .app {
+    padding: 40px 24px;
+    align-items: center;
+  }
 
-.category-badge.is-active {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 1px;
-}
-.calendar-view-bar {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
-}
+  .todo-card {
+    padding: 32px 28px;
+  }
 
-.calendar-mode-group {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+  .app-title {
+    font-size: 32px;
+  }
 
-.calendar-mode-button,
-.calendar-nav-button {
-  min-height: 36px;
-  padding: 0 14px;
-  border: 1px solid var(--line-color);
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--text-color);
-  font-size: 13px;
-  font-weight: 700;
-}
+  .todo-form {
+    display: grid;
+    grid-template-columns: 1.6fr 0.8fr 0.6fr;
+    align-items: end;
+    gap: 14px;
+  }
 
-.calendar-mode-button.active {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: #ffffff;
-}
+  .submit-button {
+    width: 100%;
+  }
 
-.calendar-nav {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+  .todo-item {
+    align-items: center;
+    padding: 16px;
+  }
 
-.current-date-label {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-color);
+  .calendar-toolbar {
+    grid-template-columns: 48px 1fr 48px auto;
+  }
 }

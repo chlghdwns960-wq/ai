@@ -5,16 +5,12 @@ let currentCategoryFilter = "all";
 
 const STORAGE_KEY = "todo-app-data";
 
-// 오늘 날짜를 서버 날짜처럼 기준점으로 사용하는 값
 const today = new Date();
 const todayYear = today.getFullYear();
 const todayMonth = today.getMonth();
 const todayDate = today.getDate();
 
-// 현재 보고 있는 달력 모드: daily / monthly
 let currentCalendarView = "daily";
-
-// 현재 보고 있는 날짜
 let currentViewDate = new Date(todayYear, todayMonth, todayDate);
 
 const todoForm = document.getElementById("todoForm");
@@ -31,11 +27,14 @@ const activeCategoryFilter = document.getElementById("activeCategoryFilter");
 const activeCategoryText = document.getElementById("activeCategoryText");
 const clearCategoryFilter = document.getElementById("clearCategoryFilter");
 
-// 날짜 보기 관련 요소
-const calendarModeButtons = document.querySelectorAll(".calendar-mode-button");
 const prevDateButton = document.getElementById("prevDateButton");
 const nextDateButton = document.getElementById("nextDateButton");
+const goTodayButton = document.getElementById("goTodayButton");
 const currentDateLabel = document.getElementById("currentDateLabel");
+const currentViewTypeLabel = document.getElementById("currentViewTypeLabel");
+const calendarViewTrigger = document.getElementById("calendarViewTrigger");
+const calendarViewMenu = document.getElementById("calendarViewMenu");
+const calendarMenuButtons = document.querySelectorAll(".calendar-menu-button");
 
 function saveTodos() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
@@ -85,7 +84,6 @@ function loadTodos() {
   }
 }
 
-// YYYY-MM-DD 형태로 바꿔주는 함수
 function formatDateKey(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -93,7 +91,6 @@ function formatDateKey(date) {
   return `${year}-${month}-${day}`;
 }
 
-// createdAt 문자열을 날짜 키로 바꿔주는 함수
 function getTodoDateKey(todo) {
   const date = new Date(todo.createdAt);
 
@@ -104,14 +101,12 @@ function getTodoDateKey(todo) {
   return formatDateKey(date);
 }
 
-// 월 키 YYYY-MM
 function formatMonthKey(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   return `${year}-${month}`;
 }
 
-// 현재 보고 있는 날짜/월에 맞는 데이터만 먼저 걸러주는 함수
 function getTodosByCalendarView() {
   if (currentCalendarView === "daily") {
     const targetDateKey = formatDateKey(currentViewDate);
@@ -277,7 +272,7 @@ function renderTodos() {
   updateTodoCount();
   updateFilterButtons();
   updateActiveCategoryFilter();
-  updateCalendarModeButtons();
+  updateCalendarMenuButtons();
   updateCurrentDateLabel();
 }
 
@@ -306,8 +301,8 @@ function updateActiveCategoryFilter() {
   activeCategoryText.textContent = `카테고리: ${currentCategoryFilter}`;
 }
 
-function updateCalendarModeButtons() {
-  calendarModeButtons.forEach(function (button) {
+function updateCalendarMenuButtons() {
+  calendarMenuButtons.forEach(function (button) {
     if (button.dataset.view === currentCalendarView) {
       button.classList.add("active");
     } else {
@@ -317,7 +312,7 @@ function updateCalendarModeButtons() {
 }
 
 function updateCurrentDateLabel() {
-  if (!currentDateLabel) {
+  if (!currentDateLabel || !currentViewTypeLabel) {
     return;
   }
 
@@ -327,18 +322,63 @@ function updateCurrentDateLabel() {
 
   if (currentCalendarView === "daily") {
     currentDateLabel.textContent = `${year}.${month}.${day}`;
+    currentViewTypeLabel.textContent = "일별";
   } else {
     currentDateLabel.textContent = `${year}.${month}`;
+    currentViewTypeLabel.textContent = "월별";
+  }
+}
+
+function openCalendarMenu() {
+  if (!calendarViewMenu || !calendarViewTrigger) {
+    return;
+  }
+
+  calendarViewMenu.hidden = false;
+  calendarViewTrigger.setAttribute("aria-expanded", "true");
+}
+
+function closeCalendarMenu() {
+  if (!calendarViewMenu || !calendarViewTrigger) {
+    return;
+  }
+
+  calendarViewMenu.hidden = true;
+  calendarViewTrigger.setAttribute("aria-expanded", "false");
+}
+
+function toggleCalendarMenu() {
+  if (!calendarViewMenu) {
+    return;
+  }
+
+  if (calendarViewMenu.hidden) {
+    openCalendarMenu();
+  } else {
+    closeCalendarMenu();
   }
 }
 
 function moveDate(direction) {
   if (currentCalendarView === "daily") {
-    currentViewDate.setDate(currentViewDate.getDate() + direction);
+    currentViewDate = new Date(
+      currentViewDate.getFullYear(),
+      currentViewDate.getMonth(),
+      currentViewDate.getDate() + direction,
+    );
   } else {
-    currentViewDate.setMonth(currentViewDate.getMonth() + direction);
+    currentViewDate = new Date(
+      currentViewDate.getFullYear(),
+      currentViewDate.getMonth() + direction,
+      1,
+    );
   }
 
+  renderTodos();
+}
+
+function goToday() {
+  currentViewDate = new Date(todayYear, todayMonth, todayDate);
   renderTodos();
 }
 
@@ -382,7 +422,6 @@ function addTodo() {
     return;
   }
 
-  // 입력은 무조건 오늘 날짜 기준으로 저장
   const createdAt = new Date(todayYear, todayMonth, todayDate).toISOString();
 
   const newTodo = {
@@ -396,10 +435,7 @@ function addTodo() {
   todos.push(newTodo);
   saveTodos();
   resetForm();
-
-  // 새로 추가하면 오늘 날짜로 자동 이동해서 바로 보이게
   currentViewDate = new Date(todayYear, todayMonth, todayDate);
-
   renderTodos();
 }
 
@@ -551,13 +587,6 @@ if (clearCategoryFilter) {
   });
 }
 
-calendarModeButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    currentCalendarView = this.dataset.view;
-    renderTodos();
-  });
-});
-
 if (prevDateButton) {
   prevDateButton.addEventListener("click", function () {
     moveDate(-1);
@@ -569,6 +598,54 @@ if (nextDateButton) {
     moveDate(1);
   });
 }
+
+if (goTodayButton) {
+  goTodayButton.addEventListener("click", function () {
+    goToday();
+  });
+}
+
+if (calendarViewTrigger) {
+  calendarViewTrigger.addEventListener("click", function () {
+    toggleCalendarMenu();
+  });
+}
+
+calendarMenuButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    currentCalendarView = this.dataset.view;
+
+    if (currentCalendarView === "monthly") {
+      currentViewDate = new Date(
+        currentViewDate.getFullYear(),
+        currentViewDate.getMonth(),
+        1,
+      );
+    }
+
+    closeCalendarMenu();
+    renderTodos();
+  });
+});
+
+document.addEventListener("click", function (event) {
+  if (!calendarViewMenu || !calendarViewTrigger) {
+    return;
+  }
+
+  if (
+    !calendarViewMenu.contains(event.target) &&
+    !calendarViewTrigger.contains(event.target)
+  ) {
+    closeCalendarMenu();
+  }
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeCalendarMenu();
+  }
+});
 
 loadTodos();
 renderTodos();

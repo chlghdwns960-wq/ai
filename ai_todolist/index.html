@@ -27,46 +27,74 @@
           </div>
         </section>
 
-        <div class="calendar-view-bar">
-          <div class="calendar-mode-group">
+        <div class="calendar-toolbar">
+          <button
+            type="button"
+            id="prevDateButton"
+            class="calendar-icon-button"
+            aria-label="이전 날짜 보기"
+          >
+            ‹
+          </button>
+
+          <div class="calendar-center">
             <button
               type="button"
-              class="calendar-mode-button active"
-              data-view="daily"
+              id="calendarViewTrigger"
+              class="calendar-view-trigger"
+              aria-expanded="false"
+              aria-haspopup="true"
             >
-              일별
+              <span id="currentDateLabel" class="current-date-label"></span>
+              <span id="currentViewTypeLabel" class="current-view-type-label"
+                >일별</span
+              >
             </button>
-            <button
-              type="button"
-              class="calendar-mode-button"
-              data-view="monthly"
+
+            <div
+              id="calendarViewMenu"
+              class="calendar-view-menu"
+              role="menu"
+              hidden
             >
-              월별
-            </button>
+              <button
+                type="button"
+                class="calendar-menu-button active"
+                data-view="daily"
+                role="menuitem"
+              >
+                일별 보기
+              </button>
+              <button
+                type="button"
+                class="calendar-menu-button"
+                data-view="monthly"
+                role="menuitem"
+              >
+                월별 보기
+              </button>
+            </div>
           </div>
 
-          <div class="calendar-nav">
-            <button
-              type="button"
-              id="prevDateButton"
-              class="calendar-nav-button"
-            >
-              이전
-            </button>
-            <strong id="currentDateLabel" class="current-date-label"></strong>
-            <button
-              type="button"
-              id="nextDateButton"
-              class="calendar-nav-button"
-            >
-              다음
-            </button>
-          </div>
+          <button
+            type="button"
+            id="nextDateButton"
+            class="calendar-icon-button"
+            aria-label="다음 날짜 보기"
+          >
+            ›
+          </button>
+
+          <button
+            type="button"
+            id="goTodayButton"
+            class="calendar-today-button"
+          >
+            오늘
+          </button>
         </div>
 
         <section class="input-section" aria-labelledby="input-title">
-          <!-- <h2 id="input-title" class="section-title">할 일 입력</h2> -->
-
           <form id="todoForm" class="todo-form">
             <div class="form-group">
               <label for="todoInput" class="form-label">제목</label>
