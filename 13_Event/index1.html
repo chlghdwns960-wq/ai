@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마우스이벤트</title>
+  </head>
+  <body>
+    <h1>큰제목태그</h1>
+    <h2>중간제목태그</h2>
+    <p>첫번째문단</p>
+
+    <script>
+      //   h1태그를 클릭하면 글자색이 빨강
+      let tit1 = document.querySelector("h1");
+      console.log(tit1);
+      //   선택된 요소를 클릭하면 글자색이 빨강색으로 변경
+      //   1. 고전 방식 이벤트
+      //   tit1를 클릭하면 함수 안에 코드를 실행하라는 명령
+      tit1.onclick = function () {
+        // 함수 안 코드를 실행
+        // tit1.style.color = "red";
+        // this 키워드 → 나, 자신의 객체
+        this.style.color = "red";
+      };
+    </script>
+  </body>
+</html>
