@@ -46,34 +46,11 @@
               aria-haspopup="true"
             >
               <span id="currentDateLabel" class="current-date-label"></span>
-              <span id="currentViewTypeLabel" class="current-view-type-label"
-                >일별</span
-              >
+              <span id="currentViewTypeLabel" class="current-view-type-label">일별</span>
             </button>
 
-            <div
-              id="calendarViewMenu"
-              class="calendar-view-menu"
-              role="menu"
-              hidden
-            >
-              <button
-                type="button"
-                class="calendar-menu-button active"
-                data-view="daily"
-                role="menuitem"
-              >
-                일별 보기
-              </button>
-              <button
-                type="button"
-                class="calendar-menu-button"
-                data-view="monthly"
-                role="menuitem"
-              >
-                월별 보기
-              </button>
-            </div>
+            <input type="date" id="dailyDatePicker" class="sr-only-picker" />
+            <input type="month" id="monthlyDatePicker" class="sr-only-picker" />
           </div>
 
           <button
@@ -177,6 +154,42 @@
         </section>
       </section>
     </main>
+
+    <div id="calendarSheetOverlay" class="calendar-sheet-overlay" hidden></div>
+
+    <div
+      id="calendarViewMenu"
+      class="calendar-sheet"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="calendarSheetTitle"
+      hidden
+    >
+      <div class="calendar-sheet-handle"></div>
+
+      <div class="calendar-sheet-header">
+        <strong id="calendarSheetTitle" class="calendar-sheet-title">보기 방식 선택</strong>
+        <button type="button" id="calendarSheetClose" class="calendar-sheet-close">닫기</button>
+      </div>
+
+      <div class="calendar-sheet-body">
+        <button
+          type="button"
+          class="calendar-menu-button active"
+          data-view="daily"
+        >
+          일별 보기
+        </button>
+
+        <button
+          type="button"
+          class="calendar-menu-button"
+          data-view="monthly"
+        >
+          월별 보기
+        </button>
+      </div>
+    </div>
 
     <script src="./js/script.js"></script>
   </body>

@@ -167,7 +167,6 @@ select:focus {
 }
 
 .calendar-center {
-  position: relative;
   min-width: 0;
 }
 
@@ -229,32 +228,83 @@ select:focus {
   border-radius: 999px;
 }
 
-.calendar-view-menu {
+.sr-only-picker {
   position: absolute;
-  top: calc(100% + 8px);
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.calendar-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.28);
+  z-index: 100;
+}
+
+.calendar-sheet {
+  position: fixed;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
   background: #ffffff;
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.12);
+  padding: 10px 16px 20px;
+}
+
+.calendar-sheet-handle {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: #d1d5db;
+  margin: 0 auto 14px;
+}
+
+.calendar-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.calendar-sheet-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+.calendar-sheet-close {
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
   border: 1px solid var(--line-color);
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-  padding: 8px;
-  z-index: 30;
+  background: #ffffff;
+  color: var(--sub-text-color);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.calendar-sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .calendar-menu-button {
   width: 100%;
-  min-height: 42px;
-  border-radius: 12px;
+  min-height: 48px;
+  border-radius: 14px;
   padding: 0 14px;
   text-align: left;
   font-size: 14px;
   font-weight: 700;
   color: var(--text-color);
-}
-
-.calendar-menu-button + .calendar-menu-button {
-  margin-top: 6px;
+  border: 1px solid var(--line-color);
+  background: #ffffff;
 }
 
 .calendar-menu-button.active {

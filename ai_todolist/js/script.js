@@ -35,6 +35,11 @@ const currentViewTypeLabel = document.getElementById("currentViewTypeLabel");
 const calendarViewTrigger = document.getElementById("calendarViewTrigger");
 const calendarViewMenu = document.getElementById("calendarViewMenu");
 const calendarMenuButtons = document.querySelectorAll(".calendar-menu-button");
+const calendarSheetOverlay = document.getElementById("calendarSheetOverlay");
+const calendarSheetClose = document.getElementById("calendarSheetClose");
+
+const dailyDatePicker = document.getElementById("dailyDatePicker");
+const monthlyDatePicker = document.getElementById("monthlyDatePicker");
 
 function saveTodos() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
@@ -89,6 +94,16 @@ function formatDateKey(date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
+}
+
+function formatInputDateValue(date) {
+  return formatDateKey(date);
+}
+
+function formatInputMonthValue(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  return `${year}-${month}`;
 }
 
 function getTodoDateKey(todo) {
@@ -274,6 +289,7 @@ function renderTodos() {
   updateActiveCategoryFilter();
   updateCalendarMenuButtons();
   updateCurrentDateLabel();
+  syncPickerValues();
 }
 
 function updateFilterButtons() {
@@ -329,22 +345,36 @@ function updateCurrentDateLabel() {
   }
 }
 
+function syncPickerValues() {
+  if (dailyDatePicker) {
+    dailyDatePicker.value = formatInputDateValue(currentViewDate);
+  }
+
+  if (monthlyDatePicker) {
+    monthlyDatePicker.value = formatInputMonthValue(currentViewDate);
+  }
+}
+
 function openCalendarMenu() {
-  if (!calendarViewMenu || !calendarViewTrigger) {
+  if (!calendarViewMenu || !calendarViewTrigger || !calendarSheetOverlay) {
     return;
   }
 
   calendarViewMenu.hidden = false;
+  calendarSheetOverlay.hidden = false;
   calendarViewTrigger.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
 }
 
 function closeCalendarMenu() {
-  if (!calendarViewMenu || !calendarViewTrigger) {
+  if (!calendarViewMenu || !calendarViewTrigger || !calendarSheetOverlay) {
     return;
   }
 
   calendarViewMenu.hidden = true;
+  calendarSheetOverlay.hidden = true;
   calendarViewTrigger.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
 }
 
 function toggleCalendarMenu() {
@@ -359,18 +389,42 @@ function toggleCalendarMenu() {
   }
 }
 
+function openNativePickerByView() {
+  if (currentCalendarView === "daily" && dailyDatePicker) {
+    dailyDatePicker.value = formatInputDateValue(currentViewDate);
+
+    if (typeof dailyDatePicker.showPicker === "function") {
+      dailyDatePicker.showPicker();
+    } else {
+      dailyDatePicker.click();
+    }
+
+    return;
+  }
+
+  if (currentCalendarView === "monthly" && monthlyDatePicker) {
+    monthlyDatePicker.value = formatInputMonthValue(currentViewDate);
+
+    if (typeof monthlyDatePicker.showPicker === "function") {
+      monthlyDatePicker.showPicker();
+    } else {
+      monthlyDatePicker.click();
+    }
+  }
+}
+
 function moveDate(direction) {
   if (currentCalendarView === "daily") {
     currentViewDate = new Date(
       currentViewDate.getFullYear(),
       currentViewDate.getMonth(),
-      currentViewDate.getDate() + direction,
+      currentViewDate.getDate() + direction
     );
   } else {
     currentViewDate = new Date(
       currentViewDate.getFullYear(),
       currentViewDate.getMonth() + direction,
-      1,
+      1
     );
   }
 
@@ -539,7 +593,7 @@ function updateProgress() {
   }).length;
 
   const percent = Math.round(
-    (completedCount / progressTargetTodos.length) * 100,
+    (completedCount / progressTargetTodos.length) * 100
   );
 
   progressText.textContent = percent + "%";
@@ -607,6 +661,11 @@ if (goTodayButton) {
 
 if (calendarViewTrigger) {
   calendarViewTrigger.addEventListener("click", function () {
+    openNativePickerByView();
+  });
+
+  calendarViewTrigger.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
     toggleCalendarMenu();
   });
 }
@@ -619,7 +678,7 @@ calendarMenuButtons.forEach(function (button) {
       currentViewDate = new Date(
         currentViewDate.getFullYear(),
         currentViewDate.getMonth(),
-        1,
+        1
       );
     }
 
@@ -628,18 +687,41 @@ calendarMenuButtons.forEach(function (button) {
   });
 });
 
-document.addEventListener("click", function (event) {
-  if (!calendarViewMenu || !calendarViewTrigger) {
-    return;
-  }
-
-  if (
-    !calendarViewMenu.contains(event.target) &&
-    !calendarViewTrigger.contains(event.target)
-  ) {
+if (calendarSheetClose) {
+  calendarSheetClose.addEventListener("click", function () {
     closeCalendarMenu();
-  }
-});
+  });
+}
+
+if (calendarSheetOverlay) {
+  calendarSheetOverlay.addEventListener("click", function () {
+    closeCalendarMenu();
+  });
+}
+
+if (dailyDatePicker) {
+  dailyDatePicker.addEventListener("change", function () {
+    if (!this.value) {
+      return;
+    }
+
+    const [year, month, day] = this.value.split("-").map(Number);
+    currentViewDate = new Date(year, month - 1, day);
+    renderTodos();
+  });
+}
+
+if (monthlyDatePicker) {
+  monthlyDatePicker.addEventListener("change", function () {
+    if (!this.value) {
+      return;
+    }
+
+    const [year, month] = this.value.split("-").map(Number);
+    currentViewDate = new Date(year, month - 1, 1);
+    renderTodos();
+  });
+}
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
