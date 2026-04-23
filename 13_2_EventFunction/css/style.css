@@ -14,6 +14,7 @@
 .box3 div {
   width: 200px;
   height: 200px;
+  transition: all 0.5s ease-in-out;
 }
 .box1 div:first-child {
   background: red;
@@ -49,4 +50,25 @@
 /* bg class에 배경을 골드로 채우는 명령 */
 .bg {
   background: gold;
+}
+/* 토글 class */
+.fade-hidden {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+/* 슬라이드 높이0 class */
+.box2 .box {
+  transition: all 0.5 ease-in-out;
+}
+.slide-box {
+  height: 200px;
+  opacity: 1;
+}
+.box2 .slide-hidden {
+  height: 0;
+  opacity: 0;
+}
+
+.box2 .ani-move {
+  left: 900px;
 }
