@@ -54,3 +54,7 @@ footer .ineer .family .list a {
   font-size: 14px;
   color: #575757;
 }
+/* 토글 class */
+.list-hidden {
+  display: none;
+}
