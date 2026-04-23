@@ -11,9 +11,7 @@
       <section class="todo-card">
         <header class="app-header">
           <h1 class="app-title">할 일 관리</h1>
-          <p class="app-description">
-            개인, 업무, 공부 일정을 한 곳에서 관리해보자.
-          </p>
+          <p class="app-description">개인, 업무, 공부 일정을 한 곳에서 관리해보자.</p>
         </header>
 
         <section class="progress-section" aria-labelledby="progress-title">
@@ -21,21 +19,13 @@
             <h2 id="progress-title" class="section-title">진행률</h2>
             <strong id="progressText" class="progress-text">0%</strong>
           </div>
-
           <div class="progress-bar" aria-hidden="true">
             <div id="progressFill" class="progress-fill"></div>
           </div>
         </section>
 
         <div class="calendar-toolbar">
-          <button
-            type="button"
-            id="prevDateButton"
-            class="calendar-icon-button"
-            aria-label="이전 날짜 보기"
-          >
-            ‹
-          </button>
+          <button type="button" id="prevDateButton" class="calendar-icon-button" aria-label="이전 날짜 보기">‹</button>
 
           <div class="calendar-center">
             <button
@@ -53,22 +43,8 @@
             <input type="month" id="monthlyDatePicker" class="sr-only-picker" />
           </div>
 
-          <button
-            type="button"
-            id="nextDateButton"
-            class="calendar-icon-button"
-            aria-label="다음 날짜 보기"
-          >
-            ›
-          </button>
-
-          <button
-            type="button"
-            id="goTodayButton"
-            class="calendar-today-button"
-          >
-            오늘
-          </button>
+          <button type="button" id="nextDateButton" class="calendar-icon-button" aria-label="다음 날짜 보기">›</button>
+          <button type="button" id="goTodayButton" class="calendar-today-button">오늘</button>
         </div>
 
         <section class="input-section" aria-labelledby="input-title">
@@ -93,9 +69,7 @@
               </select>
             </div>
 
-            <button type="submit" id="submitButton" class="submit-button">
-              추가
-            </button>
+            <button type="submit" id="submitButton" class="submit-button">추가</button>
           </form>
         </section>
 
@@ -107,49 +81,18 @@
 
           <div class="filter-wrap">
             <div class="filter-group">
-              <button
-                type="button"
-                class="filter-button active"
-                data-filter="all"
-              >
-                전체
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="completed"
-              >
-                완료
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="incomplete"
-              >
-                미완료
-              </button>
+              <button type="button" class="filter-button active" data-filter="all">전체</button>
+              <button type="button" class="filter-button" data-filter="completed">완료</button>
+              <button type="button" class="filter-button" data-filter="incomplete">미완료</button>
             </div>
 
-            <div
-              id="activeCategoryFilter"
-              class="active-category-filter"
-              style="display: none"
-            >
+            <div id="activeCategoryFilter" class="active-category-filter" style="display: none">
               <span id="activeCategoryText" class="active-category-text"></span>
-              <button
-                type="button"
-                id="clearCategoryFilter"
-                class="clear-category-filter"
-              >
-                ✕
-              </button>
+              <button type="button" id="clearCategoryFilter" class="clear-category-filter">✕</button>
             </div>
           </div>
 
-          <p id="emptyMessage" class="empty-message">
-            등록된 할 일이 없습니다.
-          </p>
-
+          <p id="emptyMessage" class="empty-message">등록된 할 일이 없습니다.</p>
           <ul id="todoList" class="todo-list" aria-live="polite"></ul>
         </section>
       </section>
@@ -173,21 +116,8 @@
       </div>
 
       <div class="calendar-sheet-body">
-        <button
-          type="button"
-          class="calendar-menu-button active"
-          data-view="daily"
-        >
-          일별 보기
-        </button>
-
-        <button
-          type="button"
-          class="calendar-menu-button"
-          data-view="monthly"
-        >
-          월별 보기
-        </button>
+        <button type="button" class="calendar-menu-button active" data-view="daily">일별 보기</button>
+        <button type="button" class="calendar-menu-button" data-view="monthly">월별 보기</button>
       </div>
     </div>
 
