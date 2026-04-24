@@ -23,7 +23,13 @@ button {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
+  transition: all 0.5s ease-in-out;
   display: none;
+  opacity: 0;
+}
+.cover.on {
+  display: block;
+  opacity: 1;
 }
 /* 모바일 메뉴 숨김 */
 .mobile-menu {
@@ -34,6 +40,7 @@ button {
   right: -100%;
   top: 0;
   padding: 24px;
+  transition: all 0.3s ease-in-out;
 }
 /* 상태값 두가지 */
 .mobile-menu.on {
