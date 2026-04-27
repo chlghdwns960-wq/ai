@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PetLog 기록 상세</title>
+
+    <meta
+      name="description"
+      content="PetLog 반려동물 산책 기록 상세 화면입니다."
+    />
+
+    <link rel="stylesheet" href="./css/style7.css" />
+  </head>
+
+  <body>
+    <a href="#mainContent" class="skip-link">본문 바로가기</a>
+
+    <main id="mainContent" class="app" aria-label="PetLog 기록 상세 화면">
+      <!-- Header: 뒤로가기 / 제목 / 더보기 -->
+      <header class="page-header">
+        <div class="header-left">
+          <a
+            href="./index5.html"
+            class="back-button"
+            aria-label="홈 화면으로 돌아가기"
+          >
+            <!-- 뒤로가기 아이콘 이미지 수정 위치 -->
+            <img src="./images/06/icon.png" alt="" aria-hidden="true" />
+          </a>
+
+          <h1 class="page-title">기록 상세</h1>
+        </div>
+
+        <button type="button" class="more-button" aria-label="기록 더보기">
+          <span aria-hidden="true">•••</span>
+        </button>
+      </header>
+
+      <!-- Section 1: 산책 기록 카드 -->
+      <section
+        class="detail-section record-section"
+        aria-labelledby="recordTitle"
+      >
+        <article class="record-card">
+          <div class="record-card-head">
+            <div class="record-title-area">
+              <!-- 산책기록 로고 이미지 수정 위치 -->
+              <img
+                src="./images/05/img4.png"
+                alt=""
+                class="record-icon"
+                aria-hidden="true"
+              />
+
+              <div>
+                <h2 id="recordTitle" class="record-title">산책기록</h2>
+                <p class="record-date">2026.03.16 오후 6:20</p>
+              </div>
+            </div>
+
+            <span class="complete-badge">완료</span>
+          </div>
+
+          <dl class="record-info-list">
+            <div class="record-info-row">
+              <dt>날짜</dt>
+              <dd>2026.03.16</dd>
+            </div>
+
+            <div class="record-info-row">
+              <dt>산책시간</dt>
+              <dd>42분</dd>
+            </div>
+
+            <div class="record-info-row">
+              <dt>산책 거리</dt>
+              <dd>2.1 km</dd>
+            </div>
+
+            <div class="record-info-row">
+              <dt>배변 여부</dt>
+              <dd>있음</dd>
+            </div>
+
+            <div class="record-info-row">
+              <dt>컨디션</dt>
+              <dd>아주 좋음</dd>
+            </div>
+          </dl>
+        </article>
+      </section>
+
+      <!-- Section 2: 메모 카드 -->
+      <section class="detail-section memo-section" aria-labelledby="memoTitle">
+        <article class="memo-card">
+          <h2 id="memoTitle" class="memo-title">메모</h2>
+
+          <p class="memo-text">오늘은 컨디션이 좋아서 평소보다 오래 산책했어</p>
+        </article>
+      </section>
+
+      <!-- Section 3: 히스토리 버튼 -->
+      <section class="detail-section action-section" aria-label="히스토리 확인">
+        <a href="./index8.html" class="history-button"> 히스토리 확인 </a>
+      </section>
+
+      <!-- Footer: 하단 고정 탭바 -->
+      <footer class="bottom-nav" aria-label="하단 탭 메뉴">
+        <nav class="tab-menu">
+          <a href="./index5.html" class="tab-item">
+            <span class="tab-icon">
+              <img src="./images/05/home_off.png" alt="" class="icon-off" />
+              <img src="./images/05/home_on.png" alt="" class="icon-on" />
+            </span>
+            <span class="tab-label">홈</span>
+          </a>
+
+          <a href="./index6.html" class="tab-item">
+            <span class="tab-icon">
+              <img src="./images/05/Photo_off.png" alt="" class="icon-off" />
+              <img src="./images/05/Photo_on.png" alt="" class="icon-on" />
+            </span>
+            <span class="tab-label">사진</span>
+          </a>
+
+          <a
+            href="./index7.html"
+            class="tab-item is-active"
+            aria-current="page"
+          >
+            <span class="tab-icon">
+              <img src="./images/05/check_off.png" alt="" class="icon-off" />
+              <img src="./images/05/check_on.png" alt="" class="icon-on" />
+            </span>
+            <span class="tab-label">기록</span>
+          </a>
+
+          <a href="./index11.html" class="tab-item" aria-label="병원 화면으로 이동">
+            <span class="tab-icon">
+              <img src="./images/05/Hospital_off.png" alt="" class="icon-off" />
+              <img src="./images/05/Hospital_on.png" alt="" class="icon-on" />
+            </span>
+            <span class="tab-label">병원</span>
+          </a>
+
+          <a href="#" class="tab-item" aria-label="마이 화면은 추후 연결 예정">
+            <span class="tab-icon">
+              <img src="./images/05/my_off.png" alt="" class="icon-off" />
+              <img src="./images/05/my_on.png" alt="" class="icon-on" />
+            </span>
+            <span class="tab-label">마이</span>
+          </a>
+        </nav>
+      </footer>
+    </main>
+
+    <script src="./script/script7.js"></script>
+  </body>
+</html>
