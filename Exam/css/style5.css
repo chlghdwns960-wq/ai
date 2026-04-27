@@ -84,7 +84,8 @@ img {
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+[role="button"]:focus-visible {
   outline: 3px solid var(--color-point);
   outline-offset: 4px;
 }
@@ -237,12 +238,30 @@ button:focus-visible {
   border-radius: 50%;
   overflow: hidden;
   flex: 0 0 auto;
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.profile-image-wrap:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(51, 51, 51, 0.16);
 }
 
 .profile-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  transition:
+    transform 0.28s ease,
+    filter 0.28s ease;
+}
+
+.profile-image-wrap:hover .profile-image {
+  transform: scale(1.05);
+  filter: brightness(1.04);
 }
 
 .profile-info {
@@ -297,6 +316,25 @@ button:focus-visible {
   letter-spacing: -0.03em;
   text-align: center;
   white-space: nowrap;
+}
+
+.condition-badge {
+  cursor: pointer;
+
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.condition-badge:hover {
+  transform: translateY(-2px);
+  background: var(--color-point);
+  box-shadow: 0 8px 18px rgba(229, 142, 97, 0.24);
+}
+
+.condition-badge:active {
+  transform: scale(0.96);
 }
 
 /* Section 2: Quick Record */
@@ -367,6 +405,7 @@ button:focus-visible {
 .quick-item:hover .quick-label {
   color: var(--color-primary);
 }
+
 .quick-icon,
 .quick-check {
   transition:
@@ -383,10 +422,6 @@ button:focus-visible {
   transform: scale(1.08);
 }
 
-.quick-item:hover .quick-label {
-  color: var(--color-primary);
-}
-
 .quick-item:active .quick-icon {
   transform: scale(0.96);
 }
@@ -394,6 +429,7 @@ button:focus-visible {
 .quick-item:active .quick-check {
   transform: scale(0.96);
 }
+
 .quick-item:active {
   transform: scale(0.97);
 }
@@ -476,6 +512,115 @@ button:focus-visible {
   transform: translateY(-3px) scale(1.015);
   box-shadow: 0 8px 18px rgba(51, 51, 51, 0.12);
   filter: brightness(1.04);
+}
+
+/* Condition Sheet */
+.condition-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  display: none;
+  background: rgba(51, 51, 51, 0.28);
+}
+
+.condition-dim.is-open {
+  display: block;
+}
+
+.condition-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  z-index: 200;
+
+  width: 100%;
+  padding: 12px 20px calc(var(--nav-height) + 24px);
+  border-radius: 24px 24px 0 0;
+  background: var(--color-sub);
+  box-shadow: 0 -10px 28px rgba(51, 51, 51, 0.16);
+
+  transition: bottom 0.28s ease;
+}
+
+.condition-sheet.is-open {
+  bottom: 0;
+}
+
+.condition-handle {
+  width: 44px;
+  height: 4px;
+  margin: 0 auto 16px;
+  border-radius: 999px;
+  background: rgba(51, 51, 51, 0.18);
+}
+
+.condition-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.condition-head h2 {
+  color: var(--color-text-main);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.condition-head button {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-text-sub);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.condition-options {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.condition-options button {
+  width: 100%;
+  min-height: 58px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--color-white);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.condition-options button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(51, 51, 51, 0.08);
+}
+
+.condition-options button.is-active {
+  background: var(--color-primary);
+}
+
+.condition-options strong {
+  color: var(--color-text-main);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.condition-options span {
+  color: var(--color-text-sub);
+  font-size: 13px;
+  font-weight: 400;
 }
 
 /* Bottom Fixed Tab Bar */

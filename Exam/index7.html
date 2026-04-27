@@ -27,14 +27,13 @@
             class="back-button"
             aria-label="홈 화면으로 돌아가기"
           >
-            <!-- 뒤로가기 아이콘 이미지 수정 위치 -->
             <img src="./images/06/icon.png" alt="" aria-hidden="true" />
           </a>
 
           <h1 class="page-title">기록 상세</h1>
         </div>
 
-        <button type="button" class="more-button" aria-label="기록 더보기">
+        <button type="button" class="more-button" aria-label="메모 추가">
           <span aria-hidden="true">•••</span>
         </button>
       </header>
@@ -47,7 +46,6 @@
         <article class="record-card">
           <div class="record-card-head">
             <div class="record-title-area">
-              <!-- 산책기록 로고 이미지 수정 위치 -->
               <img
                 src="./images/05/img4.png"
                 alt=""
@@ -96,15 +94,68 @@
       <!-- Section 2: 메모 카드 -->
       <section class="detail-section memo-section" aria-labelledby="memoTitle">
         <article class="memo-card">
-          <h2 id="memoTitle" class="memo-title">메모</h2>
+          <div class="memo-head">
+            <div class="memo-title-wrap">
+              <h2 id="memoTitle" class="memo-title">메모</h2>
+              <span class="memo-count" id="memoCount">0개</span>
+            </div>
 
-          <p class="memo-text">오늘은 컨디션이 좋아서 평소보다 오래 산책했어</p>
+            <button
+              type="button"
+              class="memo-add-button"
+              id="openMemoAddButton"
+              aria-label="메모 추가"
+            >
+              <span aria-hidden="true">+</span>
+            </button>
+          </div>
+
+          <div class="memo-list" id="memoList" aria-label="메모 목록"></div>
+
+          <p class="memo-empty" id="memoEmpty">
+            아직 메모가 없어. + 버튼으로 메모를 추가해줘.
+          </p>
         </article>
       </section>
 
       <!-- Section 3: 히스토리 버튼 -->
       <section class="detail-section action-section" aria-label="히스토리 확인">
-        <a href="./index8.html" class="history-button"> 히스토리 확인 </a>
+        <a href="./index8.html" class="history-button">히스토리 확인</a>
+      </section>
+
+      <!-- Memo Bottom Sheet -->
+      <div class="memo-dim" id="memoDim" aria-hidden="true"></div>
+
+      <section class="memo-sheet" id="memoSheet" aria-label="메모 입력창">
+        <div class="memo-sheet-handle" aria-hidden="true"></div>
+
+        <div class="memo-sheet-head">
+          <h2 id="memoSheetTitle">메모 추가</h2>
+          <button type="button" id="memoCloseButton">닫기</button>
+        </div>
+
+        <label for="memoTextInput" class="memo-input-label">메모 내용</label>
+
+        <textarea
+          id="memoTextInput"
+          class="memo-textarea"
+          placeholder="메모를 입력해줘"
+          maxlength="120"
+        ></textarea>
+
+        <div class="memo-sheet-actions">
+          <button
+            type="button"
+            class="memo-cancel-button"
+            id="memoCancelButton"
+          >
+            취소
+          </button>
+
+          <button type="button" class="memo-save-button" id="memoSaveButton">
+            저장
+          </button>
+        </div>
       </section>
 
       <!-- Footer: 하단 고정 탭바 -->
@@ -138,7 +189,11 @@
             <span class="tab-label">기록</span>
           </a>
 
-          <a href="./index11.html" class="tab-item" aria-label="병원 화면으로 이동">
+          <a
+            href="./index11.html"
+            class="tab-item"
+            aria-label="병원 화면으로 이동"
+          >
             <span class="tab-icon">
               <img src="./images/05/Hospital_off.png" alt="" class="icon-off" />
               <img src="./images/05/Hospital_on.png" alt="" class="icon-on" />

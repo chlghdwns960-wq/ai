@@ -83,8 +83,17 @@
           </div>
 
           <div class="profile-badges" aria-label="반려동물 상태">
-            <span>컨디션 : 기분 좋아요</span>
-            <span>오늘 기록 2/4 완료</span>
+            <span
+              id="conditionBadge"
+              class="condition-badge"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="conditionSheet"
+            >
+              컨디션 : 기분 좋아요
+            </span>
+            <span class="record-badge">오늘 기록 2/4 완료</span>
           </div>
         </article>
       </section>
@@ -270,6 +279,49 @@
         </div>
       </section>
 
+      <!-- 컨디션 선택 바텀시트 -->
+      <div class="condition-dim" id="conditionDim" aria-hidden="true"></div>
+
+      <section
+        class="condition-sheet"
+        id="conditionSheet"
+        aria-label="보리 컨디션 선택"
+      >
+        <div class="condition-handle" aria-hidden="true"></div>
+
+        <div class="condition-head">
+          <h2>보리 컨디션</h2>
+          <button type="button" id="conditionCloseButton">닫기</button>
+        </div>
+
+        <div class="condition-options">
+          <button type="button" data-condition="기분 좋아요">
+            <strong>기분 좋아요</strong>
+            <span>평소처럼 잘 먹고 잘 움직여요</span>
+          </button>
+
+          <button type="button" data-condition="밥 잘 먹었어요">
+            <strong>밥 잘 먹었어요</strong>
+            <span>식사 상태가 안정적이에요</span>
+          </button>
+
+          <button type="button" data-condition="산책 필요해요">
+            <strong>산책 필요해요</strong>
+            <span>가볍게 움직이면 좋아요</span>
+          </button>
+
+          <button type="button" data-condition="조금 피곤해요">
+            <strong>조금 피곤해요</strong>
+            <span>오늘은 휴식이 조금 필요해요</span>
+          </button>
+
+          <button type="button" data-condition="병원 체크 필요">
+            <strong>병원 체크 필요</strong>
+            <span>상태를 조금 더 지켜봐야 해요</span>
+          </button>
+        </div>
+      </section>
+
       <!-- Footer: 하단 고정 탭바 -->
       <footer class="bottom-nav" aria-label="하단 탭 메뉴">
         <nav class="tab-menu">
@@ -304,7 +356,11 @@
             <span class="tab-label">기록</span>
           </a>
 
-          <a href="./index11.html" class="tab-item" aria-label="병원 화면으로 이동">
+          <a
+            href="./index11.html"
+            class="tab-item"
+            aria-label="병원 화면으로 이동"
+          >
             <span class="tab-icon">
               <!-- 병원 탭 아이콘 -->
               <img src="./images/05/Hospital_off.png" alt="" class="icon-off" />

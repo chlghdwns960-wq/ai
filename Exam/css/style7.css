@@ -55,7 +55,8 @@ dd {
 }
 
 a,
-button {
+button,
+textarea {
   font: inherit;
   -webkit-tap-highlight-color: transparent;
 }
@@ -72,6 +73,12 @@ button {
   cursor: pointer;
 }
 
+textarea {
+  resize: none;
+  border: 0;
+  outline: 0;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -80,7 +87,8 @@ img {
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+textarea:focus-visible {
   outline: 3px solid var(--color-point);
   outline-offset: 4px;
 }
@@ -96,7 +104,7 @@ button:focus-visible {
   overflow-x: hidden;
 }
 
-/* 접근성용 숨김 텍스트 */
+/* 본문 바로가기 */
 .skip-link {
   position: fixed;
   top: -48px;
@@ -308,24 +316,297 @@ button:focus-visible {
   box-shadow: 0 8px 18px rgba(51, 51, 51, 0.1);
 }
 
-.memo-title {
-  height: 48px;
-  padding: 0 16px;
+.memo-head {
+  min-height: 48px;
+  padding: 0 14px 0 16px;
   border-bottom: 1px dashed rgba(51, 51, 51, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.memo-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.memo-title {
   color: var(--color-point);
   font-size: 14px;
-  font-weight: 500;
-  line-height: 48px;
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 
-.memo-text {
-  padding: 16px;
+.memo-count {
+  min-width: 34px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(254, 188, 52, 0.28);
+  color: var(--color-text-sub);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* 플러스 버튼 정중앙 보정 */
+.memo-add-button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.memo-add-button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54%);
+  color: var(--color-white);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.memo-add-button:hover {
+  transform: translateY(-1px) scale(1.04);
+  background: var(--color-point);
+  box-shadow: 0 6px 14px rgba(229, 142, 97, 0.22);
+}
+
+.memo-add-button:active {
+  transform: scale(0.96);
+}
+
+.memo-list {
+  padding: 12px 14px 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.memo-item {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+
+  display: grid;
+  gap: 10px;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.memo-item:hover {
+  transform: translateY(-1px);
+  background: var(--color-white);
+  box-shadow: 0 6px 14px rgba(51, 51, 51, 0.08);
+}
+
+.memo-item-text {
   color: var(--color-text-main);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: -0.03em;
+  word-break: keep-all;
+}
+
+.memo-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.memo-action-button {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-text-sub);
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.memo-action-button:hover {
+  transform: translateY(-1px);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.memo-action-button.is-delete:hover {
+  background: var(--color-point);
+  color: var(--color-white);
+}
+
+.memo-empty {
+  display: none;
+  padding: 18px 16px;
+  color: var(--color-text-sub);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+}
+
+/* Memo Bottom Sheet */
+.memo-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  display: none;
+  background: rgba(51, 51, 51, 0.28);
+}
+
+.memo-dim.is-open {
+  display: block;
+}
+
+.memo-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  z-index: 200;
+
+  width: 100%;
+  padding: 12px 20px calc(var(--nav-height) + 24px);
+  border-radius: 24px 24px 0 0;
+  background: var(--color-sub);
+  box-shadow: 0 -10px 28px rgba(51, 51, 51, 0.16);
+
+  transition: bottom 0.28s ease;
+}
+
+.memo-sheet.is-open {
+  bottom: 0;
+}
+
+.memo-sheet-handle {
+  width: 44px;
+  height: 4px;
+  margin: 0 auto 16px;
+  border-radius: 999px;
+  background: rgba(51, 51, 51, 0.18);
+}
+
+.memo-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.memo-sheet-head h2 {
+  color: var(--color-text-main);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.memo-sheet-head button {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-text-sub);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.memo-input-label {
+  display: block;
+  margin-top: 18px;
+  color: var(--color-text-main);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.memo-textarea {
+  width: 100%;
+  height: 132px;
+  margin-top: 10px;
+  padding: 14px;
+  border: 1px solid rgba(51, 51, 51, 0.16);
+  border-radius: 16px;
+  background: var(--color-white);
+  color: var(--color-text-main);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.memo-textarea:focus {
+  border-color: var(--color-point);
+  box-shadow: 0 0 0 3px rgba(229, 142, 97, 0.12);
+}
+
+.memo-sheet-actions {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.memo-cancel-button,
+.memo-save-button {
+  height: 46px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.memo-cancel-button {
+  background: var(--color-white);
+  color: var(--color-text-sub);
+}
+
+.memo-save-button {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.memo-cancel-button:hover,
+.memo-save-button:hover {
+  transform: translateY(-1px);
+}
+
+.memo-save-button:hover {
+  background: var(--color-point);
 }
 
 /* Section 3: History Button */
@@ -469,5 +750,10 @@ button:focus-visible {
   .complete-badge {
     min-width: 58px;
     font-size: 12px;
+  }
+
+  .memo-sheet {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

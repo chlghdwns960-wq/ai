@@ -498,3 +498,13 @@ button:focus-visible {
 .tab-item.is-active .icon-off {
   opacity: 0;
 }
+.bar {
+  width: 16px;
+  margin-top: auto;
+  border-radius: 2px 2px 0 0;
+  background: #fec859;
+  transition:
+    height 0.28s ease,
+    transform 0.22s ease,
+    background-color 0.22s ease;
+}
