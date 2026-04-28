@@ -1,393 +1,562 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI 협업 — 직장인을 위한 실전 AI 가이드</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <!-- NAV -->
-    <nav class="nav" id="nav">
-      <a href="#" class="nav-logo">
-        <div class="nav-logo-icon">
-          <svg viewBox="0 0 16 16">
-            <path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5L8 1Z" />
-          </svg>
-        </div>
-        AI<em>협업</em>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PetCare 반려동물 건강검진 예약</title>
+  <meta name="description" content="반려견·반려묘 건강검진 예약 상담 랜딩페이지입니다. 보호자 정보와 반려동물 정보를 입력하고 빠르게 상담을 신청하세요." />
+  <meta property="og:title" content="PetCare 반려동물 건강검진 예약" />
+  <meta property="og:description" content="우리 아이 건강, 미리 확인하세요. 반려동물 건강검진 예약 상담을 신청해보세요." />
+  <meta property="og:image" content="./images/og-image.png" />
+
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner header-inner">
+      <a href="#hero" class="logo logo-image-link" aria-label="PetCare 홈으로 이동">
+        <img
+          src="./images/logo-petcare.png"
+          alt="PetCare 동물병원 로고"
+          class="logo-image"
+        />
       </a>
-      <ul class="nav-links">
-        <li><a href="#problem">문제 정의</a></li>
-        <li><a href="#topics">콘텐츠</a></li>
-        <li><a href="#process">시작 방법</a></li>
-      </ul>
-      <button class="nav-cta" onclick="handleCTA(event)">
-        무료로 시작하기 →
+
+      <nav class="header-nav" aria-label="주요 섹션 이동">
+        <button type="button" class="nav-link js-scroll-target" data-target="#signals">검진 필요성</button>
+        <button type="button" class="nav-link js-scroll-target" data-target="#packages">패키지</button>
+        <button type="button" class="nav-link js-scroll-target" data-target="#process">절차</button>
+        <button type="button" class="nav-link js-scroll-target" data-target="#reservation">예약</button>
+      </nav>
+
+      <button type="button" class="header-cta js-scroll-target" data-target="#reservation">
+        건강검진 예약하기
       </button>
-    </nav>
+    </div>
+  </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-      </div>
-      <div class="hero-grid"></div>
-      <div class="hero-inner">
-        <div class="hero-badge">
-          <div class="badge-dot"></div>
-          직장인을 위한 실전 AI 협업
-        </div>
-        <h1 class="hero-title">
-          AI 때문에 복잡해지는 게 아니라<br />
-          <span class="hl">AI 덕분에 일이 가벼워집니다</span>
-        </h1>
-        <p class="hero-sub">
-          AI 활용이 막막한 직장인에게 실무에서 바로 쓸 수 있는<br />
-          AI 협업 방법을 알려드립니다.<br />
-          생산성을 높이고, 창의적인 일에 집중하는 즐거움을 되찾으세요.
-        </p>
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="handleCTA(event)">
-            지금 바로 시작하기
-          </button>
-          <button
-            class="btn-ghost"
-            onclick="
-              document
-                .getElementById('topics')
-                .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
-            콘텐츠 보기 ↓
-          </button>
-        </div>
-        <div class="hero-trust">
-          <div class="trust-item">
-            <span class="trust-num">3배</span>
-            <div class="trust-label">업무 속도 향상</div>
-          </div>
-          <div class="trust-div"></div>
-          <div class="trust-item">
-            <span class="trust-num">즉시</span>
-            <div class="trust-label">실무 적용</div>
-          </div>
-          <div class="trust-div"></div>
-          <div class="trust-item">
-            <span class="trust-num">100%</span>
-            <div class="trust-label">비전문가 가능</div>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-cue">
-        <div class="scroll-line"></div>
-        scroll
-      </div>
-    </section>
+  <main>
+    <!-- 1. Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="inner hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">PET HEALTH CHECKUP</p>
+          <h1>
+            우리 아이 건강,<br />
+            미리 확인하세요
+          </h1>
+          <p class="hero-desc">
+            식욕, 체중, 활동량 변화가 있다면<br class="mobile-only" />
+            건강검진으로 미리 확인해보세요.
+          </p>
 
-    <!-- PROBLEM -->
-    <section class="section problem-section" id="problem">
-      <div class="reveal">
-        <p class="section-eyebrow">왜 AI가 어려운가</p>
-        <h2 class="section-title">직장인이 AI에서<br />막히는 진짜 이유</h2>
-        <p class="section-desc">
-          써야 한다는 압박은 있는데, 어디서부터 시작해야 할지 모르는 게 핵심
-          문제입니다.
-        </p>
-      </div>
-      <div class="problem-grid">
-        <div class="prob-card reveal reveal-d1">
-          <div class="prob-icon">😤</div>
-          <h3>심리적 장벽</h3>
-          <p>
-            AI는 개발자나 IT 전문가 얘기라고 느껴져서 나와는 상관없다고 생각하게
-            됩니다.
-          </p>
-          <div class="prob-quote">"AI는 나랑 다른 세계 얘기잖아요"</div>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary js-scroll-target" data-target="#reservation">
+              건강검진 예약하기
+            </button>
+            <button type="button" class="btn btn-outline js-scroll-target" data-target="#packages">
+              검진 패키지 보기
+            </button>
+          </div>
         </div>
-        <div class="prob-card reveal reveal-d2">
-          <div class="prob-icon">🤯</div>
-          <h3>프롬프트 진입 장벽</h3>
-          <p>
-            프롬프트라는 말 자체가 낯설고, ChatGPT 창 앞에서 무엇을 입력해야
-            할지 막막합니다.
-          </p>
-          <div class="prob-quote">"뭘 물어봐야 할지 모르겠어요"</div>
-        </div>
-        <div class="prob-card reveal reveal-d3">
-          <div class="prob-icon">😩</div>
-          <h3>부정적 경험</h3>
-          <p>
-            한두 번 써봤지만 결과가 기대와 달라 오히려 더 많은 수정이 필요했던
-            경험이 있습니다.
-          </p>
-          <div class="prob-quote">"써봤는데 오히려 더 복잡해졌어요"</div>
+
+        <div class="hero-visual reveal">
+          <img
+            src="./images/hero-main.png"
+            alt="밝은 실내에서 보호자가 강아지와 고양이를 안고 있는 반려동물 건강검진 메인 이미지"
+            class="hero-image"
+            loading="eager"
+          />
         </div>
       </div>
     </section>
 
-    <!-- TOPICS -->
-    <section class="section topics-section" id="topics">
-      <div class="reveal">
-        <p class="section-eyebrow">실무 AI 협업 콘텐츠</p>
-        <h2 class="section-title">이론 말고,<br />내일 바로 써먹는 내용만</h2>
-        <p class="section-desc">
-          3개의 핵심 주제로 AI 협업을 처음부터 실전까지 안내합니다.
-        </p>
-      </div>
-      <div class="topics-layout">
-        <div class="topic-main reveal reveal-d1">
-          <div class="topic-tag">📌 Topic 01</div>
-          <h3>왜 AI가 어려운가:<br />직장인이 막히는 진짜 이유</h3>
+    <!-- 2. Health Signal Section -->
+    <section id="signals" class="section signals">
+      <div class="inner">
+        <div class="section-head reveal">
+          <p class="eyebrow">HEALTH SIGNAL</p>
+          <h2>이런 변화가 보인다면<br />검진이 필요할 수 있어요</h2>
           <p>
-            AI를 써야 한다는 압박은 있는데 어디부터 시작해야 할지 모릅니다.
-            나에게 맞는 진입점을 찾아드립니다. 복잡한 이론 없이 지금 당장 내
-            상황에서 시작할 수 있는 방법을 알게 됩니다.
+            겉으로 멀쩡해 보여도 내부 질환은 조용히 진행될 수 있습니다.
           </p>
-          <button class="topic-cta-btn" onclick="handleCTA(event)">
-            신청하고 확인하기 →
+        </div>
+
+        <div class="signal-grid">
+          <article class="signal-card reveal">
+            <div class="icon-circle">🍽️</div>
+            <h3>식욕이 줄었어요</h3>
+            <p>평소보다 밥을 남기거나 간식 반응이 줄었다면 확인이 필요해요.</p>
+          </article>
+
+          <article class="signal-card reveal">
+            <div class="icon-circle">⚖️</div>
+            <h3>체중이 변했어요</h3>
+            <p>갑작스러운 체중 증가나 감소는 건강 이상 신호일 수 있어요.</p>
+          </article>
+
+          <article class="signal-card reveal">
+            <div class="icon-circle">🐾</div>
+            <h3>활동량이 줄었어요</h3>
+            <p>산책, 놀이, 움직임이 줄었다면 컨디션 변화를 살펴봐야 해요.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 2-1. Check List Section -->
+    <section id="checklist" class="section checklist">
+      <div class="inner checklist-inner">
+        <div class="check-copy reveal">
+          <p class="eyebrow">CHECK LIST</p>
+          <h2>하나라도 해당된다면<br />상담을 받아보세요</h2>
+          <p>
+            아래 항목은 보호자가 병원 방문 전 스스로 확인할 수 있는 기본 체크리스트입니다.
+          </p>
+        </div>
+
+        <div class="check-panel reveal">
+          <ul class="check-list">
+            <li>7세 이상 노령견·노령묘예요.</li>
+            <li>최근 식욕이나 음수량이 달라졌어요.</li>
+            <li>체중이 갑자기 늘거나 줄었어요.</li>
+            <li>산책, 놀이, 움직임이 눈에 띄게 줄었어요.</li>
+            <li>건강검진을 1년 이상 받지 않았어요.</li>
+          </ul>
+          <button type="button" class="btn btn-primary js-scroll-target" data-target="#reservation">
+            체크 후 상담 신청하기
           </button>
         </div>
-        <div class="topic-side reveal reveal-d2">
-          <div class="topic-num">TOPIC 02</div>
-          <h3>실무에 바로 적용하는<br />AI 협업 방법</h3>
-          <p>
-            이론이 아니라 바로 써먹는 실전 활용. 문서 작성, 이메일, 회의록,
-            보고서 — 지금 당장 내 업무에 적용할 수 있는 방법을 담았습니다.
-          </p>
-          <div class="topic-badge">⚡ 즉시 적용 가능</div>
+      </div>
+    </section>
+
+    <!-- 3. Package Section -->
+    <section id="packages" class="section packages">
+      <div class="inner">
+        <div class="section-head reveal">
+          <p class="eyebrow">CHECKUP PACKAGE</p>
+          <h2>상태에 맞는 검진 패키지를 선택하세요</h2>
+          <p>반려동물의 나이와 상태에 맞춰 필요한 검진을 선택할 수 있어요.</p>
         </div>
-        <div class="topic-side reveal reveal-d3">
-          <div class="topic-num">TOPIC 03</div>
-          <h3>AI를 잘 쓰면 생기는 변화:<br />생산성 + 창의성 회복</h3>
-          <p>
-            단순 반복 업무에서 벗어나 정말 중요한 일에 집중하는 시간이 생깁니다.
-            AI 덕분에 퇴근이 빨라지는 경험을 하게 됩니다.
-          </p>
-          <div class="topic-badge">✨ 삶의 질 변화</div>
+
+        <div class="package-grid">
+          <article class="package-card reveal">
+            <div class="package-image">
+              <img
+                src="./images/package-basic.png"
+                alt="기본 건강검진을 받는 반려동물 이미지"
+                class="package-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="package-content">
+              <strong class="badge">처음 검진</strong>
+              <h3>기본 검진</h3>
+              <p>첫 건강검진이 필요한 반려동물에게 추천해요.</p>
+              <ul>
+                <li>기본 신체검사</li>
+                <li>혈액검사</li>
+                <li>건강 상담</li>
+              </ul>
+              <button type="button" class="btn btn-card js-select-package" data-package="기본 검진">
+                선택하기
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card package-card-featured reveal">
+            <div class="package-image">
+              <img
+                src="./images/package-total.png"
+                alt="종합 건강검진 장비와 반려동물 케어 이미지"
+                class="package-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="package-content">
+              <strong class="badge">추천</strong>
+              <h3>종합 검진</h3>
+              <p>정밀한 건강 확인이 필요한 반려동물에게 추천해요.</p>
+              <ul>
+                <li>혈액검사</li>
+                <li>소변검사</li>
+                <li>영상검사</li>
+              </ul>
+              <button type="button" class="btn btn-card js-select-package" data-package="종합 검진">
+                선택하기
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card reveal">
+            <div class="package-image">
+              <img
+                src="./images/package-senior.png"
+                alt="노령 반려동물을 편안하게 돌보는 시니어 건강검진 이미지"
+                class="package-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="package-content">
+              <strong class="badge">7세 이상</strong>
+              <h3>시니어 검진</h3>
+              <p>노령견·노령묘의 건강 변화를 확인하는 검진이에요.</p>
+              <ul>
+                <li>노령성 질환 확인</li>
+                <li>장기 기능 검사</li>
+                <li>관리 상담</li>
+              </ul>
+              <button type="button" class="btn btn-card js-select-package" data-package="시니어 검진">
+                선택하기
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <div class="comparison-box reveal">
+          <div class="comparison-head">
+            <p class="eyebrow">PACKAGE COMPARISON</p>
+            <h3>패키지 비교표</h3>
+            <p>어떤 검진이 맞을지 모르겠다면 추천 대상과 주요 항목을 먼저 비교해보세요.</p>
+          </div>
+
+          <div class="table-scroll">
+            <table class="package-table">
+              <caption>반려동물 건강검진 패키지 비교표</caption>
+              <thead>
+                <tr>
+                  <th scope="col">구분</th>
+                  <th scope="col">기본 검진</th>
+                  <th scope="col">종합 검진</th>
+                  <th scope="col">시니어 검진</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">추천 대상</th>
+                  <td>첫 검진</td>
+                  <td>정밀 확인 필요</td>
+                  <td>7세 이상</td>
+                </tr>
+                <tr>
+                  <th scope="row">주요 항목</th>
+                  <td>신체검사, 혈액검사</td>
+                  <td>혈액, 소변, 영상검사</td>
+                  <td>노령성 질환 중심 검사</td>
+                </tr>
+                <tr>
+                  <th scope="row">상담 포인트</th>
+                  <td>기본 건강 상태 확인</td>
+                  <td>질환 가능성 세부 확인</td>
+                  <td>장기 기능과 생활 관리</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Process Section -->
+    <section id="process" class="section process">
+      <div class="inner">
+        <div class="section-head reveal">
+          <p class="eyebrow">PROCESS</p>
+          <h2>예약부터 결과 안내까지<br />4단계로 진행돼요</h2>
+        </div>
+
+        <ol class="process-list">
+          <li class="process-item reveal">
+            <span>01</span>
+            <strong>예약 신청</strong>
+            <p>간단한 정보를 입력해 상담을 신청합니다.</p>
+          </li>
+          <li class="process-item reveal">
+            <span>02</span>
+            <strong>상담 연락</strong>
+            <p>병원에서 검진 가능 일정과 준비사항을 안내합니다.</p>
+          </li>
+          <li class="process-item reveal">
+            <span>03</span>
+            <strong>방문 검진</strong>
+            <p>예약한 일정에 맞춰 병원에서 검진을 진행합니다.</p>
+          </li>
+          <li class="process-item reveal">
+            <span>04</span>
+            <strong>결과 안내</strong>
+            <p>검진 결과와 관리 방향을 보호자에게 안내합니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. Trust Section -->
+    <section id="trust" class="section trust">
+      <div class="inner">
+        <div class="section-head reveal">
+          <p class="eyebrow">TRUST POINT</p>
+          <h2>처음 검진도 안심할 수 있도록<br />체계적으로 안내해요</h2>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card reveal">
+            <div class="icon-circle">👩‍⚕️</div>
+            <h3>전문 수의사 진료</h3>
+            <p>반려동물 상태에 맞춰 필요한 검진을 상담합니다.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="icon-circle">🩺</div>
+            <h3>검진 장비 기반 확인</h3>
+            <p>기본 검사부터 필요한 항목까지 단계적으로 확인합니다.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="icon-circle">💬</div>
+            <h3>보호자 맞춤 상담</h3>
+            <p>보호자가 궁금해하는 부분을 쉽게 안내합니다.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="icon-circle">📋</div>
+            <h3>결과 안내 및 관리</h3>
+            <p>검진 이후 관리 방향까지 함께 안내합니다.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section class="section process-section" id="process">
-      <div class="reveal">
-        <p class="section-eyebrow">시작 방법</p>
-        <h2 class="section-title">4단계로 바로<br />시작할 수 있습니다</h2>
-        <p class="section-desc">
-          복잡한 설치나 준비 없이, 신청만 하면 바로 시작됩니다.
-        </p>
-      </div>
-      <div class="process-steps">
-        <div class="step reveal reveal-d1">
-          <div class="step-circle">1</div>
-          <div>
-            <h4>무료 신청</h4>
-            <p>
-              구글 폼으로 30초 안에 신청 완료. 이름과 이메일만 입력하면 됩니다.
-            </p>
+    <!-- 6. Notice Section -->
+    <section id="notice" class="section notice">
+      <div class="inner">
+        <div class="notice-box reveal">
+          <div class="notice-title">
+            <span>!</span>
+            <h2>예약 전 꼭 확인해주세요</h2>
           </div>
-        </div>
-        <div class="step reveal reveal-d2">
-          <div class="step-circle">2</div>
-          <div>
-            <h4>콘텐츠 수신</h4>
-            <p>신청 즉시 첫 번째 AI 협업 가이드를 받아볼 수 있습니다.</p>
-          </div>
-        </div>
-        <div class="step reveal reveal-d3">
-          <div class="step-circle">3</div>
-          <div>
-            <h4>실무 적용</h4>
-            <p>오늘 배운 내용을 내일 업무에 바로 적용해보세요.</p>
-          </div>
-        </div>
-        <div class="step reveal reveal-d4">
-          <div class="step-circle">4</div>
-          <div>
-            <h4>변화 경험</h4>
-            <p>AI 덕분에 일이 가벼워지는 경험을 직접 느껴보세요.</p>
-          </div>
+
+          <ul class="notice-list">
+            <li>검진 항목에 따라 금식이 필요할 수 있어요.</li>
+            <li>기존 복용약이나 진료 기록이 있다면 지참해주세요.</li>
+            <li>정확한 검진 가능 여부는 상담 후 안내됩니다.</li>
+            <li>예약 변경은 병원 운영 시간 내 문의가 필요합니다.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- OUTCOME / CTA -->
-    <section class="outcome-section">
-      <div class="outcome-inner">
-        <div class="reveal" style="text-align: center">
-          <div class="outcome-badge">✦ 지금 신청하면</div>
-          <h2 class="outcome-title">
-            AI가 복잡하게 느껴지던 날은<br />끝납니다
-          </h2>
-          <p class="outcome-sub">
-            AI 때문에 뒤처질까 봐 불안했던 마음 대신,<br />
-            AI 덕분에 퇴근이 빨라지는 경험을 하게 됩니다.
-          </p>
-        </div>
-        <div class="stats-grid reveal">
-          <div class="stat-card">
-            <span class="stat-num" id="cnt-speed"
-              >3<span class="stat-unit">배</span></span
-            >
-            <div class="stat-label">문서 작성 속도 향상</div>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" style="font-size: 32px">즉시</span>
-            <div class="stat-label">이론 아닌 실무 적용</div>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" id="cnt-pct"
-              >100<span class="stat-unit">%</span></span
-            >
-            <div class="stat-label">비전문가도 가능</div>
-          </div>
-        </div>
-        <div class="outcome-cta-wrap reveal">
-          <button class="btn-white" onclick="handleCTA(event)">
-            무료로 시작하기 →
+    <!-- 7. CTA Section -->
+    <section id="main-cta" class="section cta-section">
+      <div class="inner cta-inner reveal">
+        <div class="cta-copy">
+          <p class="eyebrow">RESERVATION</p>
+          <h2>지금 우리 아이 건강을<br />확인해보세요</h2>
+          <p>간단한 정보만 남기면 건강검진 상담 연락을 드립니다.</p>
+          <button type="button" class="btn btn-primary js-scroll-target" data-target="#reservation">
+            빠른 예약 신청하기
           </button>
-          <p class="cta-note">
-            ✓ 무료<span>·</span>부담 없이 신청 가능<span>·</span>언제든 구독
-            취소
-          </p>
+        </div>
+
+        <div class="cta-visual">
+          <img
+            src="./images/cta-pet.png"
+            alt="건강하게 웃는 반려동물 CTA 이미지"
+            class="cta-image"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
 
-    <!-- MODAL -->
-    <div
-      class="modal"
-      id="ctaModal"
-      aria-hidden="true"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="ctaModalTitle"
-    >
-      <div class="modal-backdrop" data-close-modal></div>
-      <div class="modal-panel modal-panel-form" role="document">
-        <button
-          class="modal-close"
-          type="button"
-          aria-label="닫기"
-          data-close-modal
-        >
-          ×
-        </button>
-
-        <div class="modal-head">
-          <div class="modal-head-copy">
-            <div class="modal-badge">개인정보 수집 폼</div>
-            <h3 class="modal-title" id="ctaModalTitle">
-              신청 정보를 입력하면<br />구글시트로 전송됩니다
-            </h3>
-            <p class="modal-desc">
-              이름, 전화번호, 이메일주소를 입력하면 네가 연결한 Apps Script
-              URL로 제출되도록 구성했습니다.
-            </p>
-          </div>
+    <!-- 8. Reservation Form Section -->
+    <section id="reservation" class="section reservation">
+      <div class="inner reservation-inner">
+        <div class="form-info reveal">
+          <p class="eyebrow">QUICK FORM</p>
+          <h2>빠른 건강검진 예약</h2>
+          <p>
+            30초만 입력하면 건강검진 상담을 신청할 수 있어요.<br />
+            반려동물 상태에 맞는 검진 패키지를 상담 후 안내드립니다.
+          </p>
         </div>
 
-        <form
-          id="leadForm"
-          class="lead-form"
-          action="https://script.google.com/macros/s/AKfycbyJslRG1ED9zLCPiI1bm_SQWLJHwGrF92SkGLsTLuQQ1eQlqcJa-umzGSQk5yPt7ip5/exec"
-          method="POST"
-          target="hiddenFormFrame"
-          accept-charset="UTF-8"
-          novalidate
-        >
-          <div class="form-field">
-            <label for="nameInput">이름</label>
-            <input
-              type="text"
-              id="nameInput"
-              name="Name"
-              placeholder="이름을 입력해줘"
-              autocomplete="name"
-              required
-            />
+        <form id="reservationForm" class="reservation-form reveal" novalidate>
+          <div class="form-row">
+            <label for="guardianName">보호자 이름 <span>*</span></label>
+            <input type="text" id="guardianName" name="guardianName" placeholder="예: 홍길동" />
+            <p class="error-message" data-error-for="guardianName"></p>
           </div>
 
-          <div class="form-field">
-            <label for="phoneInput">전화번호</label>
-            <input
-              type="tel"
-              id="phoneInput"
-              name="Pone"
-              placeholder="010-1234-5678"
-              autocomplete="tel"
-              inputmode="numeric"
-              required
-            />
+          <div class="form-row">
+            <label for="phone">연락처 <span>*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="예: 010-1234-5678" />
+            <p class="error-message" data-error-for="phone"></p>
           </div>
 
-          <div class="form-field">
-            <label for="emailInput">이메일주소</label>
-            <input
-              type="email"
-              id="emailInput"
-              name="Email"
-              placeholder="example@email.com"
-              autocomplete="email"
-              required
-            />
+          <div class="form-row">
+            <label for="petName">반려동물 이름 <span>*</span></label>
+            <input type="text" id="petName" name="petName" placeholder="예: 보리" />
+            <p class="error-message" data-error-for="petName"></p>
           </div>
 
-          <div class="form-consent">
-            <div class="consent-box">
-              <p class="consent-title">개인정보 수집 안내</p>
-              <p class="consent-text">수집 항목: 이름, 전화번호, 이메일주소</p>
+          <div class="form-row form-row-grid">
+            <div>
+              <label for="petType">반려동물 종류 <span>*</span></label>
+              <select id="petType" name="petType">
+                <option value="">선택해주세요</option>
+                <option value="강아지">강아지</option>
+                <option value="고양이">고양이</option>
+                <option value="기타">기타</option>
+              </select>
+              <p class="error-message" data-error-for="petType"></p>
             </div>
 
-            <label class="consent-check" for="privacyConsent">
-              <input type="checkbox" id="privacyConsent" required />
-              <span>개인정보 수집 및 이용에 동의합니다.</span>
-            </label>
+            <div>
+              <label for="petAge">반려동물 나이</label>
+              <input type="text" id="petAge" name="petAge" placeholder="예: 7살" />
+            </div>
           </div>
 
-          <button class="form-submit" type="submit">정보 제출하기</button>
-          <p class="form-status" id="formStatus" aria-live="polite"></p>
-        </form>
+          <div class="form-row">
+            <label for="packageType">희망 검진 패키지 <span>*</span></label>
+            <select id="packageType" name="packageType">
+              <option value="">패키지를 선택해주세요</option>
+              <option value="기본 검진">기본 검진</option>
+              <option value="종합 검진">종합 검진</option>
+              <option value="시니어 검진">시니어 검진</option>
+            </select>
+            <p class="error-message" data-error-for="packageType"></p>
+          </div>
 
-        <iframe
-          name="hiddenFormFrame"
-          id="hiddenFormFrame"
-          class="hidden-submit-frame"
-          title="hidden submit frame"
-        ></iframe>
+          <div class="form-row">
+            <label for="message">문의 내용</label>
+            <textarea id="message" name="message" rows="4" placeholder="예: 최근 활동량이 줄었어요."></textarea>
+          </div>
 
-        <div class="modal-help">
-          <p class="modal-help-text">
-            필드 name 값은 요청대로 Name / Pone / Email로 맞춰뒀어.
+          <div class="agree-row">
+            <input type="checkbox" id="privacyAgree" name="privacyAgree" />
+            <label for="privacyAgree">
+              개인정보 수집 및 상담 연락에 동의합니다. <span>*</span>
+            </label>
+          </div>
+          <p class="error-message" data-error-for="privacyAgree"></p>
+
+          <p class="privacy-note">
+            상담 연락을 위해 이름, 연락처, 반려동물 정보를 수집하며,
+            수집된 정보는 상담 목적 외에는 사용하지 않습니다.
           </p>
-          <a
-            class="modal-link"
-            href="https://script.google.com/macros/s/AKfycbyJslRG1ED9zLCPiI1bm_SQWLJHwGrF92SkGLsTLuQQ1eQlqcJa-umzGSQk5yPt7ip5/exec"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Apps Script 주소 열기
-          </a>
+
+          <button type="submit" class="btn submit-btn">
+            상담 신청하기
+          </button>
+
+          <p id="formResult" class="form-result" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 9. FAQ Section -->
+    <section id="faq" class="section faq">
+      <div class="inner">
+        <div class="section-head reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>자주 묻는 질문</h2>
+          <p>예약 전 보호자가 가장 많이 궁금해하는 내용을 정리했어요.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>건강검진 전 금식이 필요한가요?</summary>
+            <p>검진 항목에 따라 금식이 필요할 수 있습니다. 상담 연락 시 반려동물 상태와 선택한 패키지에 맞춰 안내합니다.</p>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>검진 패키지는 상담 후 변경할 수 있나요?</summary>
+            <p>가능합니다. 신청 시 선택한 패키지는 상담을 위한 기본 정보이며, 실제 검진 항목은 상담 후 조정할 수 있습니다.</p>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>나이가 어려도 건강검진을 받아야 하나요?</summary>
+            <p>첫 검진이나 기본 건강 상태 확인이 필요한 경우 나이가 어려도 상담을 받아볼 수 있습니다.</p>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>상담 신청 후 언제 연락이 오나요?</summary>
+            <p>병원 운영 시간 기준으로 접수 순서에 따라 연락드립니다. 정확한 연락 시간은 운영 상황에 따라 달라질 수 있습니다.</p>
+          </details>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-logo">
-        AI<em>협업</em> — 직장인을 위한 실전 AI 가이드
+  </main>
+
+  <footer class="footer">
+    <div class="inner footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo footer-logo-image-link js-scroll-target" data-target="#hero" aria-label="PetCare 상단으로 이동">
+          <img
+            src="./images/logo-petcare.png"
+            alt="PetCare 동물병원 로고"
+            class="footer-logo-image"
+          />
+        </a>
+        <p>
+          반려견·반려묘 건강검진 상담부터 방문 안내까지<br />
+          보호자와 반려동물에게 맞는 검진 일정을 도와드립니다.
+        </p>
       </div>
-      <p>© 2025 AI협업 · 개인 브랜딩 프로젝트 · v1.0</p>
-    </footer>
 
-    <script src="./script/script.js"></script>
-  </body>
+      <div class="footer-info">
+        <div class="footer-column">
+          <h2>운영시간</h2>
+          <ul>
+            <li><span>평일</span> 09:00 - 18:00</li>
+            <li><span>토요일</span> 09:00 - 13:00</li>
+            <li><span>점심시간</span> 13:00 - 14:00</li>
+            <li><span>일요일·공휴일</span> 휴진</li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h2>상담안내</h2>
+          <ul>
+            <li><span>대표번호</span> 02-1234-5678</li>
+            <li><span>상담문의</span> 건강검진 예약 폼 접수</li>
+            <li><span>방문안내</span> 예약 상담 후 방문</li>
+            <li><span>주소</span> 서울시 강남구 펫케어로 12</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 PetCare Animal Hospital. All rights reserved.</p>
+        <button type="button" class="footer-cta js-scroll-target" data-target="#reservation">
+          건강검진 상담 신청
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <div id="submitModal" class="submit-modal" aria-hidden="true">
+    <div class="submit-modal-card" role="dialog" aria-modal="true" aria-labelledby="submitModalTitle">
+      <div class="submit-modal-icon">✓</div>
+      <h2 id="submitModalTitle">신청이 완료되었습니다</h2>
+      <p>
+        남겨주신 정보를 확인한 뒤<br />
+        건강검진 상담 연락을 드리겠습니다.
+      </p>
+      <button type="button" class="submit-modal-close">확인</button>
+    </div>
+  </div>
+
+  <button type="button" class="mobile-sticky-cta js-scroll-target" data-target="#reservation">
+    건강검진 예약하기
+  </button>
+
+  <button type="button" class="scroll-top-btn" aria-label="페이지 상단으로 이동">
+    ↑
+  </button>
+
+  <script src="./js/script.js"></script>
+</body>
 </html>
