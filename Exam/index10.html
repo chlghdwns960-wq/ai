@@ -12,6 +12,13 @@
 
     <meta name="description" content="PetLog 반려동물 일정 추가 화면입니다." />
 
+    <script>
+      (function () {
+        var savedTheme = localStorage.getItem("petlogTheme") || "warm";
+        document.documentElement.dataset.theme = savedTheme;
+      })();
+    </script>
+
     <link rel="stylesheet" href="./css/style10.css" />
   </head>
 
@@ -282,7 +289,7 @@
             <span class="tab-label">병원</span>
           </a>
 
-          <a href="#" class="tab-item" aria-label="마이 화면은 추후 연결 예정">
+          <a href="./index16.html" class="tab-item" aria-label="마이 화면으로 이동">
             <span class="tab-icon">
               <img src="./images/05/my_off.png" alt="" class="icon-off" />
               <img src="./images/05/my_on.png" alt="" class="icon-on" />

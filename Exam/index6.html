@@ -27,7 +27,6 @@
             class="back-button"
             aria-label="홈 화면으로 돌아가기"
           >
-            <!-- 뒤로가기 아이콘 이미지 수정 위치 -->
             <img src="./images/06/icon.png" alt="" aria-hidden="true" />
           </a>
 
@@ -38,22 +37,60 @@
           <button
             type="button"
             class="header-icon-button"
+            id="openSearchButton"
             aria-label="사진 검색"
+            aria-controls="archiveSearchPanel"
+            aria-expanded="false"
           >
-            <!-- 검색 아이콘 이미지 수정 위치 -->
             <img src="./images/06/icon2.png" alt="" aria-hidden="true" />
           </button>
 
           <button
             type="button"
             class="header-icon-button"
-            aria-label="사진 추가"
+            id="openAddPhotoSheetButton"
+            aria-label="사진 추가 메뉴 열기"
+            aria-controls="photoAddSheet"
           >
-            <!-- 플러스 아이콘 이미지 수정 위치 -->
             <img src="./images/06/icon3.png" alt="" aria-hidden="true" />
           </button>
         </div>
       </header>
+
+      <!-- Search Panel -->
+      <section
+        class="archive-search-panel"
+        id="archiveSearchPanel"
+        aria-label="사진 검색창"
+      >
+        <div class="archive-search-box">
+          <img src="./images/06/icon2.png" alt="" aria-hidden="true" />
+
+          <input
+            type="search"
+            id="archiveSearchInput"
+            placeholder="예: 산책, 병원, 낮잠"
+            aria-label="사진 키워드 검색"
+          />
+
+          <button
+            type="button"
+            class="search-clear-button"
+            id="searchClearButton"
+            aria-label="검색어 지우기"
+          >
+            ×
+          </button>
+        </div>
+
+        <button
+          type="button"
+          class="search-close-button"
+          id="searchCloseButton"
+        >
+          닫기
+        </button>
+      </section>
 
       <!-- Section 1: 아카이브 요약 카드 -->
       <section
@@ -66,7 +103,6 @@
 
         <article class="archive-card">
           <div class="archive-profile-image">
-            <!-- 보리 아카이브 프로필 이미지는 항상 이 경로 사용 -->
             <img src="./images/05/img.png" alt="보리 프로필 사진" />
           </div>
 
@@ -86,20 +122,36 @@
           <button
             type="button"
             class="filter-button is-active"
+            data-filter="all"
             aria-pressed="true"
           >
             전체
           </button>
 
-          <button type="button" class="filter-button" aria-pressed="false">
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="bori"
+            aria-pressed="false"
+          >
             보리
           </button>
 
-          <button type="button" class="filter-button" aria-pressed="false">
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="favorite"
+            aria-pressed="false"
+          >
             즐겨찾기
           </button>
 
-          <button type="button" class="filter-button" aria-pressed="false">
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="recent"
+            aria-pressed="false"
+          >
             최근
           </button>
         </div>
@@ -138,19 +190,21 @@
           <div class="view-buttons" aria-label="보기 방식">
             <button
               type="button"
-              class="view-button"
+              class="view-button is-active"
+              data-view="large"
               aria-label="큰 그리드 보기"
+              aria-pressed="true"
             >
-              <!-- 큰 그리드 아이콘 이미지 수정 위치 -->
               <img src="./images/06/icon4.png" alt="" aria-hidden="true" />
             </button>
 
             <button
               type="button"
               class="view-button"
+              data-view="small"
               aria-label="작은 그리드 보기"
+              aria-pressed="false"
             >
-              <!-- 작은 그리드 아이콘 이미지 수정 위치 -->
               <img src="./images/06/icon5.png" alt="" aria-hidden="true" />
             </button>
           </div>
@@ -159,65 +213,154 @@
         <div class="month-head">
           <h2 id="photoMonthTitle" class="month-title">2026. 03</h2>
 
-          <button
-            type="button"
+          <a
+            href="./index15.html"
             class="month-add-button"
-            aria-label="2026년 3월 사진 추가"
+            aria-label="2026년 3월 사진 촬영 화면으로 이동"
           >
-            <!-- 중간 플러스 아이콘도 같은 이미지 사용 -->
             <img src="./images/06/icon3.png" alt="" aria-hidden="true" />
-          </button>
+          </a>
         </div>
 
         <div class="archive-photo-grid" aria-label="2026년 3월 사진 목록">
           <figure class="photo-item">
-            <!-- 사진 1 이미지 수정 위치 -->
             <img src="./images/06/photo1.png" alt="03.15 산책 사진" />
             <figcaption>03.15 · 산책</figcaption>
           </figure>
 
           <figure class="photo-item">
-            <!-- 사진 2 이미지 수정 위치 -->
             <img src="./images/06/photo2.png" alt="03.13 일상 사진" />
             <figcaption>03.13 · 일상</figcaption>
           </figure>
 
           <figure class="photo-item">
-            <!-- 사진 3 이미지 수정 위치 -->
             <img src="./images/06/photo3.png" alt="03.11 병원 사진" />
             <figcaption>03.11 · 병원</figcaption>
           </figure>
 
           <figure class="photo-item">
-            <!-- 사진 4 이미지 수정 위치 -->
             <img src="./images/06/photo4.png" alt="03.11 낮잠 사진" />
             <figcaption>03.11 · 낮잠</figcaption>
           </figure>
 
           <figure class="photo-item">
-            <!-- 사진 5 이미지 수정 위치 -->
             <img src="./images/06/photo5.png" alt="03.10 아침 식사 사진" />
             <figcaption>03.10 · 아침 식사</figcaption>
           </figure>
 
           <figure class="photo-item">
-            <!-- 사진 6 이미지 수정 위치 -->
             <img src="./images/06/photo6.png" alt="03.09 공놀이 사진" />
             <figcaption>03.09 · 공놀이</figcaption>
           </figure>
 
           <figure class="photo-item">
-            <!-- 사진 7 이미지 수정 위치 -->
             <img src="./images/06/photo7.png" alt="03.06 놀기 사진" />
             <figcaption>03.06 · 놀기</figcaption>
           </figure>
 
           <figure class="photo-item">
-            <!-- 사진 8 이미지 수정 위치 -->
             <img src="./images/06/photo8.png" alt="03.05 샤워 사진" />
             <figcaption>03.05 · 샤워</figcaption>
           </figure>
         </div>
+      </section>
+
+      <!-- 사진 추가 바텀시트 -->
+      <div class="photo-add-dim" id="photoAddDim" aria-hidden="true"></div>
+
+      <section
+        class="photo-add-sheet"
+        id="photoAddSheet"
+        aria-label="사진 추가 메뉴"
+      >
+        <div class="photo-add-handle" aria-hidden="true"></div>
+
+        <div class="photo-add-head">
+          <div>
+            <h2>사진 추가</h2>
+            <p>보리의 새 사진을 아카이브에 추가해보세요</p>
+          </div>
+
+          <button type="button" id="photoAddCloseButton">닫기</button>
+        </div>
+
+        <div class="photo-add-options">
+          <a href="./index15.html" class="photo-add-option">
+            <strong>사진 촬영하기</strong>
+            <span>카메라로 바로 찍어서 저장해요</span>
+          </a>
+
+          <label for="archiveGalleryInput" class="photo-add-option">
+            <strong>앨범에서 가져오기</strong>
+            <span>이미 저장된 사진을 선택해요</span>
+          </label>
+
+          <button type="button" class="photo-add-option" id="createAlbumButton">
+            <strong>새 앨범 만들기</strong>
+            <span>산책, 병원, 일상처럼 앨범을 나눠요</span>
+          </button>
+        </div>
+
+        <input
+          type="file"
+          id="archiveGalleryInput"
+          accept="image/*"
+          class="photo-add-file-input"
+        />
+      </section>
+
+      <!-- 사진 확대 보기 모달 -->
+      <div
+        class="photo-viewer-dim"
+        id="photoViewerDim"
+        aria-hidden="true"
+      ></div>
+
+      <section
+        class="photo-viewer"
+        id="photoViewer"
+        aria-label="사진 확대 보기"
+        role="dialog"
+      >
+        <button
+          type="button"
+          class="photo-viewer-close"
+          id="photoViewerClose"
+          aria-label="사진 확대 보기 닫기"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+
+        <button
+          type="button"
+          class="photo-viewer-nav photo-viewer-prev"
+          id="photoViewerPrev"
+          aria-label="이전 사진 보기"
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
+
+        <figure class="photo-viewer-figure">
+          <img id="photoViewerImage" src="" alt="확대된 사진" />
+          <figcaption id="photoViewerCaption">사진</figcaption>
+
+          <button
+            type="button"
+            class="photo-viewer-delete-button"
+            id="photoViewerDeleteButton"
+          >
+            사진 삭제
+          </button>
+        </figure>
+
+        <button
+          type="button"
+          class="photo-viewer-nav photo-viewer-next"
+          id="photoViewerNext"
+          aria-label="다음 사진 보기"
+        >
+          <span aria-hidden="true">›</span>
+        </button>
       </section>
 
       <!-- Footer: 하단 고정 탭바 -->
@@ -251,7 +394,11 @@
             <span class="tab-label">기록</span>
           </a>
 
-          <a href="./index11.html" class="tab-item" aria-label="병원 화면으로 이동">
+          <a
+            href="./index11.html"
+            class="tab-item"
+            aria-label="병원 화면으로 이동"
+          >
             <span class="tab-icon">
               <img src="./images/05/Hospital_off.png" alt="" class="icon-off" />
               <img src="./images/05/Hospital_on.png" alt="" class="icon-on" />

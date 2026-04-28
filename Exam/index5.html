@@ -28,26 +28,28 @@
           class="header-logo"
           aria-label="PetLog 홈으로 이동"
         >
-          <!-- 상단 로고 이미지 수정 위치 -->
           <img src="./images/05/logo.png" alt="PetLog 로고" />
         </a>
 
         <div class="header-actions" aria-label="상단 메뉴">
           <button
             type="button"
-            class="header-icon-button"
+            class="header-icon-button notification-button"
+            id="notificationButton"
             aria-label="알림 보기"
+            aria-haspopup="dialog"
+            aria-controls="notificationSheet"
           >
-            <!-- 알림 아이콘 이미지 수정 위치 -->
             <img src="./images/05/icon.png" alt="" aria-hidden="true" />
+            <span class="notification-dot" aria-hidden="true"></span>
           </button>
 
           <button
             type="button"
             class="header-icon-button"
+            id="settingsButton"
             aria-label="설정 열기"
           >
-            <!-- 설정 아이콘 이미지 수정 위치 -->
             <img src="./images/05/icon2.png" alt="" aria-hidden="true" />
           </button>
         </div>
@@ -62,7 +64,6 @@
 
         <article class="profile-card">
           <div class="profile-image-wrap">
-            <!-- 원형 강아지 이미지 수정 위치 -->
             <img
               src="./images/05/img.png"
               alt="보리 프로필 사진"
@@ -72,14 +73,17 @@
 
           <div class="profile-info">
             <div class="profile-name-row">
-              <strong class="profile-name">보리</strong>
-
-              <!-- 여성 표시 아이콘 이미지 수정 위치 -->
+              <strong class="profile-name" id="profileName">보리</strong>
               <img src="./images/05/icon3.png" alt="여아" class="gender-icon" />
             </div>
 
-            <p class="profile-detail">10살 · 페키니즈</p>
-            <p class="profile-detail">중량 : 5.1kg</p>
+            <p class="profile-detail">
+              <span id="profileAge">10살</span> ·
+              <span id="profileBreed">페키니즈</span>
+            </p>
+            <p class="profile-detail">
+              중량 : <span id="profileWeight">5.1kg</span>
+            </p>
           </div>
 
           <div class="profile-badges" aria-label="반려동물 상태">
@@ -110,14 +114,7 @@
             aria-pressed="true"
           >
             <span class="quick-icon-wrap">
-              <!-- 식사 이미지 수정 위치 -->
               <img src="./images/05/img2.png" alt="" class="quick-icon" />
-
-              <!--
-                체크 이미지 수정 위치
-                data-on: 체크된 원형 이미지
-                data-off: 체크 안 된 원형 이미지
-              -->
               <img
                 src="./images/05/check.png"
                 data-on="./images/05/check.png"
@@ -137,10 +134,7 @@
             aria-pressed="true"
           >
             <span class="quick-icon-wrap">
-              <!-- 물 이미지 수정 위치 -->
               <img src="./images/05/img3.png" alt="" class="quick-icon" />
-
-              <!-- 체크 on/off 이미지 수정 위치 -->
               <img
                 src="./images/05/check.png"
                 data-on="./images/05/check.png"
@@ -160,10 +154,7 @@
             aria-pressed="false"
           >
             <span class="quick-icon-wrap">
-              <!-- 산책 이미지 수정 위치 -->
               <img src="./images/05/img4.png" alt="" class="quick-icon" />
-
-              <!-- 체크 on/off 이미지 수정 위치 -->
               <img
                 src="./images/05/check.png"
                 data-on="./images/05/check.png"
@@ -183,10 +174,7 @@
             aria-pressed="false"
           >
             <span class="quick-icon-wrap">
-              <!-- 배변 이미지 수정 위치 -->
               <img src="./images/05/img5.png" alt="" class="quick-icon" />
-
-              <!-- 체크 on/off 이미지 수정 위치 -->
               <img
                 src="./images/05/check.png"
                 data-on="./images/05/check.png"
@@ -210,7 +198,7 @@
           <h2 id="scheduleTitle" class="section-title">오늘의 일정</h2>
 
           <a
-            href="./index7.html"
+            href="./index9.html"
             class="section-more"
             aria-label="전체 일정 보기"
           >
@@ -253,29 +241,46 @@
         </div>
 
         <div class="photo-grid" aria-label="최근 사진 목록">
-          <!-- 최근 사진 1 이미지 수정 위치 -->
-          <img src="./images/05/photo1.png" alt="최근 사진 1" />
-
-          <!-- 최근 사진 2 이미지 수정 위치 -->
-          <img src="./images/05/photo2.png" alt="최근 사진 2" />
-
-          <!-- 최근 사진 3 이미지 수정 위치 -->
-          <img src="./images/05/photo3.png" alt="최근 사진 3" />
-
-          <!-- 최근 사진 4 이미지 수정 위치 -->
-          <img src="./images/05/photo4.png" alt="최근 사진 4" />
-
-          <!-- 최근 사진 5 이미지 수정 위치 -->
-          <img src="./images/05/photo5.png" alt="최근 사진 5" />
-
-          <!-- 최근 사진 6 이미지 수정 위치 -->
-          <img src="./images/05/photo6.png" alt="최근 사진 6" />
-
-          <!-- 최근 사진 7 이미지 수정 위치 -->
-          <img src="./images/05/photo7.png" alt="최근 사진 7" />
-
-          <!-- 최근 사진 8 이미지 수정 위치 -->
-          <img src="./images/05/photo8.png" alt="최근 사진 8" />
+          <img
+            src="./images/05/photo1.png"
+            data-full="./images/05/photo1_full.png"
+            alt="최근 사진 1"
+          />
+          <img
+            src="./images/05/photo2.png"
+            data-full="./images/05/photo2_full.png"
+            alt="최근 사진 2"
+          />
+          <img
+            src="./images/05/photo3.png"
+            data-full="./images/05/photo3_full.png"
+            alt="최근 사진 3"
+          />
+          <img
+            src="./images/05/photo4.png"
+            data-full="./images/05/photo4_full.png"
+            alt="최근 사진 4"
+          />
+          <img
+            src="./images/05/photo5.png"
+            data-full="./images/05/photo5_full.png"
+            alt="최근 사진 5"
+          />
+          <img
+            src="./images/05/photo6.png"
+            data-full="./images/05/photo6_full.png"
+            alt="최근 사진 6"
+          />
+          <img
+            src="./images/05/photo7.png"
+            data-full="./images/05/photo7_full.png"
+            alt="최근 사진 7"
+          />
+          <img
+            src="./images/05/photo8.png"
+            data-full="./images/05/photo8_full.png"
+            alt="최근 사진 8"
+          />
         </div>
       </section>
 
@@ -321,6 +326,84 @@
           </button>
         </div>
       </section>
+      <!-- 사진 확대 보기 모달 -->
+      <div
+        class="photo-viewer-dim"
+        id="photoViewerDim"
+        aria-hidden="true"
+      ></div>
+
+      <section
+        class="photo-viewer"
+        id="photoViewer"
+        aria-label="사진 확대 보기"
+        role="dialog"
+      >
+        <button
+          type="button"
+          class="photo-viewer-close"
+          id="photoViewerClose"
+          aria-label="사진 확대 보기 닫기"
+        >
+          ×
+        </button>
+
+        <button
+          type="button"
+          class="photo-viewer-nav photo-viewer-prev"
+          id="photoViewerPrev"
+          aria-label="이전 사진 보기"
+        >
+          ‹
+        </button>
+
+        <figure class="photo-viewer-figure">
+          <img id="photoViewerImage" src="" alt="확대된 최근 사진" />
+          <figcaption id="photoViewerCaption">최근 사진</figcaption>
+        </figure>
+
+        <button
+          type="button"
+          class="photo-viewer-nav photo-viewer-next"
+          id="photoViewerNext"
+          aria-label="다음 사진 보기"
+        >
+          ›
+        </button>
+      </section>
+      <!-- 알림 바텀시트 -->
+      <div
+        class="notification-dim"
+        id="notificationDim"
+        aria-hidden="true"
+      ></div>
+
+      <section
+        class="notification-sheet"
+        id="notificationSheet"
+        aria-label="오늘의 알림"
+      >
+        <div class="notification-handle" aria-hidden="true"></div>
+
+        <div class="notification-head">
+          <div>
+            <h2>오늘의 알림</h2>
+            <p>보리에게 필요한 일을 확인해보세요</p>
+          </div>
+
+          <button type="button" id="notificationCloseButton">닫기</button>
+        </div>
+
+        <div class="notification-list" id="notificationList"></div>
+
+        <button
+          type="button"
+          class="notification-clear-button"
+          id="notificationClearButton"
+        >
+          모두 확인했어요
+        </button>
+      </section>
 
       <!-- Footer: 하단 고정 탭바 -->
       <footer class="bottom-nav" aria-label="하단 탭 메뉴">
@@ -331,7 +414,6 @@
             aria-current="page"
           >
             <span class="tab-icon">
-              <!-- 홈 탭 아이콘 -->
               <img src="./images/05/home_off.png" alt="" class="icon-off" />
               <img src="./images/05/home_on.png" alt="" class="icon-on" />
             </span>
@@ -340,7 +422,6 @@
 
           <a href="./index6.html" class="tab-item">
             <span class="tab-icon">
-              <!-- 사진 탭 아이콘 -->
               <img src="./images/05/Photo_off.png" alt="" class="icon-off" />
               <img src="./images/05/Photo_on.png" alt="" class="icon-on" />
             </span>
@@ -349,7 +430,6 @@
 
           <a href="./index7.html" class="tab-item">
             <span class="tab-icon">
-              <!-- 기록 탭 아이콘 -->
               <img src="./images/05/check_off.png" alt="" class="icon-off" />
               <img src="./images/05/check_on.png" alt="" class="icon-on" />
             </span>
@@ -362,7 +442,6 @@
             aria-label="병원 화면으로 이동"
           >
             <span class="tab-icon">
-              <!-- 병원 탭 아이콘 -->
               <img src="./images/05/Hospital_off.png" alt="" class="icon-off" />
               <img src="./images/05/Hospital_on.png" alt="" class="icon-on" />
             </span>
@@ -371,7 +450,6 @@
 
           <a href="#" class="tab-item" aria-label="마이 화면은 추후 연결 예정">
             <span class="tab-icon">
-              <!-- 마이 탭 아이콘 -->
               <img src="./images/05/my_off.png" alt="" class="icon-off" />
               <img src="./images/05/my_on.png" alt="" class="icon-on" />
             </span>

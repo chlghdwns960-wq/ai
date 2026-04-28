@@ -12,6 +12,13 @@
       content="PetLog 반려생활 기록 앱 로그인 화면입니다."
     />
 
+    <script>
+      (function () {
+        var savedTheme = localStorage.getItem("petlogTheme") || "warm";
+        document.documentElement.dataset.theme = savedTheme;
+      })();
+    </script>
+
     <link rel="stylesheet" href="./css/style3.css" />
   </head>
 

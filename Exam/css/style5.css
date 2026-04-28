@@ -90,7 +90,6 @@ button:focus-visible,
   outline-offset: 4px;
 }
 
-/* 모바일 전용 전체 가로 100% */
 .app {
   position: relative;
   width: 100%;
@@ -101,7 +100,6 @@ button:focus-visible,
   overflow-x: hidden;
 }
 
-/* 접근성용 숨김 텍스트 */
 .blind {
   position: absolute;
   width: 1px;
@@ -114,7 +112,6 @@ button:focus-visible,
   border: 0;
 }
 
-/* 본문 바로가기 */
 .skip-link {
   position: fixed;
   top: -48px;
@@ -158,11 +155,15 @@ button:focus-visible,
 }
 
 .header-icon-button {
+  position: relative;
   width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition:
+    transform 0.22s ease,
+    opacity 0.22s ease;
 }
 
 .header-icon-button img {
@@ -172,7 +173,29 @@ button:focus-visible,
 }
 
 .header-icon-button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.04);
+  opacity: 0.9;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  width: 7px;
+  height: 7px;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  background: var(--color-point);
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.notification-button.has-unread .notification-dot {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Common Section */
@@ -214,7 +237,7 @@ button:focus-visible,
   color: var(--color-primary);
 }
 
-/* Section 1: Profile */
+/* Profile */
 .profile-section {
   margin-top: 16px;
 }
@@ -238,7 +261,6 @@ button:focus-visible,
   border-radius: 50%;
   overflow: hidden;
   flex: 0 0 auto;
-
   transition:
     transform 0.28s ease,
     box-shadow 0.28s ease;
@@ -253,7 +275,6 @@ button:focus-visible,
   width: 100%;
   height: 100%;
   object-fit: cover;
-
   transition:
     transform 0.28s ease,
     filter 0.28s ease;
@@ -320,7 +341,6 @@ button:focus-visible,
 
 .condition-badge {
   cursor: pointer;
-
   transition:
     transform 0.22s ease,
     background-color 0.22s ease,
@@ -337,7 +357,7 @@ button:focus-visible,
   transform: scale(0.96);
 }
 
-/* Section 2: Quick Record */
+/* Quick Record */
 .quick-section {
   margin-top: 16px;
 }
@@ -434,7 +454,7 @@ button:focus-visible,
   transform: scale(0.97);
 }
 
-/* Section 3: Schedule */
+/* Schedule */
 .schedule-section {
   margin-top: 16px;
 }
@@ -485,7 +505,7 @@ button:focus-visible,
   letter-spacing: -0.03em;
 }
 
-/* Section 4: Recent Photos */
+/* Photos */
 .photo-section {
   margin-top: 16px;
 }
@@ -515,7 +535,8 @@ button:focus-visible,
 }
 
 /* Condition Sheet */
-.condition-dim {
+.condition-dim,
+.notification-dim {
   position: fixed;
   inset: 0;
   z-index: 190;
@@ -523,11 +544,13 @@ button:focus-visible,
   background: rgba(51, 51, 51, 0.28);
 }
 
-.condition-dim.is-open {
+.condition-dim.is-open,
+.notification-dim.is-open {
   display: block;
 }
 
-.condition-sheet {
+.condition-sheet,
+.notification-sheet {
   position: fixed;
   left: 0;
   right: 0;
@@ -543,11 +566,13 @@ button:focus-visible,
   transition: bottom 0.28s ease;
 }
 
-.condition-sheet.is-open {
+.condition-sheet.is-open,
+.notification-sheet.is-open {
   bottom: 0;
 }
 
-.condition-handle {
+.condition-handle,
+.notification-handle {
   width: 44px;
   height: 4px;
   margin: 0 auto 16px;
@@ -555,20 +580,31 @@ button:focus-visible,
   background: rgba(51, 51, 51, 0.18);
 }
 
-.condition-head {
+.condition-head,
+.notification-head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 16px;
 }
 
-.condition-head h2 {
+.condition-head h2,
+.notification-head h2 {
   color: var(--color-text-main);
   font-size: 20px;
   font-weight: 700;
   line-height: 1.25;
 }
 
-.condition-head button {
+.notification-head p {
+  margin-top: 4px;
+  color: var(--color-text-sub);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.condition-head button,
+.notification-head button {
   height: 32px;
   padding: 0 14px;
   border-radius: 999px;
@@ -621,6 +657,95 @@ button:focus-visible,
   color: var(--color-text-sub);
   font-size: 13px;
   font-weight: 400;
+}
+
+/* Notification Sheet */
+.notification-list {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.notification-item {
+  width: 100%;
+  min-height: 72px;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--color-white);
+  text-align: left;
+
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 10px;
+  align-items: center;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.notification-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(51, 51, 51, 0.08);
+}
+
+.notification-item.is-read {
+  opacity: 0.55;
+}
+
+.notification-type {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+}
+
+.notification-content {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.notification-content strong {
+  color: var(--color-text-main);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.notification-content small {
+  color: var(--color-text-sub);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.notification-clear-button {
+  width: 100%;
+  height: 48px;
+  margin-top: 14px;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.notification-clear-button:hover {
+  transform: translateY(-2px);
+  background: var(--color-point);
+  box-shadow: 0 8px 18px rgba(229, 142, 97, 0.22);
 }
 
 /* Bottom Fixed Tab Bar */
@@ -687,7 +812,6 @@ button:focus-visible,
   transition: color 0.18s ease;
 }
 
-/* 탭 hover / active 공통 효과 */
 .tab-item:hover,
 .tab-item.is-active {
   color: var(--color-primary);
@@ -703,7 +827,6 @@ button:focus-visible,
   opacity: 0;
 }
 
-/* 작은 화면 보정 */
 @media (max-width: 360px) {
   .app {
     padding-left: 16px;
@@ -739,4 +862,157 @@ button:focus-visible,
   .schedule-item span {
     font-size: 14px;
   }
+
+  .notification-item {
+    grid-template-columns: 52px 1fr;
+  }
+}
+/* Photo Viewer Modal */
+.photo-viewer-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: none;
+  background: rgba(51, 51, 51, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.photo-viewer-dim.is-open {
+  display: block;
+}
+
+.photo-viewer {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 220;
+
+  width: calc(100% - 40px);
+  max-width: 430px;
+  max-height: 82vh;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -48%) scale(0.96);
+
+  transition:
+    opacity 0.24s ease,
+    visibility 0.24s ease,
+    transform 0.24s ease;
+}
+
+.photo-viewer.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.photo-viewer-figure {
+  margin: 0;
+  padding: 12px;
+  border-radius: 22px;
+  background: var(--color-white);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.26);
+}
+
+.photo-viewer-figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 66vh;
+  margin: 0 auto;
+  border-radius: 16px;
+  object-fit: contain;
+  background: var(--color-sub);
+}
+
+.photo-viewer-figure figcaption {
+  margin-top: 10px;
+  color: var(--color-text-main);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.photo-viewer-close {
+  position: absolute;
+  right: -8px;
+  top: -46px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-text-main);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.photo-viewer-close:hover {
+  transform: scale(1.06);
+  background: var(--color-point);
+  color: var(--color-white);
+}
+
+.photo-viewer-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text-main);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.photo-viewer-nav:hover {
+  transform: translateY(-50%) scale(1.06);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.photo-viewer-prev {
+  left: -10px;
+  transform: translateY(-50%);
+}
+
+.photo-viewer-next {
+  right: -10px;
+  transform: translateY(-50%);
+}
+
+.photo-grid img {
+  cursor: zoom-in;
+}
+
+body.is-photo-viewer-open {
+  overflow: hidden;
 }
