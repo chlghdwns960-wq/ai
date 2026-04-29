@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>한국한복문화예술협회</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <script src="./js/common.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script src="./js/index.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <header class="site-header">
+      <div class="utility">
+        <div class="inner">
+          <a href="./login.html" class="util-link util-login">
+            <img src="./images/icon/16px/login.png" alt="" aria-hidden="true" />
+            <span>로그인</span>
+          </a>
+          <span class="util-divider" aria-hidden="true">|</span>
+          <a href="./login.html" class="util-link">회원가입</a>
+          <span class="util-divider" aria-hidden="true">|</span>
+          <a href="./login.html" class="util-link">마이페이지</a>
+        </div>
+      </div>
+
+      <div class="header-main">
+        <div class="inner">
+          <a
+            class="logo"
+            href="./index.html"
+            aria-label="한국한복문화예술협회 홈"
+          >
+            <img
+              class="logo-img"
+              src="./images/common/logo.png"
+              alt="한국한복문화예술협회"
+            />
+          </a>
+
+          <nav class="gnb" aria-label="주요 메뉴">
+            <a
+              href="./sub1.html"
+              class="gnb-link has-submenu"
+              data-menu="about"
+            >
+              협회소개
+            </a>
+
+            <a href="./sub2.html" class="gnb-link has-submenu" data-menu="pr">
+              홍보광장
+            </a>
+
+            <a
+              href="./sub3.html"
+              class="gnb-link has-submenu"
+              data-menu="azalea"
+            >
+              아젤리아패션그룹
+            </a>
+
+            <a
+              href="./sub4.html"
+              class="gnb-link has-submenu"
+              data-menu="global"
+            >
+              국제교류체험관
+            </a>
+
+            <a
+              href="./sub4.html"
+              class="gnb-link has-submenu gnb-link-nowrap"
+              data-menu="sharing"
+            >
+              나눔과기쁨 &amp; 복지관
+            </a>
+
+            <a
+              href="./sub4.html"
+              class="gnb-link has-submenu"
+              data-menu="partner"
+            >
+              협력기관
+            </a>
+          </nav>
+
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-open
+            aria-label="모바일 메뉴 열기"
+          >
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pc-submenu" id="pcSubmenu" aria-hidden="true">
+        <div class="pc-submenu-panel" data-panel="about">
+          <div class="pc-submenu-title">협회소개</div>
+          <ul class="pc-submenu-list">
+            <li><a class="is-active" href="./sub1.html">협회소개</a></li>
+            <li><a href="./sub1.html#chairman">인사말</a></li>
+            <li><a href="./sub1.html#history">연혁</a></li>
+            <li><a href="./sub1.html#organization">조직도</a></li>
+            <li><a href="./sub1.html#map">오시는 길</a></li>
+          </ul>
+        </div>
+
+        <div class="pc-submenu-panel" data-panel="pr">
+          <div class="pc-submenu-title">홍보광장</div>
+          <ul class="pc-submenu-list">
+            <li><a class="is-active" href="./sub2.html">공지사항</a></li>
+            <li><a href="./sub2.html#news">언론보도</a></li>
+            <li><a href="./sub2.html#gallery">갤러리</a></li>
+            <li><a href="./sub2.html#video">영상</a></li>
+          </ul>
+        </div>
+
+        <div class="pc-submenu-panel" data-panel="azalea">
+          <div class="pc-submenu-title">아젤리아패션그룹</div>
+          <ul class="pc-submenu-list">
+            <li><a class="is-active" href="./sub3.html">브랜드 소개</a></li>
+            <li><a href="./sub3.html#dress">아젤리아 드레스</a></li>
+            <li><a href="./sub3.html#hanbok">아젤리아 궁중한복</a></li>
+            <li><a href="./sub3.html#kids">아젤리아 키즈</a></li>
+            <li><a href="./sub3.html#awards">패션쇼 &amp; 어워즈</a></li>
+          </ul>
+        </div>
+
+        <div class="pc-submenu-panel" data-panel="global">
+          <div class="pc-submenu-title">국제교류체험관</div>
+          <ul class="pc-submenu-list">
+            <li><a class="is-active" href="./sub4.html">아젤리아 매거진</a></li>
+            <li><a href="./sub4.html#tv">아젤리아 TV 방송</a></li>
+            <li><a href="./sub4.html#enter">아젤리아 엔터</a></li>
+            <li><a href="./sub4.html#experience">국제교류한복체험</a></li>
+          </ul>
+        </div>
+
+        <div class="pc-submenu-panel" data-panel="sharing">
+          <div class="pc-submenu-title">나눔과기쁨 &amp; 복지관</div>
+          <ul class="pc-submenu-list">
+            <li>
+              <a href="./sub4.html#sharing">(사) 나눔과 기쁨</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pc-submenu-panel" data-panel="partner">
+          <div class="pc-submenu-title">협력기관</div>
+          <ul class="pc-submenu-list">
+            <li>
+              <a href="./sub4.html#partner">협력기관 정보</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <aside class="mobile-menu" data-mobile-menu aria-hidden="true">
+      <div class="mobile-menu-head">
+        <a
+          class="logo"
+          href="./index.html"
+          aria-label="한국한복문화예술협회 홈"
+        >
+          <img
+            class="logo-img"
+            src="./images/common/logo.png"
+            alt="한국한복문화예술협회"
+          />
+        </a>
+
+        <button
+          class="mobile-close"
+          type="button"
+          data-menu-close
+          aria-label="모바일 메뉴 닫기"
+        >
+          ×
+        </button>
+      </div>
+
+      <nav class="mobile-nav" aria-label="태블릿 전체 메뉴">
+        <div class="mobile-group is-open">
+          <button class="mobile-depth1" type="button">협회소개</button>
+          <ul class="mobile-depth2">
+            <li><a href="./sub1.html">협회소개</a></li>
+            <li><a href="./sub1.html#chairman">인사말</a></li>
+            <li><a href="./sub1.html#history">연혁</a></li>
+            <li><a href="./sub1.html#organization">조직도</a></li>
+            <li><a href="./sub1.html#map">오시는 길</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-group">
+          <button class="mobile-depth1" type="button">홍보광장</button>
+          <ul class="mobile-depth2">
+            <li><a href="./sub2.html">공지사항</a></li>
+            <li><a href="./sub2.html#news">언론보도</a></li>
+            <li><a href="./sub2.html#gallery">갤러리</a></li>
+            <li><a href="./sub2.html#video">영상</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-group">
+          <button class="mobile-depth1" type="button">아젤리아패션그룹</button>
+          <ul class="mobile-depth2">
+            <li><a href="./sub3.html">브랜드 소개</a></li>
+            <li><a href="./sub3.html#dress">아젤리아 드레스</a></li>
+            <li><a href="./sub3.html#hanbok">아젤리아 궁중한복</a></li>
+            <li><a href="./sub3.html#kids">아젤리아 키즈</a></li>
+            <li><a href="./sub3.html#awards">패션쇼 &amp; 어워즈</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-group">
+          <button class="mobile-depth1" type="button">국제교류체험관</button>
+          <ul class="mobile-depth2">
+            <li><a href="./sub4.html">아젤리아 매거진</a></li>
+            <li><a href="./sub4.html#tv">아젤리아 TV 방송</a></li>
+            <li><a href="./sub4.html#enter">아젤리아 엔터</a></li>
+            <li><a href="./sub4.html#experience">국제교류한복체험</a></li>
+          </ul>
+        </div>
+
+        <a class="mobile-depth1 mobile-single" href="./sub4.html#sharing">
+          나눔과기쁨 &amp; 복지관
+        </a>
+
+        <a class="mobile-depth1 mobile-single" href="./sub4.html#partner">
+          협력기관
+        </a>
+      </nav>
+
+      <div class="mobile-util">
+        <a href="./login.html" class="util-login">
+          <img src="./images/icon/16px/login.png" alt="" aria-hidden="true" />
+          <span>로그인</span>
+        </a>
+        <span aria-hidden="true">|</span>
+        <a href="./login.html">회원가입</a>
+        <span aria-hidden="true">|</span>
+        <a href="./login.html">마이페이지</a>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section
+        class="main-visual mainVisualSwiper"
+        aria-label="메인 배너 슬라이드"
+      >
+        <div class="swiper-wrapper">
+          <!-- slide 01 -->
+          <div class="swiper-slide main-visual-slide">
+            <picture class="main-visual-picture">
+              <img
+                src="./images/banner/pc_banner.png"
+                alt="한복드레스 메인 비주얼"
+              />
+            </picture>
+
+            <div
+              class="main-visual-copy"
+              aria-label="한복 한국의 전통의상 아름다운 우리 옷 한복 전통에 스며들다"
+            >
+              <div class="visual-copy-main">
+                <h1>한복</h1>
+                <p class="visual-subtitle">한국의 전통의상</p>
+                <p class="visual-quote">
+                  “ 아름다운 우리 옷 한복<br />
+                  전통에 스며들다. ”
+                </p>
+              </div>
+              <p class="visual-tradition">BE INFLUENCED BY TRADITION</p>
+            </div>
+
+            <section class="main-product" aria-label="대표 콘텐츠">
+              <div class="inner product-band">
+                <div class="product-info">
+                  <span class="product-num">01</span>
+                  <div class="product-text">
+                    <p class="product-category">
+                      <img
+                        src="./images/common/taegeuk-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                      <span>태극문양디자인등록</span>
+                    </p>
+                    <h2>한복드레스</h2>
+                    <p class="product-desc">
+                      디자인등록특허<br />
+                      제30-1087062호
+                    </p>
+                  </div>
+                </div>
+
+                <div class="product-thumb-area">
+                  <img
+                    class="product-thumb"
+                    src="./images/banner/pc_banner.png"
+                    alt="한복드레스 썸네일"
+                  />
+                  <div class="product-thumb-bars" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- slide 02 -->
+          <div class="swiper-slide main-visual-slide">
+            <picture class="main-visual-picture">
+              <img
+                src="./images/banner/slide_02.png"
+                alt="한복문화 메인 비주얼"
+              />
+            </picture>
+
+            <div
+              class="main-visual-copy"
+              aria-label="한복문화 전통의 예술무대 우리의 전통을 무대 위 감동으로 이어가다"
+            >
+              <div class="visual-copy-main">
+                <h1>한복문화</h1>
+                <p class="visual-subtitle">전통의 예술무대</p>
+                <p class="visual-quote">
+                  “ 우리의 전통을 무대 위<br />
+                  감동으로 이어가다. ”
+                </p>
+              </div>
+              <p class="visual-tradition">BE INFLUENCED BY TRADITION</p>
+            </div>
+
+            <section class="main-product" aria-label="대표 콘텐츠">
+              <div class="inner product-band">
+                <div class="product-info">
+                  <span class="product-num">02</span>
+                  <div class="product-text">
+                    <p class="product-category">
+                      <img
+                        src="./images/common/taegeuk-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                      <span>문화예술공연기획</span>
+                    </p>
+                    <h2>한복패션쇼</h2>
+                    <p class="product-desc">
+                      문화예술공연<br />
+                      제안 프로젝트
+                    </p>
+                  </div>
+                </div>
+
+                <div class="product-thumb-area">
+                  <img
+                    class="product-thumb"
+                    src="./images/banner/slide_02.png"
+                    alt="한복패션쇼 썸네일"
+                  />
+                  <div class="product-thumb-bars" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- slide 03 -->
+          <div class="swiper-slide main-visual-slide">
+            <picture class="main-visual-picture">
+              <img
+                src="./images/banner/slide_03.png"
+                alt="한복교육 메인 비주얼"
+              />
+            </picture>
+
+            <div
+              class="main-visual-copy"
+              aria-label="한복교육 전통의 가치계승 한복의 아름다움을 배우고 미래로 전합니다"
+            >
+              <div class="visual-copy-main">
+                <h1>한복교육</h1>
+                <p class="visual-subtitle">전통의 가치계승</p>
+                <p class="visual-quote">
+                  “ 한복의 아름다움을 배우고<br />
+                  미래로 전합니다. ”
+                </p>
+              </div>
+              <p class="visual-tradition">BE INFLUENCED BY TRADITION</p>
+            </div>
+
+            <section class="main-product" aria-label="대표 콘텐츠">
+              <div class="inner product-band">
+                <div class="product-info">
+                  <span class="product-num">03</span>
+                  <div class="product-text">
+                    <p class="product-category">
+                      <img
+                        src="./images/common/taegeuk-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                      <span>전통문화교육프로그램</span>
+                    </p>
+                    <h2>한복체험교육</h2>
+                    <p class="product-desc">
+                      전통문화<br />
+                      인재양성 프로젝트
+                    </p>
+                  </div>
+                </div>
+
+                <div class="product-thumb-area">
+                  <img
+                    class="product-thumb"
+                    src="./images/banner/slide_03.png"
+                    alt="한복체험교육 썸네일"
+                  />
+                  <div class="product-thumb-bars" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- slide 04 -->
+          <div class="swiper-slide main-visual-slide">
+            <picture class="main-visual-picture">
+              <img src="./images/banner/slide_04.png" alt="K한복 메인 비주얼" />
+            </picture>
+
+            <div
+              class="main-visual-copy"
+              aria-label="K한복 세계와 만나는 전통 한국의 멋을 세계 무대에 펼쳐 나갑니다"
+            >
+              <div class="visual-copy-main">
+                <h1>K한복</h1>
+                <p class="visual-subtitle">세계와 만나는 전통</p>
+                <p class="visual-quote">
+                  “ 한국의 멋을 세계 무대에<br />
+                  펼쳐 나갑니다. ”
+                </p>
+              </div>
+              <p class="visual-tradition">BE INFLUENCED BY TRADITION</p>
+            </div>
+
+            <section class="main-product" aria-label="대표 콘텐츠">
+              <div class="inner product-band">
+                <div class="product-info">
+                  <span class="product-num">04</span>
+                  <div class="product-text">
+                    <p class="product-category">
+                      <img
+                        src="./images/common/taegeuk-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                      />
+                      <span>국제문화교류사업</span>
+                    </p>
+                    <h2>글로벌한복패션</h2>
+                    <p class="product-desc">
+                      K한복 해외교류<br />
+                      프로젝트
+                    </p>
+                  </div>
+                </div>
+
+                <div class="product-thumb-area">
+                  <img
+                    class="product-thumb"
+                    src="./images/banner/slide_04.png"
+                    alt="글로벌한복패션 썸네일"
+                  />
+                  <div class="product-thumb-bars" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="media-section" aria-label="홍보 콘텐츠">
+        <div class="inner media-grid">
+          <article class="media-card media-poster">
+            <div class="section-head">
+              <div>
+                <h2>포스터</h2>
+                <span>Poster</span>
+              </div>
+              <a class="more-btn" href="./sub2.html" aria-label="포스터 더보기"
+                >+</a
+              >
+            </div>
+
+            <div class="poster-list">
+              <img src="./images/media/poster_01.png" alt="포스터 이미지 1" />
+              <img src="./images/media/poster_02.png" alt="포스터 이미지 2" />
+            </div>
+          </article>
+
+          <article class="media-card media-video">
+            <div class="section-head">
+              <div>
+                <h2>동영상</h2>
+                <span>Video</span>
+              </div>
+              <a class="more-btn" href="./sub2.html" aria-label="동영상 더보기"
+                >+</a
+              >
+            </div>
+
+            <div class="video-thumb">
+              <img src="./images/media/video_01.png" alt="동영상 썸네일" />
+            </div>
+          </article>
+
+          <article class="media-card media-youtube">
+            <div class="section-head">
+              <div>
+                <h2>유튜브</h2>
+                <span>Youtube</span>
+              </div>
+              <a class="more-btn" href="./sub2.html" aria-label="유튜브 더보기"
+                >+</a
+              >
+            </div>
+
+            <div class="youtube-empty" aria-label="유튜브 콘텐츠 영역"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="notice-section" aria-labelledby="noticeTitle">
+        <div class="notice-deco notice-deco-left" aria-hidden="true"></div>
+        <div class="notice-deco notice-deco-right" aria-hidden="true"></div>
+
+        <div class="notice-inner">
+          <div class="title-center">
+            <h2 id="noticeTitle">공지사항</h2>
+            <p>한국한복문화예술협회 문화 소통구</p>
+          </div>
+
+          <div class="tab-pills" role="tablist" aria-label="공지사항 분류">
+            <button class="active" type="button" data-notice-tab="all">
+              전체
+            </button>
+            <button type="button" data-notice-tab="notice">공지사항</button>
+            <button type="button" data-notice-tab="news">뉴스</button>
+          </div>
+
+          <div class="notice-grid">
+            <article class="notice-card" data-notice-type="notice">
+              <span class="badge">공지</span>
+              <h3>
+                <a href="./sub2.html">2025년도 한국한복문화예술협회 공지사항</a>
+              </h3>
+              <p>
+                행사 및 프로그램과 관련된 중요한 소식을 빠르게 안내해 드립니다.
+                업데이트되는 공지사항을 확인하시고, 놓치지 말고 필요한 정보를
+                챙겨보세요!
+              </p>
+              <time datetime="2025-01-16">2025-01-16</time>
+            </article>
+
+            <article class="notice-card" data-notice-type="notice">
+              <span class="badge">공지</span>
+              <h3>
+                <a href="./sub2.html">공지사항</a>
+              </h3>
+              <p>
+                행사 및 프로그램과 관련된 중요한 소식과 안내를 확인하세요. 최신
+                정보를 통해 원활한 참여와 소통을 도와드립니다.
+              </p>
+              <time datetime="2025-01-12">2025-01-12</time>
+            </article>
+
+            <article class="notice-card" data-notice-type="notice">
+              <span class="badge">공지</span>
+              <h3>
+                <a href="./sub2.html">2025 K-선비한복모델 선발대회</a>
+              </h3>
+              <p>
+                전통과 현대가 어우러진 축제의 장으로 여러분을 초대합니다! 다양한
+                공연, 체험 프로그램, 전시 등이 마련되어 있으며, 한국의 문화와
+                예술을 가까이에서 즐길 수 있는 특별한 기회입니다. 가족, 친구와
+                함께 오셔서 잊지 못할 추억을 만들어보세요!
+              </p>
+              <time datetime="2025-01-09">2025-01-09</time>
+            </article>
+
+            <article class="notice-card" data-notice-type="notice">
+              <span class="badge">공지</span>
+              <h3>
+                <a href="./sub2.html"
+                  >2025년도 각 복지센터와 함께하는 소외 계층을 위한
+                  전통문화...</a
+                >
+              </h3>
+              <p>
+                한복을 기부받아 전통문화 체험 프로그램이나 해외 문화 교류 행사에
+                활용하는 경우가 많습니다. 예를 들어, 지역 문화재단이나 전통문화
+                보존 단체에서 한복 기부를 받고 이를 행사에 사용하거나
+                보급합니다.
+              </p>
+              <time datetime="2025-01-03">2025-01-03</time>
+            </article>
+
+            <article class="notice-card" data-notice-type="news">
+              <span class="badge news">뉴스</span>
+              <h3>
+                <a href="./sub2.html"
+                  >[MJ포토] 아젤리아드레스 입은 주 '문화 지킴이·알리미
+                  디자이...</a
+                >
+              </h3>
+              <p>
+                대한민국 경제살리기 포럼 데이터자산공제회 공정회가 지난 6월 25일
+                서울 영등포구 여의도 63컨벤션센터 그랜드볼룸에서 개최됐다. 이날
+                3부 행사로 진행된 아젤리아 드레스 패션쇼(AZALEA Dress Fashion
+                Show)에 앞서 아젤리아 드레스 임은주 디자이너가 포토타임을 갖고
+                있다.
+              </p>
+              <time datetime="2021-07-05">2021-07-05</time>
+            </article>
+
+            <article class="notice-card" data-notice-type="news">
+              <span class="badge news">뉴스</span>
+              <h3>
+                <a href="./sub2.html"
+                  >[MJ포토] 아젤리아드레스 입은주 '문화 지킴이·알리미
+                  디자이...</a
+                >
+              </h3>
+              <p>
+                대한민국 경제살리기 포럼 데이터자산공제회 공정회가 지난 6월 25일
+                서울 영등포구 여의도 63컨벤션센터 그랜드볼룸에서 개최됐다. 이날
+                3부 행사로 진행된 아젤리아 드레스 패션쇼(AZALEA Dress Fashion
+                Show)에 앞서 아젤리아 드레스 임은주 디자이너가 포토타임을 갖고
+                있다.
+              </p>
+              <time datetime="2021-07-05">2021-07-05</time>
+            </article>
+
+            <article class="notice-card" data-notice-type="news">
+              <span class="badge news">뉴스</span>
+              <h3>
+                <a href="./sub2.html"
+                  >[MJ포토] 아젤리아드레스 입은주 '문화 지킴이·알리미
+                  디자이...</a
+                >
+              </h3>
+              <p>
+                대한민국 경제살리기 포럼 데이터자산공제회 공정회가 지난 6월 25일
+                서울 영등포구 여의도 63컨벤션센터 그랜드볼룸에서 개최됐다. 이날
+                3부 행사로 진행된 아젤리아 드레스 패션쇼(AZALEA Dress Fashion
+                Show)에 앞서 아젤리아 드레스 임은주 디자이너가 포토타임을 갖고
+                있다.
+              </p>
+              <time datetime="2021-07-05">2021-07-05</time>
+            </article>
+
+            <article class="notice-card" data-notice-type="news">
+              <span class="badge news">뉴스</span>
+              <h3>
+                <a href="./sub2.html"
+                  >[MJ포토] 아젤리아드레스 입은주 '문화 지킴이·알리미
+                  디자이...</a
+                >
+              </h3>
+              <p>
+                대한민국 경제살리기 포럼 데이터자산공제회 공정회가 지난 6월 25일
+                서울 영등포구 여의도 63컨벤션센터 그랜드볼룸에서 개최됐다. 이날
+                3부 행사로 진행된 아젤리아 드레스 패션쇼(AZALEA Dress Fashion
+                Show)에 앞서 아젤리아 드레스 임은주 디자이너가 포토타임을 갖고
+                있다.
+              </p>
+              <time datetime="2021-07-05">2021-07-05</time>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section" aria-labelledby="galleryTitle">
+        <div class="gallery-inner">
+          <div class="gallery-title-box">
+            <h2 id="galleryTitle">갤러리</h2>
+            <p>사진으로 본 문화현장</p>
+          </div>
+
+          <div class="gallery-viewport" data-gallery-viewport>
+            <div class="gallery-track" data-gallery-track>
+              <article class="gallery-card is-active" data-gallery-card>
+                <a href="./sub2.html">
+                  <div class="gallery-img-box">
+                    <img
+                      src="./images/gallery/gallery_01.png"
+                      alt="제13회 효창원 8위 선열 숭모제전"
+                    />
+                  </div>
+                  <div class="gallery-info">
+                    <div>
+                      <h3>제13회 효창원 8위 선열 숭모제전</h3>
+                      <time datetime="2023-11-15">2023-11-15</time>
+                    </div>
+                    <img
+                      class="gallery-arrow"
+                      src="./images/icon/32px/arrow.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                </a>
+              </article>
+
+              <article class="gallery-card" data-gallery-card>
+                <a href="./sub2.html">
+                  <div class="gallery-img-box">
+                    <img
+                      src="./images/gallery/gallery_02.png"
+                      alt="제13회 효창원 8위 선열 숭모제전"
+                    />
+                  </div>
+                  <div class="gallery-info">
+                    <div>
+                      <h3>제13회 효창원 8위 선열 숭모제전</h3>
+                      <time datetime="2023-11-15">2023-11-15</time>
+                    </div>
+                    <img
+                      class="gallery-arrow"
+                      src="./images/icon/32px/arrow.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                </a>
+              </article>
+
+              <article class="gallery-card" data-gallery-card>
+                <a href="./sub2.html">
+                  <div class="gallery-img-box">
+                    <img
+                      src="./images/gallery/gallery_03.png"
+                      alt="제13회 효창원 8위 선열 숭모제전"
+                    />
+                  </div>
+                  <div class="gallery-info">
+                    <div>
+                      <h3>제13회 효창원 8위 선열 숭모제전</h3>
+                      <time datetime="2023-11-15">2023-11-15</time>
+                    </div>
+                    <img
+                      class="gallery-arrow"
+                      src="./images/icon/32px/arrow.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                </a>
+              </article>
+
+              <article class="gallery-card" data-gallery-card>
+                <a href="./sub2.html">
+                  <div class="gallery-img-box">
+                    <img
+                      src="./images/gallery/gallery_04.png"
+                      alt="제13회 효창원 8위 선열 숭모제전"
+                    />
+                  </div>
+                  <div class="gallery-info">
+                    <div>
+                      <h3>제13회 효창원 8위 선열 숭모제전</h3>
+                      <time datetime="2023-11-15">2023-11-15</time>
+                    </div>
+                    <img
+                      class="gallery-arrow"
+                      src="./images/icon/32px/arrow.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                </a>
+              </article>
+
+              <article class="gallery-card" data-gallery-card>
+                <a href="./sub2.html">
+                  <div class="gallery-img-box">
+                    <img
+                      src="./images/gallery/gallery_05.png"
+                      alt="제13회 효창원 8위 선열 숭모제전"
+                    />
+                  </div>
+                  <div class="gallery-info">
+                    <div>
+                      <h3>제13회 효창원 8위 선열 숭모제전</h3>
+                      <time datetime="2023-11-15">2023-11-15</time>
+                    </div>
+                    <img
+                      class="gallery-arrow"
+                      src="./images/icon/32px/arrow.png"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button
+      class="top-btn"
+      type="button"
+      data-top-button
+      aria-label="상단으로 이동"
+    >
+      ↑
+    </button>
+    <footer class="site-footer">
+      <div class="inner">
+        <div class="footer-logo">
+          <img src="./images/common/logo2.png" alt="한국한복문화예술협회" />
+        </div>
+
+        <address class="footer-info">
+          <span>Homepage : www.khanbok.kr</span>
+          <span>Mobile : 010-7385-7888</span>
+          <span>Email : tj142536@naver.com</span>
+          <span>
+            Office : 서울특별시 용산구 후암로4길 64 (64, Huam-ro 4-gil, Seoul,
+            Korea)
+          </span>
+        </address>
+
+        <ul class="sns" aria-label="SNS 링크">
+          <li>
+            <a href="#" aria-label="유튜브">
+              <img src="./images/common/sns1.png" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="인스타그램">
+              <img src="./images/common/sns2.png" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="페이스북">
+              <img src="./images/common/sns3.png" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="블로그">
+              <img src="./images/common/sns4.png" alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
