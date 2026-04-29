@@ -23,10 +23,13 @@ function initMainVisualSwiper() {
       });
     });
   }
-
   new Swiper(".mainVisualSwiper", {
     loop: true,
     slidesPerView: 1,
+    effect: window.innerWidth <= 767 ? "fade" : "slide",
+    fadeEffect: {
+      crossFade: true,
+    },
     speed: 700,
     autoplay: {
       delay: 3000,
