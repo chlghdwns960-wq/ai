@@ -15,6 +15,8 @@
 ========================= */
 .mainVisualSwiper {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .mainVisualSwiper .swiper-wrapper {
@@ -31,6 +33,8 @@
 
 .main-visual-slide {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 .main-visual-picture {
   display: block;
@@ -1213,6 +1217,7 @@
    갤러리
    PC 기준: 선택 360x390 / 비선택 280x303
 ========================= */
+
 .gallery-section {
   width: 100%;
   padding: 48px 0;

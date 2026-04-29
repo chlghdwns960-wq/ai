@@ -510,15 +510,20 @@ a.mobile-depth1.mobile-single::after {
    PC 완성본 복구
 ========================= */
 .site-footer {
+  width: 100%;
+  padding: 32px 0;
   background: #f2f2f2;
-  border-top: 1px solid #d8d8d8;
-  padding: 34px 0 45px;
-  color: #555555;
 }
 
 .site-footer .inner {
-  width: min(var(--inner), calc(100% - 80px));
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .footer-logo {
