@@ -48,6 +48,7 @@ let currentView = "large";
 let currentSearchKeyword = "";
 let currentVisiblePhotos = [];
 let currentPhotoIndex = 0;
+let lastFocusedElement = null;
 
 const baseArchivePhotos = [
   {
@@ -699,12 +700,18 @@ function openPhotoViewer(index) {
     return;
   }
 
+  lastFocusedElement = document.activeElement;
+
   updatePhotoViewer(index);
 
   photoViewerDim.classList.add("is-open");
   photoViewer.classList.add("is-open");
   photoViewerDim.setAttribute("aria-hidden", "false");
   document.body.classList.add("is-photo-viewer-open");
+
+  if (photoViewerClose) {
+    photoViewerClose.focus();
+  }
 }
 
 // 사진 확대 모달을 닫는 함수
@@ -717,6 +724,11 @@ function closePhotoViewer() {
   photoViewer.classList.remove("is-open");
   photoViewerDim.setAttribute("aria-hidden", "true");
   document.body.classList.remove("is-photo-viewer-open");
+
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
 }
 
 // 현재 확대된 사진을 삭제하는 함수
