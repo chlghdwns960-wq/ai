@@ -1,0 +1,1045 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700&display=swap");
+
+:root {
+  --black: #111111;
+  --text: #222222;
+  --muted: #666666;
+  --line: #dddddd;
+  --soft: #f5f5f5;
+  --primary: #ff4248;
+  --primary-soft: #fff0ec;
+  --white: #ffffff;
+  --footer-bg: #f2f2f2;
+  --inner: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+  color: var(--text);
+  background: #ffffff;
+  word-break: keep-all;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+.inner {
+  width: min(var(--inner), calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 12px;
+  background: #000000;
+  color: #ffffff;
+}
+
+.skip-link:focus {
+  left: 12px;
+}
+
+/* =========================
+   Header
+   PC 완성본 복구
+========================= */
+.site-header {
+  position: relative;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.utility {
+  height: 49px;
+  background: #f2f2f2;
+  font-size: 14px;
+}
+
+.utility .inner {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.utility a {
+  color: #121111;
+  font-weight: 400;
+}
+
+.util-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #121111;
+  white-space: nowrap;
+}
+
+.util-login img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.util-divider {
+  color: #121111;
+}
+
+.header-main {
+  min-height: 110px;
+}
+
+.header-main .inner {
+  width: 100%;
+  max-width: none;
+  min-height: 110px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  min-width: 315px;
+}
+
+.logo-img {
+  width: 325px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.gnb {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.gnb-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 0;
+  color: #000000;
+  font-family: "Pretendard", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.gnb-link-nowrap {
+  white-space: nowrap;
+}
+
+.gnb-link.is-active,
+.gnb-link.active,
+.gnb-link:hover,
+.gnb-link:focus-visible {
+  color: var(--primary);
+}
+
+.gnb-link.is-active::after,
+.gnb-link.active::after,
+.gnb-link:hover::after,
+.gnb-link:focus-visible::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 2px;
+  background: var(--primary);
+}
+
+.pc-submenu {
+  display: block;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  background: #ffffff;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    max-height 0.24s ease,
+    opacity 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.pc-submenu.is-open {
+  max-height: 122px;
+  opacity: 1;
+  border-top-color: #dedede;
+  border-bottom-color: #dedede;
+}
+
+.pc-submenu-panel {
+  display: none;
+  width: 100%;
+  min-height: 122px;
+  grid-template-columns: 200px minmax(0, 1fr);
+}
+
+.pc-submenu-panel.is-active {
+  display: grid;
+}
+/* PC 서브메뉴 긴 메뉴명 줄바꿈 방지 */
+.pc-submenu-panel[data-panel="sharing"] .pc-submenu-title,
+.pc-submenu-panel[data-panel="sharing"] .pc-submenu-list a,
+.pc-submenu-panel[data-panel="partner"] .pc-submenu-title,
+.pc-submenu-panel[data-panel="partner"] .pc-submenu-list a {
+  white-space: nowrap;
+}
+
+.pc-submenu-title {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  border-right: 1px solid #d6d6d6;
+  color: #111111;
+  font-family: "Pretendard", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.pc-submenu-list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 40px;
+}
+
+.pc-submenu-list a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 4px;
+  color: #111111;
+  font-family: "Pretendard", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.pc-submenu-list a.is-active {
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.pc-submenu-list a.is-active::after,
+.pc-submenu-list a:hover::after,
+.pc-submenu-list a:focus-visible::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 0;
+  height: 2px;
+  background: var(--primary);
+}
+
+.pc-submenu-list a:hover,
+.pc-submenu-list a:focus-visible {
+  color: var(--primary);
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #111111;
+  position: relative;
+}
+
+.menu-toggle span::before,
+.menu-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: #111111;
+}
+
+.menu-toggle span::before {
+  top: -8px;
+}
+
+.menu-toggle span::after {
+  top: 8px;
+}
+
+/* =========================
+   Mobile / Tablet Menu
+========================= */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.mobile-menu-head {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  background: #ffffff;
+}
+
+.mobile-menu-head .logo {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu-head .logo-img {
+  width: 190px;
+  height: auto;
+  object-fit: contain;
+}
+
+.mobile-close {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.mobile-nav {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 22px 24px 140px;
+  background: #ffffff;
+}
+
+.mobile-group {
+  margin: 0;
+}
+
+.mobile-group + .mobile-group,
+.mobile-group + .mobile-single,
+.mobile-single + .mobile-single {
+  margin-top: 0;
+}
+
+.mobile-depth1 {
+  width: 100%;
+  min-height: 72px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #111111;
+  background: #ffffff;
+  border: 0;
+  font-family: "Pretendard", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+button.mobile-depth1::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-left: 12px;
+  border-right: 1.5px solid #111111;
+  border-bottom: 1.5px solid #111111;
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+  display: block;
+}
+
+.mobile-group.is-open > button.mobile-depth1::after {
+  transform: rotate(-135deg);
+}
+
+a.mobile-depth1.mobile-single {
+  text-decoration: none;
+}
+
+a.mobile-depth1.mobile-single::after {
+  display: none;
+}
+
+.mobile-depth2 {
+  display: none;
+  padding: 0 0 20px 16px;
+}
+
+.mobile-group.is-open .mobile-depth2 {
+  display: block;
+}
+
+.mobile-depth2 a {
+  display: block;
+  padding: 12px 0;
+  color: #111111;
+  font-family: "Pretendard", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-align: left;
+  text-decoration: none;
+}
+
+.mobile-util {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f2f2f2;
+  color: #111111;
+  font-family: "Pretendard", sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.mobile-util a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #111111;
+}
+
+.mobile-util img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* =========================
+   Footer
+   PC 완성본 복구
+========================= */
+.site-footer {
+  width: 100%;
+  padding: 32px 0;
+  background: #f2f2f2;
+}
+
+.site-footer .inner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.footer-logo {
+  margin-bottom: 10px;
+}
+
+.footer-logo img {
+  display: block;
+  width: 325px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.58;
+}
+
+.footer-info {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  color: #555555;
+  font-family: "Pretendard", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.footer-info span {
+  position: relative;
+  padding-right: 14px;
+  margin-right: 14px;
+  font-style: normal;
+}
+
+.footer-info span::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #b5b5b5;
+}
+
+.footer-info span:last-child {
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.footer-info span:last-child::after {
+  display: none;
+}
+
+.sns {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.sns a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.sns img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.top-btn {
+  position: fixed;
+  right: 40px;
+  bottom: 116px;
+  left: auto;
+  top: auto;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  font-size: 34px;
+  line-height: 1;
+}
+
+/* =========================
+   Tablet / Mobile
+   기준:
+   - PC: 1025px 이상
+   - Tablet: 768px ~ 1024px
+   - Mobile: 767px 이하
+   주의:
+   - PC Header / PC Footer 기본값은 위쪽 기본 CSS를 그대로 사용
+   - 여기서는 태블릿/모바일만 제어
+========================= */
+
+/* =========================
+   Tablet: 768px ~ 1024px
+========================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .utility,
+  .gnb,
+  .pc-submenu {
+    display: none;
+  }
+
+  .header-main {
+    height: 64px;
+    min-height: 64px;
+    background: #ffffff;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .header-main .inner {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    height: 64px;
+    min-height: 64px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-main .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    min-width: 0;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-main .logo-img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-toggle span {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #111111;
+  }
+
+  .menu-toggle span::before,
+  .menu-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: #111111;
+  }
+
+  .menu-toggle span::before {
+    top: -7px;
+  }
+
+  .menu-toggle span::after {
+    top: 7px;
+  }
+
+  .site-footer {
+    padding: 28px 0 38px;
+  }
+
+  .site-footer .inner {
+    width: calc(100% - 48px);
+  }
+
+  .footer-logo {
+    margin-bottom: 10px;
+  }
+
+  .footer-logo img {
+    width: 264px;
+  }
+
+  .footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    white-space: normal;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .footer-info span:nth-child(3)::after {
+    display: none;
+  }
+
+  .footer-info span:nth-child(4) {
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  .sns {
+    margin-top: 24px;
+  }
+
+  .top-btn {
+    right: 24px;
+    bottom: 88px;
+    width: 56px;
+    height: 56px;
+    font-size: 30px;
+  }
+}
+
+/* =========================
+   Mobile: 767px 이하
+========================= */
+@media (max-width: 767px) {
+  .utility,
+  .gnb,
+  .pc-submenu {
+    display: none;
+  }
+
+  .header-main {
+    height: 64px;
+    min-height: 64px;
+    background: #ffffff;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .header-main .inner {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    height: 64px;
+    min-height: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-main .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    min-width: 0;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-main .logo-img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-toggle span {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #111111;
+  }
+
+  .menu-toggle span::before,
+  .menu-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: #111111;
+  }
+
+  .menu-toggle span::before {
+    top: -7px;
+  }
+
+  .menu-toggle span::after {
+    top: 7px;
+  }
+
+  .mobile-menu {
+    background: #ffffff;
+  }
+
+  .mobile-menu-head {
+    height: 64px;
+    padding: 0 16px;
+    background: #ffffff;
+  }
+
+  .mobile-menu-head .logo {
+    min-width: 0;
+  }
+
+  .mobile-menu-head .logo-img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .mobile-close {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  .mobile-close::before,
+  .mobile-close::after {
+    content: "";
+    position: absolute;
+    right: 9px;
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background: #111111;
+  }
+
+  .mobile-close::before {
+    top: 12px;
+    box-shadow: 0 7px 0 #111111;
+  }
+
+  .mobile-close::after {
+    top: 26px;
+  }
+
+  .mobile-nav {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 20px 16px 128px;
+    background: #ffffff;
+  }
+
+  .mobile-depth1 {
+    min-height: 56px;
+    padding: 0;
+    color: #111111;
+    background: #ffffff;
+    font-family: "Pretendard", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+  }
+
+  button.mobile-depth1::after {
+    content: "";
+    flex: 0 0 auto;
+    width: 9px;
+    height: 9px;
+    margin-left: 12px;
+    border-right: 1.5px solid #111111;
+    border-bottom: 1.5px solid #111111;
+    transform: rotate(45deg);
+    transition: transform 0.25s ease;
+    display: block;
+  }
+
+  .mobile-group.is-open > button.mobile-depth1::after {
+    transform: rotate(-135deg);
+  }
+
+  a.mobile-depth1.mobile-single::after {
+    display: none;
+  }
+
+  .mobile-depth2 {
+    display: none;
+    padding: 0 0 18px 16px;
+  }
+
+  .mobile-group.is-open .mobile-depth2 {
+    display: block;
+  }
+
+  .mobile-depth2 a {
+    display: block;
+    padding: 10px 0;
+    color: #111111;
+    font-family: "Pretendard", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+  }
+
+  .mobile-util {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f2f2f2;
+    color: #111111;
+    font-family: "Pretendard", sans-serif;
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .mobile-util a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #111111;
+  }
+
+  .mobile-util img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+  .site-footer {
+    padding: 24px 0 32px;
+  }
+
+  .site-footer .inner {
+    width: calc(100% - 32px);
+  }
+
+  .footer-logo {
+    margin-bottom: 10px;
+  }
+
+  .footer-logo img {
+    width: 230px;
+  }
+
+  .footer-info {
+    display: block;
+    line-height: 1.9;
+    font-size: 12px;
+  }
+
+  .footer-info span {
+    display: inline;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .footer-info span::after {
+    display: none;
+  }
+
+  .footer-info span:last-child {
+    display: block;
+    width: 100%;
+  }
+
+  .sns {
+    margin-top: 24px;
+  }
+
+  .sns a,
+  .sns img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .top-btn {
+    right: 16px;
+    bottom: 72px;
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+  }
+}
