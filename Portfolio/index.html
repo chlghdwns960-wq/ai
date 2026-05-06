@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최홍준 | Frontend Portfolio</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a
+          href="#home"
+          class="brand-logo"
+          data-page-link="home"
+          aria-label="홈으로 이동"
+        >
+          <span class="brand-mark" aria-hidden="true">
+            <span>HJ</span>
+          </span>
+
+          <span class="brand-text">
+            <strong>HONGJUN CHOI</strong>
+            <span>Frontend Developer · Branding · AI Workflow</span>
+          </span>
+        </a>
+
+        <nav class="gnb" id="gnb" aria-label="주요 메뉴">
+          <a href="#home" class="is-active" data-page-link="home">About</a>
+          <a href="#resume" data-page-link="resume">Resume</a>
+          <a href="#portfolio" data-page-link="portfolio">Projects</a>
+          <a href="#branding" data-page-link="branding">Branding</a>
+          <a href="#contact" data-page-link="contact">Contact</a>
+        </nav>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="모바일 메뉴 열기"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <main>
+        <section class="page is-visible" id="home" aria-labelledby="home-title">
+          <div class="home-hero">
+            <div class="hero-copy">
+              <p class="role-label">Frontend Developer · UI Publisher</p>
+
+              <h1 id="home-title">
+                I turn design ideas into clean responsive interfaces
+                <span>with branding sense and AI workflow</span>
+              </h1>
+
+              <p class="hero-desc">
+                반응형 웹 구현과 UI 퍼블리싱을 중심으로 작업합니다. 디자인
+                시안을 코드로 옮기고, 브랜드형 랜딩페이지와 AI 활용
+                워크플로우까지 연결해 실제 결과물로 만듭니다.
+              </p>
+
+              <div class="hero-tags" aria-label="핵심 역량">
+                <span>Responsive Web</span>
+                <span>UI Publishing</span>
+                <span>Branding</span>
+                <span>AI Workflow</span>
+              </div>
+
+              <div class="hero-actions">
+                <a
+                  href="#portfolio"
+                  class="btn btn-primary"
+                  data-page-link="portfolio"
+                  >View Projects</a
+                >
+                <a href="#resume" class="btn btn-line" data-page-link="resume"
+                  >View Resume</a
+                >
+              </div>
+
+              <dl class="hero-summary">
+                <div>
+                  <dt>Focus</dt>
+                  <dd>Responsive Web · Landing Page · Brand Identity</dd>
+                </div>
+
+                <div>
+                  <dt>Tools</dt>
+                  <dd>HTML · CSS · JavaScript · Figma · AI Tools</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="profile-visual" aria-label="프로필 이미지 영역">
+              <div class="profile-image-placeholder">
+                <div class="profile-inner">
+                  <span class="profile-kicker">PROFILE IMAGE</span>
+                  <strong>Photo Area</strong>
+                  <p>Recommended Ratio 4:5</p>
+                </div>
+              </div>
+
+              <div class="profile-badge badge-left">
+                <strong>Design</strong>
+                <span>Figma · Photoshop · Illustrator</span>
+              </div>
+
+              <div class="profile-badge badge-right">
+                <strong>AI Workflow</strong>
+                <span>GPT · Gemini · Claude</span>
+              </div>
+            </div>
+          </div>
+
+          <section
+            class="section selected-section"
+            aria-labelledby="selected-title"
+          >
+            <div class="section-row">
+              <h2 class="section-title" id="selected-title">
+                Selected Projects
+              </h2>
+              <p>
+                분야 소개가 아니라 실제 프로젝트 단위로 정리했습니다. 역할,
+                도구, 결과물을 한눈에 확인할 수 있습니다.
+              </p>
+            </div>
+
+            <div class="selected-grid project-grid">
+              <article class="selected-card project-card">
+                <div class="project-thumb-mini web-preview" aria-hidden="true">
+                  <span>Responsive Web</span>
+                  <strong>Hanbok Association</strong>
+                </div>
+
+                <div class="project-card-head">
+                  <span class="work-index">01 · Responsive Web</span>
+                  <span class="project-status">Publishing</span>
+                </div>
+
+                <h3>Korean Hanbok Association Website</h3>
+
+                <p class="project-desc">
+                  협회 메인 페이지를 PC, 태블릿, 모바일 기준으로 구현한 반응형
+                  웹 프로젝트입니다.
+                </p>
+
+                <div class="project-meta">
+                  <div>
+                    <strong>Role</strong>
+                    <span>UI Publishing · Responsive Layout</span>
+                  </div>
+
+                  <div>
+                    <strong>Tools</strong>
+                    <span>HTML · CSS · JavaScript</span>
+                  </div>
+
+                  <div>
+                    <strong>Output</strong>
+                    <span>Main Page · Cross Browsing</span>
+                  </div>
+                </div>
+
+                <a href="#portfolio" data-page-link="portfolio"
+                  >View Web Project</a
+                >
+              </article>
+
+              <article class="selected-card project-card">
+                <div
+                  class="project-thumb-mini landing-preview"
+                  aria-hidden="true"
+                >
+                  <span>Landing Page</span>
+                  <strong>Pet Walking Bag</strong>
+                </div>
+
+                <div class="project-card-head">
+                  <span class="work-index">02 · Landing Page</span>
+                  <span class="project-status">Planning</span>
+                </div>
+
+                <h3>Pet Walking Bag Landing Page</h3>
+
+                <p class="project-desc">
+                  반려견 산책 가방의 문제 제기, 핵심 가치, CTA가 빠르게 읽히도록
+                  구성한 랜딩페이지 프로젝트입니다.
+                </p>
+
+                <div class="project-meta">
+                  <div>
+                    <strong>Role</strong>
+                    <span>Planning · UI Design · Publishing</span>
+                  </div>
+
+                  <div>
+                    <strong>Tools</strong>
+                    <span>Figma · Photoshop · HTML · CSS</span>
+                  </div>
+
+                  <div>
+                    <strong>Output</strong>
+                    <span>Product Storytelling · CTA Section</span>
+                  </div>
+                </div>
+
+                <a href="#portfolio" data-page-link="portfolio"
+                  >View Landing Page</a
+                >
+              </article>
+
+              <article class="selected-card project-card">
+                <div
+                  class="project-thumb-mini branding-preview"
+                  aria-hidden="true"
+                >
+                  <span>Brand Identity</span>
+                  <strong>Self-care Sleep Brand</strong>
+                </div>
+
+                <div class="project-card-head">
+                  <span class="work-index">03 · Brand Identity</span>
+                  <span class="project-status">Branding</span>
+                </div>
+
+                <h3>Self-care Sleep Brand Identity</h3>
+
+                <p class="project-desc">
+                  수면과 셀프케어 제품을 위한 브랜드 타깃, 슬로건, 핵심 가치,
+                  비주얼 방향성을 정리한 브랜딩 프로젝트입니다.
+                </p>
+
+                <div class="project-meta">
+                  <div>
+                    <strong>Role</strong>
+                    <span>Brand Planning · Visual Direction</span>
+                  </div>
+
+                  <div>
+                    <strong>Tools</strong>
+                    <span>Figma · Illustrator · AI Tools</span>
+                  </div>
+
+                  <div>
+                    <strong>Output</strong>
+                    <span>Concept · Slogan · Visual System</span>
+                  </div>
+                </div>
+
+                <a href="#branding" data-page-link="branding"
+                  >View Branding Work</a
+                >
+              </article>
+            </div>
+          </section>
+
+          <section class="section core-section" aria-labelledby="core-title">
+            <div class="section-row">
+              <h2 class="section-title" id="core-title">Working Method</h2>
+              <p>
+                결과물만 보여주는 것이 아니라, 작업을 어떤 순서와 기준으로
+                진행하는지도 함께 보여줍니다.
+              </p>
+            </div>
+
+            <div class="core-grid method-grid">
+              <article class="core-card method-card">
+                <span>01</span>
+                <h3>Structure First</h3>
+                <p>
+                  페이지 구조, 공통 클래스, 반응형 기준을 먼저 정리합니다. 이후
+                  HTML 구조를 잡고 CSS를 확장해 유지보수하기 쉬운 화면을
+                  만듭니다.
+                </p>
+              </article>
+
+              <article class="core-card method-card">
+                <span>02</span>
+                <h3>Design-to-Code</h3>
+                <p>
+                  Figma 기준의 여백, 정렬, 타이포그래피를 코드로 옮깁니다.
+                  시안과 구현 결과의 차이를 줄이는 데 집중합니다.
+                </p>
+              </article>
+
+              <article class="core-card method-card">
+                <span>03</span>
+                <h3>Review with AI</h3>
+                <p>
+                  ChatGPT, Gemini, Claude를 기획 정리, 문장 개선, 코드 검수
+                  보조에 활용합니다. 최종 판단과 수정은 직접 확인합니다.
+                </p>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="page" id="resume" aria-labelledby="resume-title">
+          <div class="page-head">
+            <h2 id="resume-title">Resume</h2>
+            <p>
+              취업용 포트폴리오에 맞게 학습 과정, 프로젝트 경험, 기술 스택을
+              한눈에 확인할 수 있는 구조입니다.
+            </p>
+          </div>
+
+          <div class="resume-layout">
+            <section aria-labelledby="experience-title">
+              <h2 class="section-title" id="experience-title">Experience</h2>
+
+              <div class="timeline">
+                <article class="resume-item">
+                  <span class="year">2026</span>
+                  <h3>개인 포트폴리오 제작</h3>
+                  <p>
+                    반응형 웹, 포트폴리오 카드, 탭 메뉴, 필터 UI를 포함한 개인
+                    웹사이트를 HTML/CSS/JavaScript로 구현했습니다.
+                  </p>
+                </article>
+
+                <article class="resume-item">
+                  <span class="year">2025 - 2026</span>
+                  <h3>웹 퍼블리싱 학습</h3>
+                  <p>
+                    시맨틱 마크업, CSS 레이아웃, Flex/Grid, 미디어쿼리,
+                    JavaScript DOM 조작을 중심으로 실습했습니다.
+                  </p>
+                </article>
+
+                <article class="resume-item">
+                  <span class="year">Project</span>
+                  <h3>브랜드형 랜딩페이지 구현</h3>
+                  <p>
+                    제품 소개, CTA, 카드 레이아웃, 폼 UI를 갖춘 랜딩페이지를
+                    제작하고 모바일 가독성을 개선했습니다.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section aria-labelledby="skill-title">
+              <h2 class="section-title" id="skill-title">Skills</h2>
+
+              <div class="skill-list">
+                <div class="skill">
+                  <div class="skill-top">
+                    <span>Frontend Development</span>
+                    <span>88%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <span style="--value: 88%"></span>
+                  </div>
+                </div>
+
+                <div class="skill">
+                  <div class="skill-top">
+                    <span>Adobe Photoshop</span>
+                    <span>85%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <span style="--value: 85%"></span>
+                  </div>
+                </div>
+
+                <div class="skill">
+                  <div class="skill-top">
+                    <span>Adobe Illustrator</span>
+                    <span>80%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <span style="--value: 80%"></span>
+                  </div>
+                </div>
+
+                <div class="skill">
+                  <div class="skill-top">
+                    <span>Figma</span>
+                    <span>82%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <span style="--value: 82%"></span>
+                  </div>
+                </div>
+
+                <div class="skill">
+                  <div class="skill-top">
+                    <span>AI Tools: ChatGPT, Gemini, Claude</span>
+                    <span>90%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <span style="--value: 90%"></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="page" id="portfolio" aria-labelledby="portfolio-title">
+          <div class="page-head">
+            <h2 id="portfolio-title">Projects</h2>
+            <p>
+              필터 버튼을 누르면 카테고리별 작업물을 확인할 수 있습니다. 각
+              카드는 클릭 시 큰 이미지 모달로 열립니다.
+            </p>
+          </div>
+
+          <div class="portfolio-filter" aria-label="포트폴리오 필터">
+            <button
+              type="button"
+              class="filter-btn is-active"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button type="button" class="filter-btn" data-filter="web">
+              Web
+            </button>
+            <button type="button" class="filter-btn" data-filter="landing">
+              Landing
+            </button>
+            <button type="button" class="filter-btn" data-filter="app">
+              App UI
+            </button>
+            <button type="button" class="filter-btn" data-filter="branding">
+              Branding
+            </button>
+          </div>
+
+          <div class="portfolio-grid">
+            <article
+              class="portfolio-card"
+              data-category="web"
+              data-title="Korean Hanbok Association Website"
+              data-desc="A responsive association website main page built with HTML, CSS, and JavaScript."
+              data-image="./images/portfolio/web-01.jpg"
+              tabindex="0"
+              role="button"
+            >
+              <div class="project-thumb">
+                <div class="browser-card">
+                  <div class="browser-top"><i></i><i></i><i></i></div>
+                  <div class="browser-lines">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="portfolio-body">
+                <span class="tag">Web</span>
+                <h3>Korean Hanbok Association Website</h3>
+                <p>
+                  PC, 태블릿, 모바일 대응이 가능한 반응형 메인 페이지 퍼블리싱
+                  작업입니다.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="portfolio-card"
+              data-category="landing"
+              data-title="Pet Walking Bag Landing Page"
+              data-desc="A landing page focused on product storytelling, benefits, and CTA structure."
+              data-image="./images/portfolio/landing-01.jpg"
+              tabindex="0"
+              role="button"
+            >
+              <div class="project-thumb">
+                <div class="browser-card">
+                  <div class="browser-top"><i></i><i></i><i></i></div>
+                  <div class="browser-lines">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="portfolio-body">
+                <span class="tag">Landing</span>
+                <h3>Pet Walking Bag Landing Page</h3>
+                <p>
+                  제품의 문제 제기, 핵심 가치, CTA를 빠르게 읽히도록 구성한
+                  랜딩페이지입니다.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="portfolio-card"
+              data-category="app"
+              data-title="PetLog Mobile App UI"
+              data-desc="A mobile app UI prototype with bottom navigation, archive cards, and record screens."
+              data-image="./images/portfolio/app-01.jpg"
+              tabindex="0"
+              role="button"
+            >
+              <div class="project-thumb">
+                <div class="browser-card">
+                  <div class="browser-top"><i></i><i></i><i></i></div>
+                  <div class="browser-lines">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="portfolio-body">
+                <span class="tag">App UI</span>
+                <h3>PetLog Mobile App UI</h3>
+                <p>
+                  하단 탭바, 카드 UI, 기록 화면을 갖춘 모바일 전용 앱
+                  프로토타입입니다.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="portfolio-card"
+              data-category="web"
+              data-title="Netflix Style Media UI"
+              data-desc="A media-style layout with card lists, horizontal scrolling, and content sections."
+              data-image="./images/portfolio/web-02.jpg"
+              tabindex="0"
+              role="button"
+            >
+              <div class="project-thumb">
+                <div class="browser-card">
+                  <div class="browser-top"><i></i><i></i><i></i></div>
+                  <div class="browser-lines">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="portfolio-body">
+                <span class="tag">Web</span>
+                <h3>Netflix Style Media UI</h3>
+                <p>
+                  카드 리스트, 가로 스크롤, 콘텐츠 상세 영역을 포함한 미디어형
+                  레이아웃입니다.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="portfolio-card"
+              data-category="landing"
+              data-title="Self-care Product Detail Page"
+              data-desc="A product detail page that introduces brand story, product benefits, and user reviews."
+              data-image="./images/portfolio/landing-02.jpg"
+              tabindex="0"
+              role="button"
+            >
+              <div class="project-thumb">
+                <div class="browser-card">
+                  <div class="browser-top"><i></i><i></i><i></i></div>
+                  <div class="browser-lines">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="portfolio-body">
+                <span class="tag">Landing</span>
+                <h3>Self-care Product Detail Page</h3>
+                <p>
+                  브랜드 스토리, 제품 장점, 후기 섹션을 연결한 소개형
+                  상세페이지입니다.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="portfolio-card"
+              data-category="app"
+              data-title="Map Search App UI"
+              data-desc="A mobile search interface with filters, location cards, and map-based layout."
+              data-image="./images/portfolio/app-02.jpg"
+              tabindex="0"
+              role="button"
+            >
+              <div class="project-thumb">
+                <div class="browser-card">
+                  <div class="browser-top"><i></i><i></i><i></i></div>
+                  <div class="browser-lines">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="portfolio-body">
+                <span class="tag">App UI</span>
+                <h3>Map Search App UI</h3>
+                <p>
+                  검색, 필터, 위치 카드, 지도 영역을 연결한 모바일 검색
+                  화면입니다.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="portfolio-card"
+              data-category="branding"
+              data-title="Self-care Sleep Brand Identity"
+              data-desc="A branding project introducing the concept, target audience, core value, slogan, and visual direction."
+              data-image="./images/portfolio/branding-01.jpg"
+              tabindex="0"
+              role="button"
+            >
+              <div class="project-thumb">
+                <div class="browser-card">
+                  <div class="browser-top"><i></i><i></i><i></i></div>
+                  <div class="browser-lines">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="portfolio-body">
+                <span class="tag">Branding</span>
+                <h3>Self-care Sleep Brand Identity</h3>
+                <p>
+                  직접 기획한 브랜드의 콘셉트, 타깃, 핵심 가치, 슬로건, 비주얼
+                  방향성을 정리한 프로젝트입니다.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="branding" aria-labelledby="branding-title">
+          <div class="page-head">
+            <h2 id="branding-title">Branding</h2>
+            <p>
+              직접 기획한 브랜드의 콘셉트, 타깃, 핵심 가치, 슬로건, 비주얼
+              방향성을 정리하는 영역입니다. 개발뿐 아니라 디자인과 브랜드
+              사고력을 함께 보여주기 위한 페이지입니다.
+            </p>
+          </div>
+
+          <div class="blog-grid">
+            <article class="blog-card">
+              <div class="blog-thumb"><span>Brand Identity</span></div>
+              <div>
+                <h3>Self-care Sleep Brand Concept</h3>
+                <p>
+                  수면과 셀프케어 제품을 위한 브랜드명, 슬로건, 타깃 고객, 핵심
+                  메시지를 정리한 기획 프로젝트입니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <div class="blog-thumb"><span>Visual Direction</span></div>
+              <div>
+                <h3>Visual System</h3>
+                <p>
+                  컬러, 타이포그래피, 이미지 톤, 상세페이지 분위기까지 하나의
+                  브랜드 방향으로 정리합니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <div class="blog-thumb"><span>Target Strategy</span></div>
+              <div>
+                <h3>Target & Positioning</h3>
+                <p>
+                  브랜드가 누구를 위한 것인지, 어떤 문제를 해결하는지, 시장에서
+                  어떤 위치를 잡는지 정리합니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <div class="blog-thumb"><span>Brand Message</span></div>
+              <div>
+                <h3>Slogan & Copywriting</h3>
+                <p>
+                  브랜드의 첫인상을 만드는 슬로건, 상세페이지 문구, 핵심 카피
+                  방향을 설계합니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <div class="blog-thumb"><span>Design Tools</span></div>
+              <div>
+                <h3>Design Workflow</h3>
+                <p>
+                  Figma, Photoshop, Illustrator를 활용해 브랜드의 화면 구성과
+                  비주얼 요소를 구체화합니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <div class="blog-thumb"><span>AI Workflow</span></div>
+              <div>
+                <h3>AI-assisted Branding</h3>
+                <p>
+                  ChatGPT, Gemini, Claude를 활용해 아이디어 정리, 브랜드 문장
+                  개선, 콘텐츠 구조화를 진행합니다.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="contact" aria-labelledby="contact-title">
+          <div class="page-head">
+            <h2 id="contact-title">Contact</h2>
+            <p>
+              실제 포트폴리오에서는 이메일, 깃허브, 블로그, 연락 가능한 채널을
+              연결하면 됩니다.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-info">
+              <article class="info-card">
+                <strong>Email</strong>
+                <p>your-email@example.com</p>
+              </article>
+
+              <article class="info-card">
+                <strong>GitHub</strong>
+                <p>github.com/your-id</p>
+              </article>
+
+              <article class="info-card">
+                <strong>Location</strong>
+                <p>Seoul, Korea</p>
+              </article>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <input
+                  class="field"
+                  type="text"
+                  name="name"
+                  placeholder="이름"
+                  required
+                />
+                <input
+                  class="field"
+                  type="email"
+                  name="email"
+                  placeholder="이메일"
+                  required
+                />
+              </div>
+
+              <input
+                class="field"
+                type="text"
+                name="subject"
+                placeholder="제목"
+                required
+              />
+
+              <textarea
+                class="field"
+                name="message"
+                placeholder="메시지"
+                required
+              ></textarea>
+
+              <button type="submit" class="btn btn-primary">
+                메시지 보내기
+              </button>
+
+              <p class="form-message" id="formMessage">
+                입력 확인용 데모입니다. 실제 발송 기능은 서버 또는 메일 API
+                연결이 필요합니다.
+              </p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <div class="portfolio-modal" id="portfolioModal" aria-hidden="true">
+        <div class="modal-backdrop" data-modal-close></div>
+
+        <div
+          class="modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modalTitle"
+        >
+          <button
+            type="button"
+            class="modal-close"
+            data-modal-close
+            aria-label="Close modal"
+          >
+            ×
+          </button>
+
+          <div class="modal-image-wrap">
+            <img src="" alt="" id="modalImage" />
+          </div>
+
+          <div class="modal-text">
+            <span id="modalCategory">Portfolio</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <strong>HONGJUN CHOI</strong>
+          <span>Frontend · Branding · AI Workflow</span>
+        </div>
+
+        <div class="footer-right">
+          <nav class="footer-links" aria-label="푸터 링크">
+            <a href="#" aria-label="GitHub 바로가기">GitHub</a>
+            <a href="#portfolio" data-page-link="portfolio">Projects</a>
+            <a href="#contact" data-page-link="contact">Contact</a>
+          </nav>
+
+          <p>© 2026 Hongjun Choi.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
